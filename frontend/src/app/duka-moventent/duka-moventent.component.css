@@ -1,0 +1,48 @@
+.wako:hover{
+  box-shadow: 1px 1px 10px silver;
+  border: 1px solid transparent;
+  background-color:rgb(243, 243, 243);
+  border-radius: 10px;
+  transition: 0.1s ease-out;
+}
+.wako::placeholder{
+  color:rgb(77, 77, 77);
+  text-align: center;
+  size:17px
+
+
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+.yope{
+  position:absolute;
+  top:0%;
+  right:0%;
+  height:300px;
+  width:100%;
+  /* padding:100%; */
+  backdrop-filter: blur(5px);
+  /* background-color: rgba(0, 0, 0, 0.335); */
+
+
+
+}
+.momo1{
+  /* position: fixed; */
+  /* top:25%; */
+  /* right:40%; */
+  box-shadow: 1px -2px 20px #00000042;
+  background:#eae9e9;
+  backdrop-filter: blur('10px');
+  width: 400px;
+  height:100%;
+  background-color:rgb(246,246,246)
+
+
+}
+
+*:focus {
+  outline: none;
+  }
+

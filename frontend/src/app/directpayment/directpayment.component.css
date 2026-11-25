@@ -1,0 +1,42 @@
+li{
+    list-style-type: none;
+}
+
+
+td{
+    font-weight:100;
+    font-size:12px;
+
+    
+  }
+  th{
+    color:green;
+    font-weight:200;
+  }
+/*   
+  th:hover{
+    color:rgb(255, 255, 255);
+    font-weight:400;
+  
+  } */
+  
+  
+  
+  #customers:hover{
+    background-color: rgba(46, 147, 35, 0.2);;
+    cursor: pointer;
+    /* box-shadow:5px 5px 5px 5px black; */
+  }
+
+  input{
+      width:100%;
+      background:rgba(255, 255, 255, 0.6)
+  } 
+
+
+
+  .mben:hover{
+    background:rgb(172, 6, 6);
+    color:white;
+    font-weight: 200;
+  }

@@ -1,0 +1,216 @@
+
+
+<form  #form="ngForm" (ngSubmit)="run(Bei, sifa, ukubwa, Chumba_No)">
+    <div style="padding:20px;"></div>
+    
+    <div class="d-flex justify-content-center">
+      
+        <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI  </h4></div>
+    
+    </div>
+    
+    
+    
+    
+    <div style="padding:20px;"></div>
+    <div class="row">
+        <div class="col-sm"><div class="">
+      
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          
+            <div class="input-group-prepend "  style="width:110px;">
+                <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px;" >Namba ya chumba</span>
+            </div>
+            <input #Chumba_No [(ngModel)]="Create.Chumba_No" (input)="validate()" required pattern="[a-zA-Z]*" #ng1Form="ngModel"  name="ChumbaNo" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && Create.Chumba_No !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
+          
+            <div class="is-invalid && ng1Form.touched"  class="invalid-feedback">
+                Please provide ChumbaNo.
+              </div>
+            
+              
+    
+                <div *ngIf="Create.Chumba_No" style="font-size:10px; color:red;     width: 100%">username exists</div>
+             
+              
+    
+            <!-- <div>
+                {{giveoout}}
+              </div> -->
+    
+          </div>
+        
+     
+         <!-- <span  style="padding-right:55px;" *ngIf="ngForm.invalid">Choose another name {{ngForm.valid}}</span> -->
+         <!-- <span class="help-block"  style="padding-right:55px;" *ngIf="ngForm.invalid">unChoose another name {{ngForm.invalid}}</span> -->
+    
+          
+          </div></div>
+          
+        <div class="col-sm"><div class="">
+      
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          
+            <div class="input-group-prepend" style="width:110px;">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Sifa za chumba</span>
+            </div>
+            <input #sifa [(ngModel)]="Create.sifa" required #ngnameForm="ngModel"  name="jina" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
+                Please Provide Sifa.
+              </div>
+        </div>
+          
+          </div></div>
+            <div class="col-sm"><div class="">
+          
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+        
+          <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Bei ya chumba</span>
+          </div>
+          <input [(ngModel)]="Create.Bei" name="file_no" required #ngnFileForm="ngModel" #Bei [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Bei.
+          </div>
+        </div>
+        
+        </div></div>
+          </div>
+        <div class="row">
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Number.</span>
+                </div>
+                <input [(ngModel)]="Create.simu" name="simu" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                    Please provide Phone number.
+                  </div>  
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+  
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Ukubwa</span>
+                </div>
+                <input #ukubwa [(ngModel)]="Create.ukubwa" name="ofisi" required #ngoffisiForm="ngModel" [class.is-invalid]="ngoffisiForm.invalid && ngoffisiForm.touched"  [class.is-valid]="ngoffisiForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
+                    Please provide Offisi.
+                  </div> 
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+        
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account No.</span>
+          </div>
+          <input [(ngModel)]="Create.Account_no" name="Account_no" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  [class.is-valid]="ngAccountForm.valid && Create.Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+            Please provide Accountno.
+          </div> 
+          <div *ngIf="Create.Account_no" style="font-size:10px; color:red;     width: 100%">Account no exists</div>
+        </div>
+        
+        </div></div>
+      
+        
+          
+    </div>
+    
+    
+    
+        <div class="row">
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Idadi ya vyumba</span>
+                </div>
+                <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngIdadiVyumbaForm.touched"  class="invalid-feedback">
+                    Please provide Rooms.
+                  </div> 
+            </div>
+              
+              </div></div>
+              <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Aina ya chumba</span>
+                </div>
+                <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngIdadiVyumbaForm.touched"  class="invalid-feedback">
+                    Please provide Rooms.
+                  </div> 
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              
+                    <div class="input-group-prepend" style="width:110px;">
+                      <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Huduma</span>
+                    </div>
+                    <input [(ngModel)]="Create.huduma" name="huduma" type="text" class="form-control" style="max-width:300px; margin:center;" required #nghudumaForm="ngModel" [class.is-invalid]="nghudumaForm.invalid && nghudumaForm.touched"  [class.is-valid]="nghudumaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <div class="is-invalid && nghudumaForm.touched"  class="invalid-feedback">
+                        Please provide Huduma.
+                      </div> 
+                </div>
+        
+    
+      </div>
+          
+  
+ 
+      </div>
+          
+    </div>
+        
+    <div style="padding:10px;"></div>
+    <div class="d-flex justify-content-center">
+        
+    <!-- <form #imageForm= ngForm (ngSubmit)="onUploadData()"> -->
+              
+      <input #bankstatement style="font-size:10px; display: none" #fileInput1   (change)="onfileSelected($event.target.files)" type="file"  name="bankstatement">
+      <a *ngIf="!selectedFile" (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">Upload photo no 1</a>
+     
+     
+      <input #photo2 style="font-size:10px; display: none" #fileInput2   (change)="onfileSelected2($event.target.files)" type="file"  name="photo2">
+      <a *ngIf="selectedFile && !selectedFile2" (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">Upload photo no 2</a>
+     
+      <input #photo3 style="font-size:10px; display: none" #fileInput3   (change)="onfileSelected3($event.target.files)" type="file"  name="photo3">
+      <a *ngIf="selectedFile && selectedFile2 && !selectedFile3" (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">Upload photo no 3</a>
+     
+      <input #photo4 style="font-size:10px; display: none" #fileInput4   (change)="onfileSelected4($event.target.files)" type="file"  name="photo4">
+      <a *ngIf="selectedFile && selectedFile2 && selectedFile3 && !selectedFile4" (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">Upload photo no 4</a>
+     
+      <input #photo5 style="font-size:10px; display: none" #fileInput5   (change)="onfileSelected5($event.target.files)" type="file"  name="photo5">
+      <a *ngIf="selectedFile && selectedFile2 && selectedFile3 && selectedFile4 && !selectedFile5" (click)="fileInput5.click()" style="cursor: pointer; font-size:10px;">Upload photo no 5</a>
+     
+      <input #photo6 style="font-size:10px; display: none" #fileInput6   (change)="onfileSelected6($event.target.files)" type="file"  name="photo6">
+      <a *ngIf="selectedFile && selectedFile2 && selectedFile3 && selectedFile4 && selectedFile5 && !selectedFile6" (click)="fileInput6.click()" style="cursor: pointer; font-size:10px;">Upload photo no 6</a>
+      <!-- <button type="submit" style="font-size:10px;">Upload</button> 
+    </form> -->
+          </div>
+    <div style="padding:10px;"></div>
+        
+        <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+          
+            <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >Tuma</button>
+            
+            </div>
+          </div>
+    
+        </form>

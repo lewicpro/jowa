@@ -1,0 +1,50 @@
+
+
+<div class="d-flex justify-content-center">
+  <mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+  </mat-form-field>
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Historia</h4>
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" title="Date">Tarehe</th>
+        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
+        <th scope="col" title="Loan Repayment">Malipo ya mkopo</th>
+        <th scope="col" title="Interest Paid">Riba</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="cursor:pointer" id="customers" *ngFor="let form of users | myfilter : filtertext" (click)="onselected(form)">
+        <td scope="row">1</td>
+        <td>{{form.Simu}}</td>
+        <td>{{form.Account_no}}</td>
+        <td>{{form.pin}}</td>
+        <td>{{form.expire}}</td>
+        <td>{{form.ofisi}}</td>
+    
+      
+        <td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

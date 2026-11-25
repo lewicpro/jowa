@@ -1,0 +1,54 @@
+
+
+
+
+
+<div class="animated lightSpeedIn" style="letter-spacing:5px; font-size:28px; font-weight:200; text-align:center" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Nyumba zilizopo</div>
+<div class="container" style="padding-top:10px">
+  <div class="row " >
+    <div class="col-sm-3 col-lg-4 " style="padding-top:20px; padding-bottom:20px; " *ngFor="let m of det">
+      <mat-card class="example-card " style="overflow:hidden">
+        <!-- <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header> -->
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <!-- <div style="height:200px; width:100px; overflow: hidden"> -->
+            <carousel style="overflow:unset; ">
+                <slide style="overflow:unset">
+                  <img style="overflow:unset" mat-card-image [src]="m.photo" alt="first slide" >
+                </slide>
+                <slide>
+                  <img mat-card-image [src]="m.photo2" alt="second slide">
+                </slide>
+                <slide>
+                  <img mat-card-image [src]="m.photo3" alt="third slide">
+                </slide>
+              </carousel>
+        <!-- </div> -->
+        
+        <mat-card-content>
+          <p style="position:relative; text-align:center; background:rgba(0, 0, 0, 0.2); border-style: solid; color:white; font-weight: 200;  border-color: #dfdfdf; border-width: 1px;  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
+            {{m.name}} || 2 Rooms || Self || {{m.Bei}}tsh
+          </p>
+        </mat-card-content>
+        <mat-card-actions style="background:#e1e1e1; text-align: center">
+          <button  (click)="check(m)" style="width:auto" mat-button>Details</button>
+          <button mat-button>Take</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+

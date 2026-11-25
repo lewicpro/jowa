@@ -1,0 +1,85 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center">
+  <!-- <mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+  </mat-form-field> -->
+  <!-- <button (click)="time()">click</button> -->
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Matumizi</h4>
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+  <!-- <br><br> -->
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+  
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">Tarehe</th>
+        <!-- <th scope="col" title="Date">Jina</th> -->
+        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
+        <!-- <th scope="col" title="Loan Repayment">Salio zinazobaki</th> -->
+        <!-- <th scope="col" title="Interest Paid">Riba</th> -->
+        <th scope="col" title="(Mkopo + Riba) Balance">Matumizi</th>
+        <th nowrap scope="col" title="Action">Transactions id</th>
+        <th nowrap scope="col" title="Action"></th>
+        
+      </tr>
+    </thead>
+    <tbody style="overflow-x: scroll;">
+      <!-- <div >
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+        
+      </div> -->
+        <tr style="cursor:pointer" id="customers">
+            <td  ><input [(ngModel)]="UserData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" type="text" placeholder="Muda wa sasa"> </td>
+            <!-- <td><input [(ngModel)]="UserData.user" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="text" placeholder="*Important"></td> -->
+            <!-- <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td> -->
+            <!-- <td><input [(ngModel)]="UserData.Salio" (keyup)="calculate()" style="border-radius:3px;" [value]="bwoy" type="text"></td> -->
+            <!-- <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;" [value]="momba" type="text"></td> -->
+            <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;"  type="text"></td>
+            <td><input [(ngModel)]="UserData.Description" (keyup)="calculate()" style="border-radius:3px;"  type="text"></td>
+            <td><input type="number" style="border-radius:3px;"></td>
+            <td><a (click)="PostData()"  >Tunza</a></td>
+          </tr>
+      <tr  id="customers" *ngFor="let k of all" >
+          
+        <td > {{k.Tarehe}}</td>
+        <!-- <td style="white-space: nowrap">{{k.Jina}}</td> -->
+        <td  style="white-space: nowrap">{{k.Amount | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap">{{k.Salio | currency: 'tsh '}}</td>
+        <!-- <td style="white-space: nowrap; ">-||-</td> -->
+        <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Matumizi }}</a></td> -->
+        <td *ngIf="k.user === username  && k.rangi ==='red' "  style="color:red">{{k.Transaction_id}}</td> 
+        <td   style="color:red"></td>
+
+        <!-- <td *ngIf="k.user === username && k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run()'>delete</button></td> -->
+        <!-- <td *ngIf="k.user === username && k.info === '';"   style="color:red"></td> -->
+        <!-- <td *ngIf="k.user === username && k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td> -->
+      
+
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

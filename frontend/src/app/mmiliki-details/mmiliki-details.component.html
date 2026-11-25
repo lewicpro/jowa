@@ -1,0 +1,45 @@
+
+<div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
+<div class="container">
+
+<div style="background:rgba(255, 255, 255, 0)">
+  <div>
+  <span class="float-left" style="list-style-type:none; color:rgb(0, 0, 0); font-size:14px;; padding-top:30px;">
+    <li style="font-weight:100;">Jina:<span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"> {{jina | titlecase}}</span></li>
+    <li>Namba ya simu: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{Simu}}</span></li>
+    <li>Account no: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{Account_no}}</span></li>
+    <li>Namba ya file: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{file_no}}</span></li>
+    <li>Progress: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"><li style="display:inline-block"><span *ngIf="morn === 'start'" style="font-weight:500; color:green">Running</span><span *ngIf="morn === 'stop'" style="font-weight:500; color:green">Stoped</span></li></span></li>
+  </span> 
+  <span class="float-right">
+    <div>
+      <img  style="border:2px; background:rgba(255, 255, 255, 0)" [src]="imageUrl" width="150px;"><br>
+      <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
+        <input (change)="onfileSelected()" accept="image/*" style="font-size: 10px; color: black; display: none;" type="file"> <a style="font-size: 10px; color: black; cursor:pointer" (click)="files.click()"> Upload image</a><button class="float-right" style="font-size: 10px; color: black; " type="submit" >submit</button>
+      </form>
+      </div>
+  </span>
+</div>
+</div>
+
+</div>
+<div class="container" style="padding-top:190px;">
+  
+  <div style="background:rgba(211, 211, 211, 0)">
+    <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);"><li class="more" style="display:inline-block"><span style="font-weight:500">days spent:</span>   {{diffDays}} days</li> <li style="display:inline-block">||  <span style="font-weight:500">caution money :</span> {{caution  | currency: 'tsh '}} </li> <li style="display:inline-block">||  <span style="font-weight:500">Account Balance:</span> {{Balance  | currency: 'Tsh '}}</li><li style="display:inline-block">||  <span style="font-weight:500">Jumla ya malipo:</span> {{Jumla_malipo  | currency: 'Tsh '}}</li>  <li style="display:inline-block">|| <span style="font-weight:500">Deni:</span>  {{Madeni  | currency: 'Tsh '}} </li><li style="display:inline-block"></li> <div style="display:inline-block; text-align:center" ></div></div>
+    <div style="padding:1px; background:rgba(248, 248, 255, 0)"></div>
+    <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
+      <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
+        <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:gray"><button *ngIf="morn === 'start'" type="button" (click)="gigaoption()" class="btn btn-outline-dark thisstop" title="Stop subscription">STOP</button><button *ngIf="morn === 'stop'" type="button" (click)="giga()" class="btn btn-outline-dark thisstart" title="Stop subscription">START</button></span></li> <span style="font-size: 20px; font-weight: 100;"></span> </div>
+      </form>
+
+      <div  style="display:inline-block; font-size:12px; padding:10px;"> <li  style="display:inline-block"> <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['OwnerDeposit']" style="text-decoration: none;"> Deposit </a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['OwnerWithdraw']" style="text-decoration: none;"> Withdraw</a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['OwnerMalipo']" style="text-decoration: none;">Malipo ya nyumba</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['OwnerDocuments']" style="text-decoration: none;">Documents</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['OwnerEdit']" style="text-decoration: none;">Edit Account</a> </li> </div>
+      
+    </div>
+    <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+
+  
+  </div>
+  
+  
+</div>

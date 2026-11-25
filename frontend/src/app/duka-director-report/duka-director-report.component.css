@@ -1,0 +1,42 @@
+.wako{
+  border-radius: 10px;
+  border: 1px solid rgb(177, 177, 177);
+  padding-left:10px;
+  width:300px
+}
+.wako::placeholder{
+  color:rgb(77, 77, 77);
+  text-align: center;
+
+
+}
+
+.wako:hover{
+  box-shadow: 1px 1px 10px silver;
+  border: 1px solid transparent;
+  background-color:rgb(243, 243, 243);
+  border-radius: 10px;
+  transition: 0.1s ease-out;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.botto:hover{
+  /* background-color: black; */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+
+}
+.btn.focus, .btn:focus {
+  outline: 0;
+  color:white;
+  background-color: black;
+  box-shadow: 0 0 0 0.09rem black
+}
+
+.divchart{
+  display: block;
+  width: 400px;
+  height: 400px;
+}

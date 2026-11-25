@@ -1,0 +1,236 @@
+
+<ng-progress></ng-progress>
+<form  #form="ngForm" (ngSubmit)="Microfinance()">
+  <div style="padding:20px;"></div>
+  
+  <div class="d-flex justify-content-center">
+    
+      <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI KAMPUNI  </h4></div>
+  
+  </div>
+  
+  
+  
+  
+  <div style="padding:20px;"></div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Jina Tambulishi</span>
+              </div>
+              <input [(ngModel)]="userData.company_username"  name="company_username" required #ngnameForm="ngModel" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
+                  Please provide names.
+                </div>
+            </div>
+            
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Tin Namba</span>
+              </div>
+              <input [(ngModel)]="userData.Tin_Namba" name="Tin_Namba" required #ngnFileForm="ngModel"  [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+                  Please provide Nyumba no.
+                </div>
+            </div>
+            
+            </div>
+          </div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Jina la kampun</span>
+        </div>
+        <input [(ngModel)]="userData.company_name" name="company_name" type="text" class="form-control" required #ngfiliForm="ngModel" [class.is-invalid]="ngfiliForm.invalid && ngfiliForm.touched"  [class.is-valid]="ngfiliForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <div class="is-invalid && ngfiliForm.touched"  class="invalid-feedback">
+            Please provide File no.
+          </div>  
+      </div>
+      
+      </div></div>
+        </div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:95px;">Simu.</span>
+              </div>
+              <input [(ngModel)]="userData.Simu" name="Simu" required #ngSimuForm="ngModel" [class.is-invalid]="ngSimuForm.invalid && ngSimuForm.touched"  [class.is-valid]="ngSimuForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngSimuForm.touched"  class="invalid-feedback">
+                  Please provide Phone no.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:95px;">Eneo la ofisi  </span>
+              </div>
+              <input [(ngModel)]="userData.Eneo_la_kazi" name="Eneo_la_kazi" required #ngEneoForm="ngModel" [class.is-invalid]="ngEneoForm.invalid && ngEneoForm.touched"  [class.is-valid]="ngEneoForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngEneoForm.touched"  class="invalid-feedback">
+                  Please provide Eneo.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Thamani ya kampuni</span>
+        </div>
+        <input [(ngModel)]="userData.Thamani_ya_kampuni" name="Thamani_ya_kampuni" type="text" required #ngIdadiForm="ngModel" [class.is-invalid]="ngIdadiForm.invalid && ngIdadiForm.touched"  [class.is-valid]="ngIdadiForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <div class="is-invalid && ngIdadiForm.touched"  class="invalid-feedback">
+            Please provide Idadi.
+          </div> 
+      </div>
+      
+      </div></div>
+        </div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Kata</span>
+              </div>
+              <input [(ngModel)]="userData.kata" name="kata" required #ngKataForm="ngModel" [class.is-invalid]="ngKataForm.invalid && ngKataForm.touched"  [class.is-valid]="ngKataForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngKataForm.touched"  class="invalid-feedback">
+                  Please provide kata.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Wilaya</span>
+              </div>
+              <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" required #ngWilayaForm="ngModel" [class.is-invalid]="ngWilayaForm.invalid && ngWilayaForm.touched"  [class.is-valid]="ngWilayaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngWilayaForm.touched"  class="invalid-feedback">
+                  Please provide wilaya.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Mkoa</span>
+        </div>
+        <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" required #ngMkoaForm="ngModel" [class.is-invalid]="ngMkoaForm.invalid && ngMkoaForm.touched"  [class.is-valid]="ngMkoaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <div class="is-invalid && ngMkoaForm.touched"  class="invalid-feedback">
+            Please provide mkoa.
+          </div> 
+      </div>
+      
+      </div>
+    </div>
+        
+  </div>
+  
+  
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Afisa mikopo</span>
+              </div>
+              <input [(ngModel)]="reg.Username" name="Username" required #ngKataForm="ngModel" [class.is-invalid]="ngKataForm.invalid && ngKataForm.touched"  [class.is-valid]="ngKataForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngKataForm.touched"  class="invalid-feedback">
+                  Please provide Afisa mikopo.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Majina yote</span>
+              </div>
+              <input [(ngModel)]="reg.jina" name="jina" type="text" required #ngWilayaForm="ngModel" [class.is-invalid]="ngWilayaForm.invalid && ngWilayaForm.touched"  [class.is-valid]="ngWilayaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngWilayaForm.touched"  class="invalid-feedback">
+                  Please provide name.
+                </div> 
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Password</span>
+        </div>
+        <input [(ngModel)]="reg.Password" name="Password" type="text" required #ngMkoaForm="ngModel" [class.is-invalid]="ngMkoaForm.invalid && ngMkoaForm.touched"  [class.is-valid]="ngMkoaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <div class="is-invalid && ngMkoaForm.touched"  class="invalid-feedback">
+            Please provide Password.
+          </div> 
+      </div>
+      
+      </div>
+    </div>
+        
+  </div>
+  
+  
+      
+      
+  <div style="padding:10px;"></div>
+      
+      <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+              <mat-form-field>
+                  <mat-select placeholder="company_owner"  required #ngOwnerForm="ngModel" [class.is-invalid]="ngOwnerForm.invalid && ngOwnerForm.touched"  [class.is-valid]="ngOwnerForm.valid" [(ngModel)]="userData.company_owner" name="Company_owner">
+                    <div *ngFor="let food of all">
+                        <mat-option *ngIf="food.privs === 'HouseOwner'"  [value]="food.Username">
+                            {{ food.Username }}
+                              
+                            </mat-option> </div>
+             
+                  
+        
+                  </mat-select>
+                  <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
+                      Please provide Owner.
+                    </div> 
+                  
+                </mat-form-field>
+                
+          </div>
+        </div>
+      <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+             
+          <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid">Tuma</button>
+          
+          </div>
+        </div>
+  
+      </form>

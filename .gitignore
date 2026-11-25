@@ -1,0 +1,35 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+credentials.json
+**/credentials.json
+/backend/*.png
+/backend/*.jpg
+/backend/*.jpeg
+frontend/src/assets/images/lewis document.pdf
+
+# Local databases and user uploads
+*.sqlite3
+*.sqlite3-*
+**/media/**
+**/uploads/**
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Angular / Node
+frontend/node_modules/
+frontend/dist/
+frontend/dist-server/
+frontend/.angular/
+frontend/coverage/
+frontend/out-tsc/
+
+# Editor and operating system files
+.DS_Store
+.idea/
+.vscode/

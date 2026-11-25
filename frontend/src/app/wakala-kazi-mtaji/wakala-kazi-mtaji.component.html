@@ -1,0 +1,158 @@
+
+<h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mtaji History</h4>
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+<!-- <br><br> -->
+<!-- <pre class="card card-block card-header">{{message}}</pre> -->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+<div style="overflow: scroll;">
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tarehe</th>
+        <th scope="col" title="Date">Jina</th>
+        <th scope="col" title="Total Payment (L+I+6)">Jina la wakala</th>
+        <!-- <th scope="col" title="Loan Repayment">Mtaji</th> -->
+        <!-- <th scope="col" >Change</th> -->
+        <th scope="col" title="Comission">Added Commission</th>
+        <th scope="col" title="Mtaji">Mtaji</th>
+        <th scope="col" title="Action">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+      <!-- <div >
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+        
+      </div> -->
+      <tr style="cursor:pointer" id="customers">
+        <td class="text-center" ></td>
+          <td class="text-center" ><input [(ngModel)]="userData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+          <td> 
+            <select placeholder="company_owner" style="width:100%" [(ngModel)]="userData.Officer_worker" name="Company_owner">
+       
+                  <option [value]="null" disabled selected>Choose your profile</option>
+                  <option  *ngFor="let n of options" [value]='n.user'>
+                    {{n.user}}
+                  
+                  </option> 
+             
+       
+            
+  
+            </select>
+            <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
+                Please provide Owner.
+              </div> 
+            
+          </td>
+          <td>{{jinal}}</td>
+          <td><input [(ngModel)]="userData.Commision" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+          <!-- <td> 
+              <select placeholder="company_owner" style="width:100%" [(ngModel)]="userData.Mtandao_au_Benki" name="Company_owner">
+         
+                    <option [value]="null" disabled selected>Choose your profile</option>
+                    <option  *ngFor="let n of options" [value]='n'>
+                      {{n}}
+                    
+                    </option> 
+               
+         
+              
+    
+              </select>
+              <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
+                  Please provide Owner.
+                </div> 
+              
+            </td> -->
+          
+          <td><input [(ngModel)]="userData.Mtaji" type="text" style="border-radius:3px;"></td>
+          <!-- <td><input [(ngModel)]="userData.Salio" (keyup)="calculate()" style="border-radius:3px;" [value]="" type="number" ></td> -->
+          <td><a (click)="openModal(template)"  >Tunza</a></td>
+          </tr>
+      <tr  id="customers" *ngFor="let k of allz let i = index" >
+          
+        <td nowrap> {{i*1 + 1*1}}</td>
+        <td nowrap> {{k.Tarehe}}</td>
+        <td style="white-space: nowrap">{{k.Officer_worker}}</td>
+        <td style="white-space: nowrap">{{k.Wakala_name}}</td>
+        <!-- <td style="white-space: nowrap">{{k.Mtandao_au_Benki}}</td> -->
+        <td style="white-space: nowrap; ">{{k.Commision}}</td>
+        <td style="white-space: nowrap; ">{{k.Mtaji}}</td>
+        <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td> -->
+        <td style="color:red">{{k.Salio | currency: 'tsh '}}</td>
+        <td style="color:red"></td>
+        <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
+  <!-- 
+        <td *ngIf="k.user === username && k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run()'>delete</button></td>
+        <td *ngIf="k.user === username && k.info === '';"   style="color:red"></td>
+        <td *ngIf="k.user === username && k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+       -->
+  
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  <div style="background-color: #f8f8ff;">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center pagination-sm">
+        <li class="page-item disabled">
+          <a *ngIf="prev1 === null" class="page-link"  aria-label="Previous">
+            <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span> 
+            <span class="sr-only">Previous</span>
+          </a>
+         
+        </li>
+        <li  class="page-item">
+          <a *ngIf="prev1" class="page-link" (click)="prev()" aria-label="Previous">
+            <span   aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+  
+        </li>
+        <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+        
+        <li class="page-item disabled">
+          <a  *ngIf="next1 === null" class="page-link"  aria-label="Next">
+            <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+          
+        </li>
+  
+        <li class="page-item">
+          <a *ngIf="next1" class="page-link" (click)="next()" aria-label="Next">
+            <span  aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+  
+        </li>
+      </ul>
+    </nav>
+  
+  </div>
+  
+
+
+</div>
+

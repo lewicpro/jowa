@@ -1,0 +1,214 @@
+
+
+<form   style="background:rgba(248, 248, 255, 0)" #form="ngForm" (ngSubmit)="Register()">
+  <div style="padding:5px;"></div>
+  
+  <div class="d-flex justify-content-center">
+    
+      <div ><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI  </h4></div>
+  
+  </div>
+  
+  
+  
+  
+  <div style="padding:20px;"></div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Jina tambulishi</span>
+              </div>
+              <input [(ngModel)]="userData.Username"  name="Username" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Majina yote</span>
+              </div>
+              <input [(ngModel)]="userData.jina" name="jina" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">File No.</span>
+        </div>
+        <input [(ngModel)]="userData.file" name="file" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div></div>
+        </div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">TSD No.</span>
+              </div>
+              <input [(ngModel)]="userData.TSD" name="TSD" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shule/Ofisi</span>
+              </div>
+              <input [(ngModel)]="userData.ofisi" name="ofisi" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account No.</span>
+        </div>
+        <input [(ngModel)]="userData.Account_no" name="Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div></div>
+        </div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Kata</span>
+              </div>
+              <input [(ngModel)]="userData.kata" name="kata" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Wilaya</span>
+              </div>
+              <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Mkoa</span>
+        </div>
+        <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div>
+    </div>
+        
+  </div>
+  
+  
+  
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account Pin</span>
+              </div>
+              <input [(ngModel)]="userData.pin" name="pin" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 " style="width:100%; overflow:hidden">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:105px;">Pasport size</span>
+              </div>
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:77px; max-width:300px; background:white"><a (click)="fileInput.click()" style="cursor: pointer; font-size:10px;">Chukua pasport size ya mteja</a></span>
+              </div>
+              <input #passport type="file" #fileInput   (change)="onfileSelected()"    class="form-control" style="max-width:300px; margin:center; font-size:10px; display:none" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Card Expire Date</span>
+        </div>
+        <input [(ngModel)]="userData.expire" name="expire" type="date" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div>
+    </div>
+        
+  </div>
+      <div class="row">
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:85px;">CSV</span>
+              </div>
+              <input [(ngModel)]="userData.csv" name="csv" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            
+              <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Check No</span>
+              </div>
+              <input [(ngModel)]="userData.check" name="check" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            </div></div>
+          <div class="col-sm"><div class="">
+        
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+      
+        <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Simu</span>
+        </div>
+        <input [(ngModel)]="userData.Simu" name="Simu" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div>
+    </div>
+        
+  </div>
+      
+  <div style="padding:10px;"></div>
+      
+      <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+        
+          <button class="btn btn-success form-control" style="max-width:300px;" type="submit" >Tuma</button>
+          
+          </div>
+        </div>
+  
+      </form>

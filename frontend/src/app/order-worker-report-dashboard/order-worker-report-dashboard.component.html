@@ -1,0 +1,12 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center" style="padding-bottom:15px;">
+    <div class="text-center" style=" font-size:12px;  padding:2px; color:white; background:#eeeeee; border-radius: 15px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><a [routerLink]="['SuccessfulOrders']" style="text-decoration: none; color:#666666;"  [routerLinkActive]="['active']">Successfully</a></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; color:#666666;" [routerLink]="['Approuved']"  [routerLinkActive]="['active']">Approuved</a> </span></li> <span style="font-size: 20px; font-weight: 100;"> | </span> <li style="display:inline-block"> <span style="font-weight:500; color:green"><a style="text-decoration: none; color:#666666;" [routerLink]="['OrderList']"  [routerLinkActive]="['active']">All Oders</a> </span></li> </div>
+
+  <!-- <button (click)="time()">click</button> -->
+</div>
+<div class="animated fadeIn"  style="  border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <router-outlet></router-outlet>
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

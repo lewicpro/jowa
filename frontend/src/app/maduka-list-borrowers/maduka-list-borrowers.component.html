@@ -1,0 +1,134 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center">
+
+</div>
+<div style="text-align: center;"><input #boya (keyup)="search(boya.value)"  class="wako" type="text" placeholder="Search for a name" style="width: 400px;"></div>
+<div style="padding: 5px;"></div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> List of Borrowers</h4>
+
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm Delete?</p>
+      <button type="button" class="btn btn-default" (click)="confirm(pk)" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+  <ng-template #template2>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm2(pk)" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline2()" >No</button>
+    </div>
+  </ng-template>
+
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tarehe</th>
+        <th scope="col" title="Date">Jina</th>
+        <th scope="col" title="Total Payment (L+I+6)">Product</th>
+        <th scope="col" title="Total Payment (L+I+6)">Quantity</th>
+        <th scope="col" title="Total Payment (L+I+6)">Price</th>
+        <th scope="col" title="Total Payment (L+I+6)">Total</th>
+        <th scope="col" >Description</th>
+
+        <th scope="col" title="Action">Status</th>
+        <!-- <th scope="col" title="Action"></th> -->
+
+      </tr>
+    </thead>
+    <tbody >
+
+      <tr style="cursor:pointer" id="customers" *ngIf="edit=='onedit'">
+        <td class="text-center" ></td>
+          <td class="text-center" ><input [value]="times" disabled  style="border-radius:3px; width:100%" type="text" placeholder="Muda wa sasa"> </td>
+          <td style="white-space: nowrap"><input #box (blur)="Jina_Mtejafun(box.value)"  [value]="Jina_Mtejaval" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td>
+          <td><input #box1 (blur)="Productfun(box1.value)" [value]="Productval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box2 (blur)="Quantityfun(box2.value)" [value]="Quantityval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+          <td><input #box3 (blur)="Amountfun(box3.value)" [value]="Amountval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+          <td><input #box32 (blur)="Totalvalfun(box32.value)" [value]="Totalval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+          <td><input #box4 (blur)="Descriptionfun(box4.value)" [value]="Descriptionval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td><a *ngIf="edit=='noedit'" (click)="openModal2(template2)"  >Tunza</a><a *ngIf="edit=='onedit'" (click)="Editdata()"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:30px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="submitmark()">x</span></a></td>
+          </tr>
+
+
+      <tr class="youo" *ngFor="let a of all">
+        <td nowrap class="youo"></td>
+        <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
+        <td style="padding-left:10px;" class="youo"  nowrap>{{a.Jina_Mteja}}</td>
+        <td class="youo"  >{{a.Product}}</td>
+        <td class="youo"  >{{a.Quantity}}</td>
+        <td class="youo"  >{{a.Amount | currency: 'tsh ' }}</td>
+        <td class="youo"  >{{a.Total | currency: 'tsh ' }}</td>
+        <td class="youo"  >{{a.Description}}</td>
+        <td class="youo"  >{{a.info}}</td>
+        <!-- <td class="youo"  >{{a.info}}</td> -->
+        <!-- <td nowrap> <a style="font-weight:bolder; cursor: pointer;" (click)="pay(a.pk)">Pay</a>  | <a (click)="openModal(template, a.pk)" style="color:red; cursor: pointer;">Delete</a> | <a style="color:black; cursor: pointer;" (click)=" optiones(a.pk, a.Quantity, a.Product, a.Amount, a.Description, a.Jina_Mteja )">Options</a> </td> -->
+
+
+    </tr>
+
+
+    </tbody>
+  </table>
+<!--
+<div *ngIf="paycard=='true'" class="yope" style="width:100%; height:100%; padding:300px">
+  <div *ngIf="paycard=='true'" class="momo animation-target">
+    <div align="center" style="font-weight: bolder; padding:5px; color:#666">Payments</div>
+    <div align="center">
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+
+
+        <input type="text" placeholder="Amount paying" name="discount" #box11 (blur)="cashfunct(box11.value)"  class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+      </div>
+
+    </div>
+    <div align="center">
+      <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="cancel()">Cancel</button>
+      <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="submit()">Submit</button>
+
+    </div>
+  </div>
+</div> -->
+
+  </div>
+
+  <div *ngIf="option=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:100%;">
+    <div *ngIf="option=='True'" style="width:450px; margin-top: 200px; height:350px" class="momo1 animation-target ">
+      <div align="center" style="font-weight: bolder; padding:5px; color:rgb(255, 255, 255)">OPTIONS</div>
+      <!-- <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Name of the product: <span style="float: right;">{{productdis}}</span></div>
+      <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Product type: <span style="float: right;">{{Type_of_product}}</span></div> -->
+      <div style="padding:10px"></div>
+
+      <div align="center">
+        <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="editborrower()()">Edit</button>
+
+      </div>
+      <div style="padding:10px"></div>
+
+      <div align="center">
+        <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="returned()">Returned</button>
+
+      </div>
+
+      <div style="padding:20px"></div>
+      <div style="text-align: center;">
+        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel23()">Cancel</button>
+        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="Submit(pk)">Submit</button>
+
+
+      </div>
+      <!-- <div align="center">
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+
+      </div> -->
+    </div>
+  </div>
+

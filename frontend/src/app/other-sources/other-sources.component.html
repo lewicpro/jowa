@@ -1,0 +1,68 @@
+
+<ng-progress></ng-progress>
+<!-- <h3 class="an-2">I am looking great.</h3> -->
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+  <h4  style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF OTHER SOURCES OF INCOME</h4>
+  <div style="max-height:400px; overflow:auto" >
+    <ng-template #template>
+      <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      </div>
+    </ng-template>
+    <ng-template #template2>
+      <div class="modal-body text-center">
+        <p>Do you want to confirm Delete?</p>
+        <button type="button" class="btn btn-default" (click)="confirm2()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline2()" >No</button>
+      </div>
+    </ng-template>
+
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tarehe</th>
+          <th scope="col" title="Date">Jina</th>
+          <th scope="col" title="Total Payment (L+I+6)">Amount</th>
+          <th scope="col" >Description</th>
+
+          <th scope="col" title="Action">Status</th>
+          <!-- <th scope="col" title="Action"></th> -->
+
+        </tr>
+      </thead>
+      <tbody >
+
+        <tr style="cursor:pointer" id="customers">
+          <td class="text-center" ></td>
+            <td class="text-center" ><input #Tarehe style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
+            <td style="white-space: nowrap"><input #jina style="border-radius:3px; width:100%"  type="text" placeholder="*Important" [value]="user"></td>
+            <td><input #Amount  style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+            <td><input #description style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+
+            <td><a (click)="openModal(Tarehe.value, Amount.value, jina.value, description.value, template)">Tunza</a></td>
+            </tr>
+
+
+            <tr class="youo" *ngFor="let a of all">
+              <td nowrap class="youo"> 1</td>
+              <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
+              <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
+              <td class="youo"  >{{a.Amount}}</td>
+              <td class="youo"  >{{a.Description}}</td>
+              <td class="youo" style="color:red; cursor: pointer;"  (click)="openModal2(template2, a.pk)">Delete</td>
+              <!-- <td class="youo"  ></td> -->
+
+          </tr>
+
+
+      </tbody>
+    </table>
+
+
+  </div>
+
+  </div>
+

@@ -1,0 +1,208 @@
+
+<ng-progress></ng-progress>
+<form  #form="ngForm" (ngSubmit)="Register()">
+    <div style="padding:20px;"></div>
+    
+    <div class="d-flex justify-content-center">
+      
+        <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> ONGEZA BIDHAA</h4></div>
+    
+    </div>
+    
+    
+    
+    
+    <div style="padding:20px;"></div>
+    <div class="row">
+        <div class="col-sm"><div class="">
+      
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          
+            <div class="input-group-prepend "  style="width:110px;">
+                <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px; font-size: 12px;" >Bidhaa tambulishi</span>
+            </div>
+            <input [(ngModel)]="userData.Name_of_the_product" required pattern="[a-zA-Z]| [0-9]" #ng1Form="ngModel"  name="Username" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && userData.Name_of_the_product !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
+          
+            <div class="is-invalid && ng1Form.touched"  class="invalid-feedback">
+                Please provide user.
+              </div>
+            
+              
+    
+                <div *ngIf="userData.user === giveoout" style="font-size:10px; color:red;     width: 100%">Product exists</div>
+             
+              
+    
+            <!-- <div>
+                {{giveoout}}
+              </div> -->
+    
+          </div>
+        
+     
+         <!-- <span  style="padding-right:55px;" *ngIf="ngForm.invalid">Choose another name {{ngForm.valid}}</span> -->
+         <!-- <span class="help-block"  style="padding-right:55px;" *ngIf="ngForm.invalid">unChoose another name {{ngForm.invalid}}</span> -->
+    
+          
+          </div></div>
+          
+        <div class="col-sm"><div class="">
+      
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          
+            <div class="input-group-prepend" style="width:110px;">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size: 12px;">Aina ya bidhaa</span>
+            </div>
+            <input [(ngModel)]="userData.user" required #ngnameForm="ngModel"  name="jina_kamili" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
+                Please provide Type.
+              </div>
+        </div>
+          
+          </div></div>
+            <div class="col-sm"><div class="">
+          
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+        
+          <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size: 12px;">Bei ya kununulia</span>
+          </div>
+          <input [(ngModel)]="userData.Price_bought" name="Password" required #ngnFileForm="ngModel" [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Password.
+          </div>
+        </div>
+        
+        </div></div>
+          </div>
+        <div class="row">
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size: 12px;"> Idadi ya Caton</span>
+                </div>
+                <input [(ngModel)]="userData.Number_of_products" name="Phone" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                    Please provide Phone number.
+                  </div>  
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+  
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px; font-size: 12px;">Bei ya kuuzia</span>
+                </div>
+                <input [(ngModel)]="userData.Selling_price" name="Selling_price" required #ngSelling_priceForm="ngModel" [class.is-invalid]="ngSelling_priceForm.invalid && ngSelling_priceForm.touched"  [class.is-valid]="ngSelling_priceForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngSelling_priceForm.touched"  class="invalid-feedback">
+                    Please provide Selling price.
+                  </div> 
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+        
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size: 12px;">QR Code</span>
+          </div>
+          <input [(ngModel)]="userData.barcode" name="Account_No" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+            Please provide QR code.
+          </div> 
+          <!-- <div *ngIf="userData.Account_no === accountee" style="font-size:10px; color:red;     width: 100%">Account no exists</div> -->
+        </div>
+        
+        </div></div>
+          </div>
+        <div class="row">
+            <div class="col-sm"><div class="">
+          
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <mat-form-field style="width:100%">
+                    <mat-select placeholder="Product Package"  required #ngPackForm="ngModel" [class.is-invalid]="ngPackForm.invalid && ngPackForm.touched"  [class.is-valid]="ngPackForm.valid" [(ngModel)]="userData.Package" name="Package">
+                     
+                          <mat-option value="single" >
+                              Single
+                                
+                              </mat-option> 
+                          <mat-option value="Caton">
+                              Caton
+                                
+                              </mat-option> 
+                          <mat-option value="Dazan">
+                              Dazan
+                                
+                              </mat-option> 
+
+                    </mat-select>
+                    <div class="is-invalid && ngPackForm.touched"  class="invalid-feedback">
+                        Please provide Owner.
+                      </div> 
+                    
+                  </mat-form-field>
+                  
+            </div>
+              
+              </div></div>
+              <div class="col-sm"><div class="">
+          
+                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+  
+                <div class="input-group-prepend" style="width:110px;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px; font-size: 12px;">No in one Package</span>
+                </div>
+                <input [(ngModel)]="userData.Number_in_Package" name="ofisi" required #ngNumberForm="ngModel" [class.is-invalid]="ngNumberForm.invalid && ngNumberForm.touched"  [class.is-valid]="ngNumberForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngNumberForm.touched"  class="invalid-feedback">
+                    Please provide Number of Products in a Package.
+                  </div> 
+            </div>
+              
+              </div></div>
+            <div class="col-sm"><div class="">
+          
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <mat-form-field style="width:100%">
+                    <mat-select placeholder="Manager" size="full"  required #ngOwnerForm="ngModel" [class.is-invalid]="ngOwnerForm.invalid && ngOwnerForm.touched"  [class.is-valid]="ngOwnerForm.valid" [(ngModel)]="userData.Manager_name" name="Manager">
+                      <div *ngFor="let food of all">
+                          <mat-option  [value]="food.user">
+                              {{ food.user }}
+                                
+                              </mat-option> </div>
+               
+                    
+          
+                    </mat-select>
+                    <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
+                        Please provide Owner.
+                      </div> 
+                    
+                  </mat-form-field>
+                  
+            </div>
+        
+        </div></div>
+          </div>
+
+    
+    
+
+        
+    <div style="padding:10px;"></div>
+      
+
+        
+        <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+          
+            <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >Tuma</button>
+            
+            </div>
+          </div>
+    
+        </form>

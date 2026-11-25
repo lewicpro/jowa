@@ -1,0 +1,84 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center">
+  <mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+  </mat-form-field>
+  <!-- <button (click)="time()">click</button> -->
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mkopo</h4>
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+  <!-- <br><br> -->
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Tarehe</th>
+        <th scope="col" title="Date">Jina</th>
+        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
+        <th scope="col" title="Loan Repayment">Awamu zinazobaki</th>
+        <th scope="col" title="Interest Paid">Riba</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th>
+        <th scope="col" title="Action">Action</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <!-- <div >
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+      </div> -->
+        <tr style="cursor:pointer" id="customers">
+            <td class="text-center" >id </td>
+            <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+            <td style="white-space: nowrap">{{jinalote}}</td>
+            <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+            <td><input [(ngModel)]="men" style="border-radius:3px;" [value]="bwoy" type="text"></td>
+            <td><input type="number" style="border-radius:3px;"></td>
+            <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number"></td>
+            <td><a (click)="openModal(template)"  >Tunza</a></td>
+          </tr>
+      <tr  id="customers" *ngFor="let k of malipouser2; let i = index" >
+        <td > {{i*1 + 1*1}}</td>
+        <td style="background:#e0dfe098"> {{k.tarehe}}</td>
+        <td  style="white-space: nowrap">{{k.jina}}</td>
+        <td  style="white-space: nowrap">{{k.loan_repay | currency: 'tsh '}}</td>
+        <td  style="white-space: nowrap">{{k.awamu}}</td>
+        <td  style="white-space: nowrap; ">-||-</td>
+        <td *ngIf="k.rangi ==='blue' "   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td>
+        <td *ngIf="k.rangi ==='red' "  style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+        <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
+
+        <td *ngIf="k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run1(k)'>delete</button></td>
+        <td *ngIf="k.info !== 'delete' && k.info !== 'deleted'"   style="color:red"></td>
+        <td *ngIf="k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+
+
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

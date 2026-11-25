@@ -1,0 +1,18 @@
+.monno:hover{
+    cursor: pointer;
+    border-bottom: 2px solid black;
+    /* background:green; */
+    /* border-radius: 1px; */
+    /* color:white; */
+    
+
+}
+.more:hover{
+    background:white;
+    text-decoration: none;
+
+
+}
+.active{
+    color:green;
+}

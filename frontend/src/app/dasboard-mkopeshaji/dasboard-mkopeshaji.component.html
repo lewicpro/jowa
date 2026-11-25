@@ -1,0 +1,21 @@
+
+<div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
+<div class="dojo" style="padding-top:10px;">
+  <div style="float:right"> <a style="text-decoration:none;  padding:20px; font-size: 15px; background:rgba(248, 248, 255, 0); width:50px; color:red; cursor: pointer;" (click)="execute()">Logout</a> </div>
+  <div class="text-center" style=" font-size:20px; text-transform:uppercase; font-family: Verdana, Geneva, Tahoma, sans-serif">{{company_name}}</div>
+
+  <div style="padding:10px;"></div>
+  <div style="background:rgba(255, 255, 255, 0)">
+    <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200); background-color:rgb(255, 255, 255); border-radius: 3px;  background-color: #c0c0c040; border-radius: 5px; font-family: Verdana, Geneva, Tahoma, sans-serif" > <li style="display:inline-block"><span style="font-weight:600">Monthly return {{mwezi}}:</span> {{rejeshomwezi | currency: 'tsh '}}</li>  <li style="display:inline-block">|| <span style="font-weight:600">Profit:</span> {{Faida | currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['company-Info']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:600">Total loans payout:</span>  {{MkopoUliopo | currency: 'tsh '}} </li> <div style="display:inline-block; text-align:center" > ||  <span style="font-weight:600">Balance: </span>{{BalanceIliyopo | currency: 'tsh '}}</div></div>
+    <div style="padding:5px; background:rgba(248, 248, 255, 0)"></div>
+    <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
+
+      <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Ongeza-Account']" style="text-decoration: none; color:#666666; font-weight: 500;">Add Account</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Wateja']" style="text-decoration: none; color:#666666; font-weight: 500;">All customers</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wadaiwa']" style="text-decoration: none; color:#666666; font-weight: 500;">Monthly payments</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Malipo']" style="text-decoration: none; color:#666666; font-weight: 500;">Payments </a> </li>   <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Waliokopa']" style="text-decoration: none; color:#666666; font-weight: 500;">Debts</a> </li> <li style="display:inline-block">| <a class="monno" style="text-decoration: none; color:#666666; font-weight: 500;" [routerLinkActive]="['active']"  [routerLink]="['Waliojulishwa/Mwezihuu']">SMS service</a> </li></div>
+
+    </div>
+    <div style=" font-size:12px; padding:10px; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+
+
+  </div>
+
+</div>

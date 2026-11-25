@@ -1,0 +1,202 @@
+
+
+<!-- <div class="d-flex justify-content-center">
+    <mat-form-field style="width:40%">
+    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+    </mat-form-field>
+  </div> -->
+  <!-- {{datas}} -->
+  <div style="text-align: center"> <input [(ngModel)]="datas" (keyup.enter)="datesearch(datas)"  name="date" type="date" style="max-width:300px; margin:center; border-radius: 5px;" ></div>
+  <div style="padding:6px"></div>
+  <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);"  id="componentID">
+    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> MALIPO</h4>
+    <div style="max-height:400px; overflow: auto">
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+       <!-- <tr>
+          <th scope="col">#</th>
+          <th scope="col">Jina</th>
+          <th scope="col">Simu</th>
+          <th scope="col">Account no</th>
+          <th scope="col">pin</th>
+          <th scope="col">expire</th>
+          <th scope="col">ofisi</th>
+          <th scope="col">kata</th>
+          <th scope="col">wilaya</th>
+          <th scope="col">mkoa</th>
+          <th scope="col">TSD</th>
+        </tr> -->
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tarehe</th>
+  
+          <th scope="col" nowrap>Account no</th>
+          <th scope="col">pin</th>
+          <th scope="col">Simu</th>
+          <th scope="col">Jina</th>
+          <!-- <th scope="col">mkopo</th> -->
+          <th scope="col" nowrap>Mkopo + Faida</th>
+          <th scope="col">Awamu</th>
+          <!-- <th scope="col">Riba</th> -->
+          
+          <!-- <th scope="col">Faida</th> -->
+          <th scope="col">Mwezi1</th>
+          <th scope="col">Mwezi2</th>
+          <th scope="col">Mwezi3</th>
+          <th scope="col">Mwezi4</th>
+          <th scope="col">Mwezi5</th>
+          <th scope="col">Mwezi6</th>
+          <th scope="col">Mwezi7</th>
+          <th scope="col">Mwezi8</th>
+          <th scope="col">Mwezi9</th>
+          <th scope="col">Mwezi10</th>
+          <th scope="col">Mwezi11</th>
+          <th scope="col">Mwezi12</th>
+          
+    
+          </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer" id="customers" *ngFor="let form of malipo; let i = index">
+
+   
+          
+          <td >{{i*1 + 1*1}}</td>
+          <td nowrap>{{form.tarehe}}</td>
+          <td nowrap> {{form.Account_no}}</td>
+          <td nowrap>{{form.pin}}</td>
+          <td nowrap>{{form.Simu}}</td>
+          <td  nowrap>{{form.jina | titlecase}}</td>
+          <!-- <td  nowrap >{{form.RealMkopo}}</td> -->
+          <td  nowrap>{{form.jumla}}</td>
+          <td  nowrap>{{form.Miezi}}</td>
+          <!-- <td  nowrap>{{form.Riba}}</td> -->
+          <!-- <td  nowrap>{{form.Faida}}</td> -->
+          <td *ngIf="getMwezi === form.mwezi1" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi1}}  {{form.mw1 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi1"  nowrap>{{form.mwezi1}}  {{form.mw1 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi2" style="background: rgb(179, 179, 179);"  nowrap>{{form.mwezi2}}  {{form.mw2 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi2"  nowrap>{{form.mwezi2}}  {{form.mw2 | currency: 'tsh '}}</td>
+         
+          <td *ngIf="getMwezi === form.mwezi3" style="background: rgb(179, 179, 179);"   nowrap>{{form.mwezi3}}  {{form.mw3 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi3" nowrap>{{form.mwezi3}}  {{form.mw3 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi4" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi4}}  {{form.mw4 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi4"  nowrap>{{form.mwezi4}}  {{form.mw4 | currency: 'tsh'}}</td>
+         
+          <td *ngIf="getMwezi === form.mwezi5" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi5}}  {{form.mw5 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi5"  nowrap>{{form.mwezi5}}  {{form.mw5 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi6" style="background: rgb(179, 179, 179);"  nowrap>{{form.mwezi6}}  {{form.mw6 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== form.mwezi6"   nowrap>{{form.mwezi6}}  {{form.mw6 | currency: 'tsh'}}</td>
+          
+          <!-- <td  nowrap>{{form.mwezi6}}  {{form.mw6}}</td> -->
+          <td  *ngIf="getMwezi === form.mwezi7" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi7}}  {{form.mw7 | currency: 'tsh'}}</td>
+          <td  *ngIf="getMwezi !== form.mwezi7" nowrap>{{form.mwezi7}}  {{form.mw7 | currency: 'tsh'}}</td>
+          
+          <td  *ngIf="getMwezi === form.mwezi8" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi8}}  {{form.mw8 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === form.mwezi8" nowrap>{{form.mwezi8}}  {{form.mw8 | currency: 'tsh '}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi9" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi9}}  {{form.mw9 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === form.mwezi9" nowrap>{{form.mwezi9}}  {{form.mw9 | currency: 'tsh'}}</td>
+
+          <td  *ngIf="getMwezi === form.mwezi10" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi10}}  {{form.mw10 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === form.mwezi10" nowrap>{{form.mwezi10}}  {{form.mw10 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi11" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi11}}  {{form.mw11 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === form.mwezi11" nowrap>{{form.mwezi11}}  {{form.mw11 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === form.mwezi12" style="background: rgb(179, 179, 179);" nowrap>{{form.mwezi12}}  {{form.mw12 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === form.mwezi12" nowrap>{{form.mwezi12}}  {{form.mw12 | currency: 'tsh'}}</td>
+        
+          <td ><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+
+        </tr>
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+      <tbody>
+        <tr style="cursor:pointer" id="customers" *ngFor="let forx of all; let i = index">
+
+   
+          
+          <td >{{i*1 + 1*1}}</td>
+          <td nowrap>{{forx.tarehe}}</td>
+          <td nowrap> {{forx.Account_no}}</td>
+          <td nowrap>{{forx.pin}}</td>
+          <td nowrap>{{forx.Simu}}</td>
+          <td  nowrap>{{forx.jina | titlecase}}</td>
+          <!-- <td  nowrap >{{forx.RealMkopo}}</td> -->
+          <td  nowrap>{{forx.jumla}}</td>
+          <td  nowrap>{{forx.Miezi}}</td>
+          <!-- <td  nowrap>{{forx.Riba}}</td> -->
+          <!-- <td  nowrap>{{forx.Faida}}</td> -->
+          <td *ngIf="getMwezi === forx.mwezi1" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi1}}  {{forx.mw1 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi1"  nowrap>{{forx.mwezi1}}  {{forx.mw1 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi2" style="background: rgb(179, 179, 179);"  nowrap>{{forx.mwezi2}}  {{forx.mw2 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi2"  nowrap>{{forx.mwezi2}}  {{forx.mw2 | currency: 'tsh '}}</td>
+         
+          <td *ngIf="getMwezi === forx.mwezi3" style="background: rgb(179, 179, 179);"   nowrap>{{forx.mwezi3}}  {{forx.mw3 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi3" nowrap>{{forx.mwezi3}}  {{forx.mw3 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi4" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi4}}  {{forx.mw4 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi4"  nowrap>{{forx.mwezi4}}  {{forx.mw4 | currency: 'tsh'}}</td>
+         
+          <td *ngIf="getMwezi === forx.mwezi5" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi5}}  {{forx.mw5 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi5"  nowrap>{{forx.mwezi5}}  {{forx.mw5 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi6" style="background: rgb(179, 179, 179);"  nowrap>{{forx.mwezi6}}  {{forx.mw6 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi !== forx.mwezi6"   nowrap>{{forx.mwezi6}}  {{forx.mw6 | currency: 'tsh'}}</td>
+          
+          <!-- <td  nowrap>{{forx.mwezi6}}  {{forx.mw6}}</td> -->
+          <td  *ngIf="getMwezi === forx.mwezi7" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi7}}  {{forx.mw7 | currency: 'tsh'}}</td>
+          <td  *ngIf="getMwezi !== forx.mwezi7" nowrap>{{forx.mwezi7}}  {{forx.mw7 | currency: 'tsh'}}</td>
+          
+          <td  *ngIf="getMwezi === forx.mwezi8" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi8}}  {{forx.mw8 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === forx.mwezi8" nowrap>{{forx.mwezi8}}  {{forx.mw8 | currency: 'tsh '}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi9" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi9}}  {{forx.mw9 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === forx.mwezi9" nowrap>{{forx.mwezi9}}  {{forx.mw9 | currency: 'tsh'}}</td>
+
+          <td  *ngIf="getMwezi === forx.mwezi10" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi10}}  {{forx.mw10 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === forx.mwezi10" nowrap>{{forx.mwezi10}}  {{forx.mw10 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi11" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi11}}  {{forx.mw11 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === forx.mwezi11" nowrap>{{forx.mwezi11}}  {{forx.mw11 | currency: 'tsh'}}</td>
+          
+          <td *ngIf="getMwezi === forx.mwezi12" style="background: rgb(179, 179, 179);" nowrap>{{forx.mwezi12}}  {{forx.mw12 | currency: 'tsh'}}</td>
+          <td *ngIf="getMwezi === forx.mwezi12" nowrap>{{forx.mwezi12}}  {{forx.mw12 | currency: 'tsh'}}</td>
+        
+          <td ><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+
+        </tr>
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+    </div>
+    </div>
+    <div style="text-align: center; padding-top:10px"><button (click)="printe()">print all clients</button></div>
+  
+  <!-- <app-details-view [forx] = "selectedData"></app-details-view> -->

@@ -1,0 +1,95 @@
+
+
+<div class="d-flex justify-content-center">
+  <mat-form-field style="width:40%">
+  <input   matInput placeholder="Filter">
+  </mat-form-field>
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Documents</h4>
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th style="white-space: nowrap; text-align:center"  scope="col">Tarehe</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Date">Jina</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Total Payment (L+I+6)">Chagua Bank statement</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Loan Repayment">Kitambulisho</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Interest Paid">ATM</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="(Mkopo + Riba) Balance">Etc #barua</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Action">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+      <!-- <div >
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+        
+      </div> -->
+   
+        <tr style="cursor:pointer; text-align:center" id="customers">
+            <td style="white-space: nowrap; text-align:center; background:#f3eff6" class="text-center" >muda wa sasa</td>
+            <td style="white-space: nowrap; background:#f3eff6">{{jina}}</td>
+            <td style="white-space: nowrap; text-align:center">
+              <form #imageForm= ngForm (ngSubmit)="onUploadData()">
+              
+                <input #bankstatement style="font-size:10px; display: none" #fileInput1   (change)="onfileSelected($event.target.files)" type="file"  name="bankstatement">
+                <a (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">Bank Statement</a>
+                <button type="submit" style="font-size:10px;">Upload</button> 
+              </form>
+            </td>
+            <td style="white-space: nowrap; text-align:center">
+              <form #imageForm= ngForm (ngSubmit)="onUploadkitambulishoData()">
+                <input #idcard style="font-size:10px; display: none" #fileInput2   (change)="onfileSelected($event.target.files)" type="file"  name="idcard">
+                <a (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">Identity card</a>
+                <button type="submit" style="font-size:10px;">Upload</button> 
+              </form>
+            </td>
+            <td style="white-space: nowrap; text-align:center">
+                <form #imageForm= ngForm (ngSubmit)="onUploadAtmData()">
+                <input #Atm style="font-size:10px; display: none" #fileInput3   (change)="onfileSelected($event.target.files)" type="file"  name="Atm">
+                <a (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">ATM card</a>
+                <button type="submit" style="font-size:10px;">Upload</button> 
+                </form>
+            </td>
+            <td style="white-space: nowrap; text-align:center">
+                <form #imageForm= ngForm (ngSubmit)="onUploadSlipData()">
+                <input #slip style="font-size:10px; display: none" #fileInput4   (change)="onfileSelected($event.target.files)" type="file"  name="slip">
+                <a (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">Slip</a>
+                <button type="submit" style="font-size:10px;">Upload</button> 
+                </form>
+              </td>
+            <td></td>
+          </tr>
+      
+      
+      <tr  id="customers" >
+        <td style="white-space: nowrap; background: #f3eff6"> </td>
+        <td  style="white-space: nowrap; background: #f3eff6"></td>
+        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['bankstat']">Bank statement</a></td>
+        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['Identity']">Identity cards</a></td>
+        <td  style="white-space: nowrap; text-align:center "><a [routerLink]="['Atm']">ATM cards</a></td>
+        <td  style="white-space: nowrap"><a [routerLink]="['Slip']">Slip</a></td>
+        <td  style="white-space: nowrap"></td>
+      
+
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  
+  </div>
+  <div  style="padding:10px;"></div>
+  <div><router-outlet></router-outlet></div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

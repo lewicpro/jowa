@@ -1,0 +1,166 @@
+
+
+<div class="d-flex justify-content-center">
+    <mat-form-field style="width:40%">
+    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); ">
+      
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100; position: initial"> MWEZI HUU</h4>
+  <div style="max-height:400px; overflow:auto">
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+       <!-- <tr>
+          <th scope="col">#</th>
+          <th scope="col">Jina</th>
+          <th scope="col">Simu</th>
+          <th scope="col">Account no</th>
+          <th scope="col">pin</th>
+          <th scope="col">expire</th>
+          <th scope="col">ofisi</th>
+          <th scope="col">kata</th>
+          <th scope="col">wilaya</th>
+          <th scope="col">mkoa</th>
+          <th scope="col">TSD</th>
+        </tr> -->
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tarehe</th>
+    
+            <th scope="col" nowrap>Account no</th>
+            <th scope="col">pin</th>
+            <th scope="col">Simu</th>
+            <th scope="col">Jina</th>
+            <th scope="col">mkopo</th>
+            <th scope="col" nowrap>Mkopo + Faida</th>
+            <th scope="col">Awamu</th>
+            <th scope="col">Riba</th>
+            
+            <th scope="col">Faida </th>
+            <th scope="col">Mwezi </th>
+            <th scope="col">Deni</th>
+            <!-- <th scope="col">Mwezi2</th>
+            <th scope="col">Mwezi3</th>
+            <th scope="col">Mwezi4</th>
+            <th scope="col">Mwezi5</th> -->
+            
+      
+          </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer" id="customers" *ngFor="let form of meseji">
+  
+   
+          <!-- <td *ngIf="form.mwezi1 === mwezi" >No-</td>
+          <td nowrap>{{form.tarehe | date}}</td>
+     
+          <td *ngIf="mwezi === form.mwezi1"> {{form.Account_no}}</td>
+          <td >{{form.pin}}</td>
+          <td nowrap>{{form.jina | titlecase}}</td>
+          <td *ngIf="mwezi === form.mwezi1" nowrap >{{form.RealMkopo}}</td>
+          <td nowrap>{{form.jumla}}</td>
+          <td nowrap>{{form.Miezi}}</td>
+          <td nowrap>{{form.Riba}}</td>
+          <td nowrap>{{form.Faida}}</td>
+          <td nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
+          <td nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
+          <td nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
+          <td nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
+          <td nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
+          <td nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
+          <td nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
+          <td nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
+          <td nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
+          <td nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
+          <td nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
+          <td nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+        
+          <td ><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+ -->
+
+
+          <td >No-</td>
+          <td nowrap>{{form.tarehe | date}}</td>
+          <td > {{form.Account_no}}</td>
+          <td >{{form.pin}}</td>
+          <td >{{form.Simu}}</td>
+          <td nowrap>{{form.jina | titlecase}}</td>
+          <td nowrap>{{form.Total_mkopo}}</td>
+          <td nowrap>{{form.jumla}}</td>
+          <td nowrap>{{form.Miezi}}</td>
+          <td nowrap>{{form.Riba}}</td>
+          <td nowrap>{{form.Faida}}</td>
+
+
+          <td nowrap *ngIf ="form.mwezi1; else mwezi1">{{form.mwezi1}}</td>
+          <ng-template #mwezi1>   </ng-template>
+          <td nowrap *ngIf ="form.mwezi2; else mwezi2">{{form.mwezi2}}</td>
+          <ng-template #mmwezi2></ng-template>
+          <td nowrap *ngIf ="form.mwezi3; else mwezi3">{{form.mwezi3}}</td>
+          <ng-template #mw3></ng-template>
+          <td nowrap *ngIf ="form.mwezi4; else mwezi4">{{form.mwezi4}}</td>
+          <ng-template #mwezi4></ng-template>
+          <td nowrap *ngIf ="form.mwezi5; else mwezi5">{{form.mwezi5}}</td>
+          <ng-template #mwezi5></ng-template>
+          <td nowrap *ngIf ="form.mwezi6; else mwezi6">{{form.mwezi6}}</td>
+          <ng-template #mwezi6></ng-template>
+          <td nowrap *ngIf ="form.mwezi7; else mwezi7">{{form.mwezi7}}</td>
+          <ng-template #mwezi7></ng-template>
+          <td nowrap *ngIf ="form.mwezi8; else mwezi8">{{form.mwezi8}}</td>
+          <ng-template #mwezi8></ng-template>
+          <td nowrap *ngIf ="form.mwezi9; else mwezi9">{{form.mwezi9}}</td>
+          <ng-template #mwezi9></ng-template>
+          <td nowrap *ngIf ="form.mwezi10; else mwezi10">{{form.mwezi10}}</td>
+          <ng-template #mwezi10></ng-template>
+          <td nowrap *ngIf ="form.mwezi11; else mwezi11">{{form.mwezi11}}</td>
+          <ng-template #mwezi11></ng-template>
+          <td nowrap *ngIf ="form.mwezi12; else mwezi12">{{form.mwezi12}}</td>
+          <ng-template #mwezi12></ng-template>
+
+
+
+          
+          <td nowrap *ngIf ="form.mw1; else mw1">{{form.mw1}}</td>
+          <ng-template #mw1></ng-template>
+          <td nowrap *ngIf ="form.mw2; else mw2">{{form.mw2}}</td>
+          <ng-template #mw2></ng-template>
+          <td nowrap *ngIf ="form.mw3; else mw3">{{form.mw3}}</td>
+          <ng-template #mw3></ng-template>
+          <td nowrap *ngIf ="form.mw4; else mw4">{{form.mw4}}</td>
+          <ng-template #mw4></ng-template>
+          <td nowrap *ngIf ="form.mw5; else mw5">{{form.mw5}}</td>
+          <ng-template #mw5></ng-template>
+          <td nowrap *ngIf ="form.mw6; else mw6">{{form.mw6}}</td>
+          <ng-template #mw6></ng-template>
+          <td nowrap *ngIf ="form.mw7; else mw7">{{form.mw7}}</td>
+          <ng-template #mw7></ng-template>
+          <td nowrap *ngIf ="form.mw8; else mw8">{{form.mw8}}</td>
+          <ng-template #mw8></ng-template>
+          <td nowrap *ngIf ="form.mw9; else mw9">{{form.mw9}}</td>
+          <ng-template #mw9></ng-template>
+          <td nowrap *ngIf ="form.mw10; else mw10">{{form.mw10}}</td>
+          <ng-template #mw10></ng-template>
+          <td nowrap *ngIf ="form.mw11; else mw11">{{form.mw11}}</td>
+          <ng-template #mw11></ng-template>
+          <td nowrap *ngIf ="form.mw12; else mw12">{{form.mw12}}</td>
+          <ng-template #mw12></ng-template>
+        </tr>
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+</div>
+    </div>
+  
+  <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

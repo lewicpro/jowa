@@ -1,0 +1,241 @@
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ReceiptComponent } from '../receipt/receipt.component';
+import { NgProgress } from 'ngx-progressbar';
+import { MatSnackBar } from '@angular/material';
+import { DetailsViewComponent } from '../details-view/details-view.component';
+import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+import { RestframeworkService } from '../apiservice/restframework.service';
+import { Router } from '@angular/router';
+import { WorkersDashboardComponent } from '../workers-dashboard/workers-dashboard.component';
+
+@Component({
+  selector: 'app-wakala-kazi-processors',
+  templateUrl: './wakala-kazi-processors.component.html',
+  styleUrls: ['./wakala-kazi-processors.component.css']
+})
+export class WakalaKaziProcessorsComponent implements OnInit {
+  options=['Nmb', 'Nbc', 'Mpesa_Float', 'Mpesa_Working_Acc', 'Tigopesa', 'Selcom', 'TPB', 'CRDB', 'DTB', 'Access_Bank', 'Halopesa', 'TTCL_Money', 'Equity', 'Airtel_Money', 'KCB', 'Vodacom_Agent2', 'Vodacom_SuperAgent', 'Halopesa_SubSuperAgent', 'Halopesa_SuperAgent']
+  all;
+  userData={
+    'Tarehe': '',
+    'user': '',
+    'Phone': '',
+    'Mtandao': '',
+  
+    }
+    malipouser;
+    tambulisha;
+    filtertext;
+    selectedData;
+    PostAuth;
+    jina;
+    jum: number;
+    modalRef: BsModalRef;
+    message: string;
+    malipouser2;
+    prev1;
+    mkopo;
+    allz;
+    day;
+    Balancem;
+    lservice_officer;
+    mwezi;
+    infosw;
+    Faida;
+    riba;
+    date;
+    Rejesho_mwezi;
+    Tarehe;
+    array1 = [1, 2, 3, 4];
+    reducer = (accumulator, currentValue) => accumulator + currentValue;
+    jinalote;
+    awamu;
+    getMwezi;
+    mdaa;
+    array =['moja', 'mbili'];
+    men;
+    mopa  = '';
+    responseDat;
+    info;
+    Create;
+    v1: number;
+    bwoy;
+    v2: number;
+    tarehe;
+    no: number;
+    v3: number;
+    loan1: number;
+    values: number;
+    user;
+    Interest: number;
+    momba: number;
+    Total_pay;
+    loan_repay;
+    Balance: number;
+    mopai;
+  
+    responseData;
+    kilichokopwa;
+    d = new Date();
+    Simu;
+    worker;
+    mwaka;
+    monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'Mach', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    wilaya;
+    // mwzi: number;
+    stored;
+    moxt;
+    infos;
+    mwzi;
+    hour;
+    next1;
+    times
+    sec;
+    min;
+  
+
+  constructor(private modalService: BsModalService, public restframework:RestframeworkService, public overall:WorkersDashboardComponent) {
+    localStorage.removeItem('process')
+    localStorage.setItem('process', 'Kutoa')
+    this.worker = localStorage.getItem('worker-dir')
+    this.userData.user = localStorage.getItem('wakala')
+    // this.userData.Directors_name = localStorage.getItem('Director')
+    // this.userData.Officer_worker = localStorage.getItem('worker-dir')
+    // this.userData.Process = 'Kutoa'
+    // this.restframework.getTransactionlistWorker().then(data=>{
+    //   this.all=data;
+    //   this.allz = this.all.results;
+    //   this.next1 = this.all.next
+    //   this.prev1 = this.all.previous
+    //   for(const j of this.allz){
+    //     this.jina=localStorage.getItem('wakala')
+
+    //   }
+    // })
+
+    this.getdatavisible()
+
+    this.min = this.d.getMinutes();
+    this.hour = this.d.getHours()
+    this.sec = this.d.getSeconds()
+    this.mwzi = this.d.getMonth()
+    this.moxt = parseInt(this.mwzi) + 1
+    this.times = this.d.getFullYear() + "-" + this.moxt + "-" + this.d.getDate() + "  " + this.hour + ":" + this.min + ":" + this.sec
+    this.userData.Tarehe = this.times
+   }
+
+  ngOnInit() {
+  }
+
+  getdatavisible(){
+    this.restframework.getProcessors(localStorage.getItem('wakala')).then(data=>{
+      this.all=data;
+      this.allz = this.all.results;
+      this.next1 = this.all.next
+      this.prev1 = this.all.previous
+      // for(const j of this.allz){
+      //   this.jina=localStorage.getItem('wakala')
+
+      // }
+    })
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  calculate(){
+    // this.time();
+    // this.ngProgress.start();
+  if(this.mopai){
+    // console.log('remainder1: '+ this.times)
+    this.mdaa = this.mopai;
+
+  }else{
+    this.mdaa = this.times;
+    // console.log('remainder2: '+ this.times)
+  }
+    
+    
+  
+    }
+    
+
+ 
+  confirm(): void {
+    this.tuma();
+    // this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+  tuma() {
+    this.restframework.TransactionsWorkerPosts(this.userData, 'Processors/' + this.worker + '/').then((result) => {
+      this.responseDat = result;
+      // alert(this.userData.username)
+      // localStorage.setItem('userData2', this.responseData);
+     //  localStorage.setItem('user', this.userData.Username);
+     //  this.UserCreate();
+     //  this.UserInfo();
+     this.overall.getdata()
+     this.getdatavisible()
+    //  this.clean();
+  
+      // this.ngProgress.done();
+      }, (err) => {
+        alert('error');
+ 
+      });
+      
+  
+
+  }
+  
+ 
+  decline(): void {
+    // this.message = 'Declined!';
+    this.modalRef.hide();
+  }
+
+  prev(){
+    // console.log(this.prev1)
+    this.restframework.getTransactionlistWorker1(this.prev1).then(data=>{
+      this.all=data;
+      // for(const j of this.all){
+      //   this.next1 = j.next;
+      //   console.log('1: '+ this.next1)
+      //   console.log('2: '+ j.next)
+
+      // }
+      this.allz = this.all.results;
+      this.next1 = this.all.next
+      this.prev1 = this.all.previous
+      // for(const n of this.all.results){
+      //   this.allz = n;
+
+      // }
+   
+    })
+
+  }
+  next(){
+    // console.log(this.next1)
+    this.restframework.getTransactionlistWorker1(this.next1).then(data=>{
+      this.all=data;
+      // for(const j of this.all){
+      //   this.next1 = j.next;
+      //   console.log('1: '+ this.next1)
+      //   console.log('2: '+ j.next)
+
+      // }
+      this.allz = this.all.results;
+      this.prev1 = this.all.previous
+      this.next1 = this.all.next
+      // for(const n of this.all.results){
+      //   this.allz = n;
+
+      // }
+   
+    })
+
+  }
+
+}

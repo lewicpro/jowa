@@ -1,0 +1,30 @@
+
+<!-- <div style="padding:20px; background:ghostwhite"></div> -->
+<div class="dojo" style="padding-top:10px;">
+  <div style="float:right; width:30px;"> <a style=" padding:20px; font-size: 15px; width:80px; color:red;" ></a> </div>
+  <div style="float:right"> <a style="text-decoration:none;  padding:20px; font-size: 15px; background:rgba(248, 248, 255, 0); width:50px; color:red; cursor: pointer;" (click)="execute()">Logout</a> </div>
+
+  <div class="text-center" style=" font-size:20px; text-transform:uppercase; cursor:default; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:x-large;">{{company}}</div>
+   <div style="padding:10px; font-family: Arial, Helvetica, sans-serif;"><span style=" background-color: rgb(255, 255, 255); padding: 5px; border-radius: 10px; color: #444; border:1px solid rgb(25, 25, 25); cursor:default; font-family: Verdana, Geneva, Tahoma, sans-serif;"> Director's Panel : {{duka}} </span></div>
+   <!-- <div style="padding:10px; text-align: center">Company : {{company}}</div> -->
+
+
+   <div style="background:rgba(255, 255, 255, 0)">
+   <!-- <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);" *ngFor="let n of als"> <li style="display:inline-block"><span style="font-weight:500">Jumla kinachotoka :</span> {{n.Jumla_kinachotoka | currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Nyumba-Info']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">Jumla kinachoingia</span>  {{n.Jumla_Kinachoingia | currency: 'tsh '}} </li> <li style="display:inline-block">|| <span style="font-weight:500">Jumla ya Faida:</span>  {{Jumla_Faida | currency: 'tsh '}} </li> <div style="display:inline-block; text-align:center" > ||  <span style="font-weight:600">Daily: </span> {{n.Jumla_Daily | currency : 'tsh '}}</div></div> -->
+   <div style="padding:5px; background:rgba(248, 248, 255, 0)"></div>
+   <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
+
+     <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;" ><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Profile']" style="text-decoration: none; color:#666666; font-weight: bolder;">My Profile (D)  </a> </li> <li class="more" style="display:inline-block"> |  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Create']" style="text-decoration: none; color:#666666; font-weight: bolder;"> Create Officer</a></li>  <li style="display:inline-block">  | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Sales']" style="text-decoration: none; color:#666666; font-weight: bolder;">List of Sales</a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Products']" style="text-decoration: none; color:#666666; font-weight: bolder;">List of Products</a> </li><li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['order']" style="text-decoration: none; color:#666666; font-weight: bolder;">Next products Order</a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Borrowers']" style="text-decoration: none; color:#666666; font-weight: bolder;">List of borrowers</a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Invoices']" style="text-decoration: none; color:#666666; font-weight: bolder;">Invoices</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Report']" style="text-decoration: none; color:#666666; font-weight: bolder;">Reports</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Matumizi']" style="text-decoration: none; color:#666666; font-weight: bolder;">Expenses </a> </li> <li *ngIf="industry=='true'" style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Industry']" (click)="industr()" style="text-decoration: none; color:#666666; font-weight: bolder;">Industry/Factory </a> </li><li *ngIf="osource=='true'" style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Othersource']"  style="text-decoration: none; color:#666666; font-weight: bolder;">Other income Sources </a> </li></div>
+
+   </div>
+
+   <div style=" font-size:12px; padding:5px; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+
+
+ </div>
+
+
+
+</div>
+
+<div style="padding:100px"></div>

@@ -1,0 +1,71 @@
+<div class="container" style="background-color: red; height:900px">
+  <div style="padding:20px;"></div>
+
+  <div style="padding:30px; background-color: blanchedalmond;">RIPOTI YA JULY</div>
+  <div style="background: url(./assets/images/reportupper.png); padding:20px;"></div>
+  <div style="min-height:600px;">
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col" nowrap>Date</th>
+          <th scope="col" nowrap>Jina</th>
+          <th scope="col" nowrap>Simu</th>
+          <th scope="col" nowrap>namba ya chumba</th>
+          <th scope="col" nowrap>Eneo</th>
+          <th scope="col" nowrap>Chumba</th>
+          <th scope="col" nowrap>kiasi kilicholipwa</th>
+          <!-- <th scope="col" nowrap>kiasi kamili</th> -->
+          <th scope="col" nowrap>Baki</th>
+          
+          <!-- <th scope="col">ofisi</th> -->
+          <th scope="col" nowrap>kata</th>
+          <th scope="col" nowrap>wilaya</th>
+          <th scope="col" nowrap>mkoa</th>
+          <th scope="col" nowrap>last date</th>
+          <th scope="col" nowrap>Status</th>
+       
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer" id="customers" *ngFor="let form of users | myfilter : filtertext" (click)="onselected(form)">
+          <!-- <td scope="row">1</td> -->
+          <td nowrap >{{form.date}}</td>
+          <td nowrap>{{form.name | titlecase}}</td>
+          <td nowrap >{{form.simu}}</td>
+          <td nowrap > {{form.nyumba_number}}</td>
+          <td nowrap >{{form.eneo | titlecase}}</td>
+          <td nowrap >{{form.aina_ya_chumba | titlecase}}</td>
+          <!-- <td nowrap ><span *ngIf="form.mwezi1; else second">{{form.mwezi1}}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{form.miezi2}}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{form.miezi3}}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{form.year}}</span ></ng-template></td> -->
+          <td nowrap >{{form.kiasi | currency: 'tsh '}}</td>
+          
+          <td nowrap >{{form.baki | currency: 'tsh '}}</td>
+         
+          <!-- <td>{{form.ofisi}}</td> -->
+          <td nowrap >{{form.kata | titlecase}}</td>
+          <td nowrap >{{form.wilaya | titlecase}}</td>
+          <td nowrap >{{form.mkoa | titlecase}}</td>
+          <td nowrap >{{form.last_date}}</td>
+          <td nowrap >{{form.status}}</td>
+  
+        
+   
+        </tr>
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+  
+  </div>
+
+</div>

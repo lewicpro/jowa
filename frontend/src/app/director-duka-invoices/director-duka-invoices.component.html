@@ -1,0 +1,351 @@
+
+  <div class="row">
+    <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="profoma()" ><a (click)="profoma()" >proforma invoice</a>   </div>
+    <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="tax()"> <a (click)="tax()">Tax invoice</a>  </div>
+  </div>
+  <hr style="border-bottom: 1px solid rgba(154, 154, 154, 0.664);">
+<div id="myprint">
+
+
+  <div class="" style="background-color: rgb(255, 255, 255); min-height:600px;">
+    <div style="text-align: center;" align="center">
+      <h4>{{company}}</h4>
+    </div>
+    <!-- <div  align="center">Dealers in auto parts. used  and new, M/Benz, BMW</div> -->
+    <div  align="center">{{kata}}, {{mkoa}}, Tanzania</div>
+    <div  align="center">Tel  {{Simu}}</div>
+    <div  align="center">Email: {{Email}}</div>
+    <div  align="left">Tin: {{Tin}}</div>
+    <div  align="center">{{mode}} INVOICE</div>
+    <div >M/S__________________________________________________________________</div>
+    <div class="row"><div class="col">VAT __________________________________________________________________</div><div class="col" style="text-align: end;">Date:{{times|date}}</div></div>
+
+  <div style="padding:10px"></div>
+  <div style="min-height: 600px;">
+    <table class="table table-sm table-bordered table-striped table-light">
+
+      <tbody style="overflow-x: scroll;">
+        <tr>
+          <th style="padding-left:10px;">#</th>
+          <!-- <th style="padding-left:10px;">Date & Time</th> -->
+          <!-- <th style="padding-left:10px;">pk</th> -->
+          <th>Quntity</th>
+          <th>Particulas</th>
+          <!-- <th nowrapp> Part no</th> -->
+          <th>UnitPrice</th>
+          <th style="padding-left:10px;">Amount</th>
+
+
+      </tr>
+
+        <tr *ngFor="let m of purchases let i = index" class="youo" style="  cursor: pointer;" scrollX="true">
+          <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
+          <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
+          <!-- <td style="padding-left:10px;" class="youo" nowrap>dfd</td> -->
+          <td class="youo"  nowrap (click)="menufunct(n)">{{m.Number_of_products}}</td>
+          <td class="youo"  nowrap >{{m.Name_of_the_product}}</td>
+          <!-- <td class="youo"  nowrap>{{m.Number_of_products}}</td> -->
+          <td class="youo"  nowrap>@{{m.Selling_price |currency: 'tsh'}}</td>
+          <td class="youo"  nowrap>{{m.Total | currency: 'tsh'}}</td>
+      </tr>
+
+      <!-- <div style="padding: 30px;"></div> -->
+
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+    <div>
+      <div class="row"><div class="col">Tin: ______________________</div><div class="col" style="text-align: end;"> SUB TOTAL: 0.00</div></div><div></div>
+      <div class="row"><div class="col">VRN: ______________________</div><div class="col" style="text-align: end;">VAT 18%: {{vat}}</div></div><div></div>
+      <div class="row" style="position: relative; bottom:0px"><div class="col">TERMS: Cash/Credit Sales</div><div class="col" style="text-align: end;">GRAND TOTAL: {{sum |  currency: 'tsh '}}</div></div><div></div>
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
+<button (click)="add()">  + Add products</button>
+
+<button onclick="printDiv()">  Print invoice</button>
+<div *ngIf="Credit=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+  <div *ngIf="Credit=='True'" style="margin-top: 100px; height:40%" class="momo1 animation-target ">
+    <div align="center" style="font-weight: bolder; padding:5px; color:#666">Enter details</div>
+
+    <div style="padding:10px"></div>
+    <div class="row">
+      <div class="col"><div align="center">
+      <input #box224 (blur)="NameofBorrower(box224.value)" placeholder="Name of the borrower" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+
+
+    </div>
+  </div>
+  <div class="col">
+    <div align="center">
+      <input #box233 (blur)="DescriptionData(box233.value)" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div><div class="col">
+    <div align="center">
+      <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div><div class="col">
+    <div align="center">
+      <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div>
+</div>
+    <div style="padding:10px"></div>
+    <div class="row">
+      <div class="col"><div align="center">
+      <input #box224 (blur)="NameofBorrower(box224.value)" placeholder="Name of the borrower" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+
+
+    </div>
+  </div>
+  <div class="col">
+    <div align="center">
+      <input #box233 (blur)="DescriptionData(box233.value)" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div><div class="col">
+    <div align="center">
+      <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div><div class="col">
+    <div align="center">
+      <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+
+
+    </div>
+  </div>
+</div>
+
+
+
+    <div style="text-align: center;">
+      <div style="padding:20px"></div>
+      <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
+      <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button>
+
+
+    </div>
+    <!-- <div align="center">
+      <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+      <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+
+    </div> -->
+  </div>
+</div>
+<div *ngIf="receipt=='on'" style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
+  <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+  <div align="center">
+
+
+    <label class="switch">
+      <input *ngIf="route=='active'" type="checkbox" checked (click)="activated()">
+      <input *ngIf="route=='inactive'" type="checkbox" (click)="activated()">
+      <span class="slider round"></span>
+    </label>
+
+  </div>
+  <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
+
+
+    <div style="overflow: scroll;">
+      <table *ngIf="typ=='BORROWERS'" class="table table-sm table-bordered table-striped table-light">
+        <div style="text-align: center; padding-left:30px"><input #boya (keyup)="searche(boya.value)"  class="wako" type="text" placeholder="Search for a product" style="width: 200px;"></div>
+        <div class="ccenter" align="center" style="font-size:15px;">PRODUCTS</div>
+
+        <tbody style="overflow-x: scroll;">
+          <tr>
+            <th style="padding-left:10px;">#</th>
+            <th style="padding-left:10px;">Date & Time</th>
+            <!-- <th style="padding-left:10px;">pk</th> -->
+            <th>Name</th>
+            <th nowrapp> Product number</th>
+            <th>Purchasing price</th>
+            <th>Price</th>
+            <th style="padding-left:10px;">Image</th>
+            <th>Type</th>
+            <th>Officer</th>
+            <th nowrap>Shelf No</th>
+
+            <th>Remained</th>
+            <th>Total product</th>
+            <th>Total bought</th>
+            <th>Sold</th>
+            <th>Description</th>
+        </tr>
+
+        <tr class="youo" *ngFor="let n of alls let i = index" style="  cursor: pointer;" scrollX="true" (click)="getdatafom(n.Number_of_products, n.Name_of_the_product, n.Selling_price, n.Product_serial)">
+          <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
+          <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
+          <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
+          <td class="youo"  nowrap >{{n.Name_of_the_product | titlecase}}</td>
+          <td class="youo"  nowrap >{{n.Product_serial}}</td>
+          <td class="youo"  nowrap>{{n.Price_bought| currency: 'tsh '}}</td>
+          <td class="youo"  nowrap>{{n.Selling_price| currency: 'tsh '}}</td>
+          <td style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" src="assets/images/danube.jpg" alt=""></td>
+          <td class="youo"  nowrap>{{n.Type_of_product}}</td>
+          <td class="youo"  nowrap>{{n.user}}</td>
+          <td class="youo"  nowrap>{{n.Shelf_No}}</td>
+
+          <td class="youo" nowrap>{{n.Number_of_products}}</td>
+          <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'tsh '}}</td>
+          <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'tsh '}}</td>
+          <td class="youo" nowrap>{{n.Number_of_products_sold| currency: 'tsh '}}</td>
+          <td class="youo" nowrap>{{n.Description}}</td>
+
+      </tr>
+
+
+        <!-- <div style="padding: 30px;"></div> -->
+
+          <!--<tr id="customers">-->
+            <!--<td scope="row">2</td>-->
+            <!--<td>BA</td>-->
+            <!--<td>3</td>-->
+            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+          <!--</tr>-->
+          <!--<tr id="customers">-->
+            <!--<td scope="row">3</td>-->
+            <!--<td>Accountancy</td>-->
+            <!--<td>3</td>-->
+            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+
+
+    </div>
+  <div style="overflow: scroll;">
+    <table *ngIf="typ=='SALES'" class="table table-sm table-bordered table-striped table-light">
+      <div class="ccenter" align="center" style="font-size:15px;">SALES</div>
+
+      <tbody style="overflow-x: scroll;">
+        <tr>
+          <th style="padding-left:10px;">#</th>
+          <th>Product</th>
+
+          <th style="padding-left:10px;" nowrap>Product No</th>
+          <th style="padding-left:10px;" nowrap>No of products</th>
+          <th style="padding-left:10px;" nowrap>Customer name</th>
+          <th style="padding-left:10px;" nowrap>Price</th>
+          <th style="padding-left:10px;" nowrap>Status</th>
+
+
+      </tr>
+
+      <tr *ngFor="let b of alldata let i = index" class="youo" style="  cursor: pointer;" scrollX="true" (click)="addpurchases(b.quantity, b.Name_of_the_product, b.Selling_price, b.Product_serial)">
+        <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
+        <td class="youo"  nowrap >{{b.Name_of_the_product}}</td>
+        <td class="youo"  nowrap >{{b.Product_serial}}</td>
+        <td class="youo"  nowrap >{{b.quantity}}</td>
+        <td class="youo"  nowrap >{{b.Customer_name}}</td>
+        <td class="youo"  nowrap >{{b.Selling_price}}</td>
+        <td class="youo"  nowrap >{{b.info}}</td>
+
+    </tr>
+
+      <!-- <div style="padding: 30px;"></div> -->
+
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+
+  </div>
+
+  </div>
+  <div style="padding:10px"></div>
+  <!-- <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div> -->
+
+
+</div>
+
+<!-- <td class="youo" *ngIf="receipt =='on'" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
+<td class="youo" *ngIf="receipt =='off'" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Show Invoice</td> -->
+
+<div *ngIf="diag=='on'" class="animated slideInUp" style="position: fixed; top:10%; right:40%; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:400px; backdrop-filter: blur('10px');">
+  <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div>
+  <div style="padding:2px"></div>
+  <div style="padding:10px; background-color: #eae9e9;;">
+    <div style="color: rgb(72, 72, 74); font-size:16px;">Name of the product <span style="float: right;">{{name}}</span></div>
+
+    <div style="padding:20px"></div>
+
+
+
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend ">
+        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Price</span>
+      </div>
+      <input type="text" #box9 (blur)="pricey(box9.value)" name="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="border:1px solid transparent; margin:center;">
+    </div>
+    <!-- <div style="padding:20px"></div> -->
+    <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend ">
+        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Quantity</span>
+      </div>
+      <input type="text" #box10 (keyup)="quantitey(box10.value)" name="phone" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+
+
+
+
+
+    </div>
+    <div style="padding:10px; font-weight: bolder;" *ngIf="waka">Total Amount: <span style="float:right">{{waka}}</span></div>
+<div align="center">
+  <div class="row"> <div class="col">  <button type="button"  style="width:100%" class="btn btn-primary btn-sm " (click)="cancela()">Cancel</button>
+  </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="sumet(template)">Submit</button>
+  </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="selectCredit(template)">Borrow</button>
+  </div></div>
+
+</div>
+
+
+
+
+
+  </div>

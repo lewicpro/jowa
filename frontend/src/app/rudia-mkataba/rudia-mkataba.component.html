@@ -1,0 +1,65 @@
+<div style="margin-bottom:0%;">
+    <div style="padding:10px;"></div>
+    <!-- <div>{{moran}}</div>
+    <button (click)="funct()">start</button> -->
+    <div class="d-flex justify-content-center">
+      
+        <!-- <div style="padding-top:5px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> INGIA </h4></div> -->
+    
+    </div>
+    <div style="padding:5px;"></div>
+    <div class="d-flex justify-content-center">
+      
+      <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style=" width:33%; margin:center;">
+    
+      <div class="input-group-prepend">
+        <!-- <span class="input-group-text" id="inputGroup-sizing-sm">Jina</span> -->
+      </div>
+      <select [(ngModel)]="malipz"  (change)="malip()" id="inputGroupSelect01"  class="custom-select" style="width:25%; ">
+          <option selected>Choose wakati wa malipo. ..</option>
+          <option  value="malizia">Malizia deni</option>
+          <option value="ongeza">Ongeza pesa mkataba mpya</option>
+       
+      </select>
+    </div>
+    
+    </div>
+    <div style="padding:10px;"></div>
+    
+    <div class="d-flex justify-content-center">
+      
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+      
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">kiasi</span>
+        </div>
+        <input type="text" [(ngModel)]="poze.kiasi" name="kiasi" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div>
+    <div style="padding:10px;"></div>
+    <div class="d-flex justify-content-center">
+      
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+      
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:20px;">file</span>
+        </div>
+        <input type="text" [(ngModel)]="poze.file" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      
+      </div>
+    
+    <div style="padding:10px;"></div>
+    
+    <div class="d-flex justify-content-center">
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+      
+        <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:black" (click)="UserCreate()" >ingia</button>
+        
+        </div>
+      </div>
+    <div style="padding:10px;"></div>
+  
+    
+    </div>

@@ -1,0 +1,45 @@
+td{
+  font-weight:100;
+  font-size:12px;
+
+  
+}
+th{
+  color:green;
+  font-weight:200;
+}
+/*   
+th:hover{
+  color:rgb(255, 255, 255);
+  font-weight:400;
+
+} */
+
+
+
+#customers:hover{
+  background-color: rgba(46, 147, 35, 0.2);;
+  /* box-shadow:5px 5px 5px 5px black; */
+}
+
+input{
+    width:100%;
+    background:rgba(255, 255, 255, 0.6)
+} 
+
+button:hover{
+  background:rgb(74, 148, 88);
+  color:ghostwhite;
+  font-weight:200;
+  box-shadow: 10px 15px 15px;
+}
+button .mon{
+  background:linear-gradient(to top, #014869, #ddd );
+  color:ghostwhite;
+  font-weight:200;
+}
+
+.mat-raised-button:not([class*="mat-elevation-z"]) {
+  box-shadow: 0 3px 6px -2px #0003,0 2px 2px 0 #0000001a,0 1px 5px 0 #0000001a;
+}
+

@@ -1,0 +1,11 @@
+.list-group-item{
+    background: rgba(2, 2, 2, 0); 
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.list-group-item:hover{
+    background: rgba(0, 3, 192, 0.185); 
+    border-left: 3px solid rgba(26, 27, 53, 0.52);
+    transition: 1s;
+    border-radius: 5px;
+    
+}

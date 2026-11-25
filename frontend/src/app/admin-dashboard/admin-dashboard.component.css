@@ -1,0 +1,65 @@
+/* .monno:hover{
+    cursor: pointer;
+    border-bottom: 2px solid black;
+    /* background:green; */
+    /* border-radius: 1px; */
+    /* color:white; */
+    
+/* 
+} */ */
+.more:hover{
+    /* background:white; */
+    text-decoration: none;
+
+
+}
+
+
+
+
+.active{
+    background:#ffffff; 
+    border-radius: 15px; 
+    padding:5px 15px 5px 15px ;
+    color:black;
+   
+    -webkit-box-shadow: 0px 1px 5px -2px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 1px 5px -2px rgba(0,0,0,0.8);
+    box-shadow: 0px 1px 5px -2px rgba(0,0,0,0.8);
+    -webkit-animation-name: fadeInLeftBig;
+    animation-name: fadeInLeftBig;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInLeftBig {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInLeftBig {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+
+
+.target{
+    -webkit-box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #FF0000, -12px -36px 6px -17px rgba(0,0,0,0); 
+    box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #FF0000, -12px -36px 6px -17px rgba(0,0,0,0);
+}

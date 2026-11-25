@@ -1,0 +1,129 @@
+
+
+<div class="d-flex justify-content-center">
+  <mat-form-field style="width:40%">
+  <input   matInput  [(ngModel)]="filtertext" (keyup.enter)='keypressed()' placeholder="Press enter for full search, Username / File No- / Full name / Region etc">
+  </mat-form-field>
+</div>
+<!-- <button (click)="wow()">ddd</button> -->
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)"  id="componentID">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WATEJA WOTE NA KUMBUKUMBU</h4>
+  <div style="max-height:400px; overflow:auto">
+    <!-- <button (click)="masaki()">momo</button> -->
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " id="componentID">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Jina</th>
+        <th scope="col">Simu</th>
+        <th nowrap scope="col">Account no</th>
+        <th nowrap scope="col">File No</th>
+        <th scope="col">expire</th>
+        <th scope="col">ofisi</th>
+        <th scope="col">kata</th>
+        <th scope="col">wilaya</th>
+        <th scope="col">mkoa</th>
+        <th scope="col">TSD</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="cursor:pointer" id="customers" *ngIf="editval=='on'">
+        <td class="text-center" ></td>
+          <td class="text-center" ><input [value]="times" disabled  style="border-radius:3px; width:100%" type="text" placeholder="Muda wa sasa"> </td>
+          <td style="white-space: nowrap"><input #box (blur)="Simu(box.value)"  [value]="Simuval" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td>
+          <!-- <td style="white-space: nowrap"><input #box (blur)="Jina_Mtejafun(box.value)"  [value]="Jina_Mtejaval" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td> -->
+          <td><input #box1 (blur)="Account_no(box1.value)" [value]="Account_noval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box2 (blur)="file_no(box2.value)" [value]="file_noval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box3 (blur)="expire(box3.value)" [value]="expireval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box4 (blur)="Office(box4.value)" [value]="Officeval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <!-- <td><input #box2 (blur)="Quantityfun(box2.value)" [value]="Quantityval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td> -->
+          <td><input #box5 (blur)="kata(box5.value)" [value]="Kataval" style="border-radius:3px; width:100%"   type="text" placeholder="eg: new or used"></td>
+          <td><input #box6 (blur)="Wilaya(box6.value)" [value]="Wilayaval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box7 (blur)="Mkoa(box7.value)" [value]="mkoaval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td><input #box8 (blur)="TSD(box8.value)" [value]="TSDval" style="border-radius:3px; width:100%"   type="text" placeholder="TSD"></td>
+
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td><a *ngIf="editval=='off'" (click)="openModal2(template2)"  >Tunza</a><a (click)="Editdata()"  *ngIf="editval=='on'">Edit<span class="badge badge-light" style="position: relative; top:0px; left:30px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="clearpage()">x</span></a></td>
+          </tr>
+
+      <tr style="cursor:pointer" id="customers" *ngFor="let form of users | myfilter : filtertext; let i = index" >
+        <td (click)="onselected(form)"  nowrap scope="row" style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">{{i*1 + 1*1}}</td>
+        <td (click)="onselected(form)"  nowrap scope="row" *ngIf="form.status=='delete'">{{i*1 + 1*1}}</td>
+        <td (click)="onselected(form)"  nowrapstyle="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">{{form.jina | titlecase}}</td>
+        <td (click)="onselected(form)"  nowrap *ngIf="form.status=='delete'">{{form.jina | titlecase}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.Simu}}</td>
+        <!-- <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">{{form.Simu}}</td> -->
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'"> deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'"> {{form.Account_no}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.file_no}}</td>
+        <!-- <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">{{form.file_no}}</td> -->
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.expire}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.ofisi}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.kata}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.wilaya}}</td>
+        <td (click)="onselected(form)" nowrap style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'">deleted</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.mkoa}}</td>
+        <td (click)="onselected(form)" nowrap *ngIf="form.status=='delete'">{{form.TSD}}</td>
+        <td style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'" (click)="onselected(form)" nowrap>{{form.TSD}}</td>
+        <td *ngIf="form.status=='delete'" nowrap><a  (click)="delete(form.pk)">Delete</a> | <a (click)="editu(form)">Edit</a></td>
+        <td style="background-color: rgb(251, 221, 221);" *ngIf="form.status=='deleted'" nowrap>deleted | <a (click)="trash(form.pk)"><i style="font-size: medium; color:red; position: relative; top:5px" class="material-icons">delete</i>Trash</a></td>
+
+        <!-- <td > <i class="fas fa-arrow-down" style="cursor: alias;"></i></td> -->
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+    <tbody>
+      <tr style="cursor:pointer" id="customers" *ngFor="let forn of forx; let i = index" (click)="onselected(forn)">
+        <td  nowrap scope="row">{{i*1 + 1*1}}</td>
+        <td  nowrap>{{forn.jina | titlecase}}</td>
+        <td nowrap>{{forn.Simu}}</td>
+        <td nowrap> {{forn.Account_no}}</td>
+        <td nowrap>{{forn.file_no}}</td>
+        <td nowrap>{{forn.expire}}</td>
+        <td nowrap>{{forn.ofisi}}</td>
+        <td nowrap>{{forn.kata}}</td>
+        <td nowrap>{{forn.wilaya}}</td>
+        <td nowrap>{{forn.mkoa}}</td>
+        <td nowrap>{{forn.TSD}}</td>
+
+        <td > <i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+
+</div>
+  </div>
+  <div style="text-align: center; padding-top:10px"><button (click)="printe()">print all clients</button></div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

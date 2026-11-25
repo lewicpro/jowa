@@ -1,0 +1,289 @@
+<div (window:resize)="onResize($event)">
+  <div *ngIf="colspan > 707">
+    <div  style="background-image: url(/assets/images/aboutpage.png); overflow: hidden; min-height:600px; background-repeat: no-repeat; background-size: cover; min-width: 600px;">
+
+      <mat-grid-list cols="4" rowHeight="100px"style="min-width: 600px;">
+
+        <div style="padding-top:1000px"></div>
+       <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
+        <div style="background: silver; border-radius:10px; width:100%; ">
+          <h5 style="text-align: center; color: white;">Loan</h5>
+          <div style="padding-top:1px">
+            <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
+            <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
+          </div>
+        </div>
+
+      </mat-grid-tile> -->
+       <mat-grid-tile  colspan="3" rowspan="4" padding style=" overflow:visible">
+        <div style=" border-radius:10px; width:100%;">
+          <div *ngIf="call=='loan'" style="padding-top: 140px;">
+            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit;">Loan</h5>
+          <div style="padding-top:1px" style="overflow: scroll;">
+            <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periodically, </p>
+            <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a Personal bank in your pocket, <p>
+            <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">It will be easier to Manage all the transactions through one platform and facilitate the monitoring of the company capacity to hold and give loans to customers <p>
+          </div>
+        </div>
+          <div *ngIf="call=='realestate'" style="padding-top: 120px;">
+            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit;">Real Estate</h5>
+          <div style="padding-top:1px">
+            <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">Real estate platform provide you with the smartest tool to organise and control your property as the landlord remotedly and this involves payment simplification and also monitoring the debts which are owned by the rentors, Also to keep you informed on your property on its condition,  </p>
+            <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Platform will have the sugestion box wher you can access all the sugestions and mails from the rentors and also it will access the mesaging platform, where you can inform the rentors throug direct massage <p>
+            <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">The platform is secured and easy to access, unlikely not easy for the intruders to track the online transactions  <p>
+          </div>
+        </div>
+          <div *ngIf="call=='shop'" style="padding-top: 300px;">
+            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit;">shop</h5>
+          <div style="padding-top:1px">
+            <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">Shop Platform gives the easiest way to control the sales, inventories and the stock, and this makes the business easy to control by knowing the Total revenew gross profit and net profit, Knowing all the needs and all the fast moving products </p>
+            <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a bank in your pocket, <p>
+            <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a bank in your pocket, <p>
+          </div>
+        </div>
+          <div *ngIf="call=='transaction'" style="padding-top: 300px;">
+            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit;">Transactions</h5>
+          <div style="padding-top:1px">
+            <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With Vendor(wakala) platform you will be able to access your transactions anywhere and the system will be able to calculate and give out the report daily, and these reports will include daily monthly and yearly, also you can do custom date range to get report you prefer. </p>
+            <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your workers dashboard provided through their app, Also help you with the data collection and efficiently trace your profit, So that it makes the business a bit easier for you, also your workers will be able co contact you anytime when the need arise. Aleco Wakala is like a business in your pocket. <p>
+            <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your to know your customers and able to send bulk sms to them if you need. <p>
+          </div>
+        </div>
+          <div *ngIf="call=='distribution'" style="padding-top: 300px;">
+            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit;">Distributions</h5>
+          <div style="padding-top:1px">
+            <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With Distribution platform you will be able to manage your distribution business, where by you will be able to track location of the orders and send the products direct the product to the customers and this will be showing with the traffic ja, so that to ennable you pass in a fastest route </p>
+            <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">the platform will be having dashboards to enable work efficiently also you can give suggestions to our company what you need to be improuved and withing a short time of period will be changed acording to your needs. <p>
+            <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a services you are providing, anytime, anywhere. Complete application in seconds and receive System. Aleco Distribution is put money in your pocket, in easy way.<p>
+          </div>
+        </div>
+
+          </div>
+
+      </mat-grid-tile>
+
+
+       <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+        <mat-nav-list style="width: 400px;">
+          <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+             Money lending
+          </mat-list-item>
+          <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+             Money lending
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+             Real estate
+          </mat-list-item>
+          <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+             Real estate
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+             Shop administrations
+          </mat-list-item>
+          <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+             Shop administrations
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+             Money Vendor
+          </mat-list-item>
+          <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+             Money Vendor
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+             Product Distributions
+          </mat-list-item>
+          <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+             Product Distributions
+          </mat-list-item>
+        </mat-nav-list>
+
+
+
+      </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+
+  </div>
+  <div *ngIf="colspan < 707">
+    <div  style="background-image: url(/assets/images/aboutpage.png); overflow:hidden; min-height:600px; background-repeat: no-repeat; background-size: cover;">
+      <div style=" border-radius:10px; height:400px; overflow:visible">
+        <div *ngIf="call=='loan'" >
+          <h5 class="animated slideInLeft" align="center" style="color: white; font-style: inherit;">Loan</h5>
+        <div style="padding-top:1px" style="overflow: scroll;">
+          <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periodically, </p>
+          <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a Personal bank in your pocket, <p>
+          <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">It will be easier to Manage all the transactions through one platform and facilitate the monitoring of the company capacity to hold and give loans to customers <p>
+        </div>
+      </div>
+        <div *ngIf="call=='realestate'">
+          <h5 class="animated slideInLeft" style="text-align: center; color: white; font-style: inherit;">Real Estate</h5>
+        <div style="padding-top:1px">
+          <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">Real estate platform provide you with the smartest tool to organise and control your property as the landlord remotedly and this involves payment simplification and also monitoring the debts which are owned by the rentors, Also to keep you informed on your property on its condition,  </p>
+          <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Platform will have the sugestion box wher you can access all the sugestions and mails from the rentors and also it will access the mesaging platform, where you can inform the rentors throug direct massage <p>
+          <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">The platform is secured and easy to access, unlikely not easy for the intruders to track the online transactions  <p>
+        </div>
+      </div>
+        <div *ngIf="call=='shop'" >
+          <h5 class="animated slideInLeft" style="text-align: center; color: white; font-style: inherit;">shop</h5>
+        <div style="padding-top:1px">
+          <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">Shop Platform gives the easiest way to control the sales, inventories and the stock, and this makes the business easy to control by knowing the Total revenew gross profit and net profit, Knowing all the needs and all the fast moving products </p>
+          <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a bank in your pocket, <p>
+          <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a loan, anytime, anywhere. Complete application in seconds and receive loan straight into mobile money account. Aleco Microfinance is like a bank in your pocket, <p>
+        </div>
+      </div>
+        <div *ngIf="call=='transaction'" >
+          <h5 class="animated slideInLeft" style="text-align: center; color: white; font-style: inherit;">Transactions</h5>
+        <div style="padding-top:1px">
+          <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With Vendor(wakala) platform you will be able to access your transactions anywhere and the system will be able to calculate and give out the report daily, and these reports will include daily monthly and yearly, also you can do custom date range to get report you prefer. </p>
+          <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your workers dashboard provided through their app, Also help you with the data collection and efficiently trace your profit, So that it makes the business a bit easier for you, also your workers will be able co contact you anytime when the need arise. Aleco Wakala is like a business in your pocket. <p>
+          <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your to know your customers and able to send bulk sms to them if you need. <p>
+        </div>
+      </div>
+        <div *ngIf="call=='distribution'" >
+          <h5 class="animated slideInLeft" style="text-align: center; color: white; font-style: inherit;">Distributions</h5>
+        <div style="padding-top:1px">
+          <p class="fade-in"  style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; font-size: medium;">With Distribution platform you will be able to manage your distribution business, where by you will be able to track location of the orders and send the products direct the product to the customers and this will be showing with the traffic ja, so that to ennable you pass in a fastest route </p>
+          <p class="fade-in1" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">the platform will be having dashboards to enable work efficiently also you can give suggestions to our company what you need to be improuved and withing a short time of period will be changed acording to your needs. <p>
+          <p class="fade-in2" style="padding-left: 20px; padding-right:20px; color: #555; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: lighter; ">Also this platform will enable your customers to access some of the services you are providing through their app, Also help you with the collection of funds So that it makes easier  for the customers to access a services you are providing, anytime, anywhere. Complete application in seconds and receive System. Aleco Distribution is put money in your pocket, in easy way.<p>
+        </div>
+      </div>
+
+        </div>
+
+      <div a style="position:sticky; top:600px">
+
+        <span *ngIf="menu=='unclicked'" align="center" style="background:red; padding:10px; border-radius:100%; position:relative; left:45%; top:2px; box-shadow: 5px 5px 5px silver;  " class="material-icons">
+          <a style="text-decoration: none;" (click)="menuclicked()" class="animated slideInLeft"> dehaze</a>
+           </span>
+       <span  *ngIf="menu=='clicked'" align="center" style="background:rgba(255, 0, 0, 0.263); padding:10px; border-radius:100%; position:relative; left:45%;" class="material-icons">
+          <a style="text-decoration: none;" (click)="menuunclicked()" class="animated slideInLeft"> clear</a>
+           </span>
+
+           <div [ngClass]="getclass(menu)" align="center" style="position:relative; top:-400px; height:3px">
+            <mat-nav-list style="width: 400px; " class="fade-in3">
+              <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+                 Money lending
+              </mat-list-item>
+              <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"   [routerLinkActive]="['active']" (click)="loan()">
+                 Money lending
+              </mat-list-item>
+              <div style="padding:2px;"></div>
+              <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+                 Real estate
+              </mat-list-item>
+              <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4"  [routerLinkActive]="['active']"  (click)="realestate()">
+                 Real estate
+              </mat-list-item>
+              <div style="padding:2px;"></div>
+              <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+                 Shop administrations
+              </mat-list-item>
+              <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5"  [routerLinkActive]="['active']" (click)="shop()">
+                 Shop administrations
+              </mat-list-item>
+              <div style="padding:2px;"></div>
+              <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+                 Money Vendor
+              </mat-list-item>
+              <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6"  [routerLinkActive]="['active']"  (click)="transaction()">
+                 Money Vendor
+              </mat-list-item>
+              <div style="padding:2px;"></div>
+              <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+                 Product Distributions
+              </mat-list-item>
+              <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7"  [routerLinkActive]="['active']" (click)="distribution()">
+                 Product Distributions
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<div style="padding:200px"></div>
+
+<div style="padding:200px"></div>
+<!--
+<footer class="footer" style="bottom: 0px;">
+  <style>
+  li{
+    font-weight:100;
+    color:rgb(255, 255, 255);
+  }
+  </style>
+  <div style="background-color:gray; position: fixed-bottom; bottom: 0px; background-image: url(assets/images/wave.svg); background-position: bottom; background-size:cover;">
+  <div class="container" style="padding-top:50px; margin:auto;">
+  <div class="row">
+    <div class="col">
+
+    <h4>Haraka</h4>
+    <ul class="list-unstyled">
+      <li class="textli">Home</li>
+      <li class="textli">Kipi kipya</li>
+      <li class="textli">Huduma</li>
+      <li class="textli">Account yangu</li>
+      <li class="textli">Subscribe</li>
+    </ul>
+    </div>
+    <div class="col">
+    <h4>Information</h4>
+    <ul class="list-unstyled" style="font-weight:100">
+      <li class="textli">Patrtnership</li>
+      <li class="textli">About Us</li>
+      <li class="textli">Jobs</li>
+      <li class="textli">Press info</li>
+      <li class="textli">Contacts</li>
+    </ul>
+    </div>
+    <div class="col">
+    <h4>Tufuate</h4>
+    <ul class="list-unstyled" style="font-weight:200">
+      <li class="textli"><i class="fab fa-linkedin fa-1x"> </i> LinkedIn</li>
+      <li class="textli"> <i class="fa fa-facebook-square fa-1x" > </i> Facebook</li>
+      <li class="textli"> <i class="fa fa-instagram fa-1x"> </i> Instagram</li>
+      <li class="textli"><i class="fab fa-twitter-square fa-1x"> </i> Twitter</li>
+      <li class="textli"> <i class="fab fa-youtube fa-1x"> </i> Youtube</li>
+    </ul>
+    </div>
+    <div class="col">
+  <h4> Tulipo</h4>
+  <address style="color:rgb(231, 230, 230)">
+    ubungo, Tanzania<br>
+  </address>
+  <ul class="list-inline textli">
+    <li class="list-inline-item textli">All rights reserved</li>
+    <li class="list-inline-item textli">Terms of use and privacy</li>
+    <li class="list-inline-item textli"  ><a href="" data-toggle="model" data-target="#modal">Term of use and privacy policy</a></li>
+  </ul>
+    </div>
+
+  </div>
+  </div>
+  </div>
+  </footer>
+
+
+ -->

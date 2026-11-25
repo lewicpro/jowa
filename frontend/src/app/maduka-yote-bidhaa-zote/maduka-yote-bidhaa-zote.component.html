@@ -1,0 +1,78 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center">
+  <!-- <mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+  </mat-form-field> -->
+  <!-- <button (click)="time()">click</button> -->
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> List of Products</h4>
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+  <!-- <br><br> -->
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <div style="max-height:400px; overflow:auto" >
+    <ng-template #template>
+      <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      </div>
+    </ng-template>
+    
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+     
+      <tbody style="overflow-x: scroll;">
+        <tr>
+          <th style="padding-left:10px;">Time</th>
+          <!-- <th style="padding-left:10px;">pk</th> -->
+          <th>Name</th>
+          <th>Kiasi</th>
+          <th>Mtandao</th>
+          <th>Officer</th>
+    
+          <th>Remained</th>
+          <th>Sold</th>
+      </tr>
+      <tr style="background-color: rgb(203, 228, 183);">
+          <td style="padding-left:10px;" class="youo" nowrap>Tarehe</td>
+          <td class="youo" colspan="5" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
+          <!-- <td class="youo"  nowrap>{{n.Selling_price}}</td> -->
+          <!-- <td class="youo"  nowrap>{{n.barcode}}</td> -->
+          <!-- <td class="youo"  nowrap>{{n.Officer_worker}}</td> -->
+  
+          <!-- <td class="youo" nowrap>product</td> -->
+          <td class="youo" nowrap>purchased</td>
+      </tr>
+        <tr class="youo" *ngFor="let n of all" style="overflow-x:scroll;" scrollX="true"  (click)="presentAlertConfirm(n)">
+          <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
+          <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
+          <td class="youo"  nowrap>{{n.Name_of_the_product}}</td>
+          <td class="youo"  nowrap>{{n.Selling_price}}</td>
+          <td class="youo"  nowrap>{{n.barcode}}</td>
+          <td class="youo"  nowrap>{{n.Officer_worker}}</td>
+  
+          <td class="youo" nowrap>{{n.Number_of_products}}</td>
+          <td class="youo" nowrap>{{n.Total_Purchased}}</td>
+      </tr>
+  
+        <!--<tr id="customers">-->
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+  
+  </div>
+
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

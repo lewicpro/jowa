@@ -1,0 +1,23 @@
+td{
+    font-weight:100;
+    font-size:12px;
+  }
+  th{
+    color:green;
+    font-weight:200;
+  }
+  
+  /* th:hover{
+    color:rgb(255, 255, 255);
+    font-weight:400;
+  
+  } */
+  
+  
+  
+  td:hover{
+    background-color: rgba(46, 147, 35, 0.2);;
+    /* box-shadow:5px 5px 5px 5px black; */
+  }
+
+  

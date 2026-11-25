@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col">Amount <input #amou (blur)="amount(amou.value)" type="text" style="width: 100%;" placeholder="Amount"></div>
+  <div class="col">Period count <input #cou (blur)="count(cou.value)" type="text" style="width: 100%; " placeholder="Period Count"></div>
+  <div class="col">Interest <input #Inter (blur)="Interest(Inter.value)" type="text" style="width: 100%;" placeholder="Interest"></div>
+</div>
+<select #per (change)="period(per.value)" name="time" id="" style="position:relative; top:-20px; left:60%">
+  <option value="monthly">monthly</option>
+  <option value="yearly">yealy</option>
+</select>

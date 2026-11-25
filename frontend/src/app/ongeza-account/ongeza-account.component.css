@@ -1,0 +1,9 @@
+.input-group-sm > .form-control, .input-group-sm > .input-group-append > .btn, .input-group-sm > .input-group-append > .input-group-text, .input-group-sm > .input-group-prepend > .btn, .input-group-sm > .input-group-prepend > .input-group-text {
+    height: calc(1.8125rem + 2px);
+    padding: .0rem .9rem;
+    font-size: .875rem;
+    line-height: 1.0;
+    border-radius: .2rem;
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
+}

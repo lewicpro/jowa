@@ -1,0 +1,135 @@
+
+<ng-progress></ng-progress>
+<div class="d-flex justify-content-center">
+  <!-- <mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+  </mat-form-field> -->
+  <!-- <button (click)="time()">click</button> -->
+</div>
+<a  style="text-decoration: none; cursor: pointer;" (click)="All()" > <span style="color: green; padding:4px"> All </span></a>
+<div *ngFor="let c of allz" style="white-space:nowrap; display: inline-block;">
+  
+    <!-- <a  style="text-decoration: none; cursor: pointer;" (click)="All()" > <span style="color: green; padding:4px"> All </span></a> -->
+    <a  *ngIf="c.Mtandao == 'TPB'" style="text-decoration: none; cursor: pointer;" (click)="tpb()" > | <span style="color: green; padding:4px"> TPB </span></a>
+
+
+    <a  *ngIf="c.Mtandao == 'Nbc'" style="text-decoration: none; cursor: pointer;" (click)="nbc()" > | <span style="color: green; padding:4px"> NBC </span> </a> 
+
+    <a *ngIf="c.Mtandao == 'Selcom'" style="text-decoration: none; cursor: pointer;" (click)="selcom()" > | <span style="color: green; padding:4px"> SELCOM </span> </a>
+
+    <a *ngIf="c.Mtandao == 'Mpesa'" style="text-decoration: none; cursor: pointer;" (click)="mpesa()" > | <span style="color: green; padding:4px"> M-pesa </span>  </a> 
+
+    <a *ngIf="c.Mtandao == 'NMB'" style="text-decoration: none; cursor: pointer;" (click)="nmb()" > | <span style="color: green; padding:4px"> Nmb </span> </a>
+    <a *ngIf="c.Mtandao == 'CRDB'" style="text-decoration: none; cursor: pointer;" (click)="CRDB()" > | <span style="color: green; padding:4px"> CRDB </span> </a>
+    <a *ngIf="c.Mtandao == 'DTB'" style="text-decoration: none; cursor: pointer;" (click)="DTB()" > | <span style="color: green; padding:4px"> DTB </span> </a>
+
+    <a *ngIf="c.Mtandao == 'Tigopesa'"  style="text-decoration: none; cursor: pointer;" (click)="tigopesa()"> | <span style="color: green; padding:4px"> Tigopesa </span> </a>
+    <a *ngIf="c.Mtandao == 'Access_Bank'"  style="text-decoration: none; cursor: pointer;" (click)="Access_Bank()"> | <span style="color: green; padding:4px"> Access Bank </span> </a>
+    <a *ngIf="c.Mtandao == 'KCB'"  style="text-decoration: none; cursor: pointer;" (click)="KCB()"> | <span style="color: green; padding:4px"> KCB </span> </a>
+    <a *ngIf="c.Mtandao == 'Equity'"  style="text-decoration: none; cursor: pointer;" (click)="Equity()"> | <span style="color: green; padding:4px"> Equity </span> </a>
+    <a *ngIf="c.Mtandao == 'Airtel_Money'"  style="text-decoration: none; cursor: pointer;" (click)="Airtel_Money()"> | <span style="color: green; padding:4px"> Airtel Money </span> </a>
+    <a *ngIf="c.Mtandao == 'Halopesa'"  style="text-decoration: none; cursor: pointer;" (click)="Halopesa()"> | <span style="color: green; padding:4px"> Halopesa </span> </a>
+    <a *ngIf="c.Mtandao == 'Mpesa_Float'"  style="text-decoration: none; cursor: pointer;" (click)="Mpesa_Float()"> | <span style="color: green; padding:4px"> Mpesa_Float </span> </a>
+    <a *ngIf="c.Mtandao == 'Vodacom_SuperAgent'"  style="text-decoration: none; cursor: pointer;" (click)="Vodacom_SuperAgent()"> | <span style="color: green; padding:4px"> Vodacom_SuperAgent </span> </a>
+</div>
+  <!-- <div *ngFor="let c of allz" class="col-sm"><div  class="text-center" style=" font-size:12px;"> <li *ngIf="c.Mtandao == 'TPB'" style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="tpb()" >TPB</a> </span></li> <li *ngIf="c.Mtandao == 'NBC'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span> <span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="nbc()" >NBC</a> </span></li>  <li *ngIf="c.Mtandao == 'SELCOM'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="selcom()" >SELCOM</a> </span></li> <li *ngIf="c.Mtandao == 'Mpesa'" style="display:inline-block"> <span style="font-size: 20px; font-weight: 100;">|</span><span  style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="mpesa()" >M-pesa</a> </span></li> <li *ngIf="c.Mtandao == 'Tigopesa'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="tigopesa()">Tigopesa</a> </span></li><li *ngIf="c.Mtandao == 'NMB'" style="display:inline-block"> <span style="font-size: 20px; font-weight: 100;">|</span> <span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="nmb()" >Nmb</a> </span> </li></div></div> -->
+
+<div class="col-sm"><div class="text-center" style=" font-size:12px;"> <span style="padding-left:10%;" >From <input [(ngModel)]="start" style="max-width:150px; margin:center; border-radius: 5px;" type="date"> to <input [(ngModel)]="end"  style="max-width:150px; margin:center; border-radius: 5px;" type="date">  </span> <button style="background-color: rgb(176, 199, 176); border-radius: 10px;" (click)="req()">submit</button> </div></div>
+
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mkopo</h4>
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+  <!-- <br><br> -->
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+<div style="overflow: auto;">
+
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tarehe</th>
+        <th scope="col" title="Date">Jina</th>
+        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
+        <th scope="col" title="Total Payment (L+I+6)">Salio</th>
+        <th scope="col" title="Loan Repayment">Aina ya Bank</th>
+        <th scope="col" title="Interest Paid">Riba</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">Aina</th>
+        <th scope="col" title="Action">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+      <!-- <div >
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+        
+      </div> -->
+        
+      <tr  id="customers" *ngFor="let k of all let i = index" >
+          
+        <td > {{i*1 + 1*1}}</td>
+        <td > {{k.Tarehe}}</td>
+        <td style="white-space: nowrap">{{k.Jina_Mteja}}</td>
+        <td style="white-space: nowrap">{{k.Amount}}</td>
+        <td style="white-space: nowrap">{{k.Salio | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap">{{k.Mtandao_au_Benki}}</td>
+        <td style="white-space: nowrap; ">-||-</td>
+        <td style ="color:blue"><a>{{k.Process}}</a></td>
+        <td style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+        <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
+
+        <!-- <td style="color:red" ><button class="mben" (click)='run()'>delete</button></td> -->
+        <td style="color:red; border-radius: 10px;"></td>
+        <!-- <td style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td> -->
+      
+        <tr  id="customers" style="background-color: #dee2e6;">
+          
+          <td style="background-color: rgb(102, 87, 87);" > </td>
+          <td style="white-space: nowrap; font-size: 10px;"> Kuweka:{{kuweka | currency: 'tsh '}} / Kutoa:{{kutoa | currency: 'tsh '}} / Baki:{{baki | currency: 'tsh '}}</td>
+          <td style="white-space: nowrap"></td>
+          <td style="white-space: nowrap; font-size: 10px;">Total : {{sum | currency: 'tsh '}}</td>
+          <td style="white-space: nowrap"></td>
+          <td style="white-space: nowrap"></td>
+          <td style="white-space: nowrap; "></td>
+          <td style ="color:blue"><a ></a></td>
+          <td style="color:red"></td>
+          <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
+  
+          <!-- <td style="color:red" ><button class="mben" (click)='run()'>delete</button></td> -->
+          <td style="color:red"></td>
+          <!-- <td style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td> -->
+        
+  
+      <tr>
+
+      </tr>
+      <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+
+
+
+</div>
+
+
+  
+  </div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

@@ -1,0 +1,27 @@
+import { Component, OnInit } from '@angular/core';
+import { RestframeworkService } from '../apiservice/restframework.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-order-managers-wa-director',
+  templateUrl: './order-managers-wa-director.component.html',
+  styleUrls: ['./order-managers-wa-director.component.css']
+})
+export class OrderManagersWaDirectorComponent implements OnInit {
+  all;
+  constructor(public rest_framework:RestframeworkService, public router:Router) {
+    this.rest_framework.getDirectorManagerLists(localStorage.getItem('director')).then(data=>{
+      this.all = data;
+    });
+   }
+
+  ngOnInit() {
+  }
+
+  onselected(n){
+    localStorage.setItem('manager', n.user)
+    this.router.navigate(['/Orders/dashboard/workers'])
+
+  }
+
+}
