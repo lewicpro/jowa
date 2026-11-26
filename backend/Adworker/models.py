@@ -1261,7 +1261,7 @@ class DukaProductsModel(models.Model):
     status = models.CharField(max_length=120, blank=True, default='sold')
 
     def __str__(self):
-        return self.Tarehe
+        return self.Tarehe or f"#{self.pk}"
 
 class DukaCart(models.Model):
     Tarehe = models.CharField(max_length=120, blank=True, null=True)

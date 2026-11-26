@@ -39,7 +39,7 @@ class IndustryRawMaterialsModel(models.Model):
     status = models.CharField(max_length=120, blank=True, default='preserved')
 
     def __str__(self):
-        return self.Tarehe
+        return self.Tarehe or f"#{self.pk}"
 
 
 class IndustryExpensesModel(models.Model):

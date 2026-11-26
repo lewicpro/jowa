@@ -1,5 +1,4 @@
-from django.conf.urls import url
-from rest_framework_jwt.views import obtain_jwt_token
+from django.urls import re_path
 from .views import *
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -8,10 +7,10 @@ from rest_framework_simplejwt.views import (
 app_name = 'Adworker'
 urlpatterns = [
 
-    url(r'^Rawmaterial/(?P<company>.+)/$', RawmaterialView.as_view(), name='rawmaterial'),
-    url(r'^Expenses/(?P<company>.+)/$', ExpensesView.as_view(), name='expenses'),
-    url(r'^Output/(?P<company>.+)/$', OutputView.as_view(), name='output'),
-    url(r'^workers/(?P<company>.+)/$', IndustryWorkersViews.as_view(), name='workers'),
-    url(r'^loss/(?P<company>.+)/$', IndustryLossViews.as_view(), name='loss'),
-    url(r'^delete/(?P<company>.+)/(?P<section>.+)/(?P<pk>.+)/$', GenDeleteViews.as_view(), name='general'),
+    re_path(r'^Rawmaterial/(?P<company>.+)/$', RawmaterialView.as_view(), name='rawmaterial'),
+    re_path(r'^Expenses/(?P<company>.+)/$', ExpensesView.as_view(), name='expenses'),
+    re_path(r'^Output/(?P<company>.+)/$', OutputView.as_view(), name='output'),
+    re_path(r'^workers/(?P<company>.+)/$', IndustryWorkersViews.as_view(), name='workers'),
+    re_path(r'^loss/(?P<company>.+)/$', IndustryLossViews.as_view(), name='loss'),
+    re_path(r'^delete/(?P<company>.+)/(?P<section>.+)/(?P<pk>.+)/$', GenDeleteViews.as_view(), name='general'),
 ]

@@ -203,7 +203,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 import os
 # GS_CREDENTIALS = service_account.Credentials.from_service_account_file(os.path.join(BASE_DIR,'credentials.json'))
-# DEFAULT_FILE_STORAGE = 'apidjangosec.gcloud.GoogleCloudMediaFileStorage'
+# Django 4.2+ replaced DEFAULT_FILE_STORAGE with STORAGES. To re-enable Google Cloud media:
+# STORAGES = {
+#     'default': {'BACKEND': 'apidjangosec.gcloud.GoogleCloudMediaFileStorage'},
+#     'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+# }
 # GS_PROJECT_ID = 'micro-harbor-277311'
 # GS_BUCKET_NAME = 'aleco_picha'
 # MEDIA_ROOT ='media/'
@@ -220,9 +224,12 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N was removed in Django 5.0; localized formatting is now always on.
 
 USE_TZ = True
+
+# Keep integer primary keys (matches existing migrations; avoids new AutoField migrations).
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 # Static files (CSS, JavaScript, Images)

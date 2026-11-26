@@ -4569,7 +4569,7 @@ class ReportDukaSearchView(generics.CreateAPIView, generics.ListAPIView):
 		# year = self.kwargs['year']
 		if stringdate =='day':
 			if stringdate:
-				mon= re.sub("[^\w]", " ",  date).split()
+				mon= re.sub(r"[^\w]", " ",  date).split()
 				if int(mon[2]) < 10:
 					zug='0'+mon[2]
 				else:
@@ -4586,7 +4586,7 @@ class ReportDukaSearchView(generics.CreateAPIView, generics.ListAPIView):
 				return DukaProductsSalesModel.objects.filter(company=username, Tarehe__icontains=goko).order_by('-pk')
 		elif stringdate=='month':
 			if stringdate:
-				mon= re.sub("[^\w]", " ",  date).split()
+				mon= re.sub(r"[^\w]", " ",  date).split()
 				if int(mon[1]) < 10:
 					zug='0'+mon[1]
 				else:
@@ -4605,7 +4605,7 @@ class ReportDukaSearchView(generics.CreateAPIView, generics.ListAPIView):
 		
 		elif stringdate=='year':
 			if stringdate:
-				mon= re.sub("[^\w]", " ",  date).split()
+				mon= re.sub(r"[^\w]", " ",  date).split()
 				goko=mon[0]+'-'
 				# if int(mon[1]) > 9:
 				# 	goko='-'+ mon[2]

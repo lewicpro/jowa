@@ -13,15 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import include, re_path
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api/Adworker/', include('Adworker.api.urls', namespace='api-ads')),
-    url(r'^api/Industry/', include('Industry.api.urls', namespace='industry'))
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^api/Adworker/', include('Adworker.api.urls', namespace='api-ads')),
+    re_path(r'^api/Industry/', include('Industry.api.urls', namespace='industry'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 admin.site.site_header ="Ads Administration"
 admin.site.index_title = "Adsworker"
