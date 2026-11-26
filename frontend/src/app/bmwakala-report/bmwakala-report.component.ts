@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-bmwakala-report',
-  templateUrl: './bmwakala-report.component.html',
-  styleUrls: ['./bmwakala-report.component.css']
+    selector: 'app-bmwakala-report',
+    templateUrl: './bmwakala-report.component.html',
+    styleUrls: ['./bmwakala-report.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class BmwakalaReportComponent {
   users;

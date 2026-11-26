@@ -37,25 +37,26 @@
 
         <tr style="cursor:pointer" id="customers">
           <td class="text-center" ></td>
-            <td class="text-center" ><input #Tarehe style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
-            <td style="white-space: nowrap"><input #jina style="border-radius:3px; width:100%"  type="text" placeholder="*Important" [value]="user"></td>
-            <td><input #Amount  style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
-            <td><input #description style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td class="text-center" ><input #Tarehe style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
+          <td style="white-space: nowrap"><input #jina style="border-radius:3px; width:100%"  type="text" placeholder="*Important" [value]="user"></td>
+          <td><input #Amount  style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+          <td><input #description style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
 
-            <td><a (click)="openModal(Tarehe.value, Amount.value, jina.value, description.value, template)">Tunza</a></td>
-            </tr>
+          <td><a (click)="openModal(Tarehe.value, Amount.value, jina.value, description.value, template)">Tunza</a></td>
+        </tr>
 
 
-            <tr class="youo" *ngFor="let a of all">
-              <td nowrap class="youo"> 1</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-              <td class="youo"  >{{a.Amount}}</td>
-              <td class="youo"  >{{a.Description}}</td>
-              <td class="youo" style="color:red; cursor: pointer;"  (click)="openModal2(template2, a.pk)">Delete</td>
-              <!-- <td class="youo"  ></td> -->
-
+        @for (a of all; track a) {
+          <tr class="youo">
+            <td nowrap class="youo"> 1</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
+            <td class="youo"  >{{a.Amount}}</td>
+            <td class="youo"  >{{a.Description}}</td>
+            <td class="youo" style="color:red; cursor: pointer;"  (click)="openModal2(template2, a.pk)">Delete</td>
+            <!-- <td class="youo"  ></td> -->
           </tr>
+        }
 
 
       </tbody>
@@ -64,5 +65,5 @@
 
   </div>
 
-  </div>
+</div>
 

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
-import { Route } from '@angular/compiler/src/core';
 
 @Component({
-  selector: 'app-nyumba-wadaiwa',
-  templateUrl: './nyumba-wadaiwa.component.html',
-  styleUrls: ['./nyumba-wadaiwa.component.css']
+    selector: 'app-nyumba-wadaiwa',
+    templateUrl: './nyumba-wadaiwa.component.html',
+    styleUrls: ['./nyumba-wadaiwa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaWadaiwaComponent implements OnInit {
   users;

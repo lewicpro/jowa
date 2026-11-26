@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-owner-malipo',
-  templateUrl: './owner-malipo.component.html',
-  styleUrls: ['./owner-malipo.component.css']
+    selector: 'app-owner-malipo',
+    templateUrl: './owner-malipo.component.html',
+    styleUrls: ['./owner-malipo.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerMalipoComponent {
   malipo;

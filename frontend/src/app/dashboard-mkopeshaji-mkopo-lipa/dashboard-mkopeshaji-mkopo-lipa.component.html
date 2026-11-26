@@ -2,7 +2,7 @@
 <ng-progress></ng-progress>
 <div class="d-flex justify-content-center">
   <mat-form-field style="width:40%">
-  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
   </mat-form-field>
   <!-- <button (click)="time()">click</button> -->
 </div>
@@ -35,50 +35,59 @@
     </thead>
     <tbody >
       <!-- <div >
-        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+      <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
 
-      </div> -->
-        <tr style="cursor:pointer" id="customers">
-            <td class="text-center" >id </td>
-            <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
-            <td style="white-space: nowrap">{{jinalote}}</td>
-            <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
-            <td><input [(ngModel)]="men" style="border-radius:3px;" [value]="bwoy" type="text"></td>
-            <td><input type="number" style="border-radius:3px;"></td>
-            <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number"></td>
-            <td><a (click)="openModal(template)"  >Tunza</a></td>
-          </tr>
-      <tr  id="customers" *ngFor="let k of malipouser2; let i = index" >
+    </div> -->
+    <tr style="cursor:pointer" id="customers">
+      <td class="text-center" >id </td>
+      <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+      <td style="white-space: nowrap">{{jinalote}}</td>
+      <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+      <td><input [(ngModel)]="men" style="border-radius:3px;" [value]="bwoy" type="text"></td>
+      <td><input type="number" style="border-radius:3px;"></td>
+      <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number"></td>
+      <td><a (click)="openModal(template)"  >Tunza</a></td>
+    </tr>
+    @for (k of malipouser2; track k; let i = $index) {
+      <tr  id="customers" >
         <td > {{i*1 + 1*1}}</td>
         <td style="background:#e0dfe098"> {{k.tarehe}}</td>
         <td  style="white-space: nowrap">{{k.jina}}</td>
         <td  style="white-space: nowrap">{{k.loan_repay | currency: 'tsh '}}</td>
         <td  style="white-space: nowrap">{{k.awamu}}</td>
         <td  style="white-space: nowrap; ">-||-</td>
-        <td *ngIf="k.rangi ==='blue' "   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td>
-        <td *ngIf="k.rangi ==='red' "  style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+        @if (k.rangi ==='blue' ) {
+          <td   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td>
+        }
+        @if (k.rangi ==='red' ) {
+          <td  style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+        }
         <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
-
-        <td *ngIf="k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run1(k)'>delete</button></td>
-        <td *ngIf="k.info !== 'delete' && k.info !== 'deleted'"   style="color:red"></td>
-        <td *ngIf="k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
-
-
+        @if (k.info === 'delete';) {
+          <td   style="color:red" ><button class="mben" (click)='run1(k)'>delete</button></td>
+        }
+        @if (k.info !== 'delete' && k.info !== 'deleted') {
+          <td   style="color:red"></td>
+        }
+        @if (k.info === 'deleted';) {
+          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+        }
       </tr>
-      <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
-  </div>
+    }
+    <!--<tr id="customers">-->
+    <!--<td scope="row">2</td>-->
+    <!--<td>BA</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+  <!--<tr id="customers">-->
+  <!--<td scope="row">3</td>-->
+  <!--<td>Accountancy</td>-->
+  <!--<td>3</td>-->
+  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+</div>
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

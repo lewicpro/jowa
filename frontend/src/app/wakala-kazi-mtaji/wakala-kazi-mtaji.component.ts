@@ -1,12 +1,14 @@
-import { Component, OnInit, TemplateRef} from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { WorkersDashboardComponent } from '../workers-dashboard/workers-dashboard.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-wakala-kazi-mtaji',
-  templateUrl: './wakala-kazi-mtaji.component.html',
-  styleUrls: ['./wakala-kazi-mtaji.component.css']
+    selector: 'app-wakala-kazi-mtaji',
+    templateUrl: './wakala-kazi-mtaji.component.html',
+    styleUrls: ['./wakala-kazi-mtaji.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaKaziMtajiComponent implements OnInit {
   options;
@@ -124,7 +126,7 @@ export class WakalaKaziMtajiComponent implements OnInit {
    }
    calculate(){
     // this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;

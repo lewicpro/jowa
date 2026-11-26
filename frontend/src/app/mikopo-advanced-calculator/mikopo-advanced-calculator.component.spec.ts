@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MikopoAdvancedCalculatorComponent } from './mikopo-advanced-calculator.component';
 
@@ -6,7 +6,7 @@ describe('MikopoAdvancedCalculatorComponent', () => {
   let component: MikopoAdvancedCalculatorComponent;
   let fixture: ComponentFixture<MikopoAdvancedCalculatorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MikopoAdvancedCalculatorComponent ]
     })

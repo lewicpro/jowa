@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReceiptComponent } from '../receipt/receipt.component';
 import { NgProgress } from 'ngx-progressbar';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { RestframeworkService } from '../apiservice/restframework.service';
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 import { WorkersDashboardComponent } from '../workers-dashboard/workers-dashboard.component';
 
 @Component({
-  selector: 'app-workers-kuweka',
-  templateUrl: './workers-kuweka.component.html',
-  styleUrls: ['./workers-kuweka.component.css']
+    selector: 'app-workers-kuweka',
+    templateUrl: './workers-kuweka.component.html',
+    styleUrls: ['./workers-kuweka.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkersKuwekaComponent implements OnInit {
   options;
@@ -138,7 +140,7 @@ export class WorkersKuwekaComponent implements OnInit {
    }
    calculate(){
     // this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;
@@ -180,7 +182,7 @@ export class WorkersKuwekaComponent implements OnInit {
     })
     //  this.clean();
   
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

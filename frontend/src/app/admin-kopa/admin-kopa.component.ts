@@ -1,18 +1,19 @@
-import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '../../../node_modules/@angular/router';
-import { MatSnackBar } from '../../../node_modules/@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgProgress } from 'ngx-progressbar';
 import { ReceiptComponent } from '../receipt/receipt.component';
-import * as jsPDF from 'jspdf';
 @Component({
-  selector: 'app-admin-kopa',
-  templateUrl: './admin-kopa.component.html',
-  styleUrls: ['./admin-kopa.component.css']
+    selector: 'app-admin-kopa',
+    templateUrl: './admin-kopa.component.html',
+    styleUrls: ['./admin-kopa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AdminKopaComponent implements OnInit {
   @Output() OutputValues = new EventEmitter()
@@ -90,7 +91,7 @@ export class AdminKopaComponent implements OnInit {
   moxt
 
   constructor(private modalService: BsModalService, public receiptComponet:ReceiptComponent, public ngProgress: NgProgress, public snackbar: MatSnackBar, public detailsview:DetailsViewComponent, public pubdetailsview:AdminDashboardComponent, public restframework: RestframeworkService, public router: Router) {
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     this.lservice_officer= localStorage.getItem('lservice_officer')
     // console.log('user: ' + this.lservice_officer)
     this.dataget();
@@ -103,7 +104,7 @@ export class AdminKopaComponent implements OnInit {
     this.times = this.d.getDate() + "/" + this.moxt + "/" +this.d.getFullYear() + "  ||  " + this.hour + ":" + this.min + ":" + this.sec
     // this.mdaa = this.times
   
-    this.ngProgress.done()
+    this.ngProgress.ref().complete()
 
 
    }
@@ -252,7 +253,7 @@ time(){
 
 
   tuma() {
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     
     // console.log('passed');
     
@@ -273,14 +274,14 @@ time(){
       
       this.thisfunct();
       this.mona()
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
       
       }, (err) => {
         this.openSnackbarerror()
 
       });
 
-      this.ngProgress.done()
+      this.ngProgress.ref().complete()
 
   }
 
@@ -306,7 +307,7 @@ time(){
   calculate() {
 
       this.time();
-      // this.ngProgress.start();
+      // this.ngProgress.ref().start();
     if(this.mopai){
       console.log('remainder1: '+ this.times)
       this.mdaa = this.mopai;
@@ -411,7 +412,7 @@ time(){
     //  this.clean();
       this.thisfunct();
       this.mona();
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

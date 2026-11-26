@@ -1,11 +1,13 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-worker-matumizi',
-  templateUrl: './worker-matumizi.component.html',
-  styleUrls: ['./worker-matumizi.component.css']
+    selector: 'app-worker-matumizi',
+    templateUrl: './worker-matumizi.component.html',
+    styleUrls: ['./worker-matumizi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkerMatumiziComponent implements OnInit {
   all;
@@ -63,7 +65,7 @@ export class WorkerMatumiziComponent implements OnInit {
    }
    calculate(){
     // this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;
@@ -101,7 +103,7 @@ export class WorkerMatumiziComponent implements OnInit {
     })
     //  this.clean();
   
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

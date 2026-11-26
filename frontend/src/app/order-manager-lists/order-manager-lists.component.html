@@ -3,65 +3,70 @@
 <div class="d-flex justify-content-center">
   <!-- <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field> -->
-  
+</mat-form-field> -->
+
 </div>
 
 <!-- <button (click)="wow()">ddd</button> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)" id="componentID">
- 
+
   <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> ALL ORDERS </h4>
   <div style="max-height:400px; overflow:auto" >
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-    <thead>
-      <tr>
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
         <tr>
-          <th style="padding-left:10px;">Time</th>
-          <!-- <th style="padding-left:10px;">pk</th> -->
-          <th>User</th>
-          <th>Name</th>
-          <th>Poduct</th>
-          <th>Number</th>
-          <th>Phone</th>
-          <th>Officer</th>
-    
-          <th>Remained</th>
-          <th>Type</th>
-          <th></th>
-          <th></th>
-      </tr>
-      <!-- </tr> -->
-    </thead>
-    <tbody>
-      <tr  *ngFor="let m of all" style="overflow-x:scroll;" >
-        <td style="padding-left:10px;" class="youo" nowrap>{{m.Tarehe}}</td>
-        <td  nowrap>{{m.user}}</td>
-        <td  nowrap>{{m.jina_kamili}}</td>
-        <td  nowrap>{{m.Name_of_the_product}}</td>
-        <td  nowrap>{{m.Number_of_products}}</td>
-        <td  nowrap>{{m.Phone}}</td>
-        <td   nowrap>{{m.Officer_worker}}</td>
+          <tr>
+            <th style="padding-left:10px;">Time</th>
+            <!-- <th style="padding-left:10px;">pk</th> -->
+            <th>User</th>
+            <th>Name</th>
+            <th>Poduct</th>
+            <th>Number</th>
+            <th>Phone</th>
+            <th>Officer</th>
 
-        <td  nowrap>{{m.Number_of_products}}</td>
-        <td  nowrap>{{m.Type}}</td>
-        <td *ngIf="m.status === 'pending'" style="color:green; cursor: pointer;" (click)="Approve(m)" nowrap>Approve</td>
-        <td *ngIf="m.status === 'approved'" style="background:green; color:white; cursor: pointer;" nowrap>Approved</td>
-        <td style="color:red; cursor: pointer;" nowrap>Disapprove</td>
-      <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      </tr>
+            <th>Remained</th>
+            <th>Type</th>
+            <th></th>
+            <th></th>
+          </tr>
+        <!-- </tr> -->
+      </thead>
+      <tbody>
+        @for (m of all; track m) {
+          <tr  style="overflow-x:scroll;" >
+            <td style="padding-left:10px;" class="youo" nowrap>{{m.Tarehe}}</td>
+            <td  nowrap>{{m.user}}</td>
+            <td  nowrap>{{m.jina_kamili}}</td>
+            <td  nowrap>{{m.Name_of_the_product}}</td>
+            <td  nowrap>{{m.Number_of_products}}</td>
+            <td  nowrap>{{m.Phone}}</td>
+            <td   nowrap>{{m.Officer_worker}}</td>
+            <td  nowrap>{{m.Number_of_products}}</td>
+            <td  nowrap>{{m.Type}}</td>
+            @if (m.status === 'pending') {
+              <td style="color:green; cursor: pointer;" (click)="Approve(m)" nowrap>Approve</td>
+            }
+            @if (m.status === 'approved') {
+              <td style="background:green; color:white; cursor: pointer;" nowrap>Approved</td>
+            }
+            <td style="color:red; cursor: pointer;" nowrap>Disapprove</td>
+            <!--<tr id="customers">-->
+            <!--<td scope="row">2</td>-->
+            <!--<td>BA</td>-->
+            <!--<td>3</td>-->
+            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+          <!--</tr>-->
+          <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        </tr>
+      }
     </tbody>
   </table>
-  
+
 </div>
 </div>
 <!-- <div style="text-align: center; padding-top:10px"><button (click)="printe()">print all clients</button></div> -->

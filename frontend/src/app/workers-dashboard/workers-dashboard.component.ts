@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-workers-dashboard',
-  templateUrl: './workers-dashboard.component.html',
-  styleUrls: ['./workers-dashboard.component.css']
+    selector: 'app-workers-dashboard',
+    templateUrl: './workers-dashboard.component.html',
+    styleUrls: ['./workers-dashboard.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkersDashboardComponent implements OnInit {
   

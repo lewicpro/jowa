@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-orders-managers-products',
-  templateUrl: './orders-managers-products.component.html',
-  styleUrls: ['./orders-managers-products.component.css']
+    selector: 'app-orders-managers-products',
+    templateUrl: './orders-managers-products.component.html',
+    styleUrls: ['./orders-managers-products.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersManagersProductsComponent implements OnInit {
   all;

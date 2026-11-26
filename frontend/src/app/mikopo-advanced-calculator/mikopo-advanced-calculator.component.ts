@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-mikopo-advanced-calculator',
-  templateUrl: './mikopo-advanced-calculator.component.html',
-  styleUrls: ['./mikopo-advanced-calculator.component.css']
+    selector: 'app-mikopo-advanced-calculator',
+    templateUrl: './mikopo-advanced-calculator.component.html',
+    styleUrls: ['./mikopo-advanced-calculator.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MikopoAdvancedCalculatorComponent implements OnInit {
   periodval;

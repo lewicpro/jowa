@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-siku-deteils',
-  templateUrl: './siku-deteils.component.html',
-  styleUrls: ['./siku-deteils.component.css']
+    selector: 'app-siku-deteils',
+    templateUrl: './siku-deteils.component.html',
+    styleUrls: ['./siku-deteils.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SikuDeteilsComponent implements OnInit {
   all;

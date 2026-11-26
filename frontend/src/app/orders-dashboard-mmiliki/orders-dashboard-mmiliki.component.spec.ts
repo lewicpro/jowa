@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OrdersDashboardMmilikiComponent } from './orders-dashboard-mmiliki.component';
 
@@ -6,7 +6,7 @@ describe('OrdersDashboardMmilikiComponent', () => {
   let component: OrdersDashboardMmilikiComponent;
   let fixture: ComponentFixture<OrdersDashboardMmilikiComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OrdersDashboardMmilikiComponent ]
     })

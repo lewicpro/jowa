@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-mmiliki-details',
-  templateUrl: './mmiliki-details.component.html',
-  styleUrls: ['./mmiliki-details.component.css']
+    selector: 'app-mmiliki-details',
+    templateUrl: './mmiliki-details.component.html',
+    styleUrls: ['./mmiliki-details.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MmilikiDetailsComponent implements OnInit {
   details;

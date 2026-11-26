@@ -1,5 +1,9 @@
 <div class="row " >
-    <div class="" style="padding-top:5px;" *ngFor="let m of alls">
-        <img class="" *ngIf="m.user === user" width="265px;" #image height="160px" [src]="m.Atm" aria-hidden="true">
+  @for (m of alls; track m) {
+    <div class="" style="padding-top:5px;">
+      @if (m.user === user) {
+        <img class="" width="265px;" #image height="160px" [src]="m.Atm" aria-hidden="true">
+      }
     </div>
-  </div>
+  }
+</div>

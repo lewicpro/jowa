@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ReceiptComponent } from '../receipt/receipt.component';
 import { NgProgress } from 'ngx-progressbar';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { RestframeworkService } from '../apiservice/restframework.service';
@@ -11,9 +11,11 @@ import { EventEmitter } from 'protractor';
 import { DasboardMkopeshajiComponent } from '../dasboard-mkopeshaji/dasboard-mkopeshaji.component';
 
 @Component({
-  selector: 'app-dashboard-mkopeshaji-mkopo-lipa',
-  templateUrl: './dashboard-mkopeshaji-mkopo-lipa.component.html',
-  styleUrls: ['./dashboard-mkopeshaji-mkopo-lipa.component.css']
+    selector: 'app-dashboard-mkopeshaji-mkopo-lipa',
+    templateUrl: './dashboard-mkopeshaji-mkopo-lipa.component.html',
+    styleUrls: ['./dashboard-mkopeshaji-mkopo-lipa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DashboardMkopeshajiMkopoLipaComponent implements OnInit {
   // @Output() OutputValues = new EventEmitter()
@@ -95,7 +97,7 @@ export class DashboardMkopeshajiMkopoLipaComponent implements OnInit {
   moxt
 
   constructor(private modalService: BsModalService, public receiptComponet:ReceiptComponent, public ngProgress: NgProgress, public snackbar: MatSnackBar, public detailsview:DetailsViewComponent, public pubdetailsview:DasboardMkopeshajiComponent, public restframework: RestframeworkService, public router: Router) {
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     this.company_username = localStorage.getItem('company_username')
 
     this.datar = localStorage.getItem('id');
@@ -114,13 +116,13 @@ export class DashboardMkopeshajiMkopoLipaComponent implements OnInit {
 
 
 
-    this.ngProgress.done()
+    this.ngProgress.ref().complete()
 
 
    }
 
    dataget(){
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
 
      //  alert('Ready');
   console.log('first one');
@@ -144,7 +146,7 @@ export class DashboardMkopeshajiMkopoLipaComponent implements OnInit {
 
 
     }
-    this.ngProgress.done()
+    this.ngProgress.ref().complete()
 
   })
 
@@ -219,7 +221,7 @@ time(){
 
   tuma() {
     console.log('moja')
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     this.userData = {
       'user': this.username,
       'jina': this.jinalote,
@@ -266,7 +268,7 @@ time(){
       this.thisfunct();
       // this.dataget();
       // this.dataget();
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
       }, (err) => {
         this.openSnackbarerror()
@@ -281,7 +283,7 @@ time(){
 
 
 
-      this.ngProgress.done()
+      this.ngProgress.ref().complete()
 
   }
 
@@ -370,7 +372,7 @@ time(){
     //  this.clean();
       this.thisfunct();
       this.mona();
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 
@@ -408,7 +410,7 @@ time(){
     //  this.clean();
       this.thisfunct();
       this.mona();
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 

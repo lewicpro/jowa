@@ -1,7 +1,7 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { NgProgress } from 'ngx-progressbar';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { RestframeworkService } from '../apiservice/restframework.service';
@@ -11,9 +11,11 @@ import { OpenSnackserrorComponent } from '../open-snackserror/open-snackserror.c
 import { DasboardMkopeshajiComponent } from '../dasboard-mkopeshaji/dasboard-mkopeshaji.component';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji-ongeza-mkopo',
-  templateUrl: './dasboard-mkopeshaji-ongeza-mkopo.component.html',
-  styleUrls: ['./dasboard-mkopeshaji-ongeza-mkopo.component.css']
+    selector: 'app-dasboard-mkopeshaji-ongeza-mkopo',
+    templateUrl: './dasboard-mkopeshaji-ongeza-mkopo.component.html',
+    styleUrls: ['./dasboard-mkopeshaji-ongeza-mkopo.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiOngezaMkopoComponent implements OnInit {
   totalAmount: number;
@@ -1943,7 +1945,7 @@ openSnacks() {
 Register() {
 
 
-  this.ngProgress.start();
+  this.ngProgress.ref().start();
 
   this.restframework.getLoginPosts(this.mambos, 'Mkopo/').then((result) => {
     this.RecordNote();
@@ -1954,7 +1956,7 @@ Register() {
     this.openSnacks();
     this.moni()
     this.router.navigate(['/Sub/Details/Mkopoadmin'])
-    this.ngProgress.done();
+    this.ngProgress.ref().complete();
     }, (err) => {
       console.log(err)
 
@@ -1965,7 +1967,7 @@ Register() {
 
 RecordNote() {
 
-  // this.ngProgress.start();
+  // this.ngProgress.ref().start();
   //.log('passed Record note');
   this.restframework.getLoginPosts(this.note, 'Malipo/').then((result) => {
     this.responseData = result;
@@ -1975,7 +1977,7 @@ RecordNote() {
     // localStorage.setItem('userData2', this.responseData);
     // localStorage.setItem('user', this.userData.Username);
     // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-    // this.ngProgress.done();
+    // this.ngProgress.ref().complete();
     }, (err) => {
       alert('error');
 

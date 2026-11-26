@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-infos',
-  templateUrl: './infos.component.html',
-  styleUrls: ['./infos.component.css']
+    selector: 'app-infos',
+    templateUrl: './infos.component.html',
+    styleUrls: ['./infos.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class InfosComponent implements OnInit {
   malipo;

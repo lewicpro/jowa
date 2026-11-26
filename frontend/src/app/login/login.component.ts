@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Route, Router } from '../../../node_modules/@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
-import { interval } from 'rxjs/observable/interval';
+import { interval } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
 import * as CryptoJS from 'crypto-js';
 import sha256 from 'crypto-js/sha256';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class LoginComponent{
 
@@ -165,7 +166,7 @@ export class LoginComponent{
 
 
   ogin() {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframeworkservice.getLoginPosts(this.userData, 'api/auth/token-auth/').then((result) => {
         this.responseData = result;
 
@@ -325,7 +326,7 @@ export class LoginComponent{
           //   console.log(this.say)
           // }
   });
-  this.ngProgress.done();
+  this.ngProgress.ref().complete();
 
 
 
@@ -748,7 +749,7 @@ company_names(){
 
 
   loginUpgraded(){
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframeworkservice.getLoginPosts(this.userData, 'loginPuzzle').then((result) => {
         this.responseData = result;
       }, (err) => {

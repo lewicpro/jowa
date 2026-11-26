@@ -1,13 +1,13 @@
 
 
 <!-- <div class="d-flex justify-content-center">
-    <mat-form-field style="width:40%">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-    </mat-form-field>
-  </div> -->
-  <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WAMILIKI WA NYUMBA</h4>
-    <div style="max-height:400px; overflow:auto">
+<mat-form-field style="width:40%">
+  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+</mat-form-field>
+</div> -->
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WAMILIKI WA NYUMBA</h4>
+  <div style="max-height:400px; overflow:auto">
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <tr>
@@ -22,43 +22,59 @@
           <th scope="col">kata</th>
           <th scope="col">wilaya</th>
           <th scope="col">mkoa</th>
-       
+
         </tr>
       </thead>
       <tbody>
-        <tr style="cursor:pointer" id="customers" *ngFor="let form of users | myfilter; let i = index" (click)="onselected(form)">
-          <!-- <td scope="row">{{i*1 + 1*1}}</td> -->
-          <td  *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.Simu}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.Balance}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.Jumla_malipo}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.Madai}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.Account_no}}</td>
-         
-          <!-- <td>{{form.ofisi}}</td> -->
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.kata | titlecase}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.wilaya | titlecase}}</td>
-          <td *ngIf="form.privs === 'HouseOwner'" nowrap>{{form.mkoa | titlecase}}</td>
-  
-        
-   
-        </tr>
+        @for (form of users | myfilter; track form; let i = $index) {
+          <tr style="cursor:pointer" id="customers" (click)="onselected(form)">
+            <!-- <td scope="row">{{i*1 + 1*1}}</td> -->
+            @if (form.privs === 'HouseOwner') {
+              <td  nowrap>{{form.jina | titlecase}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.Simu}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.Balance}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.Jumla_malipo}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.Madai}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.Account_no}}</td>
+            }
+            <!-- <td>{{form.ofisi}}</td> -->
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.kata | titlecase}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.wilaya | titlecase}}</td>
+            }
+            @if (form.privs === 'HouseOwner') {
+              <td nowrap>{{form.mkoa | titlecase}}</td>
+            }
+          </tr>
+        }
         <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
-    
-  </div>
-    </div>
-  
-  <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+      <!--<td scope="row">3</td>-->
+      <!--<td>Accountancy</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+  </tbody>
+</table>
+
+</div>
+</div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

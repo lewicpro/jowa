@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-nyumba',
-  templateUrl: './nyumba.component.html',
-  styleUrls: ['./nyumba.component.css']
+    selector: 'app-nyumba',
+    templateUrl: './nyumba.component.html',
+    styleUrls: ['./nyumba.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaComponent {
   users;

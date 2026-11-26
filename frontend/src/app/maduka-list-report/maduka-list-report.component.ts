@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-maduka-list-report',
-  templateUrl: './maduka-list-report.component.html',
-  styleUrls: ['./maduka-list-report.component.css']
+    selector: 'app-maduka-list-report',
+    templateUrl: './maduka-list-report.component.html',
+    styleUrls: ['./maduka-list-report.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaListReportComponent implements OnInit {
   all;

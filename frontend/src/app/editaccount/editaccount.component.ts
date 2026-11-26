@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-editaccount',
-  templateUrl: './editaccount.component.html',
-  styleUrls: ['./editaccount.component.css']
+    selector: 'app-editaccount',
+    templateUrl: './editaccount.component.html',
+    styleUrls: ['./editaccount.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class EditaccountComponent implements OnInit {
   userData;

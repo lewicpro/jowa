@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-duka-moventent',
-  templateUrl: './duka-moventent.component.html',
-  styleUrls: ['./duka-moventent.component.css']
+    selector: 'app-duka-moventent',
+    templateUrl: './duka-moventent.component.html',
+    styleUrls: ['./duka-moventent.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaMovententComponent implements OnInit {
   alldata;

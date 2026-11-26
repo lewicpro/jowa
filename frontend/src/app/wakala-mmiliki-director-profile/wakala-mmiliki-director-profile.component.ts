@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-wakala-mmiliki-director-profile',
-  templateUrl: './wakala-mmiliki-director-profile.component.html',
-  styleUrls: ['./wakala-mmiliki-director-profile.component.css']
+    selector: 'app-wakala-mmiliki-director-profile',
+    templateUrl: './wakala-mmiliki-director-profile.component.html',
+    styleUrls: ['./wakala-mmiliki-director-profile.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaMmilikiDirectorProfileComponent implements OnInit {
   all;

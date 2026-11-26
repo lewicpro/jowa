@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OrderManagerMatumiziComponent } from './order-manager-matumizi.component';
 
@@ -6,7 +6,7 @@ describe('OrderManagerMatumiziComponent', () => {
   let component: OrderManagerMatumiziComponent;
   let fixture: ComponentFixture<OrderManagerMatumiziComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OrderManagerMatumiziComponent ]
     })

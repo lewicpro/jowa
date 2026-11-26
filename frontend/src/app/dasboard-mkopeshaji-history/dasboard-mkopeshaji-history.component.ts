@@ -1,17 +1,19 @@
-import { Component, OnInit, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReceiptComponent } from '../receipt/receipt.component';
 import { NgProgress } from 'ngx-progressbar';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji-history',
-  templateUrl: './dasboard-mkopeshaji-history.component.html',
-  styleUrls: ['./dasboard-mkopeshaji-history.component.css']
+    selector: 'app-dasboard-mkopeshaji-history',
+    templateUrl: './dasboard-mkopeshaji-history.component.html',
+    styleUrls: ['./dasboard-mkopeshaji-history.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiHistoryComponent implements OnInit {
 
@@ -90,7 +92,7 @@ export class DasboardMkopeshajiHistoryComponent implements OnInit {
   moxt
 
   constructor(private modalService: BsModalService, public receiptComponet:ReceiptComponent, public ngProgress: NgProgress, public snackbar: MatSnackBar, public detailsview:DetailsViewComponent, public pubdetailsview:AdminDashboardComponent, public restframework: RestframeworkService, public router: Router) {
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     this.company_user = localStorage.getItem('company_username')
     // console.log(this.company_user)
     this.lservice_officer= localStorage.getItem('lservice_officer')
@@ -105,7 +107,7 @@ export class DasboardMkopeshajiHistoryComponent implements OnInit {
     this.times = this.d.getDate() + "/" + this.moxt + "/" +this.d.getFullYear() + "  ||  " + this.hour + ":" + this.min + ":" + this.sec
     // this.mdaa = this.times
   
-    this.ngProgress.done()
+    this.ngProgress.ref().complete()
 
 
    }
@@ -255,7 +257,7 @@ time(){
 
 
   tuma() {
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     
     // console.log('passed');
     
@@ -276,14 +278,14 @@ time(){
       
       this.thisfunct();
       this.mona()
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
       
       }, (err) => {
         this.openSnackbarerror()
 
       });
 
-      this.ngProgress.done()
+      this.ngProgress.ref().complete()
 
   }
 
@@ -307,7 +309,7 @@ time(){
     console.log('cala:'+this.company_user)
 
       this.time();
-      // this.ngProgress.start();
+      // this.ngProgress.ref().start();
     if(this.mopai){
       console.log('remainder1: '+ this.times)
       this.mdaa = this.mopai;
@@ -413,7 +415,7 @@ time(){
     //  this.clean();
       this.thisfunct();
       this.mona();
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

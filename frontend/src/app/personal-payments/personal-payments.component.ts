@@ -1,18 +1,20 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { PersonalNyumbaDetailsComponent } from '../personal-nyumba-details/personal-nyumba-details.component';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgProgress } from 'ngx-progressbar';
 import { NyumbaIdentityComponent } from '../nyumba-identity/nyumba-identity.component';
 import { NyumbaConnectorComponent } from '../nyumba-connector/nyumba-connector.component';
 
 @Component({
-  selector: 'app-personal-payments',
-  templateUrl: './personal-payments.component.html',
-  styleUrls: ['./personal-payments.component.css']
+    selector: 'app-personal-payments',
+    templateUrl: './personal-payments.component.html',
+    styleUrls: ['./personal-payments.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PersonalPaymentsComponent implements OnInit {
   values;
@@ -102,7 +104,7 @@ export class PersonalPaymentsComponent implements OnInit {
   }
   calculate(){
     this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;
@@ -283,7 +285,7 @@ export class PersonalPaymentsComponent implements OnInit {
 
 
   run(){
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.Create={
       name:this.name,
       mwezi:this.getMwezi,
@@ -319,7 +321,7 @@ export class PersonalPaymentsComponent implements OnInit {
         alert('error');
  
       });
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
   
 
   
@@ -335,7 +337,7 @@ export class PersonalPaymentsComponent implements OnInit {
     
   }}
   save(){
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     if (this.malipo > 0){
       
       this.rest_framework.wapangajiPost(this.Created, 'wapangaji/').then((result) => {
@@ -355,7 +357,7 @@ export class PersonalPaymentsComponent implements OnInit {
           alert('error');
    
         });
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
 
     }
     else{

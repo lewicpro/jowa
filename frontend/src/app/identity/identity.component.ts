@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-identity',
-  templateUrl: './identity.component.html',
-  styleUrls: ['./identity.component.css']
+    selector: 'app-identity',
+    templateUrl: './identity.component.html',
+    styleUrls: ['./identity.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class IdentityComponent implements OnInit {
   imageUrl;

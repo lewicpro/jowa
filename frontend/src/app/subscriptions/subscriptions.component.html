@@ -2,1306 +2,1254 @@
 <div (window:resize)="onResize($event)">
 
   <div  style="background-image: url(/assets/images/subscription.png); min-height:600px; background-repeat: no-repeat; background-size: cover;" onshow="onResize($event)">
-    <div *ngIf="colspan > 1397">
-
-
-      <div *ngIf="call ==='loan'">
-        <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
-          <div style="margin-right:30%;">
-            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">LOAN</h5>
-          </div>
-
-
-
-
-          <div style="padding-top:100px"></div>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-          <div class="contain">
-            <div class="card fade-in11">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
-
-          <div class="contain">
-            <div class="card fade-in12" style="height:600px; width:400px">
-                  <div class="card-header1" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
+    @if (colspan > 1397) {
+      <div>
+        @if (call ==='loan') {
+          <div>
+            <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
+              <div style="margin-right:30%;">
+                <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">LOAN</h5>
+              </div>
+              <div style="padding-top:100px"></div>
+              <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+                <div class="contain">
+                  <div class="card fade-in11">
+                    <div class="card-header" style="padding-top:30px;">
+                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
                       <div style="padding:5px"></div>
                       <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
                       <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li>Monthly Statistics</li>
-                          <li>Yeary statistics </li>
-                          <li>Location tracker </li>
-                          <li>Sinza mori, Dar es salaam(<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
-                          <span class="bac-text1">FAS</span>
-                      </div>
+                    </div>
+                    <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                      <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                    </li>
+                    <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                    <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                    <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                    <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                    <hr style="width:200px; border-top: 1px solid #ccc;">
+                    <li><a style="cursor: pointer;" >More</a> </li>
+                    <span class="bac-text">FAS</span>
                   </div>
                 </div>
-              </mat-grid-tile>
-
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-
-
-         <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
-          <mat-nav-list style="width: 400px;">
-            <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-          </mat-nav-list>
-
-
-
-        </mat-grid-tile>
-
-
-        </mat-grid-list>
-
-
-      </div>
-      <div *ngIf="call ==='realestate'">
-
-        <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
-          <div style="margin-right:30%;">
-            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">REAL ESTATE</h5>
-          </div>
-        <div *ngIf="colspan > 1397">
-
-          <div style="padding-top:100px"></div>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-          <div class="contain">
-            <div class="card fade-in11">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
-
-          <div class="contain">
-            <div class="card fade-in12" style="height:600px; width:400px">
+              </div>
+            </mat-grid-tile>
+            <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
+              <div class="contain">
+                <div class="card fade-in12" style="height:600px; width:400px">
                   <div class="card-header1" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li>Monthly Statistics</li>
-                          <li>Yeary statistics </li>
-                          <li>Location tracker </li>
-                          <li>Sinza mori, Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
-                          <span class="bac-text1">FAS</span>
-                      </div>
-                  </div>
-                </div>
-              </mat-grid-tile>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+                    <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
+                    <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
                     <div style="padding:5px"></div>
                     <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
+                    <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
+                    <hr style="width:50px; border-top: 1px solid #ccc;">
                   </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-
-
-         <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
-          <mat-nav-list style="width: 400px;">
-            <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-          </mat-nav-list>
-
-
-
-        </mat-grid-tile>
-      </div>
-
-        </mat-grid-list>
-
-
-      </div>
-      <div *ngIf="call ==='shop'">
-        <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
-          <div style="margin-right:30%;">
-            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">SHOP</h5>
-          </div>
-        <div *ngIf="colspan > 1397">
-
-          <div style="padding-top:100px"></div>
-         <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
-          <div style="background: silver; border-radius:10px; width:100%; ">
-            <h5 style="text-align: center; color: white;">Loan</h5>
-            <div style="padding-top:1px">
-              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
-              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
+                  <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                    <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                  </li>
+                  <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <hr style="width:200px; border-top: 1px solid #ccc;">
+                  <li>Monthly Statistics</li>
+                  <li>Yeary statistics </li>
+                  <li>Location tracker </li>
+                  <li>Sinza mori, Dar es salaam(<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
+                  <span class="bac-text1">FAS</span>
+                </div>
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+            <div class="contain">
+              <div class="card fade-in13">
+                <div class="card-header" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li><a style="cursor: pointer;" >More</a> </li>
+                <span class="bac-text">FAS</span>
+              </div>
             </div>
           </div>
-
-        </mat-grid-tile> -->
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-          <div class="contain">
-            <div class="card fade-in11">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 20,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
         </mat-grid-tile>
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
-
-          <div class="contain">
-            <div class="card fade-in12" style="height:600px; width:400px">
-                  <div class="card-header1" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 220,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li>Monthly Statistics</li>
-                          <li>Yeary statistics </li>
-                          <li>Location tracker </li>
-                          <li>Sinza mori, Dar es salaam(<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
-                          <span class="bac-text1">FAS</span>
-                      </div>
-                  </div>
-                </div>
-              </mat-grid-tile>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 110,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-
-
-         <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+        <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
           <mat-nav-list style="width: 400px;">
-            <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
+            @if (call !='loan') {
+              <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+                Money lending
+              </mat-list-item>
+            }
+            @if (call=='loan') {
+              <mat-list-item class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+                Money lending
+              </mat-list-item>
+            }
             <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
+            @if (call !='realestate') {
+              <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+                Real estate
+              </mat-list-item>
+            }
+            @if (call=='realestate') {
+              <mat-list-item class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+                Real estate
+              </mat-list-item>
+            }
             <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
+            @if (call !='shop') {
+              <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+                Shop administrations
+              </mat-list-item>
+            }
+            @if (call=='shop') {
+              <mat-list-item class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+                Shop administrations
+              </mat-list-item>
+            }
             <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
+            @if (call !='transaction') {
+              <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+                Money Vendor
+              </mat-list-item>
+            }
+            @if (call=='transaction') {
+              <mat-list-item class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+                Money Vendor
+              </mat-list-item>
+            }
             <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
+            @if (call !='distribution') {
+              <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+                Product Distributions
+              </mat-list-item>
+            }
+            @if (call=='distribution') {
+              <mat-list-item class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+                Product Distributions
+              </mat-list-item>
+            }
           </mat-nav-list>
-
-
-
         </mat-grid-tile>
-      </div>
-
-        </mat-grid-list>
-
-
-      </div>
-      <div *ngIf="call ==='transaction'">
-        <mat-grid-list cols="4" rowHeight="100px" >
-          <div style="margin-right:30%;">
-            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">MONEY VENDOR</h5>
-          </div>
-        <div *ngIf="colspan > 1397">
-
-          <div style="padding-top:100px"></div>
-         <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
-          <div style="background: silver; border-radius:10px; width:100%; ">
-            <h5 style="text-align: center; color: white;">Loan</h5>
-            <div style="padding-top:1px">
-              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
-              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
-            </div>
-          </div>
-
-        </mat-grid-tile> -->
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-          <div class="contain">
-            <div class="card fade-in11">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 10,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
-
-          <div class="contain">
-            <div class="card fade-in12" style="height:600px; width:400px">
-                  <div class="card-header1" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 100,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li>Monthly Statistics</li>
-                          <li>Yeary statistics </li>
-                          <li>Location tracker </li>
-                          <li>Sinza mori, Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
-                          <span class="bac-text1">FAS</span>
-                      </div>
-                  </div>
-                </div>
-              </mat-grid-tile>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 55,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-
-
-         <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
-          <mat-nav-list style="width: 400px;">
-            <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-          </mat-nav-list>
-
-
-
-        </mat-grid-tile>
-      </div>
-
-        </mat-grid-list>
-
-
-      </div>
-      <div *ngIf="call ==='distribution'">
-
-        <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
-          <div style="margin-right:30%;">
-            <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">DISTRIBUTION</h5>
-          </div>
-        <div *ngIf="colspan > 1397">
-
-          <div style="padding-top:100px"></div>
-         <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
-          <div style="background: silver; border-radius:10px; width:100%; ">
-            <h5 style="text-align: center; color: white;">Loan</h5>
-            <div style="padding-top:1px">
-              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
-              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
-            </div>
-          </div>
-
-        </mat-grid-tile> -->
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-          <div class="contain">
-            <div class="card fade-in11">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
-
-          <div class="contain">
-            <div class="card fade-in12" style="height:600px; width:400px">
-                  <div class="card-header1" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li>Monthly Statistics</li>
-                          <li>Yeary statistics </li>
-                          <li>Location tracker </li>
-                          <li>Sinza mori Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
-                          <span class="bac-text1">FAS</span>
-                      </div>
-                  </div>
-                </div>
-              </mat-grid-tile>
-
-         <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </mat-grid-tile>
-
-
-         <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
-          <mat-nav-list style="width: 400px;">
-            <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-               Money lending
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-               Real estate
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-               Shop administrations
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-               Money Vendor
-            </mat-list-item>
-            <div style="padding:2px;"></div>
-            <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-            <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-               Product Distributions
-            </mat-list-item>
-          </mat-nav-list>
-
-
-
-        </mat-grid-tile>
-      </div>
-
-        </mat-grid-list>
-
-
-      </div>
-
-
-
-
-
+      </mat-grid-list>
     </div>
+  }
+  @if (call ==='realestate') {
+    <div>
+      <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
+        <div style="margin-right:30%;">
+          <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">REAL ESTATE</h5>
+        </div>
+        @if (colspan > 1397) {
+          <div>
+            <div style="padding-top:100px"></div>
+            <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+              <div class="contain">
+                <div class="card fade-in11">
+                  <div class="card-header" style="padding-top:30px;">
+                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                    <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+                    <div style="padding:5px"></div>
+                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                    <hr style="width:50px; border-top: 1px solid #ccc;">
+                  </div>
+                  <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                    <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                  </li>
+                  <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                  <hr style="width:200px; border-top: 1px solid #ccc;">
+                  <li><a style="cursor: pointer;" >More</a> </li>
+                  <span class="bac-text">FAS</span>
+                </div>
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
+            <div class="contain">
+              <div class="card fade-in12" style="height:600px; width:400px">
+                <div class="card-header1" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li>Monthly Statistics</li>
+                <li>Yeary statistics </li>
+                <li>Location tracker </li>
+                <li>Sinza mori, Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
+                <span class="bac-text1">FAS</span>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+          <div class="contain">
+            <div class="card fade-in13">
+              <div class="card-header" style="padding-top:30px;">
+                <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+                <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+                <div style="padding:5px"></div>
+                <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                <hr style="width:50px; border-top: 1px solid #ccc;">
+              </div>
+              <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+              </li>
+              <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <hr style="width:200px; border-top: 1px solid #ccc;">
+              <li><a style="cursor: pointer;" >More</a> </li>
+              <span class="bac-text">FAS</span>
+            </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+        <mat-nav-list style="width: 400px;">
+          @if (call !='loan') {
+            <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+              Money lending
+            </mat-list-item>
+          }
+          @if (call=='loan') {
+            <mat-list-item class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+              Money lending
+            </mat-list-item>
+          }
+          <div style="padding:2px;"></div>
+          @if (call !='realestate') {
+            <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+              Real estate
+            </mat-list-item>
+          }
+          @if (call=='realestate') {
+            <mat-list-item class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+              Real estate
+            </mat-list-item>
+          }
+          <div style="padding:2px;"></div>
+          @if (call !='shop') {
+            <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+              Shop administrations
+            </mat-list-item>
+          }
+          @if (call=='shop') {
+            <mat-list-item class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+              Shop administrations
+            </mat-list-item>
+          }
+          <div style="padding:2px;"></div>
+          @if (call !='transaction') {
+            <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+              Money Vendor
+            </mat-list-item>
+          }
+          @if (call=='transaction') {
+            <mat-list-item class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+              Money Vendor
+            </mat-list-item>
+          }
+          <div style="padding:2px;"></div>
+          @if (call !='distribution') {
+            <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+              Product Distributions
+            </mat-list-item>
+          }
+          @if (call=='distribution') {
+            <mat-list-item class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+              Product Distributions
+            </mat-list-item>
+          }
+        </mat-nav-list>
+      </mat-grid-tile>
+    </div>
+  }
+</mat-grid-list>
+</div>
+}
+@if (call ==='shop') {
+  <div>
+    <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
+      <div style="margin-right:30%;">
+        <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">SHOP</h5>
+      </div>
+      @if (colspan > 1397) {
+        <div>
+          <div style="padding-top:100px"></div>
+          <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
+          <div style="background: silver; border-radius:10px; width:100%; ">
+            <h5 style="text-align: center; color: white;">Loan</h5>
+            <div style="padding-top:1px">
+              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
+              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
+              </div>
+            </div>
+          </mat-grid-tile> -->
+          <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+            <div class="contain">
+              <div class="card fade-in11">
+                <div class="card-header" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 20,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li><a style="cursor: pointer;" >More</a> </li>
+                <span class="bac-text">FAS</span>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
+          <div class="contain">
+            <div class="card fade-in12" style="height:600px; width:400px">
+              <div class="card-header1" style="padding-top:30px;">
+                <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 220,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
+                <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
+                <div style="padding:5px"></div>
+                <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
+                <hr style="width:50px; border-top: 1px solid #ccc;">
+              </div>
+              <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+              </li>
+              <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <hr style="width:200px; border-top: 1px solid #ccc;">
+              <li>Monthly Statistics</li>
+              <li>Yeary statistics </li>
+              <li>Location tracker </li>
+              <li>Sinza mori, Dar es salaam(<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
+              <span class="bac-text1">FAS</span>
+            </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+        <div class="contain">
+          <div class="card fade-in13">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 110,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
+            </div>
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+      <mat-nav-list style="width: 400px;">
+        @if (call !='loan') {
+          <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        @if (call=='loan') {
+          <mat-list-item class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='realestate') {
+          <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        @if (call=='realestate') {
+          <mat-list-item class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='shop') {
+          <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        @if (call=='shop') {
+          <mat-list-item class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='transaction') {
+          <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        @if (call=='transaction') {
+          <mat-list-item class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='distribution') {
+          <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+        @if (call=='distribution') {
+          <mat-list-item class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+      </mat-nav-list>
+    </mat-grid-tile>
+  </div>
+}
+</mat-grid-list>
+</div>
+}
+@if (call ==='transaction') {
+  <div>
+    <mat-grid-list cols="4" rowHeight="100px" >
+      <div style="margin-right:30%;">
+        <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">MONEY VENDOR</h5>
+      </div>
+      @if (colspan > 1397) {
+        <div>
+          <div style="padding-top:100px"></div>
+          <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
+          <div style="background: silver; border-radius:10px; width:100%; ">
+            <h5 style="text-align: center; color: white;">Loan</h5>
+            <div style="padding-top:1px">
+              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
+              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
+              </div>
+            </div>
+          </mat-grid-tile> -->
+          <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+            <div class="contain">
+              <div class="card fade-in11">
+                <div class="card-header" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 10,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li><a style="cursor: pointer;" >More</a> </li>
+                <span class="bac-text">FAS</span>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
+          <div class="contain">
+            <div class="card fade-in12" style="height:600px; width:400px">
+              <div class="card-header1" style="padding-top:30px;">
+                <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 100,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
+                <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
+                <div style="padding:5px"></div>
+                <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
+                <hr style="width:50px; border-top: 1px solid #ccc;">
+              </div>
+              <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+              </li>
+              <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <hr style="width:200px; border-top: 1px solid #ccc;">
+              <li>Monthly Statistics</li>
+              <li>Yeary statistics </li>
+              <li>Location tracker </li>
+              <li>Sinza mori, Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
+              <span class="bac-text1">FAS</span>
+            </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+        <div class="contain">
+          <div class="card fade-in13">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 55,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
+            </div>
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+      <mat-nav-list style="width: 400px;">
+        @if (call !='loan') {
+          <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        @if (call=='loan') {
+          <mat-list-item class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='realestate') {
+          <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        @if (call=='realestate') {
+          <mat-list-item class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='shop') {
+          <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        @if (call=='shop') {
+          <mat-list-item class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='transaction') {
+          <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        @if (call=='transaction') {
+          <mat-list-item class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='distribution') {
+          <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+        @if (call=='distribution') {
+          <mat-list-item class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+      </mat-nav-list>
+    </mat-grid-tile>
+  </div>
+}
+</mat-grid-list>
+</div>
+}
+@if (call ==='distribution') {
+  <div>
+    <mat-grid-list cols="4" rowHeight="100px" (window:resize)="onResize($event)">
+      <div style="margin-right:30%;">
+        <h5 class="slide-right" style="text-align: center; color: white; font-style: inherit; letter-spacing: 40px; font-weight: 200; font-variant: initial; font-size: 30px;">DISTRIBUTION</h5>
+      </div>
+      @if (colspan > 1397) {
+        <div>
+          <div style="padding-top:100px"></div>
+          <!-- <mat-grid-tile  colspan="3" rowspan="2" padding>
+          <div style="background: silver; border-radius:10px; width:100%; ">
+            <h5 style="text-align: center; color: white;">Loan</h5>
+            <div style="padding-top:1px">
+              <p style="padding-left: 20px; padding-right:20px;">With loan platform you will be able to access features dealing with money lending and this platform will be able perform automation in some of the actions inluding calculations periically, </p>
+              <p style="padding-left: 20px; padding-right:20px;">Also this platform will enable your customers to access some of the services you are providing also help you with the collection of funds makes it easy for people in Tanzania to access a loan, anytime, anywhere. Complete our application in seconds and receive your loan straight into your mobile money account. Branch is like a bank in your pocket, <p>
+              </div>
+            </div>
+          </mat-grid-tile> -->
+          <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+            <div class="contain">
+              <div class="card fade-in11">
+                <div class="card-header" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li><a style="cursor: pointer;" >More</a> </li>
+                <span class="bac-text">FAS</span>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible;" >
+          <div class="contain">
+            <div class="card fade-in12" style="height:600px; width:400px">
+              <div class="card-header1" style="padding-top:30px;">
+                <div style="display: inline-block;"><h2 style="font-weight: 400;">Tsh 500,000/</h2> <span style="font-size: medium;"> Per year</span> </div>
+                <div style="background:rgba(50, 50, 50, 0.489)">Premium</div>
+                <div style="padding:5px"></div>
+                <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                <!-- <p style="font-weight: lighter; font-size: small">To ensure that we keep the contact and give you the accurate information on what is your better choice of the universities abroad and other services contact us </p> -->
+                <hr style="width:50px; border-top: 1px solid #ccc;">
+              </div>
+              <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+              </li>
+              <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+              <hr style="width:200px; border-top: 1px solid #ccc;">
+              <li>Monthly Statistics</li>
+              <li>Yeary statistics </li>
+              <li>Location tracker </li>
+              <li>Sinza mori Dar es salaam (<a href="https://www.google.com/maps/dir/-6.7760983,39.228945/aleco/@-6.7768232,39.2272881,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x185c4f5136a1c40d:0x2a67b8e75bf9c052!2m2!1d39.2292383!2d-6.7776135">Get Our location</a>)</li>
+              <span class="bac-text1">FAS</span>
+            </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile  colspan="1" rowspan="8" padding style=" overflow:visible; " >
+        <div class="contain">
+          <div class="card fade-in13">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
+            </div>
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="8" style="background: transparent;">
+      <mat-nav-list style="width: 400px;">
+        @if (call !='loan') {
+          <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        @if (call=='loan') {
+          <mat-list-item class="mopo1 fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='realestate') {
+          <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        @if (call=='realestate') {
+          <mat-list-item class="mopo1 fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='shop') {
+          <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        @if (call=='shop') {
+          <mat-list-item class="mopo1 fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='transaction') {
+          <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        @if (call=='transaction') {
+          <mat-list-item class="mopo1 fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+        }
+        <div style="padding:2px;"></div>
+        @if (call !='distribution') {
+          <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+        @if (call=='distribution') {
+          <mat-list-item class="mopo1 fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        }
+      </mat-nav-list>
+    </mat-grid-tile>
+  </div>
+}
+</mat-grid-list>
+</div>
+}
+</div>
+}
 
-    <div *ngIf="colspan < 1397">
-      <div style="padding:10px"></div>
-      <div class="animated slideInLeft" align="center" style="background:rgba(255, 255, 255, 0.623); color:black; padding:5px; font-family:'Baloo Paaji 2'; font-variant-caps: all-petite-caps; font-size: larger;"> {{call}} </div>
-
-      <div *ngIf="call=='loan'" style="font-family:'Baloo Paaji 2'" >
-
-
-
-
-
+@if (colspan < 1397) {
+  <div>
+    <div style="padding:10px"></div>
+    <div class="animated slideInLeft" align="center" style="background:rgba(255, 255, 255, 0.623); color:black; padding:5px; font-family:'Baloo Paaji 2'; font-variant-caps: all-petite-caps; font-size: larger;"> {{call}} </div>
+    @if (call=='loan') {
+      <div style="font-family:'Baloo Paaji 2'" >
         <div align="center" style="min-width: 200px;">
           <div style="padding:20px"></div>
           <div align="center" style="min-width: 200px;">
             <div class="contain">
               <div class="card fade-in11">
-                    <div class="card-header" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                        <hr style="width:50px; border-top: 1px solid #ccc;">
-                    </div>
-                        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                          </li>
-                            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <hr style="width:200px; border-top: 1px solid #ccc;">
-                            <li><a style="cursor: pointer;" >More</a> </li>
-                            <span class="bac-text">FAS</span>
-                        </div>
-                    </div>
+                <div class="card-header" style="padding-top:30px;">
+                  <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+                  <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+                  <div style="padding:5px"></div>
+                  <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+                  <hr style="width:50px; border-top: 1px solid #ccc;">
+                </div>
+                <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+                  <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+                </li>
+                <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+                <hr style="width:200px; border-top: 1px solid #ccc;">
+                <li><a style="cursor: pointer;" >More</a> </li>
+                <span class="bac-text">FAS</span>
+              </div>
             </div>
-
           </div>
-          <div style="padding:20px"></div>
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-
-
-        </div>
-
-        <div style="padding:20px"></div>
-        <div align="center" style="min-width: 200px;">
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
         </div>
         <div style="padding:20px"></div>
-        <!-- <div align="center" style="min-width: 200px;">4</div> -->
-
-
-
-
-      </div>
-      <div *ngIf="call=='realestate'" style="font-family:'Baloo Paaji 2'" >
-
-
-
-
-
-        <div align="center" style="min-width: 200px;">
-          <div style="padding:20px"></div>
-          <div align="center" style="min-width: 200px;">
-            <div class="contain">
-              <div class="card fade-in11">
-                    <div class="card-header" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                        <hr style="width:50px; border-top: 1px solid #ccc;">
-                    </div>
-                        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                          </li>
-                            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <hr style="width:200px; border-top: 1px solid #ccc;">
-                            <li><a style="cursor: pointer;" >More</a> </li>
-                            <span class="bac-text">FAS</span>
-                        </div>
-                    </div>
+        <div class="contain">
+          <div class="card fade-in13">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
             </div>
-
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
           </div>
-          <div style="padding:20px"></div>
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-
-
         </div>
-
-        <div style="padding:20px"></div>
-        <div align="center" style="min-width: 200px;">
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </div>
-        <div style="padding:20px"></div>
-
-
-
-
-
       </div>
-      <div *ngIf="call=='shop'" style="font-family:'Baloo Paaji 2'" >
-
-
-
-
-
-        <div align="center" style="min-width: 200px;">
-          <div style="padding:20px"></div>
-          <div align="center" style="min-width: 200px;">
-            <div class="contain">
-              <div class="card fade-in11">
-                    <div class="card-header" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                        <hr style="width:50px; border-top: 1px solid #ccc;">
-                    </div>
-                        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                          </li>
-                            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <hr style="width:200px; border-top: 1px solid #ccc;">
-                            <li><a style="cursor: pointer;" >More</a> </li>
-                            <span class="bac-text">FAS</span>
-                        </div>
-                    </div>
+    </div>
+    <div style="padding:20px"></div>
+    <div align="center" style="min-width: 200px;">
+      <div class="contain">
+        <div class="card fade-in13">
+          <div class="card-header" style="padding-top:30px;">
+            <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+            <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+            <div style="padding:5px"></div>
+            <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+            <hr style="width:50px; border-top: 1px solid #ccc;">
+          </div>
+          <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+            <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+          </li>
+          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+          <hr style="width:200px; border-top: 1px solid #ccc;">
+          <li><a style="cursor: pointer;" >More</a> </li>
+          <span class="bac-text">FAS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:20px"></div>
+  <!-- <div align="center" style="min-width: 200px;">4</div> -->
+</div>
+}
+@if (call=='realestate') {
+  <div style="font-family:'Baloo Paaji 2'" >
+    <div align="center" style="min-width: 200px;">
+      <div style="padding:20px"></div>
+      <div align="center" style="min-width: 200px;">
+        <div class="contain">
+          <div class="card fade-in11">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
             </div>
-
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
           </div>
-          <div style="padding:20px"></div>
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-
-
         </div>
-
-        <div style="padding:20px"></div>
-        <div align="center" style="min-width: 200px;">
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </div>
-        <div style="padding:20px"></div>
-
-
-
-
-
       </div>
-      <div *ngIf="call=='transaction'" style="font-family:'Baloo Paaji 2'" >
-
-
-
-
-
-        <div align="center" style="min-width: 200px;">
-          <div style="padding:20px"></div>
-          <div align="center" style="min-width: 200px;">
-            <div class="contain">
-              <div class="card fade-in11">
-                    <div class="card-header" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                        <hr style="width:50px; border-top: 1px solid #ccc;">
-                    </div>
-                        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                          </li>
-                            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <hr style="width:200px; border-top: 1px solid #ccc;">
-                            <li><a style="cursor: pointer;" >More</a> </li>
-                            <span class="bac-text">FAS</span>
-                        </div>
-                    </div>
+    </div>
+    <div style="padding:20px"></div>
+    <div class="contain">
+      <div class="card fade-in13">
+        <div class="card-header" style="padding-top:30px;">
+          <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+          <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+          <div style="padding:5px"></div>
+          <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+          <hr style="width:50px; border-top: 1px solid #ccc;">
+        </div>
+        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+        </li>
+        <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <hr style="width:200px; border-top: 1px solid #ccc;">
+        <li><a style="cursor: pointer;" >More</a> </li>
+        <span class="bac-text">FAS</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="padding:20px"></div>
+<div align="center" style="min-width: 200px;">
+  <div class="contain">
+    <div class="card fade-in13">
+      <div class="card-header" style="padding-top:30px;">
+        <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+        <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+        <div style="padding:5px"></div>
+        <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+        <hr style="width:50px; border-top: 1px solid #ccc;">
+      </div>
+      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+      </li>
+      <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <hr style="width:200px; border-top: 1px solid #ccc;">
+      <li><a style="cursor: pointer;" >More</a> </li>
+      <span class="bac-text">FAS</span>
+    </div>
+  </div>
+</div>
+</div>
+<div style="padding:20px"></div>
+</div>
+}
+@if (call=='shop') {
+  <div style="font-family:'Baloo Paaji 2'" >
+    <div align="center" style="min-width: 200px;">
+      <div style="padding:20px"></div>
+      <div align="center" style="min-width: 200px;">
+        <div class="contain">
+          <div class="card fade-in11">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
             </div>
-
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
           </div>
-          <div style="padding:20px"></div>
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-
-
         </div>
-
-        <div style="padding:20px"></div>
-        <div align="center" style="min-width: 200px;">
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </div>
-        <div style="padding:20px"></div>
-
-
-
-
-
       </div>
-      <div *ngIf="call=='distribution'" style="font-family:'Baloo Paaji 2'" >
-
-
-
-
-
-        <div align="center" style="min-width: 200px;">
-          <div style="padding:20px"></div>
-          <div align="center" style="min-width: 200px;">
-            <div class="contain">
-              <div class="card fade-in11">
-                    <div class="card-header" style="padding-top:30px;">
-                      <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 15,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
-                      <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
-                      <div style="padding:5px"></div>
-                      <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                        <hr style="width:50px; border-top: 1px solid #ccc;">
-                    </div>
-                        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                          </li>
-                            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                            <hr style="width:200px; border-top: 1px solid #ccc;">
-                            <li><a style="cursor: pointer;" >More</a> </li>
-                            <span class="bac-text">FAS</span>
-                        </div>
-                    </div>
+    </div>
+    <div style="padding:20px"></div>
+    <div class="contain">
+      <div class="card fade-in13">
+        <div class="card-header" style="padding-top:30px;">
+          <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+          <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+          <div style="padding:5px"></div>
+          <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+          <hr style="width:50px; border-top: 1px solid #ccc;">
+        </div>
+        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+        </li>
+        <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <hr style="width:200px; border-top: 1px solid #ccc;">
+        <li><a style="cursor: pointer;" >More</a> </li>
+        <span class="bac-text">FAS</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="padding:20px"></div>
+<div align="center" style="min-width: 200px;">
+  <div class="contain">
+    <div class="card fade-in13">
+      <div class="card-header" style="padding-top:30px;">
+        <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+        <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+        <div style="padding:5px"></div>
+        <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+        <hr style="width:50px; border-top: 1px solid #ccc;">
+      </div>
+      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+      </li>
+      <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <hr style="width:200px; border-top: 1px solid #ccc;">
+      <li><a style="cursor: pointer;" >More</a> </li>
+      <span class="bac-text">FAS</span>
+    </div>
+  </div>
+</div>
+</div>
+<div style="padding:20px"></div>
+</div>
+}
+@if (call=='transaction') {
+  <div style="font-family:'Baloo Paaji 2'" >
+    <div align="center" style="min-width: 200px;">
+      <div style="padding:20px"></div>
+      <div align="center" style="min-width: 200px;">
+        <div class="contain">
+          <div class="card fade-in11">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 50,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
             </div>
-
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
           </div>
-          <div style="padding:20px"></div>
-
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 88,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-
-
         </div>
-
-        <div style="padding:20px"></div>
-        <div align="center" style="min-width: 200px;">
-          <div class="contain">
-            <div class="card fade-in13">
-                  <div class="card-header" style="padding-top:30px;">
-                    <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
-                    <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
-                    <div style="padding:5px"></div>
-                    <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
-                      <hr style="width:50px; border-top: 1px solid #ccc;">
-                  </div>
-                      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
-                        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
-                        </li>
-                          <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
-                          <hr style="width:200px; border-top: 1px solid #ccc;">
-                          <li><a style="cursor: pointer;" >More</a> </li>
-
-                          <span class="bac-text">FAS</span>
-                      </div>
-                  </div>
-          </div>
-
-        </div>
-        <div style="padding:20px"></div>
-
-
-
-
-
       </div>
+    </div>
+    <div style="padding:20px"></div>
+    <div class="contain">
+      <div class="card fade-in13">
+        <div class="card-header" style="padding-top:30px;">
+          <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+          <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+          <div style="padding:5px"></div>
+          <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+          <hr style="width:50px; border-top: 1px solid #ccc;">
+        </div>
+        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+        </li>
+        <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <hr style="width:200px; border-top: 1px solid #ccc;">
+        <li><a style="cursor: pointer;" >More</a> </li>
+        <span class="bac-text">FAS</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="padding:20px"></div>
+<div align="center" style="min-width: 200px;">
+  <div class="contain">
+    <div class="card fade-in13">
+      <div class="card-header" style="padding-top:30px;">
+        <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+        <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+        <div style="padding:5px"></div>
+        <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+        <hr style="width:50px; border-top: 1px solid #ccc;">
+      </div>
+      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+      </li>
+      <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <hr style="width:200px; border-top: 1px solid #ccc;">
+      <li><a style="cursor: pointer;" >More</a> </li>
+      <span class="bac-text">FAS</span>
+    </div>
+  </div>
+</div>
+</div>
+<div style="padding:20px"></div>
+</div>
+}
+@if (call=='distribution') {
+  <div style="font-family:'Baloo Paaji 2'" >
+    <div align="center" style="min-width: 200px;">
+      <div style="padding:20px"></div>
+      <div align="center" style="min-width: 200px;">
+        <div class="contain">
+          <div class="card fade-in11">
+            <div class="card-header" style="padding-top:30px;">
+              <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 15,000/</h4> <span style="font-size: medium;"> Per Month</span> </div>
+              <div style="background:rgba(50, 50, 50, 0.489)">Standard</div>
+              <div style="padding:5px"></div>
+              <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+              <hr style="width:50px; border-top: 1px solid #ccc;">
+            </div>
+            <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+              <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+            </li>
+            <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+            <hr style="width:200px; border-top: 1px solid #ccc;">
+            <li><a style="cursor: pointer;" >More</a> </li>
+            <span class="bac-text">FAS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:20px"></div>
+    <div class="contain">
+      <div class="card fade-in13">
+        <div class="card-header" style="padding-top:30px;">
+          <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 88,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+          <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+          <div style="padding:5px"></div>
+          <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+          <hr style="width:50px; border-top: 1px solid #ccc;">
+        </div>
+        <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+          <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+        </li>
+        <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+        <hr style="width:200px; border-top: 1px solid #ccc;">
+        <li><a style="cursor: pointer;" >More</a> </li>
+        <span class="bac-text">FAS</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="padding:20px"></div>
+<div align="center" style="min-width: 200px;">
+  <div class="contain">
+    <div class="card fade-in13">
+      <div class="card-header" style="padding-top:30px;">
+        <div style="display: inline-block;"><h4 style="font-weight: 400;">Tsh 260,000/</h4> <span style="font-size: medium;"> Per Six months</span> </div>
+        <div style="background:rgba(50, 50, 50, 0.489)">Gold</div>
+        <div style="padding:5px"></div>
+        <button mat-stroked-button style="color:white; width:50% " expand="full">Subscribe</button>
+        <hr style="width:50px; border-top: 1px solid #ccc;">
+      </div>
+      <div class="card-body" style="list-style-type: none; font-size: small; font-weight: lighter; text-align: center; overflow: hidden;">
+        <li>Directors App: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon>
+      </li>
+      <li>Managers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Customers App:<mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Directors Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <li>Managers Working Web Dashboard: <mat-icon aria-hidden="false" aria-label="Check">done</mat-icon></li>
+      <hr style="width:200px; border-top: 1px solid #ccc;">
+      <li><a style="cursor: pointer;" >More</a> </li>
+      <span class="bac-text">FAS</span>
+    </div>
+  </div>
+</div>
+</div>
+<div style="padding:20px"></div>
+</div>
+}
 <div align="center" [ngClass]="getclass(menu)" class="fixed-top" style="margin-top:50%; background-color: rgba(255, 0, 0, 0);">
-
-
   <div  >
     <mat-nav-list style="width: 400px; " class="fade-in3">
-      <mat-list-item *ngIf="call !='loan'" class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-         Money lending
-      </mat-list-item>
-      <mat-list-item *ngIf="call=='loan'" class="mopo1 fade-in3" style="background:rgba(255, 255, 255, 0.712)"  [routerLinkActive]="['active']" (click)="loan()">
-         Money lending
-      </mat-list-item>
+      @if (call !='loan') {
+        <mat-list-item class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+          Money lending
+        </mat-list-item>
+      }
+      @if (call=='loan') {
+        <mat-list-item class="mopo1 fade-in3" style="background:rgba(255, 255, 255, 0.712)"  [routerLinkActive]="['active']" (click)="loan()">
+          Money lending
+        </mat-list-item>
+      }
       <div style="padding:2px;"></div>
-      <mat-list-item *ngIf="call !='realestate'" class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-         Real estate
-      </mat-list-item>
-      <mat-list-item *ngIf="call=='realestate'" class="mopo1 fade-in4" style="background:rgba(255, 255, 255, 0.712); backdrop-filter: blur(10px);" [routerLinkActive]="['active']"  (click)="realestate()">
-         Real estate
-      </mat-list-item>
+      @if (call !='realestate') {
+        <mat-list-item class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+          Real estate
+        </mat-list-item>
+      }
+      @if (call=='realestate') {
+        <mat-list-item class="mopo1 fade-in4" style="background:rgba(255, 255, 255, 0.712); backdrop-filter: blur(10px);" [routerLinkActive]="['active']"  (click)="realestate()">
+          Real estate
+        </mat-list-item>
+      }
       <div style="padding:2px;"></div>
-      <mat-list-item *ngIf="call !='shop'" class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-         Shop administrations
-      </mat-list-item>
-      <mat-list-item *ngIf="call=='shop'" class="mopo1 fade-in5" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']" (click)="shop()">
-         Shop administrations
-      </mat-list-item>
+      @if (call !='shop') {
+        <mat-list-item class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+          Shop administrations
+        </mat-list-item>
+      }
+      @if (call=='shop') {
+        <mat-list-item class="mopo1 fade-in5" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']" (click)="shop()">
+          Shop administrations
+        </mat-list-item>
+      }
       <div style="padding:2px;"></div>
-      <mat-list-item *ngIf="call !='transaction'" class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-         Money Vendor
-      </mat-list-item>
-      <mat-list-item *ngIf="call=='transaction'" class="mopo1 fade-in6" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']"  (click)="transaction()">
-         Money Vendor
-      </mat-list-item>
+      @if (call !='transaction') {
+        <mat-list-item class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+          Money Vendor
+        </mat-list-item>
+      }
+      @if (call=='transaction') {
+        <mat-list-item class="mopo1 fade-in6" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']"  (click)="transaction()">
+          Money Vendor
+        </mat-list-item>
+      }
       <div style="padding:2px;"></div>
-      <mat-list-item *ngIf="call !='distribution'" class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-         Product Distributions
-      </mat-list-item>
-      <mat-list-item *ngIf="call=='distribution'" class="mopo1 fade-in7" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']" (click)="distribution()">
-         Product Distributions
-      </mat-list-item>
+      @if (call !='distribution') {
+        <mat-list-item class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+          Product Distributions
+        </mat-list-item>
+      }
+      @if (call=='distribution') {
+        <mat-list-item class="mopo1 fade-in7" style="background:rgba(255, 255, 255, 0.712)" [routerLinkActive]="['active']" (click)="distribution()">
+          Product Distributions
+        </mat-list-item>
+      }
     </mat-nav-list>
   </div>
-
-
-
-
-
 </div>
-
 <div class="fixed-top" style="margin-top:130%; background-color: rgba(255, 0, 0, 0); padding:5px">
-  <span *ngIf="menu=='unclicked'" align="center" style="background:red; padding:10px; border-radius:100%; position:relative; left:45%; top:2px; box-shadow: 5px 5px 5px rgba(19, 19, 19, 0.331);  " class="material-icons">
-    <a style="text-decoration: none;" (click)="menuclicked()" class="animated slideInLeft"> dehaze</a>
-     </span>
- <span  *ngIf="menu=='clicked'" align="center" style="background:rgba(255, 0, 0, 0.263); padding:10px; border-radius:100%; position:relative; left:45%;" class="material-icons">
-    <a style="text-decoration: none;" (click)="menuunclicked()" class="animated slideInLeft"> clear</a>
-     </span>
-
+  @if (menu=='unclicked') {
+    <span align="center" style="background:red; padding:10px; border-radius:100%; position:relative; left:45%; top:2px; box-shadow: 5px 5px 5px rgba(19, 19, 19, 0.331);  " class="material-icons">
+      <a style="text-decoration: none;" (click)="menuclicked()" class="animated slideInLeft"> dehaze</a>
+    </span>
+  }
+  @if (menu=='clicked') {
+    <span  align="center" style="background:rgba(255, 0, 0, 0.263); padding:10px; border-radius:100%; position:relative; left:45%;" class="material-icons">
+      <a style="text-decoration: none;" (click)="menuunclicked()" class="animated slideInLeft"> clear</a>
+    </span>
+  }
 </div>
-
-
-
-
-
-
-
-
-
-
-    </div>
-  </div>
+</div>
+}
+</div>
 
 
 
@@ -1312,60 +1260,60 @@
 <!--
 <footer class="footer" style="bottom: 0px;">
   <style>
-  li{
+    li{
     font-weight:100;
     color:rgb(255, 255, 255);
   }
-  </style>
-  <div style="background-color:gray; position: fixed-bottom; bottom: 0px; background-image: url(assets/images/wave.svg); background-position: bottom; background-size:cover;">
+</style>
+<div style="background-color:gray; position: fixed-bottom; bottom: 0px; background-image: url(assets/images/wave.svg); background-position: bottom; background-size:cover;">
   <div class="container" style="padding-top:20px;">
-  <div class="row">
-  <div class="col">
+    <div class="row">
+      <div class="col">
 
-    <h6>Haraka</h6>
-    <ul class="list-unstyled">
-      <li>Home</li>
-      <li>Kipi kipya</li>
-      <li>Huduma</li>
-      <li>Account yangu</li>
-      <li>Subscribe</li>
-    </ul>
+        <h6>Haraka</h6>
+        <ul class="list-unstyled">
+          <li>Home</li>
+          <li>Kipi kipya</li>
+          <li>Huduma</li>
+          <li>Account yangu</li>
+          <li>Subscribe</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6>Information</h6>
+        <ul class="list-unstyled" style="font-weight:100">
+          <li>Patrtnership</li>
+          <li>About Us</li>
+          <li>Jobs</li>
+          <li>Press info</li>
+          <li>Contacts</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6>Tufuate</h6>
+        <ul class="list-unstyled" style="font-weight:200">
+          <li><i class="fab fa-linkedin fa-1x"> </i> LinkedIn</li>
+          <li> <i class="fa fa-facebook-square fa-1x" > </i> Facebook</li>
+          <li> <i class="fa fa-instagram fa-1x"> </i> Instagram</li>
+          <li><i class="fab fa-twitter-square fa-1x"> </i> Twitter</li>
+          <li> <i class="fab fa-youtube fa-1x"> </i> Youtube</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6> Tulipo</h6>
+        <address style="color:rgb(231, 230, 230)">
+
+          ubungo, Tanzania<br>
+        </address>
+        <ul class="list-inline">
+          <li class="list-inline-item">All rights reserved</li>
+          <li class="list-inline-item">Terms of use and privacy</li>
+          <li class="list-inline-item" ><a href="" data-toggle="model" data-target="#modal">Term of use and privacy policy</a></li>
+
+
+        </ul>
+      </div>
     </div>
-    <div class="col">
-    <h6>Information</h6>
-    <ul class="list-unstyled" style="font-weight:100">
-      <li>Patrtnership</li>
-      <li>About Us</li>
-      <li>Jobs</li>
-      <li>Press info</li>
-      <li>Contacts</li>
-    </ul>
-    </div>
-    <div class="col">
-    <h6>Tufuate</h6>
-    <ul class="list-unstyled" style="font-weight:200">
-      <li><i class="fab fa-linkedin fa-1x"> </i> LinkedIn</li>
-      <li> <i class="fa fa-facebook-square fa-1x" > </i> Facebook</li>
-      <li> <i class="fa fa-instagram fa-1x"> </i> Instagram</li>
-      <li><i class="fab fa-twitter-square fa-1x"> </i> Twitter</li>
-      <li> <i class="fab fa-youtube fa-1x"> </i> Youtube</li>
-    </ul>
-    </div>
-    <div class="col">
-  <h6> Tulipo</h6>
-  <address style="color:rgb(231, 230, 230)">
-
-    ubungo, Tanzania<br>
-  </address>
-  <ul class="list-inline">
-    <li class="list-inline-item">All rights reserved</li>
-    <li class="list-inline-item">Terms of use and privacy</li>
-    <li class="list-inline-item" ><a href="" data-toggle="model" data-target="#modal">Term of use and privacy policy</a></li>
-
-
-  </ul>
   </div>
-  </div>
-  </div>
-  </div>
-  </footer> -->
+</div>
+</footer> -->

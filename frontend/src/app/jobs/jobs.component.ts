@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
-  selector: 'app-jobs',
-  templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.css']
+    selector: 'app-jobs',
+    templateUrl: './jobs.component.html',
+    styleUrls: ['./jobs.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class JobsComponent implements OnInit {
   dialog='false'

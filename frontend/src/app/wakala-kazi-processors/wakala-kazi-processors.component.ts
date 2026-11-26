@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReceiptComponent } from '../receipt/receipt.component';
 import { NgProgress } from 'ngx-progressbar';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { RestframeworkService } from '../apiservice/restframework.service';
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 import { WorkersDashboardComponent } from '../workers-dashboard/workers-dashboard.component';
 
 @Component({
-  selector: 'app-wakala-kazi-processors',
-  templateUrl: './wakala-kazi-processors.component.html',
-  styleUrls: ['./wakala-kazi-processors.component.css']
+    selector: 'app-wakala-kazi-processors',
+    templateUrl: './wakala-kazi-processors.component.html',
+    styleUrls: ['./wakala-kazi-processors.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaKaziProcessorsComponent implements OnInit {
   options=['Nmb', 'Nbc', 'Mpesa_Float', 'Mpesa_Working_Acc', 'Tigopesa', 'Selcom', 'TPB', 'CRDB', 'DTB', 'Access_Bank', 'Halopesa', 'TTCL_Money', 'Equity', 'Airtel_Money', 'KCB', 'Vodacom_Agent2', 'Vodacom_SuperAgent', 'Halopesa_SubSuperAgent', 'Halopesa_SuperAgent']
@@ -146,7 +148,7 @@ export class WakalaKaziProcessorsComponent implements OnInit {
   }
   calculate(){
     // this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;
@@ -179,7 +181,7 @@ export class WakalaKaziProcessorsComponent implements OnInit {
      this.getdatavisible()
     //  this.clean();
   
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

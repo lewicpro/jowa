@@ -4,29 +4,31 @@
 <div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
 <div class="container">
 
-<div style="background:gray; height: 500px; padding-top: 50px;" >
+  <div style="background:gray; height: 500px; padding-top: 50px;" >
     <div style="background:red; height: 400px; overflow: hidden;">
 
       <carousel  >
-        
-        <slide  *ngFor="let m of houslink">
-          <img  src= {{m.house}}  style="display: block; width: 100%;" height="450">
-        </slide>
+
+        @for (m of houslink; track m) {
+          <slide >
+            <img  src= {{m.house}}  style="display: block; width: 100%;" height="450">
+          </slide>
+        }
       </carousel>
-      
 
 
 
 
 
 
-      
-  
-      </div>
 
-      
-</div>
-  
+
+
+    </div>
+
+
+  </div>
+
 
 
 </div>
@@ -34,7 +36,7 @@
   <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
     <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><button type="button" (click)="files.click()" class="btn btn-outline-dark">Select</button></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><button type="button" class="btn btn-outline-dark" type="submit">Upload</button> </span></li></div>
   </form>
-  
+
   <div style="padding-top:10px;"></div>
   <div style="background:rgba(255, 255, 255, 0)">
     <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);"><li class="more" style="display:inline-block"><span style="font-weight:500">Jumla ya kilichoingia:</span> {{jumla_malipo| currency: 'tsh '}}</li> <li style="display:inline-block">||  <span style="font-weight:500">Jumla ya kinachodaiwa:</span>{{Madai| currency: 'tsh '}} </li> <li style="display:inline-block">||  <span style="font-weight:500">Rejesho la mwezi {{mwez}}:</span> {{Rejesho_mwezi| currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['SingleNyumba-Info']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">Estimated Daily:</span>  Tsh {{Jumla_priceDays| currency: 'tsh '}} </li></div>
@@ -42,13 +44,13 @@
     <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
 
       <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wapangaji']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Wapangaji</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wazi']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Vyumba vilivyowazi</a> </li>  <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['marekebisho']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Marekebisho </a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['pangisha']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Pangisha</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['EditNyumba']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Edit Account</a> </li> </div>
-      
+
     </div>
-    
+
     <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
 
-  
+
   </div>
-  
+
 </div>
 

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-duka-director-industry',
-  templateUrl: './duka-director-industry.component.html',
-  styleUrls: ['./duka-director-industry.component.css']
+    selector: 'app-duka-director-industry',
+    templateUrl: './duka-director-industry.component.html',
+    styleUrls: ['./duka-director-industry.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorIndustryComponent implements OnInit {
   rawmaterialval="True";

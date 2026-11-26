@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OwnerKitambulishoComponent } from './owner-kitambulisho.component';
 
@@ -6,7 +6,7 @@ describe('OwnerKitambulishoComponent', () => {
   let component: OwnerKitambulishoComponent;
   let fixture: ComponentFixture<OwnerKitambulishoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OwnerKitambulishoComponent ]
     })

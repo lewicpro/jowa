@@ -1,16 +1,16 @@
 
 
 <!-- <div class="d-flex justify-content-center">
-  <mat-form-field style="width:40%">
+<mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
+</mat-form-field>
 </div> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-<h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WALIOKOPA</h4>
-<div style="max-height:400px; overflow: auto">
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-    <thead>
-     <!-- <tr>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WALIOKOPA</h4>
+  <div style="max-height:400px; overflow: auto">
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+        <!-- <tr>
         <th scope="col">#</th>
         <th scope="col">Jina</th>
         <th scope="col">Simu</th>
@@ -24,79 +24,79 @@
         <th scope="col">TSD</th>
       </tr> -->
       <tr>
-          <th scope="col">#</th>
-          <th scope="col">Tarehe</th>
-  
-          <th scope="col" nowrap>Account no</th>
-          <th scope="col">pin</th>
-          <th scope="col">Jina</th>
-          <!-- <th scope="col">mkopo</th> -->
-          <th scope="col" nowrap>Mkopo + Faida</th>
-          <th scope="col">Awamu</th>
-          <th scope="col">Riba</th>
-          
-          <!-- <th scope="col">Faida</th> -->
-          <th scope="col">Mwezi1</th>
-          <th scope="col">Mwezi2</th>
-          <th scope="col">Mwezi3</th>
-          <th scope="col">Mwezi4</th>
-          <th scope="col">Mwezi5</th>
-          <th scope="col">Mwezi6</th>
-          <th scope="col">Mwezi7</th>
-          <th scope="col">Mwezi8</th>
-          <th scope="col">Mwezi9</th>
-          <th scope="col">Mwezi10</th>
-          <th scope="col">Mwezi11</th>
-          <th scope="col">Mwezi12</th>
-          
-    
-        </tr>
+        <th scope="col">#</th>
+        <th scope="col">Tarehe</th>
+
+        <th scope="col" nowrap>Account no</th>
+        <th scope="col">pin</th>
+        <th scope="col">Jina</th>
+        <!-- <th scope="col">mkopo</th> -->
+        <th scope="col" nowrap>Mkopo + Faida</th>
+        <th scope="col">Awamu</th>
+        <th scope="col">Riba</th>
+
+        <!-- <th scope="col">Faida</th> -->
+        <th scope="col">Mwezi1</th>
+        <th scope="col">Mwezi2</th>
+        <th scope="col">Mwezi3</th>
+        <th scope="col">Mwezi4</th>
+        <th scope="col">Mwezi5</th>
+        <th scope="col">Mwezi6</th>
+        <th scope="col">Mwezi7</th>
+        <th scope="col">Mwezi8</th>
+        <th scope="col">Mwezi9</th>
+        <th scope="col">Mwezi10</th>
+        <th scope="col">Mwezi11</th>
+        <th scope="col">Mwezi12</th>
+
+
+      </tr>
     </thead>
     <tbody>
-      <tr style="cursor:pointer" id="customers" *ngFor="let form of malipo; let i = index">
-
- 
-        <td >{{i*1 + 1*1}}</td>
-        <td nowrap>{{form.tarehe}}</td>
-
-        <td nowrap> {{form.Account_no}}</td>
-        <td nowrap>{{form.pin}}</td>
-        <td nowrap>{{form.jina | titlecase}}</td>
-        <!-- <td nowrap>{{form.RealMkopo | currency: 'tsh '}}</td> -->
-        <td nowrap>{{form.jumla | currency: 'tsh '}}</td>
-        <td nowrap>{{form.Miezi}}</td>
-        <td nowrap>10</td>
-        <!-- <td nowrap>{{form.Faida | currency: 'tsh '}}</td> -->
-        <td nowrap>{{form.mw1 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw2 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw3 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw4 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw5 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw6 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw7 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw8 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw9 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw10 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw11 | currency: 'tsh '}}</td>
-        <td nowrap>{{form.mw12 | currency: 'tsh '}}</td>
-      
-        <td *ngIf="form.loan_repay"><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
-      </tr>
+      @for (form of malipo; track form; let i = $index) {
+        <tr style="cursor:pointer" id="customers">
+          <td >{{i*1 + 1*1}}</td>
+          <td nowrap>{{form.tarehe}}</td>
+          <td nowrap> {{form.Account_no}}</td>
+          <td nowrap>{{form.pin}}</td>
+          <td nowrap>{{form.jina | titlecase}}</td>
+          <!-- <td nowrap>{{form.RealMkopo | currency: 'tsh '}}</td> -->
+          <td nowrap>{{form.jumla | currency: 'tsh '}}</td>
+          <td nowrap>{{form.Miezi}}</td>
+          <td nowrap>10</td>
+          <!-- <td nowrap>{{form.Faida | currency: 'tsh '}}</td> -->
+          <td nowrap>{{form.mw1 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw2 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw3 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw4 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw5 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw6 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw7 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw8 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw9 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw10 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw11 | currency: 'tsh '}}</td>
+          <td nowrap>{{form.mw12 | currency: 'tsh '}}</td>
+          @if (form.loan_repay) {
+            <td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          }
+        </tr>
+      }
       <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
-  </div>
-  </div>
+      <!--<td scope="row">2</td>-->
+      <!--<td>BA</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+    <!--<tr id="customers">-->
+    <!--<td scope="row">3</td>-->
+    <!--<td>Accountancy</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+</tbody>
+</table>
+</div>
+</div>
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

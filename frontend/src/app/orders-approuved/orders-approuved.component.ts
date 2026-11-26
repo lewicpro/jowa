@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-orders-approuved',
-  templateUrl: './orders-approuved.component.html',
-  styleUrls: ['./orders-approuved.component.css']
+    selector: 'app-orders-approuved',
+    templateUrl: './orders-approuved.component.html',
+    styleUrls: ['./orders-approuved.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersApprouvedComponent implements OnInit {
   all;

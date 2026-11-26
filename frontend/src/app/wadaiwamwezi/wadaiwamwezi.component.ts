@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 
 @Component({
-  selector: 'app-wadaiwamwezi',
-  templateUrl: './wadaiwamwezi.component.html',
-  styleUrls: ['./wadaiwamwezi.component.css']
+    selector: 'app-wadaiwamwezi',
+    templateUrl: './wadaiwamwezi.component.html',
+    styleUrls: ['./wadaiwamwezi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WadaiwamweziComponent {
   malipo;

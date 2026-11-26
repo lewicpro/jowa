@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SlipComponent } from './slip.component';
 
@@ -6,7 +6,7 @@ describe('SlipComponent', () => {
   let component: SlipComponent;
   let fixture: ComponentFixture<SlipComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SlipComponent ]
     })

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
-import { Route } from '@angular/compiler/src/core';
 
 @Component({
-  selector: 'app-nyumba-malipo',
-  templateUrl: './nyumba-malipo.component.html',
-  styleUrls: ['./nyumba-malipo.component.css']
+    selector: 'app-nyumba-malipo',
+    templateUrl: './nyumba-malipo.component.html',
+    styleUrls: ['./nyumba-malipo.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaMalipoComponent implements OnInit {
   users;

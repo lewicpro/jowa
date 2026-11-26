@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OrdersDashboardOngezaManagerComponent } from './orders-dashboard-ongeza-manager.component';
 
@@ -6,7 +6,7 @@ describe('OrdersDashboardOngezaManagerComponent', () => {
   let component: OrdersDashboardOngezaManagerComponent;
   let fixture: ComponentFixture<OrdersDashboardOngezaManagerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OrdersDashboardOngezaManagerComponent ]
     })

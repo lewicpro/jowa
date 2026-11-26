@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-wamiliki',
-  templateUrl: './wamiliki.component.html',
-  styleUrls: ['./wamiliki.component.css']
+    selector: 'app-wamiliki',
+    templateUrl: './wamiliki.component.html',
+    styleUrls: ['./wamiliki.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WamilikiComponent{
   users;

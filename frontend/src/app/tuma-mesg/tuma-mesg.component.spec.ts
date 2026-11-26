@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TumaMesgComponent } from './tuma-mesg.component';
 
@@ -6,7 +6,7 @@ describe('TumaMesgComponent', () => {
   let component: TumaMesgComponent;
   let fixture: ComponentFixture<TumaMesgComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TumaMesgComponent ]
     })

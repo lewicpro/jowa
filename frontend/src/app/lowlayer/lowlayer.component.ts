@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-lowlayer',
-  templateUrl: './lowlayer.component.html',
-  styleUrls: ['./lowlayer.component.css']
+    selector: 'app-lowlayer',
+    templateUrl: './lowlayer.component.html',
+    styleUrls: ['./lowlayer.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class LowlayerComponent implements OnInit {
   monam;

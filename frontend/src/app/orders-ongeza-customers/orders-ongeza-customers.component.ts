@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-orders-ongeza-customers',
-  templateUrl: './orders-ongeza-customers.component.html',
-  styleUrls: ['./orders-ongeza-customers.component.css']
+    selector: 'app-orders-ongeza-customers',
+    templateUrl: './orders-ongeza-customers.component.html',
+    styleUrls: ['./orders-ongeza-customers.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersOngezaCustomersComponent implements OnInit {
   userData = {
@@ -101,7 +103,7 @@ export class OrdersOngezaCustomersComponent implements OnInit {
 
 
  Register() {
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.userData, 'Customer/' + localStorage.getItem('Orderworker') +'/').then((result) => {
      this.responseData = result;
@@ -131,12 +133,12 @@ export class OrdersOngezaCustomersComponent implements OnInit {
 
 
      }
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
 
  }
 
  UserCreate() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -146,7 +148,7 @@ export class OrdersOngezaCustomersComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Orders/Worker-dashboard/Customers']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -154,7 +156,7 @@ export class OrdersOngezaCustomersComponent implements OnInit {
 
  }
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    //.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -164,7 +166,7 @@ export class OrdersOngezaCustomersComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Orders/Worker-dashboard/Customers']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

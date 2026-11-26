@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-duka-director-create',
-  templateUrl: './duka-director-create.component.html',
-  styleUrls: ['./duka-director-create.component.css']
+    selector: 'app-duka-director-create',
+    templateUrl: './duka-director-create.component.html',
+    styleUrls: ['./duka-director-create.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorCreateComponent implements OnInit {
   userData={
@@ -146,7 +148,7 @@ export class DukaDirectorCreateComponent implements OnInit {
   this.userData.service_officer=localStorage.getItem('DirectorDuka')
   this.userData.tarehe=this.times
 
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.userData, 'DukaInfo/'+localStorage.getItem('DirectorDuka')+'/').then((result) => {
      this.responseData = result;
@@ -177,7 +179,7 @@ export class DukaDirectorCreateComponent implements OnInit {
 
 
      }
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
 
  }
 
@@ -190,7 +192,7 @@ export class DukaDirectorCreateComponent implements OnInit {
 
 
   }
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -200,7 +202,7 @@ export class DukaDirectorCreateComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.user);
     //  this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -208,7 +210,7 @@ export class DukaDirectorCreateComponent implements OnInit {
 
  }
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    //.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -218,7 +220,7 @@ export class DukaDirectorCreateComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.user);
     //  this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

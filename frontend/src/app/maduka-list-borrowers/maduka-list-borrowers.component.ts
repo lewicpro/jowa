@@ -1,18 +1,27 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 
 @Component({
-  selector: 'app-maduka-list-borrowers',
-  templateUrl: './maduka-list-borrowers.component.html',
-  styleUrls: ['./maduka-list-borrowers.component.css']
+    selector: 'app-maduka-list-borrowers',
+    templateUrl: './maduka-list-borrowers.component.html',
+    styleUrls: ['./maduka-list-borrowers.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaListBorrowersComponent implements OnInit {
+  Totalval: any;
+  quantity: any;
+  product: any;
+  description: any;
   [x: string]: any;
+  option: string;
+  dax: any;
+  Jina_Mtejaval: any;
   options;
   paycard="false";
   userdata;

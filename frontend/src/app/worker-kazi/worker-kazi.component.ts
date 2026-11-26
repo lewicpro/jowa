@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-worker-kazi',
-  templateUrl: './worker-kazi.component.html',
-  styleUrls: ['./worker-kazi.component.css']
+    selector: 'app-worker-kazi',
+    templateUrl: './worker-kazi.component.html',
+    styleUrls: ['./worker-kazi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkerKaziComponent implements OnInit {
 

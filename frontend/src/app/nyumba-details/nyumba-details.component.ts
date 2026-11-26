@@ -1,11 +1,13 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-nyumba-details',
-  templateUrl: './nyumba-details.component.html',
-  styleUrls: ['./nyumba-details.component.css']
+    selector: 'app-nyumba-details',
+    templateUrl: './nyumba-details.component.html',
+    styleUrls: ['./nyumba-details.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaDetailsComponent implements OnInit {
 
@@ -83,7 +85,7 @@ export class NyumbaDetailsComponent implements OnInit {
 
 
   onfileSelected(file: FileList) {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.selectedFile = file.item(0);
 
     // to show image preview
@@ -92,7 +94,7 @@ export class NyumbaDetailsComponent implements OnInit {
       this.imageUrl = event.target.result;
     };
     reader.readAsDataURL(this.selectedFile);
-    this.ngProgress.done();
+    this.ngProgress.ref().complete();
 
 
   }
@@ -243,7 +245,7 @@ export class NyumbaDetailsComponent implements OnInit {
 
 
   getvalu(){
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restFramework.gethouses().then(hous =>{
       this.houslink = hous;
       this.result = this.houslink.filter(user => this.name)
@@ -347,7 +349,7 @@ export class NyumbaDetailsComponent implements OnInit {
   
       });
 
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
   }
 
@@ -356,14 +358,14 @@ export class NyumbaDetailsComponent implements OnInit {
    onUploadProfileData() {
     
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.UploadPictureNyumba(this.selectedFile, this.name).subscribe(
       data => {
         console.log('done');
-        this.ngProgress.start();
+        this.ngProgress.ref().start();
         this.getvalu()
-        this.ngProgress.done();
-        // this.ngProgress.done();
+        this.ngProgress.ref().complete();
+        // this.ngProgress.ref().complete();
       }
     );
     

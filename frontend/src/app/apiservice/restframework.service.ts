@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from '@angular/http';
-import { RequestOptions, RequestMethod } from '@angular/http';
-import {Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IPosts } from './restframework.model';
 import { NyumbaDashboardRoomPriceComponent } from '../nyumba-dashboard-room-price/nyumba-dashboard-room-price.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class RestframeworkService {
-    link='http://localhost:8000';
+    link='http://localhost:8001';
     // link='https://igtv.africa';
     company_username =localStorage.getItem('company_username/');
     usercreate = this.link+'/api/Adworker/';
@@ -2318,12 +2316,12 @@ getWapangajiNyumbaList(mpangajiid) {
     getPosts(): Observable<IPosts[]> {
         return this.http
             .get(this.usercreatemo)
-            .map((response: Response) => {
-                return <IPosts[]>response.json();
-            });
+            .pipe(map((response: IPosts[]) => {
+                return response;
+            }));
     }
-    private handleError(error: Response) {
-        return Observable.throw(error.statusText);
+    private handleError(error: HttpErrorResponse) {
+        return throwError(() => error.statusText);
     }
 
 

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-wakala-workers',
-  templateUrl: './wakala-workers.component.html',
-  styleUrls: ['./wakala-workers.component.css']
+    selector: 'app-wakala-workers',
+    templateUrl: './wakala-workers.component.html',
+    styleUrls: ['./wakala-workers.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaWorkersComponent {
   users;

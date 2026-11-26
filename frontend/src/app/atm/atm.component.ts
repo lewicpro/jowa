@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-atm',
-  templateUrl: './atm.component.html',
-  styleUrls: ['./atm.component.css']
+    selector: 'app-atm',
+    templateUrl: './atm.component.html',
+    styleUrls: ['./atm.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AtmComponent implements OnInit {
   imageUrl;

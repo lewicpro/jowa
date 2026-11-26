@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-personal-edit-account',
-  templateUrl: './personal-edit-account.component.html',
-  styleUrls: ['./personal-edit-account.component.css']
+    selector: 'app-personal-edit-account',
+    templateUrl: './personal-edit-account.component.html',
+    styleUrls: ['./personal-edit-account.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PersonalEditAccountComponent implements OnInit {
   userData = {'name': '',
@@ -38,7 +40,7 @@ export class PersonalEditAccountComponent implements OnInit {
 
 
  Register() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.wapangajiPos1(this.userData, 'NyumbaUpdate/'+ this.nyumbano + '/').then((result) => {
      this.responseData = result;
@@ -48,7 +50,7 @@ export class PersonalEditAccountComponent implements OnInit {
     //  this.UserCreate();
     //  this.UserInfo();
      this.router.navigate(['/Nyumba-dash/Nyumba']); 
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -72,7 +74,7 @@ export class PersonalEditAccountComponent implements OnInit {
  }
 
  UserCreate() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -82,7 +84,7 @@ export class PersonalEditAccountComponent implements OnInit {
      localStorage.setItem('userData2', this.responseData);
     //  localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -90,7 +92,7 @@ export class PersonalEditAccountComponent implements OnInit {
 
  }
  UserInfo() {
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -100,7 +102,7 @@ export class PersonalEditAccountComponent implements OnInit {
      localStorage.setItem('userData2', this.responseData);
     //  localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

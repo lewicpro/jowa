@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji-ongeza-account',
-  templateUrl: './dasboard-mkopeshaji-ongeza-account.component.html',
-  styleUrls: ['./dasboard-mkopeshaji-ongeza-account.component.css']
+    selector: 'app-dasboard-mkopeshaji-ongeza-account',
+    templateUrl: './dasboard-mkopeshaji-ongeza-account.component.html',
+    styleUrls: ['./dasboard-mkopeshaji-ongeza-account.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
   userData = {
@@ -121,7 +123,7 @@ export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
   Register() {
     this.stats ='filed'
 
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.userData, 'Register/').then((result) => {
       this.responseData = result;
@@ -166,12 +168,12 @@ export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
 
       }
       
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
   }
 
   UserCreate() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
       this.responseData = result;
@@ -181,7 +183,7 @@ export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert(' Sorry, Imeishia pa kumtengeneza user');
 
@@ -189,7 +191,7 @@ export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
 
   }
   UserInfo() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     //.log('passed');
     this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
       this.responseData = result;
@@ -199,7 +201,7 @@ export class DasboardMkopeshajiOngezaAccountComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('Imeishia pa kutengeneza taarifa za hesabu');
 

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-edit-personal',
-  templateUrl: './edit-personal.component.html',
-  styleUrls: ['./edit-personal.component.css']
+    selector: 'app-edit-personal',
+    templateUrl: './edit-personal.component.html',
+    styleUrls: ['./edit-personal.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class EditPersonalComponent implements OnInit {
   value;
@@ -53,7 +55,7 @@ export class EditPersonalComponent implements OnInit {
     'jina_mdhamini':'',
     'cheo':'',
     'simu_dalali':'',
-    'caution':this.caution,
+    'caution':undefined,
     'route':'pangisha',
     'mwaka':this.d.getFullYear(),
 
@@ -104,7 +106,7 @@ export class EditPersonalComponent implements OnInit {
   }
 
   UserCreate() {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.wapangajiPos1(this.Created, 'wapangaji/wholeid/'+ this.datara +'/').then((result) => {
       this.responseData = result;
@@ -115,7 +117,7 @@ export class EditPersonalComponent implements OnInit {
   
       localStorage.setItem('userData2', this.responseData);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

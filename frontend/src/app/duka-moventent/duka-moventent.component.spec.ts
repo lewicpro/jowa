@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DukaMovententComponent } from './duka-moventent.component';
 
@@ -6,7 +6,7 @@ describe('DukaMovententComponent', () => {
   let component: DukaMovententComponent;
   let fixture: ComponentFixture<DukaMovententComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DukaMovententComponent ]
     })

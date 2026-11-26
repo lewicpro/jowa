@@ -1,16 +1,18 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { parse } from 'querystring';
 // import * as CanvasJS from './canvasjs.min';
 
 @Component({
-  selector: 'app-duka-director-products',
-  templateUrl: './duka-director-products.component.html',
-  styleUrls: ['./duka-director-products.component.css']
+    selector: 'app-duka-director-products',
+    templateUrl: './duka-director-products.component.html',
+    styleUrls: ['./duka-director-products.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorProductsComponent implements OnInit {
   all;
@@ -1372,7 +1374,7 @@ export class DukaDirectorProductsComponent implements OnInit {
   }
   onUploadProfileData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.Selectd="True"
     this.submitbutt="False"
     this.rest_framework.postProdata(this.selectedFile, this.pk).subscribe(
@@ -1380,7 +1382,7 @@ export class DukaDirectorProductsComponent implements OnInit {
         //.log('done');
         this.imagediag="False"
         this.getdata()
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
 

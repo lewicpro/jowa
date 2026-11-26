@@ -1,12 +1,14 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { WorkersDashboardComponent } from '../workers-dashboard/workers-dashboard.component';
 
 @Component({
-  selector: 'app-worker-page-returns',
-  templateUrl: './worker-page-returns.component.html',
-  styleUrls: ['./worker-page-returns.component.css']
+    selector: 'app-worker-page-returns',
+    templateUrl: './worker-page-returns.component.html',
+    styleUrls: ['./worker-page-returns.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkerPageReturnsComponent implements OnInit {
   options=['Nmb', 'Nbc', 'Mpesa', 'Tigopesa', 'Selcom', 'TPB']
@@ -535,7 +537,7 @@ export class WorkerPageReturnsComponent implements OnInit {
     this.getalldata();
     //  this.clean();
 
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 

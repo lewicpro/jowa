@@ -8,1467 +8,1302 @@
   </div>
 </ng-template>
 <div style="text-align: center;"><input #boya (keyup)="search(boya.value)"  class="wako" type="text" placeholder="Search for a product" style="width: 400px;"></div>
-<div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added products</a></div><div   align="right" class="col"><a *ngIf="statux=='sell'"  (click)="Register()" style="cursor: pointer;">Register Product</a><a *ngIf="statux=='register'" (click)="Sell()" style="cursor: pointer;"><span class="material-icons">close</span></a></div></div>
+<div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added products</a></div><div   align="right" class="col">@if (statux=='sell') {
+<a  (click)="Register()" style="cursor: pointer;">Register Product</a>
+}@if (statux=='register') {
+<a (click)="Sell()" style="cursor: pointer;"><span class="material-icons">close</span></a>
+}</div></div>
 <!-- <div *ngIf="statux=='sell'"  style="padding:10px" ></div> -->
 <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
-<div *ngIf="statux=='sell'">
-<!-- <div class="row" style="color: #666;"> <div class="col">Stock at selling price: {{total_available| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;">Total stock profit: {{Total_profit | currency: 'Tsh '}}/-</div><div class="col" style="text-align: right;">Stock at buying price (cost): {{Total_bought| currency: 'Tsh '}}/-</div></div> -->
-  <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF PRODUCTS</h4>
-    <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
-    <!-- <br><br> -->
-    <!-- <pre class="card card-block card-header">{{message}}</pre> -->
-    <div style="max-height:800px;" >
-
-
-      <table class="table table-sm table-bordered table-striped table-light">
-
-        <tbody style="overflow-x: scroll;">
-          <tr>
-            <th style="padding-left:10px;">#</th>
-            <th style="padding-left:10px;">Date & Time</th>
-            <!-- <th style="padding-left:10px;">pk</th> -->
-            <th>Name</th>
-            <th nowrap> Product number</th>
-            <th nowrap> Purchasing price</th>
-            <th>Selling Price</th>
-
-            <th>Type</th>
-            <th *ngIf="expire=='true'" nowrap>Expire date</th>
-            <th>Officer</th>
-            <th nowrap>Shelf No</th>
-
-            <th>Remained</th>
-            <th>Measure</th>
-            <!-- <th>Expiration</th> -->
-            <th nowrap>Total Selling price</th>
-            <th nowrap>Total bought price</th>
-            <th>Sold</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-        <tr style="background-color: rgb(203, 228, 183);">
-            <td style="padding-left:10px;" class="youo" nowrap></td>
-            <td style="padding-left:10px;" class="youo" nowrap></td>
-            <td style="padding-left:10px;" class="youo" nowrap></td>
-            <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
-
-            <td class="youo" nowrap>stock</td>
-            <td class="youo" nowrap></td>
-            <td class="youo" *ngIf="receipt =='on'" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
-            <td class="youo" *ngIf="receipt =='off'" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Show Invoice</td>
-            <td class="youo" nowrap></td>
-            <td class="youo" nowrap></td>
-            <td class="youo" nowrap></td>
-            <td class="youo" nowrap></td>
-            <!-- <td class="youo" nowrap></td> -->
-            <td class="youo" nowrap></td>
-        </tr>
-          <tr  id="customers" class="youo" *ngFor="let n of all let i = index" style="  cursor: pointer;" scrollX="true">
-            <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
-            <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
-            <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
-            <td class="youo"  nowrap>{{n.Name_of_the_product | uppercase}}</td>
-            <td class="youo"  nowrap >{{n.Product_serial}}</td>
-            <td class="youo"  nowrap>{{n.Price_bought| currency: 'Tsh '}}</td>
-            <td class="youo"  nowrap>{{n.Selling_price| currency: 'Tsh '}}</td>
-            <!-- <td style="padding-left:10px;" class="youo" (click)="imagedialog(n)" nowrap ><img style="object-fit: cover;" class="zoom" width="40" height="40" [src]="n.photo" alt=""></td> -->
-            <td class="youo"  nowrap>{{n.Type_of_product}}</td>
-            <td class="youo"  nowrap *ngIf="expire=='true'">{{n.Expiration_date}}</td>
-            <td class="youo"  nowrap>{{n.user}}</td>
-            <td class="youo"  nowrap>{{n.Shelf_No}}</td>
-
-            <td class="youo" nowrap>{{n.Number_of_products}}</td>
-            <td class="youo" nowrap>{{n.amountofproductval}}</td>
-            <!-- <td class="youo" nowrap>{{n.Expiration_date}}</td> -->
-            <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'Tsh '}}</td>
-            <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'Tsh '}}</td>
-            <td class="youo" nowrap>{{n.Number_of_products_sold}}</td>
-            <td class="youo" nowrap>{{n.Description}}</td>
-            <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
-        </tr>
-        <div style="padding: 30px;"></div>
-
-          <!--<tr id="customers">-->
+@if (statux=='sell') {
+  <div>
+    <!-- <div class="row" style="color: #666;"> <div class="col">Stock at selling price: {{total_available| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;">Total stock profit: {{Total_profit | currency: 'Tsh '}}/-</div><div class="col" style="text-align: right;">Stock at buying price (cost): {{Total_bought| currency: 'Tsh '}}/-</div></div> -->
+    <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF PRODUCTS</h4>
+      <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+      <!-- <br><br> -->
+      <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+      <div style="max-height:800px;" >
+        <table class="table table-sm table-bordered table-striped table-light">
+          <tbody style="overflow-x: scroll;">
+            <tr>
+              <th style="padding-left:10px;">#</th>
+              <th style="padding-left:10px;">Date & Time</th>
+              <!-- <th style="padding-left:10px;">pk</th> -->
+              <th>Name</th>
+              <th nowrap> Product number</th>
+              <th nowrap> Purchasing price</th>
+              <th>Selling Price</th>
+              <th>Type</th>
+              @if (expire=='true') {
+                <th nowrap>Expire date</th>
+              }
+              <th>Officer</th>
+              <th nowrap>Shelf No</th>
+              <th>Remained</th>
+              <th>Measure</th>
+              <!-- <th>Expiration</th> -->
+              <th nowrap>Total Selling price</th>
+              <th nowrap>Total bought price</th>
+              <th>Sold</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+            <tr style="background-color: rgb(203, 228, 183);">
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
+              <td class="youo" nowrap>stock</td>
+              <td class="youo" nowrap></td>
+              @if (receipt =='on') {
+                <td class="youo" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
+              }
+              @if (receipt =='off') {
+                <td class="youo" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Show Invoice</td>
+              }
+              <td class="youo" nowrap></td>
+              <td class="youo" nowrap></td>
+              <td class="youo" nowrap></td>
+              <td class="youo" nowrap></td>
+              <!-- <td class="youo" nowrap></td> -->
+              <td class="youo" nowrap></td>
+            </tr>
+            @for (n of all; track n; let i = $index) {
+              <tr  id="customers" class="youo" style="  cursor: pointer;" scrollX="true">
+                <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
+                <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
+                <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
+                <td class="youo"  nowrap>{{n.Name_of_the_product | uppercase}}</td>
+                <td class="youo"  nowrap >{{n.Product_serial}}</td>
+                <td class="youo"  nowrap>{{n.Price_bought| currency: 'Tsh '}}</td>
+                <td class="youo"  nowrap>{{n.Selling_price| currency: 'Tsh '}}</td>
+                <!-- <td style="padding-left:10px;" class="youo" (click)="imagedialog(n)" nowrap ><img style="object-fit: cover;" class="zoom" width="40" height="40" [src]="n.photo" alt=""></td> -->
+                <td class="youo"  nowrap>{{n.Type_of_product}}</td>
+                @if (expire=='true') {
+                  <td class="youo"  nowrap>{{n.Expiration_date}}</td>
+                }
+                <td class="youo"  nowrap>{{n.user}}</td>
+                <td class="youo"  nowrap>{{n.Shelf_No}}</td>
+                <td class="youo" nowrap>{{n.Number_of_products}}</td>
+                <td class="youo" nowrap>{{n.amountofproductval}}</td>
+                <!-- <td class="youo" nowrap>{{n.Expiration_date}}</td> -->
+                <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'Tsh '}}</td>
+                <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'Tsh '}}</td>
+                <td class="youo" nowrap>{{n.Number_of_products_sold}}</td>
+                <td class="youo" nowrap>{{n.Description}}</td>
+                <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
+              </tr>
+            }
+            <div style="padding: 30px;"></div>
+            <!--<tr id="customers">-->
             <!--<td scope="row">2</td>-->
             <!--<td>BA</td>-->
             <!--<td>3</td>-->
             <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
           <!--</tr>-->
           <!--<tr id="customers">-->
-            <!--<td scope="row">3</td>-->
-            <!--<td>Accountancy</td>-->
-            <!--<td>3</td>-->
-            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-          <!--</tr>-->
-        </tbody>
-      </table>
-
-      <div *ngIf="receipt=='on'" style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+    @if (receipt=='on') {
+      <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
         <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
         <div align="center">
-
-
           <label class="switch">
-            <input *ngIf="route=='active'" type="checkbox" checked (click)="activated()">
-            <input *ngIf="route=='inactive'" type="checkbox" (click)="activated()">
+            @if (route=='active') {
+              <input type="checkbox" checked (click)="activated()">
+            }
+            @if (route=='inactive') {
+              <input type="checkbox" (click)="activated()">
+            }
             <span class="slider round"></span>
           </label>
-
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-
-        <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
-
-        <div style="padding:10px"></div>
-        <div align="center" style="font-size:13px;">{{username}}</div>
-        <div align="center" style="font-size:13px;">{{Email}}</div>
-        <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
-        <div align="center" style="font-size:13px;">{{wilaya}}</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
-        <div align="center" style="font-size:13px;">-----------------------------------</div>
-        <div *ngFor="let m of allgiv">
-          <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
-
-        </div>
-
-        <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
-        <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-        <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
-        <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
-      <div style="padding:10px"></div>
-      <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div style="padding:10px"></div>
+          <div align="center" style="font-size:13px;">{{username}}</div>
+          <div align="center" style="font-size:13px;">{{Email}}</div>
+          <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div align="center" style="font-size:13px;">{{wilaya}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div align="center" style="font-size:13px;">-----------------------------------</div>
+          @for (m of allgiv; track m) {
+            <div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+            </div>
+          }
+          <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
+          <div style="padding:10px"></div>
+          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
         </div>
         <div style="padding:10px"></div>
         <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
-
-
-    </div>
-
-    </div>
+      </div>
+    }
   </div>
-  <div style="padding: 5px;"></div>
-  <div style="background-color:rgba(255, 255, 255, 0.091)	;">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center pagination-sm">
-        <li class="page-item disabled">
-          <a *ngIf="prev1 === null" class="page-link"  aria-label="Previous">
+</div>
+<div style="padding: 5px;"></div>
+<div style="background-color:rgba(255, 255, 255, 0.091)	;">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pagination-sm">
+      <li class="page-item disabled">
+        @if (prev1 === null) {
+          <a class="page-link"  aria-label="Previous">
             <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
-
-        </li>
-        <li  class="page-item">
-          <a *ngIf="prev1" class="page-link" (click)="prev()" aria-label="Previous">
+        }
+      </li>
+      <li  class="page-item">
+        @if (prev1) {
+          <a class="page-link" (click)="prev()" aria-label="Previous">
             <span   aria-hidden="true">&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
-
-        </li>
-        <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
-        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-
-        <li class="page-item disabled">
-          <a  *ngIf="next1 === null" class="page-link"  aria-label="Next">
+        }
+      </li>
+      <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
+      <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+      <li class="page-item disabled">
+        @if (next1 === null) {
+          <a  class="page-link"  aria-label="Next">
             <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
-
-        </li>
-
-        <li class="page-item">
-          <a *ngIf="next1" class="page-link" (click)="next()" aria-label="Next">
+        }
+      </li>
+      <li class="page-item">
+        @if (next1) {
+          <a class="page-link" (click)="next()" aria-label="Next">
             <span  aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
-
-        </li>
-      </ul>
-    </nav>
-
-  </div>
-
-
-
+        }
+      </li>
+    </ul>
+  </nav>
 </div>
+</div>
+}
 
 
-  <div *ngIf="statux=='register'" >
-
+@if (statux=='register') {
+  <div >
     <div align="center">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a *ngIf="toolsshop=='true'" class="nav-link active" (click)="tools()" style="cursor: pointer;">Accessories or Tools</a>
-          <a *ngIf="toolsshop !=='true'" class="nav-link" (click)="tools()" style="cursor: pointer;">Accessories or Tools</a>
+          @if (toolsshop=='true') {
+            <a class="nav-link active" (click)="tools()" style="cursor: pointer;">Accessories or Tools</a>
+          }
+          @if (toolsshop !=='true') {
+            <a class="nav-link" (click)="tools()" style="cursor: pointer;">Accessories or Tools</a>
+          }
         </li>
         <li class="nav-item">
-          <a  *ngIf="domesticretails=='true'" class="nav-link active" (click)="Retaildomestic()" style="cursor: pointer;">Domestic Retails</a>
-          <a  *ngIf="domesticretails !=='true'" class="nav-link" (click)="Retaildomestic()" style="cursor: pointer;">Domestic Retails</a>
+          @if (domesticretails=='true') {
+            <a  class="nav-link active" (click)="Retaildomestic()" style="cursor: pointer;">Domestic Retails</a>
+          }
+          @if (domesticretails !=='true') {
+            <a  class="nav-link" (click)="Retaildomestic()" style="cursor: pointer;">Domestic Retails</a>
+          }
         </li>
         <li class="nav-item">
-          <a  *ngIf="phoneshop=='true'" class="nav-link active" (click)="phoneshopfunc()" style="cursor: pointer;">Phones Shop</a>
-          <a  *ngIf="phoneshop !=='true'" class="nav-link" (click)="phoneshopfunc()" style="cursor: pointer;">Phones Shops</a>
+          @if (phoneshop=='true') {
+            <a  class="nav-link active" (click)="phoneshopfunc()" style="cursor: pointer;">Phones Shop</a>
+          }
+          @if (phoneshop !=='true') {
+            <a  class="nav-link" (click)="phoneshopfunc()" style="cursor: pointer;">Phones Shops</a>
+          }
         </li>
         <li class="nav-item">
-          <a  *ngIf="cloth=='true'" class="nav-link active" (click)="clothfunc()" style="cursor: pointer;">Cloth Shop</a>
-          <a  *ngIf="cloth !=='true'" class="nav-link" (click)="clothfunc()" style="cursor: pointer;">Cloth Shops</a>
+          @if (cloth=='true') {
+            <a  class="nav-link active" (click)="clothfunc()" style="cursor: pointer;">Cloth Shop</a>
+          }
+          @if (cloth !=='true') {
+            <a  class="nav-link" (click)="clothfunc()" style="cursor: pointer;">Cloth Shops</a>
+          }
         </li>
         <li class="nav-item">
-          <a *ngIf="domesticwholesale=='true'" class="nav-link active" (click)="wholesaledomestic()" style="cursor: pointer;">Wholesale</a>
-          <a *ngIf="domesticwholesale !=='true'" class="nav-link" (click)="wholesaledomestic()" style="cursor: pointer;">Wholesale</a>
+          @if (domesticwholesale=='true') {
+            <a class="nav-link active" (click)="wholesaledomestic()" style="cursor: pointer;">Wholesale</a>
+          }
+          @if (domesticwholesale !=='true') {
+            <a class="nav-link" (click)="wholesaledomestic()" style="cursor: pointer;">Wholesale</a>
+          }
         </li>
         <li class="nav-item">
-          <a *ngIf="Arts=='true'" class="nav-link active" (click)="Artsfunct()" style="cursor: pointer;">Arts & Scruptures</a>
-          <a *ngIf="Arts !=='true'" class="nav-link" (click)="Artsfunct()" style="cursor: pointer;">Arts & Scruptures</a>
+          @if (Arts=='true') {
+            <a class="nav-link active" (click)="Artsfunct()" style="cursor: pointer;">Arts & Scruptures</a>
+          }
+          @if (Arts !=='true') {
+            <a class="nav-link" (click)="Artsfunct()" style="cursor: pointer;">Arts & Scruptures</a>
+          }
         </li>
         <li class="nav-item">
-          <a *ngIf="pharma=='true'" class="nav-link active" (click)="pharmafunct()" style="cursor: pointer;">Pharmaceuticals</a>
-          <a  *ngIf="pharma !=='true'"class="nav-link " (click)="pharmafunct()" style="cursor: pointer;">Pharmaceuticals</a>
+          @if (pharma=='true') {
+            <a class="nav-link active" (click)="pharmafunct()" style="cursor: pointer;">Pharmaceuticals</a>
+          }
+          @if (pharma !=='true') {
+            <a class="nav-link " (click)="pharmafunct()" style="cursor: pointer;">Pharmaceuticals</a>
+          }
         </li>
         <li class="nav-item">
-          <a *ngIf="food=='true'" class="nav-link active" (click)="foodfunct()" style="cursor: pointer;">Food & Bites</a>
-          <a  *ngIf="food !=='true'"class="nav-link " (click)="foodfunct()" style="cursor: pointer;">Food & Bites</a>
+          @if (food=='true') {
+            <a class="nav-link active" (click)="foodfunct()" style="cursor: pointer;">Food & Bites</a>
+          }
+          @if (food !=='true') {
+            <a class="nav-link " (click)="foodfunct()" style="cursor: pointer;">Food & Bites</a>
+          }
         </li>
       </ul>
     </div>
     <div style="padding:10px"></div>
     <div align="center">
-
-<div *ngIf="toolsshop=='true'">
-
-
-
-
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Product">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Type of the product"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product number</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Number of the product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing Price</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchased price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling Price</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Products Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Products Available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-
-</div>
-<div *ngIf="phoneshop=='true'">
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Phone">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="eg Used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone imei</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="eg 3510324534534534"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Phone Purchasing Price</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="eg 950,000"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling Price</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<!-- <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Profit</span>
-    </div>
-    <input #box36 (blur)="ProductProfit(box36.value)" name="Profit" required  placeholder="Product profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Product Profit.
-      </div>
-  </div> -->
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phones Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Eg: 12"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Descriptions</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-
-</div>
-<div *ngIf="pharma=='true'">
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Generic name eg:Paracentamol"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
-    </div>
-    <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-      Please provide Card expiration.
-    </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-</div>
-<div *ngIf="cloth=='true'">
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Cloth Name</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of cloth">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-</div>
-<div *ngIf="Arts=='true'">
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Art Name</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Art">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-</div>
-<div *ngIf="domesticwholesale=='true'">
-
-
-
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-
-</div>
-<div *ngIf="domesticretails=='true'">
-
-
-
-
-
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Product">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
-    </div>
-    <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-      Please provide Card expiration.
-    </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box523 (blur)="productPurchasingPrice(box523.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
-    </div>
-    <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-</div>
-<div *ngIf="food=='true'">
-
-
-
-
-
-
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Food Product</span>
-    </div>
-    <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Food Product">
-
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
-    </div>
-    <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
-    </div>
-    <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-      Please provide Card expiration.
-    </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-    </div>
-    <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Shelf Number.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
-    </div>
-    <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
-    </div>
-    <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
-    </div>
-    <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
-    </div>
-    <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale price.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
-    </div>
-    <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Wholesale profit.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
-    </div>
-    <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
-    </div>
-    <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-<div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-    <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
-    </div>
-    <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Nyumba no.
-      </div>
-  </div>
-
-
-
-</div>
-
+      @if (toolsshop=='true') {
+        <div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+            </div>
+            <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Product">
           </div>
-          <div> <span style="padding-left:10px; padding-bottom:10px; border-left: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"> <a (click)="Sell()" style="cursor: pointer;">Cancel</a> </span>  <span style="float:right; padding-right:10px; padding-bottom:10px; border-right: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"><a (click)="subregister()" style="cursor: pointer;">Submit</a> </span></div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            </div>
+            <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Type of the product"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+            </div>
+            <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Shelf Number.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product number</span>
+            </div>
+            <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Number of the product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing Price</span>
+            </div>
+            <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchased price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling Price</span>
+            </div>
+            <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale price</span>
+            </div>
+            <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Wholesale price.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale Profit</span>
+            </div>
+            <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Wholesale profit.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Products Available</span>
+            </div>
+            <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Products Available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            </div>
+            <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+        </div>
+      }
+      @if (phoneshop=='true') {
+        <div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+            </div>
+            <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Phone">
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Type</span>
+            </div>
+            <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="eg Used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+            </div>
+            <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Shelf Number.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone imei</span>
+            </div>
+            <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="eg 3510324534534534"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Phone Purchasing Price</span>
+            </div>
+            <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="eg 950,000"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling Price</span>
+            </div>
+            <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              Please provide Nyumba no.
+            </div>
+          </div>
+          <!-- <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Profit</span>
+          </div>
+          <input #box36 (blur)="ProductProfit(box36.value)" name="Profit" required  placeholder="Product profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Product Profit.
+          </div>
+        </div> -->
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phones Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Eg: 12"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Descriptions</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (pharma=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Generic name eg:Paracentamol"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+          </div>
+          <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
+            Please provide Card expiration.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (cloth=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Cloth Name</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of cloth">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (Arts=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Art Name</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Art">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (domesticwholesale=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (domesticretails=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Product">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+          </div>
+          <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
+            Please provide Card expiration.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box523 (blur)="productPurchasingPrice(box523.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
+          </div>
+          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
+    @if (food=='true') {
+      <div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Food Product</span>
+          </div>
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Food Product">
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+          </div>
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+          </div>
+          <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
+            Please provide Card expiration.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+          </div>
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Shelf Number.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+          </div>
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+          </div>
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+          </div>
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+          </div>
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale price.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+          </div>
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Wholesale profit.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+          </div>
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
+          </div>
+          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            Please provide Nyumba no.
+          </div>
+        </div>
+      </div>
+    }
   </div>
+  <div> <span style="padding-left:10px; padding-bottom:10px; border-left: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"> <a (click)="Sell()" style="cursor: pointer;">Cancel</a> </span>  <span style="float:right; padding-right:10px; padding-bottom:10px; border-right: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"><a (click)="subregister()" style="cursor: pointer;">Submit</a> </span></div>
+</div>
+}
 
 
-  <div *ngIf="diag=='on'" class="animated slideInUp" style="position: fixed; top:10%; right:40%; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:400px; backdrop-filter: blur('10px');">
-  <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div>
-  <div style="padding:2px"></div>
-  <div style="padding:10px; background-color: #eae9e9;;">
-    <div style="color: rgb(72, 72, 74); font-size:16px;">Name of the product <span style="float: right;">{{name}}</span></div>
-
-    <div style="padding:20px"></div>
-
-
-
+@if (diag=='on') {
+  <div class="animated slideInUp" style="position: fixed; top:10%; right:40%; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:400px; backdrop-filter: blur('10px');">
+    <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div>
+    <div style="padding:2px"></div>
+    <div style="padding:10px; background-color: #eae9e9;;">
+      <div style="color: rgb(72, 72, 74); font-size:16px;">Name of the product <span style="float: right;">{{name}}</span></div>
+      <div style="padding:20px"></div>
       <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Price</span>
+        <div class="input-group-prepend ">
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Price</span>
+        </div>
+        <input type="text" #box9 (blur)="pricey(box9.value)" name="phone" [value]="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="border:1px solid transparent; margin:center;">
       </div>
-      <input type="text" #box9 (blur)="pricey(box9.value)" name="phone" [value]="price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="border:1px solid transparent; margin:center;">
-    </div>
-    <!-- <div style="padding:20px"></div> -->
-    <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Quantity</span>
+      <!-- <div style="padding:20px"></div> -->
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+        <div class="input-group-prepend ">
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Quantity</span>
+        </div>
+        <input type="text" [value]="quantity" #box10 (keyup)="quantitey(box10.value)" name="phone" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
-      <input type="text" [value]="quantity" #box10 (keyup)="quantitey(box10.value)" name="phone" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-    <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Discount</span>
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+        <div class="input-group-prepend ">
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Discount</span>
+        </div>
+        <input type="text" name="discount" #box11 (blur)="discountey(box11.value)" [value]="discount" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
       </div>
-      <input type="text" name="discount" #box11 (blur)="discountey(box11.value)" [value]="discount" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
-    </div>
-    <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">C Name</span>
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
+        <div class="input-group-prepend ">
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">C Name</span>
+        </div>
+        <input type="text" name="cname" #box112 (blur)="Customer_name(box112.value)" placeholder="Customer Name" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
       </div>
-      <input type="text" name="cname" #box112 (blur)="Customer_name(box112.value)" placeholder="Customer Name" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
-    </div>
-    <div class="input-group input-group-sm mb-3 d-flex fade-in4"  style="width:100%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text"  style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">C Phone</span>
+      <div class="input-group input-group-sm mb-3 d-flex fade-in4"  style="width:100%; margin:center;">
+        <div class="input-group-prepend ">
+          <span class="input-group-text"  style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">C Phone</span>
+        </div>
+        <input type="text" name="phone" placeholder="Customer Phone number"  #box113 (blur)="Customer_phone(box113.value)" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
       </div>
-      <input type="text" name="phone" placeholder="Customer Phone number"  #box113 (blur)="Customer_phone(box113.value)" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
     </div>
-
-
-
-
-
-
-    </div>
-    <div style="padding:10px; font-weight: bolder;" *ngIf="waka">Total Amount: <span style="float:right">{{waka}}</span></div>
-<div align="center">
-  <div class="row"> <div class="col">  <button type="button"  style="width:100%" class="btn btn-primary btn-sm " (click)="cancel()">Cancel</button>
-  </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="submit(template)">Cash</button>
-  </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="selectCredit(template)">Borrow</button>
-  </div></div>
-
-</div>
-
-
-
-
-
+    @if (waka) {
+      <div style="padding:10px; font-weight: bolder;">Total Amount: <span style="float:right">{{waka}}</span></div>
+    }
+    <div align="center">
+      <div class="row"> <div class="col">  <button type="button"  style="width:100%" class="btn btn-primary btn-sm " (click)="cancel()">Cancel</button>
+      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="submit(template)">Cash</button>
+      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="selectCredit(template)">Borrow</button>
+    </div></div>
   </div>
+</div>
+}
 
-  <!-- <div *ngIf="imagediag=='True'" class="animated slideInUp" style="position: fixed; top:80px; left:10px; height:600px; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:100%; backdrop-filter: blur('10px');"> -->
-  <div *ngIf="imagediag=='True'" class="animated slideInUp" style="position: relative; top:-500px; left:10px; height:600px; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:100%; backdrop-filter: blur('10px');">
-  <!-- <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div> -->
-  <div style="padding:2px"></div>
-  <div style="padding:10px; background-color: #eae9e9;;">
-    <div style="color: rgb(72, 72, 74); font-size:16px; text-align: center;">DETAILS VIEW<span style="float: right;">{{name}}</span></div>
-
-    <div style="padding:20px"></div>
-
-
-
-    <div class="container-fluid">
-
-      <div class="row">
-        <div class="col-9 d-flex justify-content-center" style="background:white; min-height: 500px;" >
-          <img style="object-fit: cover;" [src]="imageUrl" alt="">
-
-        </div>
-        <div class="col-3" style="background:silver; min-height: 500px;">
-          <!-- <input (change)="onfileSelected(files.value)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> -->
-          <div style="padding:5px"></div>
-          <!-- <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()"> -->
-            <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> <button *ngIf="Selectd=='True'" class="mogolia btn btn-primary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="files.click()">UPLOAD IMAGE</button><button *ngIf="submitbutt=='True'" class="mogolia btn btn-primary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="onUploadProfileData()">SUBMIT IMAGE</button>
-          <!-- </form> -->
-
-
-            <div style="padding:10px"></div>
-            <button class="mogolia btn btn-secondary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled9()">CANCEL</button>
-
-
-
-
-        </div>
+<!-- <div *ngIf="imagediag=='True'" class="animated slideInUp" style="position: fixed; top:80px; left:10px; height:600px; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:100%; backdrop-filter: blur('10px');"> -->
+@if (imagediag=='True') {
+  <div class="animated slideInUp" style="position: relative; top:-500px; left:10px; height:600px; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:100%; backdrop-filter: blur('10px');">
+    <!-- <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div> -->
+    <div style="padding:2px"></div>
+    <div style="padding:10px; background-color: #eae9e9;;">
+      <div style="color: rgb(72, 72, 74); font-size:16px; text-align: center;">DETAILS VIEW<span style="float: right;">{{name}}</span></div>
+      <div style="padding:20px"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-9 d-flex justify-content-center" style="background:white; min-height: 500px;" >
+            <img style="object-fit: cover;" [src]="imageUrl" alt="">
+          </div>
+          <div class="col-3" style="background:silver; min-height: 500px;">
+            <!-- <input (change)="onfileSelected(files.value)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> -->
+            <div style="padding:5px"></div>
+            <!-- <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()"> -->
+            <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> @if (Selectd=='True') {
+            <button class="mogolia btn btn-primary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="files.click()">UPLOAD IMAGE</button>
+            }@if (submitbutt=='True') {
+            <button class="mogolia btn btn-primary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="onUploadProfileData()">SUBMIT IMAGE</button>
+          }
+        <!-- </form> -->
+        <div style="padding:10px"></div>
+        <button class="mogolia btn btn-secondary" style="width:100%; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled9()">CANCEL</button>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+  </div>
+</div>
 <div align="center">
 </div>
-  </div>
-  <div *ngIf="menu=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
-    <div *ngIf="menu=='True'" style="width:450px; margin-top: 200px;" class="momo animation-target ">
-      <div align="center" style="font-weight: bolder; padding:5px; color:#666">MENU</div>
-      <div>
-        <button class="mogo"  style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="addproduct()">Add product</button>
-
-
-      </div>
-      <div>
-        <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="Editproduct()">Edit product</button>
-
-
-      </div>
-      <div>
-        <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="Moveproduct()">Move product</button>
-
-
-      </div>
-      <div>
-        <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px"  (click)="Stockcheck()">Stock Check</button>
-
-
-      </div>
-      <div>
-        <button class="mogo2" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px"  (click)="deleteproduct(pk)">Delete product</button>
-
-
-      </div>
-      <div>
-        <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled1()">Cancel</button>
-
-
-      </div>
-      <!-- <div align="center">
+</div>
+}
+@if (menu=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
+    @if (menu=='True') {
+      <div style="width:450px; margin-top: 200px;" class="momo animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">MENU</div>
+        <div>
+          <button class="mogo"  style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="addproduct()">Add product</button>
+        </div>
+        <div>
+          <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="Editproduct()">Edit product</button>
+        </div>
+        <div>
+          <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px" (click)="Moveproduct()">Move product</button>
+        </div>
+        <div>
+          <button class="mogo" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px"  (click)="Stockcheck()">Stock Check</button>
+        </div>
+        <div>
+          <button class="mogo2" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 15px"  (click)="deleteproduct(pk)">Delete product</button>
+        </div>
+        <div>
+          <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled1()">Cancel</button>
+        </div>
+        <!-- <div align="center">
         <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
         <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
       </div> -->
     </div>
-  </div>
-  <div *ngIf="added=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
-    <div *ngIf="added=='True'" style="width:450px; margin-top: 200px;" class="momo1 animation-target ">
-      <div align="center" style="font-weight: bolder; padding:5px; color:#666">ADD PRODUCT</div>
-      <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Name of the product: <span style="float: right;">{{productdis}}</span></div>
-      <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Product type: <span style="float: right;">{{Type_of_product}}</span></div>
-      <div style="padding:10px"></div>
-      <label for="puirchase" style="padding-left:15px;">Number of Products</label>
-      <div align="center">
-        <input #box21 (blur)="prodno(box21.value)" class="mogon" placeholder="Number of Products "  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px"  type="number">
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <label for="puirchase" style="padding-left:15px;">Selling Price</label>
-      <div align="center">
-        <input #box22 (blur)="sellingpriced(box22.value)" class="mogon" [placeholder]="selling"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" type="number">
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <label for="puirchase" style="padding-left:15px;">Purchasing price</label>
-      <div align="center">
-        <input  #box23 (blur)="purchasingpriced(box23.value)" class="mogon" [placeholder]="purchasing"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" name="puirchase" type="number">
-
-
-      </div>
-      <div style="padding:20px"></div>
-      <div style="text-align: center;">
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled()">Cancel</button>
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="postedit(pk)">Submit</button>
-
-
-      </div>
-      <!-- <div align="center">
-        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-      </div> -->
-    </div>
-  </div>
-  <div *ngIf="Edit=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
-    <div *ngIf="Edit=='True'" style="width:450px; margin-top: 100px;" class="momo1 animation-target ">
-      <div align="center" style="font-weight: bolder; padding:5px; color:#666">EDIT PRODUCT</div>
-      <div align="center">
-        <input #box25 (blur)="productname1(box25.value)" class="mogon" placeholder="Name of Product " [value]="productdis"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box22 (blur)="sellingpriced(box22.value)" class="mogon" placeholder="Selling Price " [value]="selling" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box23 (blur)="purchasingpriced(box23.value)" class="mogon" placeholder="Purchasing price " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box21 (blur)="prodno(box21.value)" class="mogon" placeholder="Product number" type="number" [value]="Productnum"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box24 (blur)="typeproduct1(box24.value)" class="mogon" placeholder="Type of product"  type="text" [value]="Type_of_product"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box241 (blur)="SerialNo(box241.value)" class="mogon" placeholder="serial number"  type="text" [value]="Serialnumberval"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div *ngIf="expire=='true'" style="padding:10px" ></div>
-      <div *ngIf="expire=='true'" align="center">
-        <input *ngIf="expire=='true'" #box249 (change)="Expiritydate(box249.value)" class="mogon" placeholder="Expirity date"  type="text" [value]="Expiritydateval" type="date"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box242 (blur)="Description(box242.value)" class="mogon" placeholder="Description"  type="text" [value]="Descriptionval"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box30 (blur)="shelfplace(box30.value)" class="mogon" placeholder="Shelf number" type="text" [value]="shelfing"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:20px"></div>
-      <div style="text-align: center;">
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled2()">Cancel</button>
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submiteditproduct(pk)">Submit</button>
-
-
-      </div>
-      <!-- <div align="center">
-        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-      </div> -->
-    </div>
-  </div>
-  <div *ngIf="Credit=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
-    <div *ngIf="Credit=='True'" style="width:450px; margin-top: 100px; height:40%" class="momo1 animation-target ">
-      <div align="center" style="font-weight: bolder; padding:5px; color:#666">Enter details</div>
-
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box224 (blur)="NameofBorrower(box224.value)" class="mogon" placeholder="Name of the borrower" [value]="C_name" type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box233 (blur)="DescriptionData(box233.value)" class="mogon" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-      <div style="padding:10px"></div>
-      <div align="center">
-        <input #box232 (blur)="phoneNumber(box232.value)" class="mogon" placeholder="Phone number " [value]="C_phone" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-      </div>
-
-      <div style="text-align: center;">
+  }
+</div>
+}
+@if (added=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
+    @if (added=='True') {
+      <div style="width:450px; margin-top: 200px;" class="momo1 animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">ADD PRODUCT</div>
+        <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Name of the product: <span style="float: right;">{{productdis}}</span></div>
+        <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Product type: <span style="float: right;">{{Type_of_product}}</span></div>
+        <div style="padding:10px"></div>
+        <label for="puirchase" style="padding-left:15px;">Number of Products</label>
+        <div align="center">
+          <input #box21 (blur)="prodno(box21.value)" class="mogon" placeholder="Number of Products "  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px"  type="number">
+        </div>
+        <div style="padding:10px"></div>
+        <label for="puirchase" style="padding-left:15px;">Selling Price</label>
+        <div align="center">
+          <input #box22 (blur)="sellingpriced(box22.value)" class="mogon" [placeholder]="selling"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" type="number">
+        </div>
+        <div style="padding:10px"></div>
+        <label for="puirchase" style="padding-left:15px;">Purchasing price</label>
+        <div align="center">
+          <input  #box23 (blur)="purchasingpriced(box23.value)" class="mogon" [placeholder]="purchasing"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" name="puirchase" type="number">
+        </div>
         <div style="padding:20px"></div>
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled6()">Cancel</button>
-        <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button>
-
-
-      </div>
-      <!-- <div align="center">
+        <div style="text-align: center;">
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled()">Cancel</button>
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="postedit(pk)">Submit</button>
+        </div>
+        <!-- <div align="center">
         <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
         <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
       </div> -->
     </div>
-  </div>
-  <!-- <div style="padding: 10px;"></div> -->
+  }
+</div>
+}
+@if (Edit=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+    @if (Edit=='True') {
+      <div style="width:450px; margin-top: 100px;" class="momo1 animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">EDIT PRODUCT</div>
+        <div align="center">
+          <input #box25 (blur)="productname1(box25.value)" class="mogon" placeholder="Name of Product " [value]="productdis"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box22 (blur)="sellingpriced(box22.value)" class="mogon" placeholder="Selling Price " [value]="selling" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box23 (blur)="purchasingpriced(box23.value)" class="mogon" placeholder="Purchasing price " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box21 (blur)="prodno(box21.value)" class="mogon" placeholder="Product number" type="number" [value]="Productnum"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box24 (blur)="typeproduct1(box24.value)" class="mogon" placeholder="Type of product"  type="text" [value]="Type_of_product"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box241 (blur)="SerialNo(box241.value)" class="mogon" placeholder="serial number"  type="text" [value]="Serialnumberval"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        @if (expire=='true') {
+          <div style="padding:10px" ></div>
+        }
+        @if (expire=='true') {
+          <div align="center">
+            @if (expire=='true') {
+              <input #box249 (change)="Expiritydate(box249.value)" class="mogon" placeholder="Expirity date"  type="text" [value]="Expiritydateval" type="date"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+            }
+          </div>
+        }
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box242 (blur)="Description(box242.value)" class="mogon" placeholder="Description"  type="text" [value]="Descriptionval"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box30 (blur)="shelfplace(box30.value)" class="mogon" placeholder="Shelf number" type="text" [value]="shelfing"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:20px"></div>
+        <div style="text-align: center;">
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled2()">Cancel</button>
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submiteditproduct(pk)">Submit</button>
+        </div>
+        <!-- <div align="center">
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
+    </div>
+  }
+</div>
+}
+@if (Credit=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+    @if (Credit=='True') {
+      <div style="width:450px; margin-top: 100px; height:40%" class="momo1 animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">Enter details</div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box224 (blur)="NameofBorrower(box224.value)" class="mogon" placeholder="Name of the borrower" [value]="C_name" type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box233 (blur)="DescriptionData(box233.value)" class="mogon" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box232 (blur)="phoneNumber(box232.value)" class="mogon" placeholder="Phone number " [value]="C_phone" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="text-align: center;">
+          <div style="padding:20px"></div>
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="canceled6()">Cancel</button>
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button>
+        </div>
+        <!-- <div align="center">
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
+    </div>
+  }
+</div>
+}
+<!-- <div style="padding: 10px;"></div> -->
 <div style="text-align: left;">
 
 

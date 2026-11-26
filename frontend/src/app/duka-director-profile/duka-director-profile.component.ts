@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { Router } from '@angular/router';
 import { DukaDirectorDashboardComponent } from '../duka-director-dashboard/duka-director-dashboard.component';
 
 @Component({
-  selector: 'app-duka-director-profile',
-  templateUrl: './duka-director-profile.component.html',
-  styleUrls: ['./duka-director-profile.component.css']
+    selector: 'app-duka-director-profile',
+    templateUrl: './duka-director-profile.component.html',
+    styleUrls: ['./duka-director-profile.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorProfileComponent implements OnInit {
   all;

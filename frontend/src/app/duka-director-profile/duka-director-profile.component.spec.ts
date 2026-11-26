@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DukaDirectorProfileComponent } from './duka-director-profile.component';
 
@@ -6,7 +6,7 @@ describe('DukaDirectorProfileComponent', () => {
   let component: DukaDirectorProfileComponent;
   let fixture: ComponentFixture<DukaDirectorProfileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DukaDirectorProfileComponent ]
     })

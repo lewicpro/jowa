@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 import { NyumbaMkatabaComponent } from '../nyumba-mkataba/nyumba-mkataba.component';
 
 @Component({
-  selector: 'app-owner-documents',
-  templateUrl: './owner-documents.component.html',
-  styleUrls: ['./owner-documents.component.css']
+    selector: 'app-owner-documents',
+    templateUrl: './owner-documents.component.html',
+    styleUrls: ['./owner-documents.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerDocumentsComponent implements OnInit {
   datar;
@@ -73,12 +75,12 @@ export class OwnerDocumentsComponent implements OnInit {
 
   onUploadOwnerMkatabafiles() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postOwnerMkatabafile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
         
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
     this.mkataba.getvalue();
@@ -88,11 +90,11 @@ export class OwnerDocumentsComponent implements OnInit {
 
   onUploadOwnerKitambulishoData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postOwnerKitambulishofile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         // console.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   
@@ -100,22 +102,22 @@ export class OwnerDocumentsComponent implements OnInit {
 
   onUploadOwnerApplicationData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postOwnerApplicationfile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         // console.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   
   }
   onUploadOwnerSlipData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postOwnerSlipfile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         // console.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   

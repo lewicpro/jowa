@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-maduka-malipo-waudumu',
-  templateUrl: './maduka-malipo-waudumu.component.html',
-  styleUrls: ['./maduka-malipo-waudumu.component.css']
+    selector: 'app-maduka-malipo-waudumu',
+    templateUrl: './maduka-malipo-waudumu.component.html',
+    styleUrls: ['./maduka-malipo-waudumu.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaMalipoWaudumuComponent implements OnInit {
   malipo;

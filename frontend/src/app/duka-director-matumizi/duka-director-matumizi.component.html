@@ -1,8 +1,12 @@
 
 <ng-progress></ng-progress>
 <!-- <h3 class="an-2">I am looking great.</h3> -->
-<div class="row" style="color: #666;" *ngIf="advancd=='False'"> <div class="col">Total Expenses: {{Total_expenses| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;"></div><div class="col" style="text-align: right;"> <a (click)="showOptions()" style="font-weight: bold;" disabled>Advanced</a> </div></div>
-<div class="row" style="color: #666;" *ngIf="advancd=='True'"> <div class="col">Total Expenses: {{sum| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;"> <input type="date" placeholder="From" style="background-color: rgb(231, 231, 231); height: 40px;" #start> <div style="padding: 10PX;">To</div> <input type="date" placeholder="From" style="background-color: silver; height: 40px;" #end></div><div class="col" style="text-align: right;"><button style="position:relative; left:-300px; top:40px; border: 1px solid black; height:40px; background-color: transparent; width:160px" (click)="runservice(start.value, end.value)">Submit</button>  <a (click)="hideOptions()" style="font-weight: bold; cursor: pointer;" ><i class="material-icons" (click)="hideOptions()" style="cursor: pointer;">close</i> </a> </div></div>
+@if (advancd=='False') {
+  <div class="row" style="color: #666;"> <div class="col">Total Expenses: {{Total_expenses| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;"></div><div class="col" style="text-align: right;"> <a (click)="showOptions()" style="font-weight: bold;" disabled>Advanced</a> </div></div>
+}
+@if (advancd=='True') {
+  <div class="row" style="color: #666;"> <div class="col">Total Expenses: {{sum| currency: 'Tsh '}}/-</div>   <div class="col" style="text-align: center;"> <input type="date" placeholder="From" style="background-color: rgb(231, 231, 231); height: 40px;" #start> <div style="padding: 10PX;">To</div> <input type="date" placeholder="From" style="background-color: silver; height: 40px;" #end></div><div class="col" style="text-align: right;"><button style="position:relative; left:-300px; top:40px; border: 1px solid black; height:40px; background-color: transparent; width:160px" (click)="runservice(start.value, end.value)">Submit</button>  <a (click)="hideOptions()" style="font-weight: bold; cursor: pointer;" ><i class="material-icons" (click)="hideOptions()" style="cursor: pointer;">close</i> </a> </div></div>
+}
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
   <h4  style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF EXPENSES</h4>
   <div style="max-height:400px; overflow:auto" >
@@ -39,25 +43,26 @@
 
         <tr style="cursor:pointer" id="customers">
           <td class="text-center" ></td>
-            <td class="text-center" ><input [(ngModel)]="userData.Tarehe" style="border-radius:3px; width:100%" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
-            <td style="white-space: nowrap"><input [(ngModel)]="userData.user" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td>
-            <td><input [(ngModel)]="userData.Amount"  style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
-            <td><input [(ngModel)]="userData.Description" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+          <td class="text-center" ><input [(ngModel)]="userData.Tarehe" style="border-radius:3px; width:100%" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+          <td style="white-space: nowrap"><input [(ngModel)]="userData.user" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td>
+          <td><input [(ngModel)]="userData.Amount"  style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
+          <td><input [(ngModel)]="userData.Description" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
 
-            <td><a (click)="openModal(template)"  >Tunza</a></td>
-            </tr>
+          <td><a (click)="openModal(template)"  >Tunza</a></td>
+        </tr>
 
 
-            <tr class="youo" *ngFor="let a of all">
-              <td nowrap class="youo"> 1</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-              <td class="youo"  >{{a.Amount}}</td>
-              <td class="youo"  >{{a.Description}}</td>
-              <td class="youo" style="color:red; cursor: pointer;"  (click)="openModal2(template2, a.pk)">Delete</td>
-              <!-- <td class="youo"  ></td> -->
-
+        @for (a of all; track a) {
+          <tr class="youo">
+            <td nowrap class="youo"> 1</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
+            <td class="youo"  >{{a.Amount}}</td>
+            <td class="youo"  >{{a.Description}}</td>
+            <td class="youo" style="color:red; cursor: pointer;"  (click)="openModal2(template2, a.pk)">Delete</td>
+            <!-- <td class="youo"  ></td> -->
           </tr>
+        }
 
 
       </tbody>
@@ -66,5 +71,5 @@
 
   </div>
 
-  </div>
+</div>
 

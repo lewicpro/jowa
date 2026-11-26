@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-orders-dashboard-ongeza-manager',
-  templateUrl: './orders-dashboard-ongeza-manager.component.html',
-  styleUrls: ['./orders-dashboard-ongeza-manager.component.css']
+    selector: 'app-orders-dashboard-ongeza-manager',
+    templateUrl: './orders-dashboard-ongeza-manager.component.html',
+    styleUrls: ['./orders-dashboard-ongeza-manager.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersDashboardOngezaManagerComponent implements OnInit {
   userData = {
@@ -101,7 +103,7 @@ export class OrdersDashboardOngezaManagerComponent implements OnInit {
 
 
  Register() {
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
    // console.log('passed');
    this.userData.Manager=this.userData.user;
    this.rest_framework.getLoginPosts(this.userData, 'Manager/').then((result) => {
@@ -132,12 +134,12 @@ export class OrdersDashboardOngezaManagerComponent implements OnInit {
 
 
      }
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
 
  }
 
  UserCreate() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -147,7 +149,7 @@ export class OrdersDashboardOngezaManagerComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Orders/bidhaa-zote']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -155,7 +157,7 @@ export class OrdersDashboardOngezaManagerComponent implements OnInit {
 
  }
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    //.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -165,7 +167,7 @@ export class OrdersDashboardOngezaManagerComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Orders/bidhaa-zote']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

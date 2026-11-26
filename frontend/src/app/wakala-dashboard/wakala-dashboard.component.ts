@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-wakala-dashboard',
-  templateUrl: './wakala-dashboard.component.html',
-  styleUrls: ['./wakala-dashboard.component.css']
+    selector: 'app-wakala-dashboard',
+    templateUrl: './wakala-dashboard.component.html',
+    styleUrls: ['./wakala-dashboard.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaDashboardComponent implements OnInit {
   

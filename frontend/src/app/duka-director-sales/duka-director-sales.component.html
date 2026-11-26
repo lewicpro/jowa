@@ -3,8 +3,8 @@
 <div class="d-flex justify-content-center">
   <!-- <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field> -->
-  <!-- <button (click)="time()">click</button> -->
+</mat-form-field> -->
+<!-- <button (click)="time()">click</button> -->
 </div>
 <div style="text-align: center;"><input #boya (keyup)="search(boya.value)"  class="wako" type="text" placeholder="Search for a name" style="width: 400px;"></div>
 <div id="myprint">
@@ -40,116 +40,179 @@
           <th nowrap>Total </th>
           <th nowrap>info </th>
           <th nowrap>Action</th>
-      </tr>
+        </tr>
 
       </thead>
       <tbody style="overflow-x: scroll;">
         <!-- <div >
-          <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
 
-        </div> -->
+      </div> -->
 
-      <tr id="customers" *ngFor="let m of allz" class="youo"  style="overflow-x:scroll;" scrollX="true">
-          <td *ngIf="m.status == 'delete'" style="padding-left:10px;" class="youo" nowrap>{{m.Tarehe}}</td>
-          <td *ngIf="m.status == 'deleted'" style="padding-left:10px; background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Tarehe}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>{{m.Customer_name}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Customer_name}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>{{m.Customer_phone}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Customer_phone}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>{{m.Name_of_the_product | uppercase}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Name_of_the_product | uppercase}}</td>
+      @for (m of allz; track m) {
+        <tr id="customers" class="youo"  style="overflow-x:scroll;" scrollX="true">
+          @if (m.status == 'delete') {
+            <td style="padding-left:10px;" class="youo" nowrap>{{m.Tarehe}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="padding-left:10px; background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Tarehe}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>{{m.Customer_name}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Customer_name}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>{{m.Customer_phone}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Customer_phone}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>{{m.Name_of_the_product | uppercase}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Name_of_the_product | uppercase}}</td>
+          }
           <!-- <td class="youo"  nowrap>{{m.Price_bought}}</td> -->
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>{{m.Selling_price | currency: 'tsh '}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Selling_price}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>{{m.Profit}}</td>
-          <td *ngIf="m.status == 'deleted'" style=" background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Profit}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo"  nowrap>Cash</td>
-          <td *ngIf="m.status == 'deleted'" style=" background-color: rgb(255, 209, 209);" class="youo" nowrap>Cash</td>
-
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.Type_of_product}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Type_of_product}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.quantity}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.quantity}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.quantity_remained}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.quantity_remained}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.Total | currency: 'tsh '}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Total}}</td>
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.info}}</td>
-          <td *ngIf="m.status == 'deleted'" style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.info}}</td>
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>{{m.Selling_price | currency: 'tsh '}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Selling_price}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>{{m.Profit}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style=" background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Profit}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo"  nowrap>Cash</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style=" background-color: rgb(255, 209, 209);" class="youo" nowrap>Cash</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap>{{m.Type_of_product}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Type_of_product}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap>{{m.quantity}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.quantity}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap>{{m.quantity_remained}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.quantity_remained}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap>{{m.Total | currency: 'tsh '}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Total}}</td>
+          }
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap>{{m.info}}</td>
+          }
+          @if (m.status == 'deleted') {
+            <td style="background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.info}}</td>
+          }
           <!-- <td *ngIf="m.status == 'delete'" class="youo" nowrap>{{m.Number}}</td>
           <td *ngIf="m.status == 'deleted'" style=" background-color: rgb(255, 209, 209);" class="youo" nowrap>{{m.Number}}</td> -->
-          <td *ngIf="m.status == 'delete'" class="youo" nowrap  style="cursor: pointer; color:red;"> <a (click)="ondelete(m.pk)">Delete</a> <span style="color:white"> | </span>  <a (click)="options(m)" style="color:blue">Options</a> </td>
-          <td *ngIf="m.status == 'deleted'" style=" background-color: rgb(255, 209, 209);" class="youo" nowrap><i>Deleted</i> </td>
-      </tr>
+          @if (m.status == 'delete') {
+            <td class="youo" nowrap  style="cursor: pointer; color:red;"> <a (click)="ondelete(m.pk)">Delete</a> <span style="color:white"> | </span>  <a (click)="options(m)" style="color:blue">Options</a> </td>
+          }
+          @if (m.status == 'deleted') {
+            <td style=" background-color: rgb(255, 209, 209);" class="youo" nowrap><i>Deleted</i> </td>
+          }
+        </tr>
+      }
       <tr> <td style="padding-left:10px;" class="youo" nowrap></td>
-        <td class="youo"  nowrap></td>
-        <!-- <td class="youo"  nowrap>{{bought}}</td> -->
-        <td class="youo" style="font-weight:bold"  nowrap>{{jumla | currency: 'tsh '}}</td>
-        <td class="youo" style="font-weight:bold" nowrap>{{Profit | currency: 'tsh '}}</td>
-        <td class="youo"  nowrap></td>
+      <td class="youo"  nowrap></td>
+      <!-- <td class="youo"  nowrap>{{bought}}</td> -->
+      <td class="youo" style="font-weight:bold"  nowrap>{{jumla | currency: 'tsh '}}</td>
+      <td class="youo" style="font-weight:bold" nowrap>{{Profit | currency: 'tsh '}}</td>
+      <td class="youo"  nowrap></td>
 
-        <td class="youo" nowrap></td>
-        <td class="youo" nowrap></td>
-        <td class="youo" nowrap></td></tr>
-        <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
-
-
-    <div style="background-color:rgba(255, 255, 255, 0.091)	;">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagination-sm">
-          <li class="page-item disabled">
-            <a *ngIf="prev1 === null" class="page-link"  aria-label="Previous">
-              <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-
-          </li>
-          <li  class="page-item">
-            <a *ngIf="prev1" class="page-link" (click)="prev()" aria-label="Previous">
-              <span   aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-
-          </li>
-          <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
-          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-
-          <li class="page-item disabled">
-            <a  *ngIf="next1 === null" class="page-link"  aria-label="Next">
-              <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-
-          </li>
-
-          <li class="page-item">
-            <a *ngIf="next1" class="page-link" (click)="next()" aria-label="Next">
-              <span  aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-
-          </li>
-        </ul>
-      </nav>
-
-    </div>
+      <td class="youo" nowrap></td>
+      <td class="youo" nowrap></td>
+      <td class="youo" nowrap></td></tr>
+      <!--<tr id="customers">-->
+      <!--<td scope="row">2</td>-->
+      <!--<td>BA</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+    <!--<tr id="customers">-->
+    <!--<td scope="row">3</td>-->
+    <!--<td>Accountancy</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+</tbody>
+</table>
 
 
-    <div *ngIf="edit=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
-      <div *ngIf="edit=='True'" style="width:450px; margin-top: 200px;" class=" animation-target ">
+<div style="background-color:rgba(255, 255, 255, 0.091)	;">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pagination-sm">
+      <li class="page-item disabled">
+        @if (prev1 === null) {
+          <a class="page-link"  aria-label="Previous">
+            <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        }
+
+      </li>
+      <li  class="page-item">
+        @if (prev1) {
+          <a class="page-link" (click)="prev()" aria-label="Previous">
+            <span   aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        }
+
+      </li>
+      <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
+      <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+
+      <li class="page-item disabled">
+        @if (next1 === null) {
+          <a  class="page-link"  aria-label="Next">
+            <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        }
+
+      </li>
+
+      <li class="page-item">
+        @if (next1) {
+          <a class="page-link" (click)="next()" aria-label="Next">
+            <span  aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        }
+
+      </li>
+    </ul>
+  </nav>
+
+</div>
+
+
+@if (edit=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+    @if (edit=='True') {
+      <div style="width:450px; margin-top: 200px;" class=" animation-target ">
         <div align="center" style="font-weight: bolder; padding:5px; color:rgb(243, 239, 239)">EDIT PRODUCT</div>
         <!-- <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Name of the product: <span style="float: right;">{{productdis}}</span></div>
         <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Product type: <span style="float: right;">{{Type_of_product}}</span></div> -->
@@ -157,85 +220,70 @@
         <label for="puirchase" style="padding-left:15px; color:black">Name of the Product</label>
         <div align="center">
           <input #box21 (blur)="prodno(box21.value)" class="mogon"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px"  [value]="Name_of_the_product"   type="text">
-
-
         </div>
         <div style="padding:10px"></div>
         <label for="puirchase" style="padding-left:15px; color:black;">Number of products Sold</label>
         <div align="center">
           <input #box22 (blur)="quantityset(box22.value)" class="mogon"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" [value]="quantity" type="number">
-
-
         </div>
         <div style="padding:10px"></div>
         <label for="puirchase" style="padding-left:15px; color:black;">Selling price</label>
         <div align="center">
           <input #box28 (blur)="sellingpriced(box28.value)" class="mogon"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" [value]="Selling_price" type="number">
-
-
         </div>
         <div style="padding:10px"></div>
         <label for="profit" style="padding-left:15px; color:black;">Profit</label>
         <div align="center">
           <input #box289 (blur)="Profitf(box289.value)" class="mogon"   style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" [value]="profitval" type="number">
-
-
         </div>
         <div style="padding:10px"></div>
         <label for="puirchase" style="padding-left:15px; color:black;">Total Price</label>
         <div align="center">
           <input  #box23 (blur)="purchasingpriced(box23.value)" class="mogon"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" [value]="pricetsh" name="puirchase" type="number">
-
-
         </div>
         <div style="padding:20px"></div>
         <div style="text-align: center;">
           <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="Edit()">Cancel</button>
           <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="Submit(pk)">Submit</button>
-
-
         </div>
         <!-- <div align="center">
-          <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-          <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-        </div> -->
-      </div>
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
     </div>
-    <div *ngIf="option=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
-      <div *ngIf="option=='True'" style="width:450px; margin-top: 200px; height:550px" class="animation-target ">
+  }
+</div>
+}
+@if (option=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%; height:1200px;">
+    @if (option=='True') {
+      <div style="width:450px; margin-top: 200px; height:550px" class="animation-target ">
         <div align="center" style="font-weight: bolder; padding:5px; color:rgb(255, 255, 255)">OPTIONS</div>
         <!-- <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Name of the product: <span style="float: right;">{{productdis}}</span></div>
         <div style="font-family: Arial, Helvetica, sans-serif; padding-left:15px; padding-right:15px; background-color: rgb(235, 235, 235);">Product type: <span style="float: right;">{{Type_of_product}}</span></div> -->
         <div style="padding:10px"></div>
-
         <div align="center">
           <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="Edit()">Edit</button>
-
         </div>
         <div style="padding:10px"></div>
-
         <div align="center">
           <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="returned()">Returned</button>
-
         </div>
-
         <div style="padding:20px"></div>
         <div style="text-align: center;">
           <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
           <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="Submit(pk)">Submit</button>
-
-
         </div>
         <!-- <div align="center">
-          <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-          <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-        </div> -->
-      </div>
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
     </div>
+  }
+</div>
+}
 
-  </div>
+</div>
 </div>
 <div style="padding:10px"></div>
 <div style="text-align: center;">

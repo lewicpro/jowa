@@ -1,75 +1,77 @@
 
-<div  *ngIf="status=='done'" style="background:rgba(2, 2, 2, 0.082); border-radius: 5px">
-
-
-  
-  <div class="" *ngFor="let m of all">
-      <div class="row">
-        <div class="col-sm">
+@if (status=='done') {
+  <div  style="background:rgba(2, 2, 2, 0.082); border-radius: 5px">
+    @for (m of all; track m) {
+      <div class="">
+        <div class="row">
+          <div class="col-sm">
             <ul class="list-group">
-                <li class="list-group-item">Jina: {{duka}}</li>
-                <li class="list-group-item">Status: <i>Online</i></li>
-                <li class="list-group-item">Branch Position: 2/10</li>
-                <li class="list-group-item">Customers Served:--</li>
-                <li class="list-group-item">Email:{{m.Email}}</li>
-              </ul>
-        </div>
-        <div class="col-sm">
+              <li class="list-group-item">Jina: {{duka}}</li>
+              <li class="list-group-item">Status: <i>Online</i></li>
+              <li class="list-group-item">Branch Position: 2/10</li>
+              <li class="list-group-item">Customers Served:--</li>
+              <li class="list-group-item">Email:{{m.Email}}</li>
+            </ul>
+          </div>
+          <div class="col-sm">
             <ul class="list-group">
-                <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
-                <li class="list-group-item">Workers:3</li>
-                <li class="list-group-item">Monthly rev: --{{m.Monthly}}</li>
-                <li class="list-group-item">Yearly rev: --{{m.Yealy}}</li>
-                <li class="list-group-item">Daily rev: --{{m.Daily}}</li>
-              </ul>
-        </div>
-        <div class="col-sm">
+              <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
+              <li class="list-group-item">Workers:3</li>
+              <li class="list-group-item">Monthly rev: --{{m.Monthly}}</li>
+              <li class="list-group-item">Yearly rev: --{{m.Yealy}}</li>
+              <li class="list-group-item">Daily rev: --{{m.Daily}}</li>
+            </ul>
+          </div>
+          <div class="col-sm">
             <ul class="list-group">
-                <li class="list-group-item">Capital roundly: -- {{m.Capital_roundly}}</li>
-                <li class="list-group-item">Static capital:--{{m.Static_capital}}</li>
-                <li class="list-group-item">Location:{{m.wilaya}}</li>
-                <li class="list-group-item">Profit:tsh {{m.Profit}}</li>
-                <li class="list-group-item">Registered on: {{m.Registered}}</li>
-              </ul>
-        </div>
-      </div>
-    </div>
-</div>
-
-
-<div  *ngIf="status=='Edit'" style="background:rgba(2, 2, 2, 0.082); border-radius: 5px">
-
-
-  
-  <div class="" *ngFor="let m of all">
-      <div class="row">
-        <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Jina: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Phone:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Account No:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Bank:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Email:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-              </ul>
-        </div>
-        <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
-                <li class="list-group-item">Workers:3</li>
-                <li class="list-group-item">Monthly rev:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Yearly rev:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Daily rev:tsh <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-              </ul>
-        </div>
-        <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Capital roundly: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Static capital:tsh <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Location:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Password:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-                <li class="list-group-item">Confirm new Password: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
-              </ul>
+              <li class="list-group-item">Capital roundly: -- {{m.Capital_roundly}}</li>
+              <li class="list-group-item">Static capital:--{{m.Static_capital}}</li>
+              <li class="list-group-item">Location:{{m.wilaya}}</li>
+              <li class="list-group-item">Profit:tsh {{m.Profit}}</li>
+              <li class="list-group-item">Registered on: {{m.Registered}}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-</div>
+    }
+  </div>
+}
+
+
+@if (status=='Edit') {
+  <div  style="background:rgba(2, 2, 2, 0.082); border-radius: 5px">
+    @for (m of all; track m) {
+      <div class="">
+        <div class="row">
+          <div class="col-sm">
+            <ul class="list-group">
+              <li class="list-group-item">Jina: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Phone:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Account No:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Bank:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Email:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+            </ul>
+          </div>
+          <div class="col-sm">
+            <ul class="list-group">
+              <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
+              <li class="list-group-item">Workers:3</li>
+              <li class="list-group-item">Monthly rev:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Yearly rev:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Daily rev:tsh <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+            </ul>
+          </div>
+          <div class="col-sm">
+            <ul class="list-group">
+              <li class="list-group-item">Capital roundly: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Static capital:tsh <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Location:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Password:<input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+              <li class="list-group-item">Confirm new Password: <input style="width:100%; border:1px solid rgb(203, 203, 203);" type="text"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}

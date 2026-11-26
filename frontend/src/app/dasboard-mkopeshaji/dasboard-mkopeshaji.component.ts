@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji',
-  templateUrl: './dasboard-mkopeshaji.component.html',
-  styleUrls: ['./dasboard-mkopeshaji.component.css']
+    selector: 'app-dasboard-mkopeshaji',
+    templateUrl: './dasboard-mkopeshaji.component.html',
+    styleUrls: ['./dasboard-mkopeshaji.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiComponent implements OnInit {
   infos;

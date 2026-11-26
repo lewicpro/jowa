@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OwnerEditComponent } from './owner-edit.component';
 
@@ -6,7 +6,7 @@ describe('OwnerEditComponent', () => {
   let component: OwnerEditComponent;
   let fixture: ComponentFixture<OwnerEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OwnerEditComponent ]
     })

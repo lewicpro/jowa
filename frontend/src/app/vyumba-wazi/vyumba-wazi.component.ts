@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-vyumba-wazi',
-  templateUrl: './vyumba-wazi.component.html',
-  styleUrls: ['./vyumba-wazi.component.css']
+    selector: 'app-vyumba-wazi',
+    templateUrl: './vyumba-wazi.component.html',
+    styleUrls: ['./vyumba-wazi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class VyumbaWaziComponent {
   users;

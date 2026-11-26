@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-admin-dashboard-duka',
-  templateUrl: './admin-dashboard-duka.component.html',
-  styleUrls: ['./admin-dashboard-duka.component.css']
+    selector: 'app-admin-dashboard-duka',
+    templateUrl: './admin-dashboard-duka.component.html',
+    styleUrls: ['./admin-dashboard-duka.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AdminDashboardDukaComponent implements OnInit {
   infos;

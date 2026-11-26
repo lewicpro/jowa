@@ -1,69 +1,84 @@
 <ng-progress></ng-progress>
 
 <div class="d-flex justify-content-center">
-    <mat-form-field style="width:40%">
+  <mat-form-field style="width:40%">
     <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-    </mat-form-field>
-  </div>
-  <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Matengenezo</h4>
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-      <thead>
-        <tr>
-          <th scope="col" title="Date" >Tarehe</th>
-          <th scope="col" title="Name">Nyumba</th>
-          <th scope="col" title="Worker">Mfanyaji kazi</th>
-          <th scope="col" title="Inspector">Mkaguzi wa kazi</th>
-          <th scope="col" title="Eneo">Eneo</th>
-          <th scope="col" title="Capital used">kiasi kilichotumika</th>
-          <th scope="col" title="Action">Action</th>
-          
-        </tr>
-      </thead>
-      <tbody >
-        <!-- <div >
-          <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-          
-        </div> -->
-          <tr style="cursor:pointer" id="customers">
-              <td class="text-center" >muda wa sasa</td>
-              <td style="white-space: nowrap">{{nyumba}}</td>
-              <td><input [(ngModel)]="mfanyakaz" style="border-radius:3px;" [value]="jum"  type="text"></td>
-              <td><input [(ngModel)]="mk"  style="border-radius:3px;" type="text"></td>
-              <td><input [(ngModel)]="eneokaz" type="text" style="border-radius:3px;"></td>
-              <td><input [(ngModel)]="kias"  style="border-radius:3px;"  type="number"></td>
-              <td><a (click)="save()" >Tunza</a></td>
-            </tr>
-        <tr  id="customers" *ngFor="let k of values" >
-          <td *ngIf="k.nyumba === nyumba" > {{k.tarehe | date}}</td>
-          <td *ngIf="k.nyumba === nyumba"  style="white-space: nowrap">{{k.nyumba}}</td>
+  </mat-form-field>
+</div>
+<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Matengenezo</h4>
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+    <thead>
+      <tr>
+        <th scope="col" title="Date" >Tarehe</th>
+        <th scope="col" title="Name">Nyumba</th>
+        <th scope="col" title="Worker">Mfanyaji kazi</th>
+        <th scope="col" title="Inspector">Mkaguzi wa kazi</th>
+        <th scope="col" title="Eneo">Eneo</th>
+        <th scope="col" title="Capital used">kiasi kilichotumika</th>
+        <th scope="col" title="Action">Action</th>
 
-          <td *ngIf="k.nyumba === nyumba"  style="white-space: nowrap">{{k.mfanyaji_kazi}}</td>
-          <td *ngIf="k.nyumba === nyumba"  style="white-space: nowrap; ">{{k.mkaguzi_wa_kazi}}</td>
-          <td *ngIf="k.nyumba === nyumba"  style="white-space: nowrap">{{k.Eneo_la_kazi}}</td>
-          <td *ngIf="k.nyumba === nyumba"   style="color:red">{{k.kiasi_kilichotumika | currency: 'tsh '}}</td>
-          <td *ngIf="k.nyumba === nyumba && k.info === 'delete';"   style="color:red"><button (click)='run()'>delete</button></td>
-          <td *ngIf="k.nyumba === nyumba && k.info === '';"   style="color:red"></td>
-          <td *ngIf="k.nyumba === nyumba && k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
-         
-        
-  
-        </tr>
-        <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
-    </div>
-  
-  <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
-  
+      </tr>
+    </thead>
+    <tbody >
+      <!-- <div >
+      <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+    </div> -->
+    <tr style="cursor:pointer" id="customers">
+      <td class="text-center" >muda wa sasa</td>
+      <td style="white-space: nowrap">{{nyumba}}</td>
+      <td><input [(ngModel)]="mfanyakaz" style="border-radius:3px;" [value]="jum"  type="text"></td>
+      <td><input [(ngModel)]="mk"  style="border-radius:3px;" type="text"></td>
+      <td><input [(ngModel)]="eneokaz" type="text" style="border-radius:3px;"></td>
+      <td><input [(ngModel)]="kias"  style="border-radius:3px;"  type="number"></td>
+      <td><a (click)="save()" >Tunza</a></td>
+    </tr>
+    @for (k of values; track k) {
+      <tr  id="customers" >
+        @if (k.nyumba === nyumba) {
+          <td > {{k.tarehe | date}}</td>
+        }
+        @if (k.nyumba === nyumba) {
+          <td  style="white-space: nowrap">{{k.nyumba}}</td>
+        }
+        @if (k.nyumba === nyumba) {
+          <td  style="white-space: nowrap">{{k.mfanyaji_kazi}}</td>
+        }
+        @if (k.nyumba === nyumba) {
+          <td  style="white-space: nowrap; ">{{k.mkaguzi_wa_kazi}}</td>
+        }
+        @if (k.nyumba === nyumba) {
+          <td  style="white-space: nowrap">{{k.Eneo_la_kazi}}</td>
+        }
+        @if (k.nyumba === nyumba) {
+          <td   style="color:red">{{k.kiasi_kilichotumika | currency: 'tsh '}}</td>
+        }
+        @if (k.nyumba === nyumba && k.info === 'delete';) {
+          <td   style="color:red"><button (click)='run()'>delete</button></td>
+        }
+        @if (k.nyumba === nyumba && k.info === '';) {
+          <td   style="color:red"></td>
+        }
+        @if (k.nyumba === nyumba && k.info === 'deleted';) {
+          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+        }
+      </tr>
+    }
+    <!--<tr id="customers">-->
+    <!--<td scope="row">2</td>-->
+    <!--<td>BA</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+  <!--<tr id="customers">-->
+  <!--<td scope="row">3</td>-->
+  <!--<td>Accountancy</td>-->
+  <!--<td>3</td>-->
+  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+</div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

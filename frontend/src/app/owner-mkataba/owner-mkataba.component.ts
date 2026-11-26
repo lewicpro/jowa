@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-owner-mkataba',
-  templateUrl: './owner-mkataba.component.html',
-  styleUrls: ['./owner-mkataba.component.css']
+    selector: 'app-owner-mkataba',
+    templateUrl: './owner-mkataba.component.html',
+    styleUrls: ['./owner-mkataba.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerMkatabaComponent implements OnInit {
   imageUrl;

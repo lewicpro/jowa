@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LowlayerComponent } from './lowlayer.component';
 
@@ -6,7 +6,7 @@ describe('LowlayerComponent', () => {
   let component: LowlayerComponent;
   let fixture: ComponentFixture<LowlayerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LowlayerComponent ]
     })

@@ -3,8 +3,8 @@
 <div class="d-flex justify-content-center">
   <!-- <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field> -->
-  <!-- <button (click)="time()">click</button> -->
+</mat-form-field> -->
+<!-- <button (click)="time()">click</button> -->
 </div>
 <div style="text-align: center;"><input class="wako" type="text" placeholder="Search for a name" style="width: 400px;"></div>
 <div id="myprint">
@@ -42,56 +42,57 @@
           <th>Sold</th>
           <th>Description</th>
           <th>Action</th>
-      </tr>
+        </tr>
 
-        <tr class="youo" *ngFor="let n of all let i = index" style="  cursor: pointer;" scrollX="true">
-          <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
-          <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
-          <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
-          <td class="youo"  nowrap (click)="menufunct(n)">{{n.Name_of_the_product | titlecase}}</td>
-          <td class="youo"  nowrap >{{n.Number_of_products}}</td>
-          <td class="youo"  nowrap>{{n.Price_bought| currency: 'tsh '}}</td>
-          <td class="youo"  nowrap>{{n.Selling_price| currency: 'tsh '}}</td>
-          <!-- <td style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" src="assets/images/danube.jpg" alt=""></td> -->
-          <td class="youo"  nowrap>{{n.Type_of_product}}</td>
-          <td class="youo"  nowrap>{{n.Officer_worker}}</td>
-          <td class="youo"  nowrap>{{n.Shelf_No}}</td>
-
-          <!-- <td class="youo" nowrap>{{n.Number_of_products}}</td> -->
-          <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'tsh '}}</td>
-          <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'tsh '}}</td>
-          <td class="youo" nowrap>{{n.Number_of_products_sold| currency: 'tsh '}}</td>
-          <td class="youo" nowrap>{{n.Description}}</td>
-          <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
-      </tr>
-      <div style="padding: 30px;"></div>
+        @for (n of all; track n; let i = $index) {
+          <tr class="youo" style="  cursor: pointer;" scrollX="true">
+            <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
+            <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
+            <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
+            <td class="youo"  nowrap (click)="menufunct(n)">{{n.Name_of_the_product | titlecase}}</td>
+            <td class="youo"  nowrap >{{n.Number_of_products}}</td>
+            <td class="youo"  nowrap>{{n.Price_bought| currency: 'tsh '}}</td>
+            <td class="youo"  nowrap>{{n.Selling_price| currency: 'tsh '}}</td>
+            <!-- <td style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" src="assets/images/danube.jpg" alt=""></td> -->
+            <td class="youo"  nowrap>{{n.Type_of_product}}</td>
+            <td class="youo"  nowrap>{{n.Officer_worker}}</td>
+            <td class="youo"  nowrap>{{n.Shelf_No}}</td>
+            <!-- <td class="youo" nowrap>{{n.Number_of_products}}</td> -->
+            <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'tsh '}}</td>
+            <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'tsh '}}</td>
+            <td class="youo" nowrap>{{n.Number_of_products_sold| currency: 'tsh '}}</td>
+            <td class="youo" nowrap>{{n.Description}}</td>
+            <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
+          </tr>
+        }
+        <div style="padding: 30px;"></div>
 
         <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+      <!--<td scope="row">3</td>-->
+      <!--<td>Accountancy</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+  </tbody>
+</table>
 
 
-    <div style="background-color:rgba(255, 255, 255, 0.091)	;">
+<div style="background-color:rgba(255, 255, 255, 0.091)	;">
 
 
-    </div>
+</div>
 
 
 
 
 
-  </div>
+</div>
 </div>
 <div style="padding:10px"></div>
 <div style="text-align: center;">

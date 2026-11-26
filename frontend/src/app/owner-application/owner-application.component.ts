@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-owner-application',
-  templateUrl: './owner-application.component.html',
-  styleUrls: ['./owner-application.component.css']
+    selector: 'app-owner-application',
+    templateUrl: './owner-application.component.html',
+    styleUrls: ['./owner-application.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerApplicationComponent implements OnInit {
   imageUrl;

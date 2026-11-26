@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-duka-wamiliki',
-  templateUrl: './duka-wamiliki.component.html',
-  styleUrls: ['./duka-wamiliki.component.css']
+    selector: 'app-duka-wamiliki',
+    templateUrl: './duka-wamiliki.component.html',
+    styleUrls: ['./duka-wamiliki.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaWamilikiComponent {
   users;

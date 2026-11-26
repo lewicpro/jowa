@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-director-duka-invoices',
-  templateUrl: './director-duka-invoices.component.html',
-  styleUrls: ['./director-duka-invoices.component.css']
+    selector: 'app-director-duka-invoices',
+    templateUrl: './director-duka-invoices.component.html',
+    styleUrls: ['./director-duka-invoices.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DirectorDukaInvoicesComponent implements OnInit {
   mode="PROFOMA"

@@ -1,263 +1,221 @@
 
-<div *ngIf="status=='done'" style="padding:10px;" align="right"><a style="padding:10px; cursor: pointer;"  (click)="Edit()">  Edit My Account</a></div>
-<div *ngIf="status=='Edit'"  style="padding:10px; cursor: pointer;" align="right"> <a (click)="Done()">Done</a>  </div>
-<div  *ngIf="status=='done'" style="background: rgba(2, 2, 2, 0.082); border-radius: 5px">
-
-
-
-  <div class="">
+@if (status=='done') {
+  <div style="padding:10px;" align="right"><a style="padding:10px; cursor: pointer;"  (click)="Edit()">  Edit My Account</a></div>
+}
+@if (status=='Edit') {
+  <div  style="padding:10px; cursor: pointer;" align="right"> <a (click)="Done()">Done</a>  </div>
+}
+@if (status=='done') {
+  <div  style="background: rgba(2, 2, 2, 0.082); border-radius: 5px">
+    <div class="">
       <div class="row">
         <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Jina: {{Director}}</li>
-                <li class="list-group-item">Status: <i>Online</i></li>
-                <li class="list-group-item">Branch Position: 2/10</li>
-                <li class="list-group-item">Customers Served:--</li>
-                <li class="list-group-item">Email:none</li>
-              </ul>
+          <ul class="list-group">
+            <li class="list-group-item">Jina: {{Director}}</li>
+            <li class="list-group-item">Status: <i>Online</i></li>
+            <li class="list-group-item">Branch Position: 2/10</li>
+            <li class="list-group-item">Customers Served:--</li>
+            <li class="list-group-item">Email:none</li>
+          </ul>
         </div>
         <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Growth rate: none</li>
-                <li class="list-group-item">Workers:3</li>
-                <li class="list-group-item">Monthly rev: --none</li>
-                <li class="list-group-item">Yearly rev: --none</li>
-                <li class="list-group-item">Daily rev: --none</li>
-              </ul>
+          <ul class="list-group">
+            <li class="list-group-item">Growth rate: none</li>
+            <li class="list-group-item">Workers:3</li>
+            <li class="list-group-item">Monthly rev: --none</li>
+            <li class="list-group-item">Yearly rev: --none</li>
+            <li class="list-group-item">Daily rev: --none</li>
+          </ul>
         </div>
         <div class="col-sm">
-            <ul class="list-group">
-                <li class="list-group-item">Capital roundly: -- none</li>
-                <li class="list-group-item">Static capital:--none</li>
-                <li class="list-group-item">Location:none</li>
-                <li class="list-group-item">Profit:none</li>
-                <li class="list-group-item">Registered on: none</li>
-              </ul>
+          <ul class="list-group">
+            <li class="list-group-item">Capital roundly: -- none</li>
+            <li class="list-group-item">Static capital:--none</li>
+            <li class="list-group-item">Location:none</li>
+            <li class="list-group-item">Profit:none</li>
+            <li class="list-group-item">Registered on: none</li>
+          </ul>
         </div>
       </div>
     </div>
-</div>
-
-
-<div  *ngIf="status=='Edit'" style="background:rgba(2, 2, 2, 0); border-radius: 5px">
-
-  <div align="center">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a  class="nav-link active" (click)="changepassword()" style="cursor: pointer;">Change password</a>
-
-      </li>
-      <li class="nav-item">
-        <a   class="nav-link active" (click)="changecompanydetails()" style="cursor: pointer;">Change Company details </a>
-
-      </li>
-      <li class="nav-item">
-        <a  class="nav-link active" (click)="addshop()" style="cursor: pointer;">Shops</a>
-
-      </li>
-      <li class="nav-item">
-        <a  class="nav-link active" (click)="paymentsdetails()" style="cursor: pointer;">Payments</a>
-
-      </li>
-      <li class="nav-item">
-        <a  class="nav-link active" (click)="wokerslist()" style="cursor: pointer;">Workers</a>
-
-      </li>
-      <li class="nav-item">
-        <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">Settings</a>
-
-      </li>
-
-
-    </ul>
   </div>
-
-  <div class="">
-    <div *ngIf="companydetailval=='True'">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> EDIT COMPANY DETAILS</h4>
-      <div style="padding:20px"></div>
-      <div class="row">
-
-        <div class="col-sm"><div class="">
-
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+}
 
 
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">C phone.</span>
-            </div>
-            <!-- <input #Phonevalue name="Simu" [placeholder]="usernameval" type="text" required [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [value]="usernameval"> -->
-            <!-- <input #Phonevalue [value]="usernameval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"> -->
-            <input #Phonevalue1 [value]="Phonevalue"  name="Phone" required   placeholder="Phone number"   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                Please provide Phone number.
-              </div>
-        </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">C names</span>
-            </div>
-            <input #Companynamesval1 [value]="Companynamesval" name="Tin_no" placeholder="Company names" required   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                Please provide Names.
-              </div>
-        </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account</span>
-      </div>
-      <input #Accounteval1  [value]="Accounteval" placeholder="Account No/Bank" name="Account_no" required     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-        Please provide Account.
-      </div>
-
+@if (status=='Edit') {
+  <div  style="background:rgba(2, 2, 2, 0); border-radius: 5px">
+    <div align="center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a  class="nav-link active" (click)="changepassword()" style="cursor: pointer;">Change password</a>
+        </li>
+        <li class="nav-item">
+          <a   class="nav-link active" (click)="changecompanydetails()" style="cursor: pointer;">Change Company details </a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link active" (click)="addshop()" style="cursor: pointer;">Shops</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link active" (click)="paymentsdetails()" style="cursor: pointer;">Payments</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link active" (click)="wokerslist()" style="cursor: pointer;">Workers</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">Settings</a>
+        </li>
+      </ul>
     </div>
-
-    </div></div>
-      </div>
-      <div style="padding: 10px;"></div>
-      <div class="row">
-        <div class="col-sm"><div class="">
-
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Tin number.</span>
-            </div>
-            <input #tinval1 [value]="tinval" name="Tin" placeholder="Tin number(Registration number)" type="text" required  class="form-control"  style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                Please provide Tin number.
+    <div class="">
+      @if (companydetailval=='True') {
+        <div>
+          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> EDIT COMPANY DETAILS</h4>
+          <div style="padding:20px"></div>
+          <div class="row">
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">C phone.</span>
+                </div>
+                <!-- <input #Phonevalue name="Simu" [placeholder]="usernameval" type="text" required [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [value]="usernameval"> -->
+                <!-- <input #Phonevalue [value]="usernameval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"> -->
+                <input #Phonevalue1 [value]="Phonevalue"  name="Phone" required   placeholder="Phone number"   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                  Please provide Phone number.
+                </div>
               </div>
-        </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Street</span>
-            </div>
-            <input #Streetval1  [value]="Streetval" type="text" name="Tin_no" placeholder="Street name" required  class="form-control"   style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                Please provide Street.
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">C names</span>
+                </div>
+                <input #Companynamesval1 [value]="Companynamesval" name="Tin_no" placeholder="Company names" required   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
+                  Please provide Names.
+                </div>
               </div>
-        </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Mkoa.</span>
-      </div>
-      <input #mkoaval1 [value]="mkoaval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-        Please provide Account.
-      </div>
-    </div>
-
-    </div></div>
-      </div>
-        <div style="padding:10px"></div>
-      <div class="row">
-        <div class="col-sm"><div class="">
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Physical Adress.</span>
-            </div>
-            <input #physicaladdressval1 [value]="physicaladdressval" name="Simu" placeholder="Physical address, eg box" type="text" required  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                Please provide Physical address.
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account</span>
+                </div>
+                <input #Accounteval1  [value]="Accounteval" placeholder="Account No/Bank" name="Account_no" required     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+                  Please provide Account.
+                </div>
               </div>
-        </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Email</span>
-            </div>
-            <input #Emailval1 [value]="Emailval" name="email" placeholder="Email" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                Please provide Email.
+            </div></div>
+          </div>
+          <div style="padding: 10px;"></div>
+          <div class="row">
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Tin number.</span>
+                </div>
+                <input #tinval1 [value]="tinval" name="Tin" placeholder="Tin number(Registration number)" type="text" required  class="form-control"  style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                  Please provide Tin number.
+                </div>
               </div>
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Street</span>
+                </div>
+                <input #Streetval1  [value]="Streetval" type="text" name="Tin_no" placeholder="Street name" required  class="form-control"   style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
+                  Please provide Street.
+                </div>
+              </div>
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Mkoa.</span>
+                </div>
+                <input #mkoaval1 [value]="mkoaval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+                  Please provide Account.
+                </div>
+              </div>
+            </div></div>
+          </div>
+          <div style="padding:10px"></div>
+          <div class="row">
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Physical Adress.</span>
+                </div>
+                <input #physicaladdressval1 [value]="physicaladdressval" name="Simu" placeholder="Physical address, eg box" type="text" required  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                  Please provide Physical address.
+                </div>
+              </div>
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Email</span>
+                </div>
+                <input #Emailval1 [value]="Emailval" name="email" placeholder="Email" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
+                  Please provide Email.
+                </div>
+              </div>
+            </div></div>
+            <div class="col-sm"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">District.</span>
+                </div>
+                <input #districtnameval1 [value]="districtnameval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+                  Please provide Account.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-          </div></div>
-        <div class="col-sm"><div class="">
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">District.</span>
+        <div style="padding: 20px;"></div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, districtnameval1.value, mkoaval1.value, Emailval1.value)">SUBMIT</button>
+          <!-- <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, streetnameval1.value, districtnameval1.value, Emailval1.value, mkoaz1.value)">SUBMIT</button> -->
+        </div>
       </div>
-      <input #districtnameval1 [value]="districtnameval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-        Please provide Account.
-      </div>
-
-    </div>
-
-    </div>
-
-  </div>
-</div>
-<div style="padding: 20px;"></div>
-<div class="d-flex justify-content-center">
-
-  <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, districtnameval1.value, mkoaval1.value, Emailval1.value)">SUBMIT</button>
-  <!-- <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, streetnameval1.value, districtnameval1.value, Emailval1.value, mkoaz1.value)">SUBMIT</button> -->
-</div>
-
-    </div>
+    }
     <div style="padding: 10px;"></div>
-    <div *ngIf="passwordval=='True'">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CHANGE PASSWORD</h4>
-      <div style="padding: 10px;"></div>
-      <div class="row">
-        <div class="col-sm">
-
-        </div>
-        <div class="col-sm">
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
+    @if (passwordval=='True') {
+      <div>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CHANGE PASSWORD</h4>
+        <div style="padding: 10px;"></div>
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              <div class="input-group-prepend" style="width:110px;">
                 <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">username</span>
-            </div>
-            <input #box200 (blur)="username(box200.value)"  name="usename" required   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              </div>
+              <input #box200 (blur)="username(box200.value)"  name="usename" required   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
                 Please provide username.
               </div>
-          </div>
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Password</span>
-            </div>
-            <input #box202 (blur)="password(box202.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide Password.
-              </div>
-
             </div>
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-
+              <div class="input-group-prepend" style="width:110px;">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Password</span>
+              </div>
+              <input #box202 (blur)="password(box202.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
+              <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+                Please provide Password.
+              </div>
+            </div>
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
                 <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Confirm</span>
               </div>
@@ -267,49 +225,43 @@
               </div>
             </div>
             <div class="d-flex d-flex justify-content-center" style="padding-right:65px;">
-
               <button class="mog btn btn-primary" (click)="submit_password()">Submit</button>
               <div style="padding: 10px;"></div>
               <button class="mog btn btn-secondary" (click)="showpassword()">{{show}}</button>
             </div>
           </div>
           <div class="col-sm">
-
+          </div>
         </div>
       </div>
-
-    </div>
-    <div *ngIf="confirm=='True'">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CONFIRM IT IS REAL YOU</h4>
-      <div style="padding: 10px;"></div>
-      <div class="row">
-        <div class="col-sm">
-
-        </div>
-        <div class="col-sm">
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
+    }
+    @if (confirm=='True') {
+      <div>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CONFIRM IT IS REAL YOU</h4>
+        <div style="padding: 10px;"></div>
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              <div class="input-group-prepend" style="width:110px;">
                 <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">username</span>
-            </div>
-            <input #box209 (blur)="usernamegivenfunct(box209.value)"  name="usename" disabled   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              </div>
+              <input #box209 (blur)="usernamegivenfunct(box209.value)"  name="usename" disabled   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
                 Please provide username.
               </div>
-          </div>
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Old Password</span>
             </div>
-            <input #box233 (blur)="passwordgivenfunct(box233.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+              <div class="input-group-prepend" style="width:110px;">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Old Password</span>
+              </div>
+              <input #box233 (blur)="passwordgivenfunct(box233.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
+              <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
                 Please provide Password.
               </div>
-
             </div>
             <div class="d-flex d-flex justify-content-center" style="padding-right:65px;">
-
               <button class="mog btn btn-primary" (click)="submit_confirm()">Submit</button>
               <div style="padding: 10px;"></div>
               <button class="mog btn btn-secondary" (click)="showpassword()">{{show}}</button>
@@ -318,189 +270,174 @@
             </div>
           </div>
           <div class="col-sm">
-
+          </div>
         </div>
       </div>
-
-    </div>
-
-
-    <div *ngIf="addshopval=='True'">
-      <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF SHOPS</h4>
-        <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
-        <!-- <br><br> -->
-        <!-- <pre class="card card-block card-header">{{message}}</pre> -->
-        <div style="max-height:700px;">
-
-
-
-          <table class="table table-sm table-light">
-            <thead>
-            <tr>
-
-              <th scope="col">id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone number</th>
-              <th scope="col">Email</th>
-              <th scope="col">Account</th>
-              <th scope="col">company</th>
-              <th scope="col">Tin</th>
-              <th scope="col">Street</th>
-              <th scope="col">District</th>
-              <th scope="col">Region</th>
-              <th scope="col">Action</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="cursor:pointer" id="customers">
-              <td class="text-center" ></td>
-                <td class="text-center" ><input #name [value]="Nameval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
-                <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
-                <td  style="white-space: nowrap"><input #email [value]="Emailval" style="border-radius:3px; width:100%" placeholder="Email"  type="text" placeholder="*Important"></td>
-                <td><input #box1 [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
-                <td><input #box2 [value]="CompanyVal" style="border-radius:3px; width:100%" type="text" placeholder="Company"></td>
-                <td><input #box3 [value]="Tin_Noval" style="border-radius:3px; width:100%" type="text" placeholder="Tin No"></td>
-                <td><input #box32 [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
-                <td><input #box4 [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
-                <td><input #box43 [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
-
-
-                <!-- <td></td> -->
-                <td><a *ngIf="edit=='False'" (click)="add(simu.value, email.value, box1.value, box2.value, box3.value, box32.value, box4.value, box43.value)"  >+Add</a><a *ngIf="edit=='onedit'" (click)="Editdata()"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditshop()">x</span></a></td>
+    }
+    @if (addshopval=='True') {
+      <div>
+        <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF SHOPS</h4>
+          <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+          <!-- <br><br> -->
+          <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+          <div style="max-height:700px;">
+            <table class="table table-sm table-light">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone number</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Account</th>
+                  <th scope="col">company</th>
+                  <th scope="col">Tin</th>
+                  <th scope="col">Street</th>
+                  <th scope="col">District</th>
+                  <th scope="col">Region</th>
+                  <th scope="col">Action</th>
                 </tr>
-            <tr style="cursor:pointer" id="customers" *ngFor="let form of dukazote | myfilter; let i = index" >
-
-              <td nowrap>{{i*1+1}}</td>
-              <td (click)="change_company(form.company)" nowrap>{{form.jina | titlecase}}</td>
-              <td (click)="change_company(form.company)" nowrap>{{form.Simu}}</td>
-              <td (click)="change_company(form.company)" nowrap>{{form.Email}}</td>
-              <td nowrap>{{form.Account_no}} : {{form.name_of_the_bank}}</td>
-              <td nowrap>{{form.company}}</td>
-              <td nowrap>{{form.Tin_no}}</td>
-
-              <!-- <td>{{form.ofisi}}</td> -->
-              <td nowrap>{{form.kata | titlecase}}</td>
-              <td nowrap>{{form.wilaya | titlecase}}</td>
-              <td nowrap>{{form.mkoa | titlecase}}</td>
-              <td nowrap > <a (click)="editshop( form.Simu, form.Email, form.Account_no, form.company, form.Tin_no, form.kata, form.wilaya, form.mkoa, form.pk)" style="color: blue;">Edit</a> </td>
-
-
-
-            </tr>
-            <div style="padding: 30px;"></div>
-
-              <!--<tr id="customers">-->
+              </thead>
+              <tbody>
+                <tr style="cursor:pointer" id="customers">
+                  <td class="text-center" ></td>
+                  <td class="text-center" ><input #name [value]="Nameval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
+                  <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
+                  <td  style="white-space: nowrap"><input #email [value]="Emailval" style="border-radius:3px; width:100%" placeholder="Email"  type="text" placeholder="*Important"></td>
+                  <td><input #box1 [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
+                  <td><input #box2 [value]="CompanyVal" style="border-radius:3px; width:100%" type="text" placeholder="Company"></td>
+                  <td><input #box3 [value]="Tin_Noval" style="border-radius:3px; width:100%" type="text" placeholder="Tin No"></td>
+                  <td><input #box32 [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
+                  <td><input #box4 [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
+                  <td><input #box43 [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
+                  <!-- <td></td> -->
+                  <td>@if (edit=='False') {
+                    <a (click)="add(simu.value, email.value, box1.value, box2.value, box3.value, box32.value, box4.value, box43.value)"  >+Add</a>
+                    }@if (edit=='onedit') {
+                    <a (click)="Editdata()"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditshop()">x</span></a>
+                  }</td>
+                </tr>
+                @for (form of dukazote | myfilter; track form; let i = $index) {
+                  <tr style="cursor:pointer" id="customers" >
+                    <td nowrap>{{i*1+1}}</td>
+                    <td (click)="change_company(form.company)" nowrap>{{form.jina | titlecase}}</td>
+                    <td (click)="change_company(form.company)" nowrap>{{form.Simu}}</td>
+                    <td (click)="change_company(form.company)" nowrap>{{form.Email}}</td>
+                    <td nowrap>{{form.Account_no}} : {{form.name_of_the_bank}}</td>
+                    <td nowrap>{{form.company}}</td>
+                    <td nowrap>{{form.Tin_no}}</td>
+                    <!-- <td>{{form.ofisi}}</td> -->
+                    <td nowrap>{{form.kata | titlecase}}</td>
+                    <td nowrap>{{form.wilaya | titlecase}}</td>
+                    <td nowrap>{{form.mkoa | titlecase}}</td>
+                    <td nowrap > <a (click)="editshop( form.Simu, form.Email, form.Account_no, form.company, form.Tin_no, form.kata, form.wilaya, form.mkoa, form.pk)" style="color: blue;">Edit</a> </td>
+                  </tr>
+                }
+                <div style="padding: 30px;"></div>
+                <!--<tr id="customers">-->
                 <!--<td scope="row">2</td>-->
                 <!--<td>BA</td>-->
                 <!--<td>3</td>-->
                 <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
               <!--</tr>-->
               <!--<tr id="customers">-->
-                <!--<td scope="row">3</td>-->
-                <!--<td>Accountancy</td>-->
-                <!--<td>3</td>-->
-                <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-              <!--</tr>-->
-            </tbody>
-          </table>
-          <div *ngIf="receipt=='on'                                                        " style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
+              <!--<td scope="row">3</td>-->
+              <!--<td>Accountancy</td>-->
+              <!--<td>3</td>-->
+              <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+            <!--</tr>-->
+          </tbody>
+        </table>
+        @if (receipt=='on'                                                        ) {
+          <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
             <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
             <div align="center">
-
-
               <label class="switch">
-                <input *ngIf="route=='active'" type="checkbox" checked (click)="activated()">
-                <input *ngIf="route=='inactive'" type="checkbox" (click)="activated()">
+                @if (route=='active') {
+                  <input type="checkbox" checked (click)="activated()">
+                }
+                @if (route=='inactive') {
+                  <input type="checkbox" (click)="activated()">
+                }
                 <span class="slider round"></span>
               </label>
-
             </div>
             <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-
-            <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
-
-            <div style="padding:10px"></div>
-            <div align="center" style="font-size:13px;">{{username}}</div>
-            <div align="center" style="font-size:13px;">{{Email}}</div>
-            <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
-            <div align="center" style="font-size:13px;">{{wilaya}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
-            <div align="center" style="font-size:13px;">-----------------------------------</div>
-            <div *ngFor="let m of allgiv">
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
-
-            </div>
-
-            <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
-          <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+              <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+              <div style="padding:10px"></div>
+              <div align="center" style="font-size:13px;">{{username}}</div>
+              <div align="center" style="font-size:13px;">{{Email}}</div>
+              <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+              <div align="center" style="font-size:13px;">{{wilaya}}</div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+              <div align="center" style="font-size:13px;">-----------------------------------</div>
+              @for (m of allgiv; track m) {
+                <div>
+                  <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+                </div>
+              }
+              <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+              <div align="center" style="font-size:13px;">---------------------</div>
+              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+              <div align="center" style="font-size:13px;">---------------------</div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+              <div align="center" style="font-size:13px;">---------------------</div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
+              <div style="padding:10px"></div>
+              <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
             </div>
             <div style="padding:10px"></div>
             <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
-
-
-        </div>
-
-        </div>
+          </div>
+        }
       </div>
-
     </div>
-    <div *ngIf="paymentval=='True'">
-      <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF PAYMENTS</h4>
-        <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
-        <!-- <br><br> -->
-        <!-- <pre class="card card-block card-header">{{message}}</pre> -->
-        <div style="max-height:700px;" >
-
-
-          <table class="table table-sm table-light">
-
-            <tbody style="overflow-x: scroll;">
-              <tr>
-                <th style="padding-left:10px;">#</th>
-                <th style="padding-left:10px;">Date & Time</th>
-                <!-- <th style="padding-left:10px;">pk</th> -->
-                <th>Payee Name</th>
-                <th nowrap> Transaction Id</th>
-                <th nowrap>Payment processor</th>
-                <th>Amount paid</th>
-
-                <th>Time approved</th>
-                <th>Officer</th>
-                <th nowrap>Description</th>
-
-                <th>Remained</th>
-                <th>Status</th>
-
-                <th>Action</th>
+  </div>
+}
+@if (paymentval=='True') {
+  <div>
+    <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF PAYMENTS</h4>
+      <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+      <!-- <br><br> -->
+      <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+      <div style="max-height:700px;" >
+        <table class="table table-sm table-light">
+          <tbody style="overflow-x: scroll;">
+            <tr>
+              <th style="padding-left:10px;">#</th>
+              <th style="padding-left:10px;">Date & Time</th>
+              <!-- <th style="padding-left:10px;">pk</th> -->
+              <th>Payee Name</th>
+              <th nowrap> Transaction Id</th>
+              <th nowrap>Payment processor</th>
+              <th>Amount paid</th>
+              <th>Time approved</th>
+              <th>Officer</th>
+              <th nowrap>Description</th>
+              <th>Remained</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
             <tr style="background-color: rgb(203, 228, 183);">
-                <td style="padding-left:10px;" class="youo" nowrap></td>
-                <td style="padding-left:10px;" class="youo" nowrap></td>
-                <td style="padding-left:10px;" class="youo" nowrap></td>
-                <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
-
-                <td class="youo" nowrap>stock</td>
-                <td class="youo" nowrap></td>
-                <td class="youo" nowrap></td>
-                <td class="youo" *ngIf="receipt =='on'" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
-
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td style="padding-left:10px;" class="youo" nowrap></td>
+              <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
+              <td class="youo" nowrap>stock</td>
+              <td class="youo" nowrap></td>
+              <td class="youo" nowrap></td>
+              @if (receipt =='on') {
+                <td class="youo" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
+              }
             </tr>
-              <tr class="youo" *ngFor="let n of payments let i = index" style="  cursor: pointer;" scrollX="true">
+            @for (n of payments; track n; let i = $index) {
+              <tr class="youo" style="  cursor: pointer;" scrollX="true">
                 <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
                 <td style="padding-left:10px;" class="youo" nowrap>{{i*1 + 1*1}}</td>
                 <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
@@ -512,124 +449,120 @@
                 <td class="youo"  nowrap>{{n.Officer}}</td>
                 <td class="youo"  nowrap>{{n.Description}}</td>
                 <td class="youo"  nowrap>{{n.Remained}}</td>
-
                 <td class="youo" nowrap>{{n.status}}</td>
-
                 <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
-            </tr>
+              </tr>
+            }
             <div style="padding: 30px;"></div>
-
-              <!--<tr id="customers">-->
-                <!--<td scope="row">2</td>-->
-                <!--<td>BA</td>-->
-                <!--<td>3</td>-->
-                <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-              <!--</tr>-->
-              <!--<tr id="customers">-->
-                <!--<td scope="row">3</td>-->
-                <!--<td>Accountancy</td>-->
-                <!--<td>3</td>-->
-                <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-              <!--</tr>-->
-            </tbody>
-          </table>
-          <div *ngIf="receipt=='on'                                                        " style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-            <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
-            <div align="center">
-
-
-              <label class="switch">
-                <input *ngIf="route=='active'" type="checkbox" checked (click)="activated()">
-                <input *ngIf="route=='inactive'" type="checkbox" (click)="activated()">
-                <span class="slider round"></span>
-              </label>
-
-            </div>
-            <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-
-            <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
-
-            <div style="padding:10px"></div>
-            <div align="center" style="font-size:13px;">{{username}}</div>
-            <div align="center" style="font-size:13px;">{{Email}}</div>
-            <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
-            <div align="center" style="font-size:13px;">{{wilaya}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
-            <div align="center" style="font-size:13px;">-----------------------------------</div>
-            <div *ngFor="let m of allgiv">
+            <!--<tr id="customers">-->
+            <!--<td scope="row">2</td>-->
+            <!--<td>BA</td>-->
+            <!--<td>3</td>-->
+            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+          <!--</tr>-->
+          <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+    @if (receipt=='on'                                                        ) {
+      <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="center">
+          <label class="switch">
+            @if (route=='active') {
+              <input type="checkbox" checked (click)="activated()">
+            }
+            @if (route=='inactive') {
+              <input type="checkbox" (click)="activated()">
+            }
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
+          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div style="padding:10px"></div>
+          <div align="center" style="font-size:13px;">{{username}}</div>
+          <div align="center" style="font-size:13px;">{{Email}}</div>
+          <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div align="center" style="font-size:13px;">{{wilaya}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div align="center" style="font-size:13px;">-----------------------------------</div>
+          @for (m of allgiv; track m) {
+            <div>
               <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
-
             </div>
-
-            <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
+          }
+          <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
-            </div>
-            <div style="padding:10px"></div>
-            <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
-
-
         </div>
-
-        </div>
+        <div style="padding:10px"></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
       </div>
-
-    </div>
-
-    <div *ngIf="workersval=='True'">
-      <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF WORKERS</h4>
-        <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
-        <!-- <br><br> -->
-        <!-- <pre class="card card-block card-header">{{message}}</pre> -->
-        <div style="max-height:700px;" >
-
-
-          <table class="table table-sm table-light" >
-
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone number</th>
-                <th scope="col">Account no</th>
-                <!-- <th scope="col">pin</th> -->
-                <th scope="col">Registered on</th>
-                <th scope="col">Office</th>
-                <th scope="col">Street</th>
-                <th scope="col">District</th>
-                <th scope="col">Region</th>
-                <!-- <th scope="col">Tin No</th> -->
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngIf="EditOffcer=='True'" style="cursor:pointer" id="customers">
+    }
+  </div>
+</div>
+</div>
+}
+@if (workersval=='True') {
+  <div>
+    <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF WORKERS</h4>
+      <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+      <!-- <br><br> -->
+      <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+      <div style="max-height:700px;" >
+        <table class="table table-sm table-light" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone number</th>
+              <th scope="col">Account no</th>
+              <!-- <th scope="col">pin</th> -->
+              <th scope="col">Registered on</th>
+              <th scope="col">Office</th>
+              <th scope="col">Street</th>
+              <th scope="col">District</th>
+              <th scope="col">Region</th>
+              <!-- <th scope="col">Tin No</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            @if (EditOffcer=='True') {
+              <tr style="cursor:pointer" id="customers">
                 <td class="text-center" ></td>
                 <td  style="white-space: nowrap"><input #name [value]="Nameval" style="border-radius:3px; width:100%" placeholder="Phone"  type="text" placeholder="Phone"></td>
                 <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" placeholder="Name"> </td>
-                  <td><input #account [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
-                  <td><input #regva [value]="RegVal" style="border-radius:3px; width:100%" type="text" placeholder="Registeration number"></td>
-                  <td><input #office [value]="Officeval" style="border-radius:3px; width:100%" type="text" placeholder="Office"></td>
-                  <td><input #kata [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
-                  <td><input #wilaya [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
-                  <td><input #mkoa [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
-
-
-                  <!-- <td></td> -->
-                  <td><a *ngIf="EditOffcer=='True'" (click)="Editworkerdata(name.value, simu.value, account.value, regva.value, office.value, kata.value, wilaya.value, mkoa.value)"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditworker()">x</span></a></td>
-                  </tr>
-              <tr style="cursor:pointer" id="customers" *ngFor="let form of dukaworkers | myfilter : filtertext; let i = index">
+                <td><input #account [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
+                <td><input #regva [value]="RegVal" style="border-radius:3px; width:100%" type="text" placeholder="Registeration number"></td>
+                <td><input #office [value]="Officeval" style="border-radius:3px; width:100%" type="text" placeholder="Office"></td>
+                <td><input #kata [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
+                <td><input #wilaya [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
+                <td><input #mkoa [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
+                <!-- <td></td> -->
+                <td>@if (EditOffcer=='True') {
+                  <a (click)="Editworkerdata(name.value, simu.value, account.value, regva.value, office.value, kata.value, wilaya.value, mkoa.value)"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditworker()">x</span></a>
+                }</td>
+              </tr>
+            }
+            @for (form of dukaworkers | myfilter : filtertext; track form; let i = $index) {
+              <tr style="cursor:pointer" id="customers">
                 <td  nowrap scope="row">{{i*1 - 1*1}}</td>
                 <td  nowrap>{{form.jina | titlecase}}</td>
                 <td  nowrap>{{form.Simu}}</td>
@@ -641,95 +574,90 @@
                 <td  nowrap>{{form.wilaya}}</td>
                 <td  nowrap>{{form.mkoa}}</td>
                 <td  nowrap>{{form.TSD}}</td>
-
                 <td > <a (click)="deleteworker(form.pk)" style="color:red" >Delete</a> <i class="fas fa-arrow-down" style="cursor: pointer;"> <a (click)="EditWorkere(form)">Edit</a> </i></td>
               </tr>
+            }
             <div style="padding: 30px;"></div>
-
-              <!--<tr id="customers">-->
-                <!--<td scope="row">2</td>-->
-                <!--<td>BA</td>-->
-                <!--<td>3</td>-->
-                <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-              <!--</tr>-->
-              <!--<tr id="customers">-->
-                <!--<td scope="row">3</td>-->
-                <!--<td>Accountancy</td>-->
-                <!--<td>3</td>-->
-                <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-              <!--</tr>-->
-            </tbody>
-          </table>
-          <div *ngIf="receipt=='on'                                                        " style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-            <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
-            <div align="center">
-
-
-              <label class="switch">
-                <input *ngIf="route=='active'" type="checkbox" checked (click)="activated()">
-                <input *ngIf="route=='inactive'" type="checkbox" (click)="activated()">
-                <span class="slider round"></span>
-              </label>
-
-            </div>
-            <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-
-            <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
-
-            <div style="padding:10px"></div>
-            <div align="center" style="font-size:13px;">{{username}}</div>
-            <div align="center" style="font-size:13px;">{{Email}}</div>
-            <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
-            <div align="center" style="font-size:13px;">{{wilaya}}</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
-            <div align="center" style="font-size:13px;">-----------------------------------</div>
-            <div *ngFor="let m of allgiv">
+            <!--<tr id="customers">-->
+            <!--<td scope="row">2</td>-->
+            <!--<td>BA</td>-->
+            <!--<td>3</td>-->
+            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+          <!--</tr>-->
+          <!--<tr id="customers">-->
+          <!--<td scope="row">3</td>-->
+          <!--<td>Accountancy</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+    @if (receipt=='on'                                                        ) {
+      <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="center">
+          <label class="switch">
+            @if (route=='active') {
+              <input type="checkbox" checked (click)="activated()">
+            }
+            @if (route=='inactive') {
+              <input type="checkbox" (click)="activated()">
+            }
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
+          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div style="padding:10px"></div>
+          <div align="center" style="font-size:13px;">{{username}}</div>
+          <div align="center" style="font-size:13px;">{{Email}}</div>
+          <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div align="center" style="font-size:13px;">{{wilaya}}</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div align="center" style="font-size:13px;">-----------------------------------</div>
+          @for (m of allgiv; track m) {
+            <div>
               <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
-
             </div>
-
-            <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
-            <div align="center" style="font-size:13px;">---------------------</div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
-            <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
+          }
+          <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div align="center" style="font-size:13px;">---------------------</div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
-            </div>
-            <div style="padding:10px"></div>
-            <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
-
-
         </div>
-
-        </div>
+        <div style="padding:10px"></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
       </div>
-
-    </div>
-
-    </div>
+    }
+  </div>
 </div>
-<div *ngIf="settings=='True'">
-  <!-- <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;"> -->
+</div>
+}
+</div>
+</div>
+}
+@if (settings=='True') {
+  <div>
+    <!-- <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;"> -->
     <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF SETTINGS</h4>
     <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
     <!-- <br><br> -->
     <!-- <pre class="card card-block card-header">{{message}}</pre> -->
-
   <!-- </div> -->
   <hr style="border-bottom: 1px solid rgb(187, 187, 187);">
-
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <div class="input-group-text" style="background-color: transparent;">
-
         <input (change)="expiredate()" [checked]="expiredateval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
@@ -739,7 +667,6 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <div class="input-group-text" style="background-color: transparent;">
-
         <input (change)="bucket()" [checked]="bucketval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
@@ -749,28 +676,21 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <div class="input-group-text" style="background-color: transparent;">
-
         <input (change)="industry()" [checked]="Industryval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
     <label style="padding:10px; font-size:medium" for="wawawaw">Add Industry</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
-
   <hr style="border-bottom: 1px solid rgb(187, 187, 187);">
-
-
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <div class="input-group-text" style="background-color: transparent;">
-
         <input (change)="othersource()" [checked]="othersourceval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
     <label style="padding:10px; font-size:medium" for="wawawaw">Add Other income sources</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
-
-
-
 </div>
+}

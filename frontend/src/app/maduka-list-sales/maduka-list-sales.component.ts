@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
-  selector: 'app-maduka-list-sales',
-  templateUrl: './maduka-list-sales.component.html',
-  styleUrls: ['./maduka-list-sales.component.css']
+    selector: 'app-maduka-list-sales',
+    templateUrl: './maduka-list-sales.component.html',
+    styleUrls: ['./maduka-list-sales.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaListSalesComponent implements OnInit {
   all;

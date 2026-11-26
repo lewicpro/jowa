@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-wakala-admin',
-  templateUrl: './wakala-admin.component.html',
-  styleUrls: ['./wakala-admin.component.css']
+    selector: 'app-wakala-admin',
+    templateUrl: './wakala-admin.component.html',
+    styleUrls: ['./wakala-admin.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaAdminComponent implements OnInit {
   infos;

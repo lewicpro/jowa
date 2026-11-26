@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-orders-set-orders',
-  templateUrl: './orders-set-orders.component.html',
-  styleUrls: ['./orders-set-orders.component.css']
+    selector: 'app-orders-set-orders',
+    templateUrl: './orders-set-orders.component.html',
+    styleUrls: ['./orders-set-orders.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersSetOrdersComponent {
   all;

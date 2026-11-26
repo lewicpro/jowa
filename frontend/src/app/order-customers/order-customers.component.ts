@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-order-customers',
-  templateUrl: './order-customers.component.html',
-  styleUrls: ['./order-customers.component.css']
+    selector: 'app-order-customers',
+    templateUrl: './order-customers.component.html',
+    styleUrls: ['./order-customers.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderCustomersComponent {
   users;

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji-wadaiwa-mwezi-huu',
-  templateUrl: './dasboard-mkopeshaji-wadaiwa-mwezi-huu.component.html',
-  styleUrls: ['./dasboard-mkopeshaji-wadaiwa-mwezi-huu.component.css']
+    selector: 'app-dasboard-mkopeshaji-wadaiwa-mwezi-huu',
+    templateUrl: './dasboard-mkopeshaji-wadaiwa-mwezi-huu.component.html',
+    styleUrls: ['./dasboard-mkopeshaji-wadaiwa-mwezi-huu.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiWadaiwaMweziHuuComponent implements OnInit {
   malipo;

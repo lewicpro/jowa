@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-nyumba-wapangaji-wote',
-  templateUrl: './nyumba-wapangaji-wote.component.html',
-  styleUrls: ['./nyumba-wapangaji-wote.component.css']
+    selector: 'app-nyumba-wapangaji-wote',
+    templateUrl: './nyumba-wapangaji-wote.component.html',
+    styleUrls: ['./nyumba-wapangaji-wote.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaWapangajiWoteComponent implements OnInit {
   users;

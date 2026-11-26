@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-order-director-matumizi',
-  templateUrl: './order-director-matumizi.component.html',
-  styleUrls: ['./order-director-matumizi.component.css']
+    selector: 'app-order-director-matumizi',
+    templateUrl: './order-director-matumizi.component.html',
+    styleUrls: ['./order-director-matumizi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderDirectorMatumiziComponent implements OnInit {
   all;

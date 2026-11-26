@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-orders-dashboard-waliokopa',
-  templateUrl: './orders-dashboard-waliokopa.component.html',
-  styleUrls: ['./orders-dashboard-waliokopa.component.css']
+    selector: 'app-orders-dashboard-waliokopa',
+    templateUrl: './orders-dashboard-waliokopa.component.html',
+    styleUrls: ['./orders-dashboard-waliokopa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersDashboardWaliokopaComponent implements OnInit {
   all;

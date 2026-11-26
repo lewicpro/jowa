@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit  } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { WotewatejaComponent } from '../wotewateja/wotewateja.component';
 import { Injectable } from '@angular/core';
-import {Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 @Injectable()
 @Component({
-  selector: 'app-details-view',
-  templateUrl: './details-view.component.html',
-  styleUrls: ['./details-view.component.css']
+    selector: 'app-details-view',
+    templateUrl: './details-view.component.html',
+    styleUrls: ['./details-view.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DetailsViewComponent implements OnInit {
   @ViewChild(WotewatejaComponent) child;
@@ -75,21 +74,6 @@ export class DetailsViewComponent implements OnInit {
   }
 
   constructor(public restframework: RestframeworkService) {
-    this.restframework.getStoredLists().then(ngoma=>{
-      this.als = ngoma;
-      for (const m of this.malip){
-        // console.log('misemo;'+m.nyumba)
-
-
-
-        this.mona = m.Username
-        this.file_no = m.file_no
-        //.log( m.Username)
-
-
-        }
-
-    })
     // this.restframework.getLists().then(data => {
     //   this.malip = data;
     //   this.datar = localStorage.getItem('id')
@@ -109,73 +93,6 @@ export class DetailsViewComponent implements OnInit {
 
     //   }
     // });
-    this.restframework.getPersonalToa().then(data => {
-      this.malipz = data;
-      for(const m of this.malipz){
-
-        if(m.user === this.mona){
-          // console.log('user: '+ m.mwaka)
-          // console.log('mona: '+ this.mwaka)
-          if(String(this.mwaka) === String(m.mwaka)){
-            if(this.mwei === 'January'){
-              this.mez = m.January;
-
-            }
-            else if(this.mwei === 'February'){
-              this.mez = m.February;
-
-            }
-            else if(this.mwei === 'March'){
-              this.mez = m.March;
-
-            }
-            else if(this.mwei === 'April'){
-              this.mez = m.April;
-
-            }
-            else if(this.mwei === 'June'){
-              this.mez = m.June;
-
-            }
-            else if(this.mwei === 'July'){
-              this.mez = m.July;
-
-            }
-            else if(this.mwei === 'August'){
-              this.mez = m.August;
-
-            }
-            else if(this.mwei === 'September'){
-              this.mez = m.September;
-
-            }
-            else if(this.mwei === 'October'){
-              this.mez = m.October;
-
-            }
-            else if(this.mwei === 'November'){
-              //.log('inaingia')
-              this.mez = m.November;
-
-            }
-            else if(this.mwei === 'December'){
-
-              this.mez = m.December;
-
-            }
-
-          }
-
-
-
-        }
-
-
-      }
-
-
-
-    });
     this.restframework.getPersonalWeka().then(data => {
       this.malipzo = data;
 
@@ -183,6 +100,7 @@ export class DetailsViewComponent implements OnInit {
 
     });
     this.time();
+    this.loadSelectedAccountData();
 
     this.restframework.getMieziToa().then(datas => {
       this.users = datas;
@@ -191,13 +109,48 @@ export class DetailsViewComponent implements OnInit {
     this.getdata();
    }
 
+  private loadSelectedAccountData(): void {
+    this.restframework.getStoredLists().then(records => {
+      this.als = Array.isArray(records) ? records : [];
+      const selectedId = localStorage.getItem('id');
+      const selected = this.als.find(record => String(record.pk) === String(selectedId));
+      if (selected) {
+        this.mona = selected.Username;
+        this.file_no = selected.file_no;
+      }
+
+      return this.restframework.getPersonalToa();
+    }).then(data => {
+      this.malipz = Array.isArray(data) ? data : [];
+      for (const payment of this.malipz) {
+        if (payment.user === this.mona && String(this.mwaka) === String(payment.mwaka)) {
+          const monthlyAmounts = {
+            January: payment.January,
+            February: payment.February,
+            March: payment.March,
+            April: payment.April,
+            May: payment.May,
+            June: payment.June,
+            July: payment.July,
+            August: payment.August,
+            September: payment.September,
+            October: payment.October,
+            November: payment.November,
+            December: payment.December
+          };
+          this.mez = monthlyAmounts[this.mwei];
+        }
+      }
+    });
+  }
+
    onUploadProfileData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postProfiledata(this.selectedFile, this.Username, this.pin, this.Simu).subscribe(
       data => {
         //.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
 .mopo{
     transform:matrix(1.00,0.00,-0.60,1.00,-60,0);
     -ms-transform:matrix(1.00,0.00,-0.60,1.00,-90,0);
@@ -470,8 +472,6 @@ transform: scale(7) rotate(-15deg) translateX(-13px) translateY(-14px);
   }
 
 
-
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 *{
     margin: 0px;

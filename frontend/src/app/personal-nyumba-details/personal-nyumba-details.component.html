@@ -2,46 +2,64 @@
 <div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
 <div class="container">
 
-<div style="background:rgba(255, 255, 255, 0)">
-  <div>
-  <span class="float-left" style="list-style-type:none; color:rgb(0, 0, 0); font-size:14px;; padding-top:30px;">
-    <li style="font-weight:100;">Jina:<span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"> {{jina | titlecase}}</span></li>
-    <li>Namba ya simu: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{Simu}}</span></li>
-    <li>Namba ya file: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{file_no}}</span></li>
-    <li>Jina la nyumba: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{nyumbaname}}/<span *ngIf="mwezi1">{{mwezi1 | currency: 'Tsh '}}</span><span *ngIf="miezi2">{{miezi2 | currency: 'Tsh '}}</span><span *ngIf="miezi3">{{miezi3 | currency: 'Tsh '}}</span><span *ngIf="year">{{year | currency: 'Tsh '}}</span></span></li>
-    <li *ngIf="ActualDeni">Deni: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{deniback | currency: 'Tsh '}}</span></li>
-    <li>Progress: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"><li style="display:inline-block"><span *ngIf="morn === 'start'" style="font-weight:500; color:green">Running</span><span *ngIf="morn === 'stop'" style="font-weight:500; color:green">Stoped</span></li></span></li>
-  </span> 
-  <span class="float-right">
-    <div style=" height:160px;; overflow: hidden;">
-      <img  style="border:2px; background:white;" [src]="imageUrl" width="150px;" ><br>
-      
-      </div>
-      <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
-        <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> <a style="font-size: 10px; color: black; cursor:pointer" (click)="files.click()"> Upload image</a><button class="float-right" style="font-size: 10px; color: black; " type="submit" >submit</button>
-      </form>
-  </span>
-</div>
-</div>
+  <div style="background:rgba(255, 255, 255, 0)">
+    <div>
+      <span class="float-left" style="list-style-type:none; color:rgb(0, 0, 0); font-size:14px;; padding-top:30px;">
+        <li style="font-weight:100;">Jina:<span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"> {{jina | titlecase}}</span></li>
+        <li>Namba ya simu: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{Simu}}</span></li>
+        <li>Namba ya file: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{file_no}}</span></li>
+        <li>Jina la nyumba: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{nyumbaname}}/@if (mwezi1) {
+          <span>{{mwezi1 | currency: 'Tsh '}}</span>
+          }@if (miezi2) {
+          <span>{{miezi2 | currency: 'Tsh '}}</span>
+          }@if (miezi3) {
+          <span>{{miezi3 | currency: 'Tsh '}}</span>
+          }@if (year) {
+          <span>{{year | currency: 'Tsh '}}</span>
+        }</span></li>
+        @if (ActualDeni) {
+          <li>Deni: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)">{{deniback | currency: 'Tsh '}}</span></li>
+        }
+        <li>Progress: <span style="font-size:12px; font-weight:100; color:rgb(127, 142, 152)"><li style="display:inline-block">@if (morn === 'start') {
+          <span style="font-weight:500; color:green">Running</span>
+          }@if (morn === 'stop') {
+          <span style="font-weight:500; color:green">Stoped</span>
+        }</li></span></li>
+      </span>
+      <span class="float-right">
+        <div style=" height:160px;; overflow: hidden;">
+          <img  style="border:2px; background:white;" [src]="imageUrl" width="150px;" ><br>
+
+        </div>
+        <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
+          <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> <a style="font-size: 10px; color: black; cursor:pointer" (click)="files.click()"> Upload image</a><button class="float-right" style="font-size: 10px; color: black; " type="submit" >submit</button>
+        </form>
+      </span>
+    </div>
+  </div>
 
 </div>
 <div class="container" style="padding-top:190px;">
-  
+
   <div style="background:rgba(255, 255, 255, 0)">
     <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);"><li class="more" style="display:inline-block"><span style="font-weight:500">days spent:</span>   {{days}} days</li> <li style="display:inline-block">||  <span style="font-weight:500">caution money :</span> {{caution  | currency: 'tsh '}} </li> <li style="display:inline-block">||  <span style="font-weight:500">Eatimated daily:</span> {{balanc  | currency: 'Tsh '}}</li><li style="display:inline-block">||  <span style="font-weight:500">Faida :</span> {{Faida  | currency: 'Tsh '}}</li><li style="display:inline-block">||  <span style="font-weight:500">Jumla ya malipo:</span> {{jumla  | currency: 'Tsh '}}</li>  <li style="display:inline-block">|| <span style="font-weight:500">Deni Approximately:</span>  {{deni  | currency: 'Tsh '}} </li><li style="display:inline-block"></li> <div style="display:inline-block; text-align:center" ></div></div>
     <div style="padding:1px; background:rgba(248, 248, 255, 0)"></div>
     <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
       <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
-        <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><button *ngIf="morn === 'start'" type="button" (click)="gigaoption()" class="btn btn-outline-dark thisstop" title="Stop subscription">STOP</button><button *ngIf="morn === 'stop'" type="button" (click)="giga()" class="btn btn-outline-dark thisstart" title="Stop subscription">START</button></span></li> <span style="font-size: 20px; font-weight: 100;"></span> </div>
-      </form>
+        <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green">@if (morn === 'start') {
+          <button type="button" (click)="gigaoption()" class="btn btn-outline-dark thisstop" title="Stop subscription">STOP</button>
+          }@if (morn === 'stop') {
+          <button type="button" (click)="giga()" class="btn btn-outline-dark thisstart" title="Stop subscription">START</button>
+          }</span></li> <span style="font-size: 20px; font-weight: 100;"></span> </div>
+        </form>
 
-      <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Personali-details']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Malipo ya nyumba</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['documents']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Documents</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Room-Price']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Room price</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['PersonaliEdits']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Edit Account</a> </li> </div>
-      
+        <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Personali-details']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Malipo ya nyumba</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['documents']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Documents</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Room-Price']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Room price</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['PersonaliEdits']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Edit Account</a> </li> </div>
+
+      </div>
+      <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+
+
     </div>
-    <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
 
-  
+
   </div>
-  
-  
-</div>

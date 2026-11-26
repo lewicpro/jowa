@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-direcpay-details',
-  templateUrl: './direcpay-details.component.html',
-  styleUrls: ['./direcpay-details.component.css']
+    selector: 'app-direcpay-details',
+    templateUrl: './direcpay-details.component.html',
+    styleUrls: ['./direcpay-details.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DirecpayDetailsComponent implements OnInit {
   alldata;

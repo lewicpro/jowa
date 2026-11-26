@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 
@@ -10,9 +10,11 @@ export interface Tile {
   text: string;
 }
 @Component({
-  selector: 'app-subscriptions',
-  templateUrl: './subscriptions.component.html',
-  styleUrls: ['./subscriptions.component.css']
+    selector: 'app-subscriptions',
+    templateUrl: './subscriptions.component.html',
+    styleUrls: ['./subscriptions.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SubscriptionsComponent implements OnInit {
   call='loan';

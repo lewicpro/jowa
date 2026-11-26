@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NyumbaApplicationComponent } from './nyumba-application.component';
 
@@ -6,7 +6,7 @@ describe('NyumbaApplicationComponent', () => {
   let component: NyumbaApplicationComponent;
   let fixture: ComponentFixture<NyumbaApplicationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NyumbaApplicationComponent ]
     })

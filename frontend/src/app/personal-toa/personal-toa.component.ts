@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-personal-toa',
-  templateUrl: './personal-toa.component.html',
-  styleUrls: ['./personal-toa.component.css']
+    selector: 'app-personal-toa',
+    templateUrl: './personal-toa.component.html',
+    styleUrls: ['./personal-toa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PersonalToaComponent implements OnInit {
 

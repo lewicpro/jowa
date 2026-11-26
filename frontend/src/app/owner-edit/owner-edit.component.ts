@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-owner-edit',
-  templateUrl: './owner-edit.component.html',
-  styleUrls: ['./owner-edit.component.css']
+    selector: 'app-owner-edit',
+    templateUrl: './owner-edit.component.html',
+    styleUrls: ['./owner-edit.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerEditComponent implements OnInit {
   userData = {'Username': '',
@@ -121,7 +123,7 @@ export class OwnerEditComponent implements OnInit {
 
 
  Register() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.PostMmilikiid(this.userData, 'MmilikiUpdate/'+ this.mmilikino + '/').then((result) => {
      this.responseData = result;
@@ -131,7 +133,7 @@ export class OwnerEditComponent implements OnInit {
     //  this.UserCreate();
     //  this.UserInfo();
     //  this.router.navigate(['/Nyumba-dash/Nyumba']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -155,7 +157,7 @@ export class OwnerEditComponent implements OnInit {
  }
 
  UserCreate() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -165,7 +167,7 @@ export class OwnerEditComponent implements OnInit {
      localStorage.setItem('userData2', this.responseData);
      localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -173,7 +175,7 @@ export class OwnerEditComponent implements OnInit {
 
  }
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    //.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -183,7 +185,7 @@ export class OwnerEditComponent implements OnInit {
      localStorage.setItem('userData2', this.responseData);
      localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

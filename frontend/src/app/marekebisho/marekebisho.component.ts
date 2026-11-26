@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 
 @Component({
-  selector: 'app-marekebisho',
-  templateUrl: './marekebisho.component.html',
-  styleUrls: ['./marekebisho.component.css']
+    selector: 'app-marekebisho',
+    templateUrl: './marekebisho.component.html',
+    styleUrls: ['./marekebisho.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MarekebishoComponent implements OnInit {
   values;
@@ -211,7 +213,7 @@ export class MarekebishoComponent implements OnInit {
      //  this.UserInfo();
     //  this.clean();
       this.getdata();
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  
@@ -220,7 +222,7 @@ export class MarekebishoComponent implements OnInit {
 
   }
   save(){
-    this.ngProgress.start()
+    this.ngProgress.ref().start()
     this.Created={
       nyumba:this.nyumba,
       simu:this.simu,
@@ -246,7 +248,7 @@ export class MarekebishoComponent implements OnInit {
      //  this.UserInfo();
      this.clean();
       this.getdata();
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

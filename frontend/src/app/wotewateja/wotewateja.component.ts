@@ -1,12 +1,14 @@
-import { Component, Output , EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 @Component({
-  selector: 'app-wotewateja',
-  templateUrl: './wotewateja.component.html',
-  styleUrls: ['./wotewateja.component.css']
+    selector: 'app-wotewateja',
+    templateUrl: './wotewateja.component.html',
+    styleUrls: ['./wotewateja.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WotewatejaComponent {
   users;

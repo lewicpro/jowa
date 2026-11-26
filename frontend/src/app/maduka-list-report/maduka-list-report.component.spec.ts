@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MadukaListReportComponent } from './maduka-list-report.component';
 
@@ -6,7 +6,7 @@ describe('MadukaListReportComponent', () => {
   let component: MadukaListReportComponent;
   let fixture: ComponentFixture<MadukaListReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MadukaListReportComponent ]
     })

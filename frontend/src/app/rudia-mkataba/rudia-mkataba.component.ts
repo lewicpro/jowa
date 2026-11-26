@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pangisha',
-  templateUrl: './rudia-mkataba.component.html',
-  styleUrls: ['./rudia-mkataba.component.css']
+    selector: 'app-pangisha',
+    templateUrl: './rudia-mkataba.component.html',
+    styleUrls: ['./rudia-mkataba.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class RudiaMkatabaComponent  implements OnInit {
   value;
@@ -104,13 +106,13 @@ export class RudiaMkatabaComponent  implements OnInit {
 
 
   UserCreate() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.rest_framework.wapangajiPost(this.poze, 'wapangaji/').then((result) => {
       this.responseData = result;
 
       localStorage.setItem('userData2', this.responseData);
       this.router.navigate(['/Nyumba-dash/personalDetails/Personali-details']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

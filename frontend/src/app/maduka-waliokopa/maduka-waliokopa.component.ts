@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-maduka-waliokopa',
-  templateUrl: './maduka-waliokopa.component.html',
-  styleUrls: ['./maduka-waliokopa.component.css']
+    selector: 'app-maduka-waliokopa',
+    templateUrl: './maduka-waliokopa.component.html',
+    styleUrls: ['./maduka-waliokopa.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaWaliokopaComponent implements OnInit {
   

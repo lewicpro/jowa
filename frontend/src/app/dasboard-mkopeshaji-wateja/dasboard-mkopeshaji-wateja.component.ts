@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-dasboard-mkopeshaji-wateja',
-  templateUrl: './dasboard-mkopeshaji-wateja.component.html',
-  styleUrls: ['./dasboard-mkopeshaji-wateja.component.css']
+    selector: 'app-dasboard-mkopeshaji-wateja',
+    templateUrl: './dasboard-mkopeshaji-wateja.component.html',
+    styleUrls: ['./dasboard-mkopeshaji-wateja.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DasboardMkopeshajiWatejaComponent  {
   users;

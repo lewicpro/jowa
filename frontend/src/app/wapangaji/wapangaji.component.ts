@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '../../../node_modules/@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-wapangaji',
-  templateUrl: './wapangaji.component.html',
-  styleUrls: ['./wapangaji.component.css']
+    selector: 'app-wapangaji',
+    templateUrl: './wapangaji.component.html',
+    styleUrls: ['./wapangaji.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WapangajiComponent{
   users;

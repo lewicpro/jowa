@@ -1,13 +1,15 @@
-import { Component, OnInit, ViewChild , ElementRef, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 declare const CanvasJS: any;
 @Component({
-  selector: 'app-duka-director-report',
-  templateUrl: './duka-director-report.component.html',
-  styleUrls: ['./duka-director-report.component.css']
+    selector: 'app-duka-director-report',
+    templateUrl: './duka-director-report.component.html',
+    styleUrls: ['./duka-director-report.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorReportComponent implements OnInit {
   @ViewChild('barChart')

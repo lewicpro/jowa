@@ -1,14 +1,16 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
-  selector: 'app-maduka-list-products',
-  templateUrl: './maduka-list-products.component.html',
-  styleUrls: ['./maduka-list-products.component.css']
+    selector: 'app-maduka-list-products',
+    templateUrl: './maduka-list-products.component.html',
+    styleUrls: ['./maduka-list-products.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaListProductsComponent implements OnInit {
   all;
@@ -1358,7 +1360,7 @@ export class MadukaListProductsComponent implements OnInit {
   }
   onUploadProfileData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.Selectd="True"
     this.submitbutt="False"
     this.rest_framework.postProdata(this.selectedFile, this.pk).subscribe(
@@ -1366,7 +1368,7 @@ export class MadukaListProductsComponent implements OnInit {
         //.log('done');
         this.imagediag="False"
         this.getdata()
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
 

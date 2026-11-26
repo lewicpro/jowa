@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DirectorDukaInvoicesComponent } from './director-duka-invoices.component';
 
@@ -6,7 +6,7 @@ describe('DirectorDukaInvoicesComponent', () => {
   let component: DirectorDukaInvoicesComponent;
   let fixture: ComponentFixture<DirectorDukaInvoicesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DirectorDukaInvoicesComponent ]
     })

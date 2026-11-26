@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
       </div>
     </ng-template>
-    
+
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <tr>
@@ -23,42 +23,43 @@
           <th scope="col" title="Date">Jina</th>
           <th scope="col" title="Total Payment (L+I+6)">Amount</th>
           <th scope="col" >Description</th>
-         
+
           <th scope="col" title="Action">Status</th>
           <th scope="col" title="Action"></th>
-          
+
         </tr>
       </thead>
       <tbody >
-     
+
         <tr style="cursor:pointer" id="customers">
           <td class="text-center" ></td>
-            <td class="text-center" ><input [(ngModel)]="userData.Tarehe" style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
-            <td style="white-space: nowrap"><input [(ngModel)]="userData.user" style="border-radius:3px;"  type="text" placeholder="*Important"></td>
-            <td><input [(ngModel)]="userData.Amount"  style="border-radius:3px;"   type="number" placeholder="*Important"></td>
-            <td><input [(ngModel)]="userData.Description" style="border-radius:3px;"   type="text" placeholder="*Important"></td>
-  
-            <td><a (click)="openModal(template)"  >Tunza</a></td>
-            </tr>
-       
-  
-            <tr class="youo" *ngFor="let a of all">
-              <td nowrap class="youo"> 1</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
-              <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-              <td class="youo"  >{{a.Amount}}</td>
-              <td class="youo"  >{{a.Description}}</td>
-              <td class="youo"  ></td>
-              <td class="youo"  ></td>
-          
+          <td class="text-center" ><input [(ngModel)]="userData.Tarehe" style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+          <td style="white-space: nowrap"><input [(ngModel)]="userData.user" style="border-radius:3px;"  type="text" placeholder="*Important"></td>
+          <td><input [(ngModel)]="userData.Amount"  style="border-radius:3px;"   type="number" placeholder="*Important"></td>
+          <td><input [(ngModel)]="userData.Description" style="border-radius:3px;"   type="text" placeholder="*Important"></td>
+
+          <td><a (click)="openModal(template)"  >Tunza</a></td>
+        </tr>
+
+
+        @for (a of all; track a) {
+          <tr class="youo">
+            <td nowrap class="youo"> 1</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
+            <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
+            <td class="youo"  >{{a.Amount}}</td>
+            <td class="youo"  >{{a.Description}}</td>
+            <td class="youo"  ></td>
+            <td class="youo"  ></td>
           </tr>
-      
-    
+        }
+
+
       </tbody>
     </table>
-  
-  
+
+
   </div>
- 
-  </div>
+
+</div>
 

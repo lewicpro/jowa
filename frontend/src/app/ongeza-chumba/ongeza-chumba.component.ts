@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-ongeza-chumba',
-  templateUrl: './ongeza-chumba.component.html',
-  styleUrls: ['./ongeza-chumba.component.css']
+    selector: 'app-ongeza-chumba',
+    templateUrl: './ongeza-chumba.component.html',
+    styleUrls: ['./ongeza-chumba.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaChumbaComponent implements OnInit {
 
@@ -53,11 +55,12 @@ export class OngezaChumbaComponent implements OnInit {
 
   constructor(public router:Router, public ngProgress:NgProgress, public restframework:RestframeworkService) {
     this.NyumbaId= localStorage.getItem('nyumbaid')
+    this.Create = {Bei:'', sifa:'', Chumba_No:'', ukubwa:'', nyumba_number:this.NyumbaId, photo:'', simu:'' , Account_no:'', IdadiVyumba:'', huduma:''}
 
    }
 
 
-  Create={Bei:'', sifa:'', Chumba_No:'', ukubwa:'', nyumba_number:this.NyumbaId, photo:'', simu:'' , Account_no:'', IdadiVyumba:'', huduma:''}
+  Create;
 
   ngOnInit() {
   }
@@ -65,7 +68,7 @@ export class OngezaChumbaComponent implements OnInit {
 
 
   run(Bei, ukubwa, sifa, Chumba_No ){
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.Create.Bei = Bei.value
     
       
@@ -74,7 +77,7 @@ export class OngezaChumbaComponent implements OnInit {
     this.restframework.postFiledata1(this.selectedFile, this.selectedFile2, this.selectedFile3, this.selectedFile4, this.selectedFile5,  this.selectedFile6, Bei.value, ukubwa.value, Chumba_No.value, sifa.value, this.NyumbaId).subscribe(
       data => {
         //.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   
@@ -82,7 +85,7 @@ export class OngezaChumbaComponent implements OnInit {
   }
   onUploadfiles() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     
   
   }

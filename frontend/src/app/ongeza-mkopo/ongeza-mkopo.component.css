@@ -39,7 +39,7 @@ button .mon{
   font-weight:200;
 }
 
-.mat-raised-button:not([class*="mat-elevation-z"]) {
+.mat-mdc-raised-button:not([class*="mat-elevation-z"]) {
   box-shadow: 0 3px 6px -2px #0003,0 2px 2px 0 #0000001a,0 1px 5px 0 #0000001a;
 }
 

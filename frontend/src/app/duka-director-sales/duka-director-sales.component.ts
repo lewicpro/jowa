@@ -1,14 +1,16 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 
 @Component({
-  selector: 'app-duka-director-sales',
-  templateUrl: './duka-director-sales.component.html',
-  styleUrls: ['./duka-director-sales.component.css']
+    selector: 'app-duka-director-sales',
+    templateUrl: './duka-director-sales.component.html',
+    styleUrls: ['./duka-director-sales.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorSalesComponent implements OnInit {
   all;

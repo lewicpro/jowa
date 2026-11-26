@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { MmilikiDetailsComponent } from '../mmiliki-details/mmiliki-details.component';
 
 @Component({
-  selector: 'app-owner-withdraw',
-  templateUrl: './owner-withdraw.component.html',
-  styleUrls: ['./owner-withdraw.component.css']
+    selector: 'app-owner-withdraw',
+    templateUrl: './owner-withdraw.component.html',
+    styleUrls: ['./owner-withdraw.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerWithdrawComponent implements OnInit {
   all;

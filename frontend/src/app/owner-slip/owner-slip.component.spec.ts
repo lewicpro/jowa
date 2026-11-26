@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OwnerSlipComponent } from './owner-slip.component';
 
@@ -6,7 +6,7 @@ describe('OwnerSlipComponent', () => {
   let component: OwnerSlipComponent;
   let fixture: ComponentFixture<OwnerSlipComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OwnerSlipComponent ]
     })

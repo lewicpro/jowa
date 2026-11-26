@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-duka-director-order',
-  templateUrl: './duka-director-order.component.html',
-  styleUrls: ['./duka-director-order.component.css']
+    selector: 'app-duka-director-order',
+    templateUrl: './duka-director-order.component.html',
+    styleUrls: ['./duka-director-order.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorOrderComponent implements OnInit {
   Productval: any;

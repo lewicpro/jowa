@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import * as $ from 'jquery';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/interval';
-import 'rxjs/add/operator/map';
+import { interval } from 'rxjs';
 // import 'rxjs/add/operator/flatMap';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   mono = {color: 'yellow'};
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor() {
 
-    Observable.interval(10000).takeWhile(() => true).subscribe(() => this.mata());
+    interval(10000).subscribe(() => this.mata());
 
     
 

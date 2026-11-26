@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DukaDirectorMatumiziComponent } from './duka-director-matumizi.component';
 
@@ -6,7 +6,7 @@ describe('DukaDirectorMatumiziComponent', () => {
   let component: DukaDirectorMatumiziComponent;
   let fixture: ComponentFixture<DukaDirectorMatumiziComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DukaDirectorMatumiziComponent ]
     })

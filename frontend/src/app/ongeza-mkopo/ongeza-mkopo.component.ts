@@ -1,8 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableDataSource,
+   } from '@angular/material/table';
+import {
    SimpleSnackBar,
     MatSnackBarDismiss,
-     MatSnackBar, MatSnackBarConfig } from '../../../node_modules/@angular/material';
+     MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { OpenSnackerComponent } from '../open-snacker/open-snacker.component';
@@ -10,7 +12,7 @@ import { OpenSnackserrorComponent } from '../open-snackserror/open-snackserror.c
 import { DetailsViewComponent } from '../details-view/details-view.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgProgress } from 'ngx-progressbar';
 
 
@@ -19,10 +21,12 @@ interface Response {
   b: number;
 }
 @Component({
-  selector: 'app-ongeza-mkopo',
-  templateUrl: './ongeza-mkopo.component.html',
-  styleUrls: ['./ongeza-mkopo.component.css'],
-  providers: [MatSnackBarConfig]
+    selector: 'app-ongeza-mkopo',
+    templateUrl: './ongeza-mkopo.component.html',
+    styleUrls: ['./ongeza-mkopo.component.css'],
+    providers: [MatSnackBarConfig],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaMkopoComponent implements OnInit {
   totalAmount: number;
@@ -1938,7 +1942,7 @@ openSnacks() {
 
 Register() {
   
-  this.ngProgress.start();
+  this.ngProgress.ref().start();
 
   this.restframework.getLoginPosts(this.mambos, 'Mkopo/').then((result) => {
     this.RecordNote();
@@ -1954,7 +1958,7 @@ Register() {
     this.openSnacks();
     this.moni()
     this.router.navigate(['/Admindash/Details/Mkopoadmin'])
-    this.ngProgress.done();
+    this.ngProgress.ref().complete();
     }, (err) => {
       console.log(err)
 
@@ -1965,7 +1969,7 @@ Register() {
 
 RecordNote() {
   
-  // this.ngProgress.start();
+  // this.ngProgress.ref().start();
   //.log('passed Record note');
   this.restframework.getLoginPosts(this.note, 'Malipo/').then((result) => {
     this.responseData = result;
@@ -1975,7 +1979,7 @@ RecordNote() {
     // localStorage.setItem('userData2', this.responseData);
     // localStorage.setItem('user', this.userData.Username);
     // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-    // this.ngProgress.done();
+    // this.ngProgress.ref().complete();
     }, (err) => {
       alert('error');
 

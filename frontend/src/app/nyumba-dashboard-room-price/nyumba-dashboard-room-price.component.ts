@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-nyumba-dashboard-room-price',
-  templateUrl: './nyumba-dashboard-room-price.component.html',
-  styleUrls: ['./nyumba-dashboard-room-price.component.css']
+    selector: 'app-nyumba-dashboard-room-price',
+    templateUrl: './nyumba-dashboard-room-price.component.html',
+    styleUrls: ['./nyumba-dashboard-room-price.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaDashboardRoomPriceComponent implements OnInit {
   username;
@@ -55,7 +57,7 @@ export class NyumbaDashboardRoomPriceComponent implements OnInit {
 
   postRent(){
     this.Created={Time_interval:this.Time_interval, Rent_budget:this.Rent_budget, user:this.jinalote, status:'Active',  Daily:this.Daily, date:this.times }
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.restapi.wapangajiPost(this.Created, 'rent/').then((result) => {
       this.responseData = result;
@@ -69,7 +71,7 @@ export class NyumbaDashboardRoomPriceComponent implements OnInit {
   
       // localStorage.setItem('userData2', this.responseData);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('ended on creating wapangaji');
  

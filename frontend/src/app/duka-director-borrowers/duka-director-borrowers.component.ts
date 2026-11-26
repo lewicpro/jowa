@@ -1,16 +1,33 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
-  selector: 'app-duka-director-borrowers',
-  templateUrl: './duka-director-borrowers.component.html',
-  styleUrls: ['./duka-director-borrowers.component.css']
+    selector: 'app-duka-director-borrowers',
+    templateUrl: './duka-director-borrowers.component.html',
+    styleUrls: ['./duka-director-borrowers.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorBorrowersComponent implements OnInit {
+  Totalval: any;
+  Jina_Mtejaval: any;
+  responseData1: any;
+  Total_borrowed: any;
+  total_stock_profit: any;
+  total_borrowed_quantity: any;
+  sum: number;
+  profit: number;
+  quantity: number;
+  dom: number;
+  option: string;
+  product: any;
+  description: any;
+  dax: any;
+  Type_of_product: any;
   [x: string]: any;
   advancd="False";
   options;

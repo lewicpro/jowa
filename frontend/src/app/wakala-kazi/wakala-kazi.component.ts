@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-wakala-kazi',
-  templateUrl: './wakala-kazi.component.html',
-  styleUrls: ['./wakala-kazi.component.css']
+    selector: 'app-wakala-kazi',
+    templateUrl: './wakala-kazi.component.html',
+    styleUrls: ['./wakala-kazi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaKaziComponent implements OnInit {
   

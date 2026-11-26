@@ -1,77 +1,117 @@
 
-<!-- 
+<!--
 <div class="d-flex justify-content-center">
-    <mat-form-field style="width:40%">
+  <mat-form-field style="width:40%">
     <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-    </mat-form-field>
-  </div> -->
-  <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">MALIPO</h4>
-      <div style="max-height:400px; overflow:auto">
-      <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-        <thead>
-          <tr>
-            <!-- <th scope="col">#</th> -->
-            <th scope="col" nowrap>Date</th>
-            <th scope="col" nowrap>Jina</th>
-            <th scope="col" nowrap>Simu</th>
-            <th scope="col" nowrap>namba ya chumba</th>
-            <th scope="col" nowrap>Eneo</th>
-            <th scope="col" nowrap>Chumba</th>
-            <th scope="col" nowrap>kiasi kilicholipwa</th>
-            <th scope="col" nowrap>kiasi kamili</th>
-            <th scope="col" nowrap>Baki</th>
-            
-            <!-- <th scope="col">ofisi</th> -->
-            <th scope="col" nowrap>kata</th>
-            <th scope="col" nowrap>wilaya</th>
-            <th scope="col" nowrap>mkoa</th>
-            <th scope="col" nowrap>last date</th>
-            <th scope="col" nowrap>Status</th>
-         
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="cursor:pointer" id="customers" *ngFor="let form of users | myfilter" (click)="onselected(form)">
+  </mat-form-field>
+</div> -->
+<div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">MALIPO</h4>
+  <div style="max-height:400px; overflow:auto">
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col" nowrap>Date</th>
+          <th scope="col" nowrap>Jina</th>
+          <th scope="col" nowrap>Simu</th>
+          <th scope="col" nowrap>namba ya chumba</th>
+          <th scope="col" nowrap>Eneo</th>
+          <th scope="col" nowrap>Chumba</th>
+          <th scope="col" nowrap>kiasi kilicholipwa</th>
+          <th scope="col" nowrap>kiasi kamili</th>
+          <th scope="col" nowrap>Baki</th>
+
+          <!-- <th scope="col">ofisi</th> -->
+          <th scope="col" nowrap>kata</th>
+          <th scope="col" nowrap>wilaya</th>
+          <th scope="col" nowrap>mkoa</th>
+          <th scope="col" nowrap>last date</th>
+          <th scope="col" nowrap>Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @for (form of users | myfilter; track form) {
+          <tr style="cursor:pointer" id="customers" (click)="onselected(form)">
             <!-- <td scope="row">1</td> -->
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.date | date}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner ">{{form.name | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.simu}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner"> {{form.nyumba_number}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.eneo | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.aina_ya_chumba | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner"><span *ngIf="form.mwezi1; else second">{{form.mwezi1}}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{form.miezi2}}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{form.miezi3}}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{form.year}}</span ></ng-template></td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.kiasi | currency: 'tsh '}}</td>
-            
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.baki | currency: 'tsh '}}</td>
-           
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.date | date}}</td>
+            }
+            @if (form.House_Owner === owner ) {
+              <td nowrap>{{form.name | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.simu}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap> {{form.nyumba_number}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.eneo | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.aina_ya_chumba | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>@if (form.mwezi1) {
+                <span>{{form.mwezi1}}</span >
+              } @else {
+                @if (form.miezi2) {
+                  <span>{{form.miezi2}}</span >
+                } @else {
+                  @if (form.miezi3) {
+                    <span>{{form.miezi3}}</span >
+                  } @else {
+                    @if (form.year) {
+                      <span>{{form.year}}</span >
+                    } @else {
+                      <ng-template [ngTemplateOutlet]="fifth"></ng-template>
+                    }
+                  }
+                }
+              }</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.kiasi | currency: 'tsh '}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.baki | currency: 'tsh '}}</td>
+            }
             <!-- <td>{{form.ofisi}}</td> -->
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.kata | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.wilaya | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.mkoa | titlecase}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.last_date | date}}</td>
-            <td nowrap *ngIf="form.House_Owner === owner">{{form.status}}</td>
-    
-          
-     
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.kata | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.wilaya | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.mkoa | titlecase}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.last_date | date}}</td>
+            }
+            @if (form.House_Owner === owner) {
+              <td nowrap>{{form.status}}</td>
+            }
           </tr>
-          <!--<tr id="customers">-->
-            <!--<td scope="row">2</td>-->
-            <!--<td>BA</td>-->
-            <!--<td>3</td>-->
-            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-          <!--</tr>-->
-          <!--<tr id="customers">-->
-            <!--<td scope="row">3</td>-->
-            <!--<td>Accountancy</td>-->
-            <!--<td>3</td>-->
-            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-          <!--</tr>-->
-        </tbody>
-      </table>
-      
-    </div>
-    </div>
-  
-  <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
-  
+        }
+        <!--<tr id="customers">-->
+        <!--<td scope="row">2</td>-->
+        <!--<td>BA</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+      <!--<tr id="customers">-->
+      <!--<td scope="row">3</td>-->
+      <!--<td>Accountancy</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+  </tbody>
+</table>
+
+</div>
+</div>
+
+<!-- <app-details-view [form] = "selectedData"></app-details-view> -->

@@ -1,483 +1,381 @@
 <ng-progress></ng-progress>
-<div style="margin-bottom:0%;" *ngIf="option=='login'">
-<div style="padding:20px;"></div>
-<!-- <div>{{moran}}</div>
-<button (click)="funct()">start</button> -->
-<div class="d-flex justify-content-center">
-
-  <!-- {{time}} -->
-    <div class="fade-in3" style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> INGIA </h4></div>
-
-
-</div>
-<div style="text-align: center; color:darkred; font-weight: 200; font-size: 12px;">{{label}}</div>
-<div style="padding:10px;"></div>
-
-
-
-<div *ngIf="status==='login';" style="min-height:540px; overflow:hidden">
-
-  <div class="d-flex justify-content-center">
-
-
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-    <div class="input-group-prepend ">
-      <span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
+@if (option=='login') {
+  <div style="margin-bottom:0%;">
+    <div style="padding:20px;"></div>
+    <!-- <div>{{moran}}</div>
+    <button (click)="funct()">start</button> -->
+    <div class="d-flex justify-content-center">
+      <!-- {{time}} -->
+      <div class="fade-in3" style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> INGIA </h4></div>
     </div>
-    <input type="text" [(ngModel)]="userData.username" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  </div>
-
-  </div>
-  <div style="padding:10px;"></div>
-
-
-  <div class="d-flex justify-content-center">
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Ufunguo</span>
+    <div style="text-align: center; color:darkred; font-weight: 200; font-size: 12px;">{{label}}</div>
+    <div style="padding:10px;"></div>
+    @if (status==='login';) {
+      <div style="min-height:540px; overflow:hidden">
+        <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+            <div class="input-group-prepend ">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
+            </div>
+            <input type="text" [(ngModel)]="userData.username" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+        </div>
+        <div style="padding:10px;"></div>
+        <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+            <div class="input-group-prepend ">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Ufunguo</span>
+            </div>
+            <input type="password" [(ngModel)]="userData.password" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+        </div>
+        <div style="padding:10px;"></div>
+        <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+            <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="login()" >ingia</button>
+          </div>
+        </div>
+        <div style="padding:10px;"></div>
+        <div class="d-flex justify-content-center">
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
+            <button mat-raised-button (click)="chooseCompa()" type="button" class="btn btn-light form-control" style="max-width:300px;" >Create account</button>
+          </div>
+        </div>
       </div>
-      <input type="password" [(ngModel)]="userData.password" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-  <div style="padding:10px;"></div>
-
-  <div class="d-flex justify-content-center">
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-      <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="login()" >ingia</button>
-
-      </div>
-    </div>
-
-
-<div style="padding:10px;"></div>
-
-<div class="d-flex justify-content-center">
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
-
-        <button mat-raised-button (click)="chooseCompa()" type="button" class="btn btn-light form-control" style="max-width:300px;" >Create account</button>
-
-    </div>
+    }
   </div>
+}
 
-</div>
-
-
-
-
-</div>
-
-<div *ngIf="option=='choosecompany'" align="center">
-  <div style="padding:20px;"></div>
-  <!-- <div>{{moran}}</div>
-  <button (click)="funct()">start</button> -->
-  <div class="d-flex justify-content-center">
-    <!-- {{time}} -->
+@if (option=='choosecompany') {
+  <div align="center">
+    <div style="padding:20px;"></div>
+    <!-- <div>{{moran}}</div>
+    <button (click)="funct()">start</button> -->
+    <div class="d-flex justify-content-center">
+      <!-- {{time}} -->
       <div class="fade-in3" style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> REGISTER </h4></div>
-
-
-  </div>
-  <div style="padding:30px"></div>
-
-  <button type="button" (click)="chosepackg()" class="btn btn-outline-secondary">Choose Package</button>
-  <div *ngIf="packg=='choose'">
-
-      <mat-nav-list style="width: 400px;">
-        <mat-list-item  class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
-           Money lending
-        </mat-list-item>
-
-        <div style="padding:2px;"></div>
-        <mat-list-item  class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
-           Real estate
-        </mat-list-item>
-
-        <div style="padding:2px;"></div>
-        <mat-list-item  class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
-           Shop administrations
-        </mat-list-item>
-
-        <div style="padding:2px;"></div>
-        <mat-list-item  class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
-           Money Vendor
-        </mat-list-item>
-
-        <div style="padding:2px;"></div>
-        <mat-list-item  class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
-           Product Distributions
-        </mat-list-item>
-
-      </mat-nav-list>
-
-
-
-  </div>
-
-
-
-  <div style="padding:30px" ></div>
-  <div class="d-flex justify-content-center">
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
-
+    </div>
+    <div style="padding:30px"></div>
+    <button type="button" (click)="chosepackg()" class="btn btn-outline-secondary">Choose Package</button>
+    @if (packg=='choose') {
+      <div>
+        <mat-nav-list style="width: 400px;">
+          <mat-list-item  class="mopo fade-in3"  [routerLinkActive]="['active']" (click)="loan()">
+            Money lending
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item  class="mopo fade-in4" [routerLinkActive]="['active']"  (click)="realestate()">
+            Real estate
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item  class="mopo fade-in5" [routerLinkActive]="['active']" (click)="shop()">
+            Shop administrations
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item  class="mopo fade-in6" [routerLinkActive]="['active']"  (click)="transaction()">
+            Money Vendor
+          </mat-list-item>
+          <div style="padding:2px;"></div>
+          <mat-list-item  class="mopo fade-in7" [routerLinkActive]="['active']" (click)="distribution()">
+            Product Distributions
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    }
+    <div style="padding:30px" ></div>
+    <div class="d-flex justify-content-center">
+      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
         <button mat-raised-button (click)="loginBack()" type="button" class="btn btn-light form-control" style="max-width:300px;" >back to login</button>
-
+      </div>
     </div>
   </div>
-</div>
+}
 
-<div *ngIf="option=='signup'" style="max-height:650px; overflow:hidden">
-
-  <div style="padding:20px;"></div>
-<!-- <div>{{moran}}</div>
-<button (click)="funct()">start</button> -->
-<div class="d-flex justify-content-center">
-  <!-- {{time}} -->
-    <div class="fade-in3" style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> REGISTER </h4></div>
-
-
-</div>
-<div style="text-align: center; color:darkred; font-weight: 200; font-size: 12px;">{{label}}</div>
-<div style="padding:10px;"></div>
-
-
-
-<div *ngIf="status==='login'">
-  <div [ngClass]="getclass(page)" >
-    <div align="center" style="color:red; font-size: small;">{{spaceerror}}</div>
+@if (option=='signup') {
+  <div style="max-height:650px; overflow:hidden">
+    <div style="padding:20px;"></div>
+    <!-- <div>{{moran}}</div>
+    <button (click)="funct()">start</button> -->
     <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px; font-size: 10px;">Company Username</span>
-      </div>
-
-      <input type="text" [ngStyle]="companynamevalidate(box.value)"  #box (blur)="compan(box.value)" (keyup)="validatecompan(box.value)" title="Write in one word" placeholder="Company Username" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <!-- {{time}} -->
+      <div class="fade-in3" style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> REGISTER </h4></div>
     </div>
-
-    </div>
+    <div style="text-align: center; color:darkred; font-weight: 200; font-size: 12px;">{{label}}</div>
     <div style="padding:10px;"></div>
-    <div align="center" style="color:red; font-size: small;">{{spaceerror2}}</div>
-    <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Full C name</span>
-      </div>
-      <input type="text" [ngClass]="{'mokos' :moko =='nope', 'mokoyes' :moko=='yes'}" #box1 (blur)="companyname(box1.value)" name="name" placeholder="Full company name" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-    <div style="padding:10px;"></div>
-    <div align="center" style="color:red; font-size: small;">{{emailerror}}</div>
-    <div class="d-flex justify-content-center" >
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4"  style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Email</span>
-      </div>
-      <input type="email" [ngClass]="{'mokos' :emailval =='nope', 'mokoyes' :emailval=='yes'}" #box2 (blur)="CEmail(box2.value)" placeholder="Company Email" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-    <div style="padding:10px;"></div>
-    <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Phone No</span>
-      </div>
-      <input type="text" #box3 (blur)="CompanyPhone(box3.value)" placeholder="Company Phone Number" name="phonenumber" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-    <div style="padding:10px;"></div>
-
-    <div class="d-flex justify-content-center">
-
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5"  style="width:60%; margin:center;">
-
-        <div class="input-group-prepend ">
-          <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">District</span>
+    @if (status==='login') {
+      <div>
+        <div [ngClass]="getclass(page)" >
+          <div align="center" style="color:red; font-size: small;">{{spaceerror}}</div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px; font-size: 10px;">Company Username</span>
+              </div>
+              <input type="text" [ngStyle]="companynamevalidate(box.value)"  #box (blur)="compan(box.value)" (keyup)="validatecompan(box.value)" title="Write in one word" placeholder="Company Username" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div align="center" style="color:red; font-size: small;">{{spaceerror2}}</div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Full C name</span>
+              </div>
+              <input type="text" [ngClass]="{'mokos' :moko =='nope', 'mokoyes' :moko=='yes'}" #box1 (blur)="companyname(box1.value)" name="name" placeholder="Full company name" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div align="center" style="color:red; font-size: small;">{{emailerror}}</div>
+          <div class="d-flex justify-content-center" >
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4"  style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Email</span>
+              </div>
+              <input type="email" [ngClass]="{'mokos' :emailval =='nope', 'mokoyes' :emailval=='yes'}" #box2 (blur)="CEmail(box2.value)" placeholder="Company Email" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Phone No</span>
+              </div>
+              <input type="text" #box3 (blur)="CompanyPhone(box3.value)" placeholder="Company Phone Number" name="phonenumber" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5"  style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">District</span>
+              </div>
+              <input type="text"  #box4 (blur)="District(box4.value)" name="district" placeholder="District" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+              <div class="input-group-prepend ">
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Region</span>
+              </div>
+              <input type="text" #box5 (blur)="Region(box5.value)" name="region" placeholder="Region" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+              <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="next()" [disabled]="moko == 'nope' || emailval =='nope' || space =='nope' || filled =='nope'" >Next page</button>
+            </div>
+          </div>
+          <div style="padding:10px;"></div>
+          <div class="d-flex justify-content-center">
+            <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
+              <button mat-raised-button (click)="loginBack()" type="button" class="btn btn-light form-control" style="max-width:300px;" >back to login</button>
+            </div>
+          </div>
         </div>
-        <input type="text"  #box4 (blur)="District(box4.value)" name="district" placeholder="District" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        @if (page=='2') {
+          <div class="animated slideInLeft" style="position:relative; top:-520px;">
+            <div align="center" style="color:red; font-size: small;">{{spaceofficererror}}</div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Officer user</span>
+                </div>
+                <input type="text" [ngStyle]="officernamevalidate(box6.value)" (keyup)="validatecompan(box6.value)" #box6 (blur)="officer(box6.value)" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div align="center" style="color:red; font-size: small;">{{spaceerror2}}</div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Full name</span>
+                </div>
+                <input type="text" [ngClass]="{'mokos' :moko =='nope', 'mokoyes' :moko=='yes'}" #box7 (blur)="officerfullname(box7.value)" name="fullname" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div align="center" style="color:red; font-size: small;">{{emailerror}}</div>
+            <div class="d-flex justify-content-center" >
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4"  style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Your Email</span>
+                </div>
+                <input type="text" [ngClass]="{'mokos' :emailval =='nope', 'mokoyes' :emailval=='yes'}" #box8 (blur)="officeremail(box8.value)" name="Email" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Your Phone</span>
+                </div>
+                <input type="text" #box9 (blur)="officerPhone(box9.value)" name="phone" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5"  style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Password</span>
+                </div>
+                <input type="password" #box10 (blur)="Password(box10.value)" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+                <div class="input-group-prepend ">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Pass Confirm</span>
+                </div>
+                <input type="password" #box11 (blur)="Password2(box11.value)" name="password2" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
+                <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="third()" >Next page</button>
+              </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
+                <button mat-raised-button (click)="loginBack()" type="button" class="btn btn-light form-control" style="max-width:300px;" >back to login</button>
+              </div>
+            </div>
+          </div>
+        }
       </div>
+    }
+  </div>
+}
 
-      </div>
-    <div style="padding:10px;"></div>
-    <div class="d-flex justify-content-center">
-
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-        <div class="input-group-prepend ">
-          <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Region</span>
+@if (page=='3') {
+  <div style="position: relative; top:-600px; padding-left: 10px; padding-right: 10px; height:150px;" class="animated slideInLeft"><div class="row " style="background-color: rgba(128, 128, 128, 0.253); border-radius: 10px;"> <div class="col" style="background-image: url(assets/images/moneyhand.png); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 10px; height:700px">
+    <div align="center" style="position:relative; top:50px;">
+      <button mat-raised-button (click)="mpesa()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Mpesa</button>
+      <button mat-raised-button (click)="tigo()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Tigopesa</button>
+      <button mat-raised-button (click)="halopesa()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Halopesa</button>
+      <button mat-raised-button (click)="airtel()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Airtel Money</button>
+    </div>
+    <div style="background-color: rgba(192, 192, 192, 0.219); position: relative; top:60px">
+      @if (processor!=='done') {
+        <div style="padding:5px; background-color: burlywood; text-align: center;">Payment Method : {{payment_method}}</div>
+      }
+      @if (processor=='tigo') {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.521); text-align: left; padding-left:50px "  align="center"><img heigh="390" width="300" src="assets/images/tigo.png" alt=""></div>
+      }
+      @if (processor=='airtel' ) {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.431); text-align: left; padding-left:50px " align="center"><img heigh="390" width="300" src="assets/images/airtel.png" alt=""></div>
+      }
+      @if (processor=='mpesa') {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.438); text-align: left; padding-left:50px " align="center"><img heigh="390" width="300" src="assets/images/mpesa.png" alt=""></div>
+      }
+      @if (processor=='ttcl') {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.466); text-align: left; padding-left:50px ">Ttcl</div>
+      }
+      @if (processor=='halopesa') {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.432); text-align: left; padding-left:50px " align="center"><img heigh="390" width="300" src="assets/images/halopesa.png" alt=""></div>
+      }
+      @if (processor=='done') {
+        <div align="center" style="padding-top:40px">Enter thee Transacrion id below</div>
+      }
+      @if (processor=='done') {
+        <div style="padding:5px; background-color: rgba(245, 245, 245, 0.432); text-align: left; padding-left:50px " align="center"><input #box13 (blur)="Transaction_id(box13.value)" type="text" class="form-control" placeholder="Enter transaction id here"></div>
+      }
+      @if (processor=='done') {
+        <div style=" position:relative; top:100px; " align="center">
+          <button mat-raised-button (click)="next()" type="button" class="btn btn-danger form-control" style="max-width:200px;" >Cancel</button>
+          <button mat-raised-button (click)="airtel()" type="button" class="btn btn-success form-control" (click)="postdata()" style="max-width:200px;" >Submit</button>
         </div>
-        <input type="text" #box5 (blur)="Region(box5.value)" name="region" placeholder="Region" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      </div>
-
-      </div>
-    <div style="padding:10px;"></div>
-
-    <div class="d-flex justify-content-center">
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-
-        <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="next()" [disabled]="moko == 'nope' || emailval =='nope' || space =='nope' || filled =='nope'" >Next page</button>
-
-        </div>
-      </div>
-
-<div style="padding:10px;"></div>
-
-<div class="d-flex justify-content-center">
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
-
-        <button mat-raised-button (click)="loginBack()" type="button" class="btn btn-light form-control" style="max-width:300px;" >back to login</button>
-
+      }
     </div>
-  </div>
-
-
-  </div>
-  <div *ngIf="page=='2'" class="animated slideInLeft" style="position:relative; top:-520px;">
-    <div align="center" style="color:red; font-size: small;">{{spaceofficererror}}</div>
-    <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Officer user</span>
+    @if (processor!=='done') {
+      <div style=" position:relative; top:100px; " align="center">
+        <button mat-raised-button (click)="next()" type="button" class="btn btn-danger form-control" style="max-width:200px;" >Cancel</button>
+        <button mat-raised-button (click)="airtel()" type="button" class="btn btn-success form-control" (click)="done()" style="max-width:200px;" >Completed</button>
       </div>
-      <input type="text" [ngStyle]="officernamevalidate(box6.value)" (keyup)="validatecompan(box6.value)" #box6 (blur)="officer(box6.value)" name="username" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    }
+  </div><div class="col" style="background-color: white;">
+  @if (onlinepayment=='perfectmoney') {
+    <div>
+      <div style="padding:10px; background-color:silver; text-align: center;"> PAY BY PERFECTMONEY</div>
+      <div style="padding:10px;">Username : <span style="float: right;">Namegiven</span>  </div>
+      <div style="padding:10px;">Plan : <span style="float: right;">Sec</span></div>
+      <div style="padding:10px;">Amount : <span style="float: right;">tsh 30000</span></div>
+      <div style="padding:10px;">Tax : <span style="float: right;">5400</span></div>
+      <div style="padding:10px;">Total : <span style="float: right;">35400</span></div>
+      <hr style="border: 1px solid silver">
+      <div style="padding:5px;"> <a style="cursor: pointer;">Change Plan</a> </div>
+      <div style="padding:5px;"> <a style="cursor: pointer;">Change Amount</a> </div>
     </div>
-
+  }
+  @if (onlinepayment=='litecoin') {
+    <div>
+      LITECOIN
     </div>
-    <div style="padding:10px;"></div>
-    <div align="center" style="color:red; font-size: small;">{{spaceerror2}}</div>
-    <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Full name</span>
-      </div>
-      <input type="text" [ngClass]="{'mokos' :moko =='nope', 'mokoyes' :moko=='yes'}" #box7 (blur)="officerfullname(box7.value)" name="fullname" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  }
+  @if (onlinepayment=='advancecash') {
+    <div>
+      ADVANCE CASH
     </div>
-
+  }
+  @if (onlinepayment=='payeer') {
+    <div>
+      PAYEER
     </div>
-    <div style="padding:10px;"></div>
-    <div align="center" style="color:red; font-size: small;">{{emailerror}}</div>
-    <div class="d-flex justify-content-center" >
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4"  style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Your Email</span>
-      </div>
-      <input type="text" [ngClass]="{'mokos' :emailval =='nope', 'mokoyes' :emailval=='yes'}" #box8 (blur)="officeremail(box8.value)" name="Email" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-    <div style="padding:10px;"></div>
-    <div class="d-flex justify-content-center">
-
-
-      <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in4" style="width:60%; margin:center;">
-
-      <div class="input-group-prepend ">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Your Phone</span>
-      </div>
-      <input type="text" #box9 (blur)="officerPhone(box9.value)" name="phone" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    </div>
-
-    </div>
-    <div style="padding:10px;"></div>
-
-    <div class="d-flex justify-content-center">
-
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5"  style="width:60%; margin:center;">
-
-        <div class="input-group-prepend ">
-          <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Password</span>
-        </div>
-        <input type="password" #box10 (blur)="Password(box10.value)" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      </div>
-
-      </div>
-    <div style="padding:10px;"></div>
-    <div class="d-flex justify-content-center">
-
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-        <div class="input-group-prepend ">
-          <span class="input-group-text" id="inputGroup-sizing-sm" style="width:100px">Pass Confirm</span>
-        </div>
-        <input type="password" #box11 (blur)="Password2(box11.value)" name="password2" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      </div>
-
-      </div>
-    <div style="padding:10px;"></div>
-
-    <div class="d-flex justify-content-center">
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in5" style="width:60%; margin:center;">
-
-        <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:ghostwhite" (click)="third()" >Next page</button>
-
-        </div>
-      </div>
-
-<div style="padding:10px;"></div>
-
-<div class="d-flex justify-content-center">
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center fade-in6" style="width:60%; margin:center;">
-
-        <button mat-raised-button (click)="loginBack()" type="button" class="btn btn-light form-control" style="max-width:300px;" >back to login</button>
-
-    </div>
-  </div>
-
-
-
-  </div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-<div *ngIf="page=='3'" style="position: relative; top:-600px; padding-left: 10px; padding-right: 10px; height:150px;" class="animated slideInLeft"><div class="row " style="background-color: rgba(128, 128, 128, 0.253); border-radius: 10px;"> <div class="col" style="background-image: url(assets/images/moneyhand.png); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 10px; height:700px">
-<div align="center" style="position:relative; top:50px;">
-  <button mat-raised-button (click)="mpesa()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Mpesa</button>
-  <button mat-raised-button (click)="tigo()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Tigopesa</button>
-  <button mat-raised-button (click)="halopesa()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Halopesa</button>
-  <button mat-raised-button (click)="airtel()" type="button" class="btn btn-light form-control" style="max-width:200px;" >Airtel Money</button>
-
-
-</div>
-<div style="background-color: rgba(192, 192, 192, 0.219); position: relative; top:60px">
-  <div style="padding:5px; background-color: burlywood; text-align: center;" *ngIf="processor!=='done'">Payment Method : {{payment_method}}</div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.521); text-align: left; padding-left:50px " *ngIf="processor=='tigo'"  align="center"><img heigh="390" width="300" src="assets/images/tigo.png" alt=""></div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.431); text-align: left; padding-left:50px " *ngIf="processor=='airtel' " align="center"><img heigh="390" width="300" src="assets/images/airtel.png" alt=""></div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.438); text-align: left; padding-left:50px " *ngIf="processor=='mpesa'" align="center"><img heigh="390" width="300" src="assets/images/mpesa.png" alt=""></div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.466); text-align: left; padding-left:50px " *ngIf="processor=='ttcl'">Ttcl</div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.432); text-align: left; padding-left:50px " *ngIf="processor=='halopesa'" align="center"><img heigh="390" width="300" src="assets/images/halopesa.png" alt=""></div>
-  <div align="center" style="padding-top:40px" *ngIf="processor=='done'">Enter thee Transacrion id below</div>
-  <div style="padding:5px; background-color: rgba(245, 245, 245, 0.432); text-align: left; padding-left:50px " *ngIf="processor=='done'" align="center"><input #box13 (blur)="Transaction_id(box13.value)" type="text" class="form-control" placeholder="Enter transaction id here"></div>
-  <div style=" position:relative; top:100px; " align="center" *ngIf="processor=='done'">
-    <button mat-raised-button (click)="next()" type="button" class="btn btn-danger form-control" style="max-width:200px;" >Cancel</button>
-    <button mat-raised-button (click)="airtel()" type="button" class="btn btn-success form-control" (click)="postdata()" style="max-width:200px;" >Submit</button>
-  </div>
-
-</div>
-<div style=" position:relative; top:100px; " align="center" *ngIf="processor!=='done'">
-  <button mat-raised-button (click)="next()" type="button" class="btn btn-danger form-control" style="max-width:200px;" >Cancel</button>
-  <button mat-raised-button (click)="airtel()" type="button" class="btn btn-success form-control" (click)="done()" style="max-width:200px;" >Completed</button>
-</div>
-</div><div class="col" style="background-color: white;">
-
-  <div *ngIf="onlinepayment=='perfectmoney'">
-    <div style="padding:10px; background-color:silver; text-align: center;"> PAY BY PERFECTMONEY</div>
-    <div style="padding:10px;">Username : <span style="float: right;">Namegiven</span>  </div>
-    <div style="padding:10px;">Plan : <span style="float: right;">Sec</span></div>
-    <div style="padding:10px;">Amount : <span style="float: right;">tsh 30000</span></div>
-    <div style="padding:10px;">Tax : <span style="float: right;">5400</span></div>
-    <div style="padding:10px;">Total : <span style="float: right;">35400</span></div>
-    <hr style="border: 1px solid silver">
-    <div style="padding:5px;"> <a style="cursor: pointer;">Change Plan</a> </div>
-    <div style="padding:5px;"> <a style="cursor: pointer;">Change Amount</a> </div>
-
-  </div>
-  <div *ngIf="onlinepayment=='litecoin'">
-
-    LITECOIN
-  </div>
-  <div *ngIf="onlinepayment=='advancecash'">
-
-    ADVANCE CASH
-  </div>
-  <div *ngIf="onlinepayment=='payeer'">
-
-    PAYEER
-  </div>
-
-
-
+  }
 </div>
 <div class="col" style="background-color: white;  padding:10px">
   <div style="font-size: 22px; text-align: center; font-weight: bolder;">Other payments</div>
   <div style="padding:10px"></div>
-
   <div style="font-size: medium; font-weight: bolder; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"> Please choose the payment method</div>
   <div style="padding:10px"></div>
-
   <div align="center">
     <div>
       <button  mat-stroked-button color="primary" (click)="perfect()" type="button" class="btn btn-light form-control mon" style=" border-radius: 20px; width:200px; padding:10px" ></button>
       <button  mat-stroked-button color="primary" (click)="advancedcash()" type="button" class="btn btn-light form-control mon1" style="border-radius: 20px; width:200px; padding:10px" ></button>
-
     </div>
-
     <div  style="padding:10px"></div>
     <div>
       <button  mat-stroked-button color="primary" (click)="litecoin()" type="button" class="btn btn-light form-control mon3" style="border-radius: 20px; width:200px; padding:10px" ></button>
       <button  mat-stroked-button color="primary" (click)="payeer()" type="button" class="btn btn-light form-control mon2" style="border-radius: 20px; width:200px; padding:10px" ></button>
     </div>
-
   </div>
 </div>
-
- </div>
 </div>
+</div>
+}
 
 
-<div *ngIf="optione=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
-  <div *ngIf="optione=='True'" style="width:600px; margin-top: 100px;" class="momo1 animation-target ">
-    <div align="center" style="font-weight: bolder; padding:5px; color:#666">CHOOSE THE BUSINESS</div>
-
-
-    <table class="table">
-      <thead class="thead-light">
-      </thead>
-      <tbody>
-        <tr *ngFor="let m of alget let i = index" class="moga">
-          <td style="text-align: center; cursor: pointer;">{{i*1 + 1*1}}</td>
-          <td style="cursor: pointer;" (click)="companyjeje(m.company, m.pk)">{{m.company}}</td>
-
-        </tr>
-
-      </tbody>
-    </table>
-
-    <div style="text-align: center;">
-      <div style="padding:20px"></div>
-      <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
-      <!-- <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button> -->
-
-
+@if (optione=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+    @if (optione=='True') {
+      <div style="width:600px; margin-top: 100px;" class="momo1 animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">CHOOSE THE BUSINESS</div>
+        <table class="table">
+          <thead class="thead-light">
+          </thead>
+          <tbody>
+            @for (m of alget; track m; let i = $index) {
+              <tr class="moga">
+                <td style="text-align: center; cursor: pointer;">{{i*1 + 1*1}}</td>
+                <td style="cursor: pointer;" (click)="companyjeje(m.company, m.pk)">{{m.company}}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <div style="text-align: center;">
+          <div style="padding:20px"></div>
+          <button class="mogolia btn-secondary" style="width:100%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
+          <!-- <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button> -->
+        </div>
+        <!-- <div align="center">
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
     </div>
-    <!-- <div align="center">
-      <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-      <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-    </div> -->
-  </div>
+  }
 </div>
+}

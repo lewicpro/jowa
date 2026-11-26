@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 import { NyumbaMkatabaComponent } from '../nyumba-mkataba/nyumba-mkataba.component';
 @Component({
-  selector: 'app-nyumba-middledocuments',
-  templateUrl: './nyumba-middledocuments.component.html',
-  styleUrls: ['./nyumba-middledocuments.component.css']
+    selector: 'app-nyumba-middledocuments',
+    templateUrl: './nyumba-middledocuments.component.html',
+    styleUrls: ['./nyumba-middledocuments.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaMiddledocumentsComponent implements OnInit {
   datar;
@@ -72,12 +74,12 @@ export class NyumbaMiddledocumentsComponent implements OnInit {
 
   onUploadmkatabafiles() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postMkatabafile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
         
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
     this.mkataba.getvalue();
@@ -87,11 +89,11 @@ export class NyumbaMiddledocumentsComponent implements OnInit {
 
   onUploadkitambulishoData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postkitambulishofile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   
@@ -99,22 +101,22 @@ export class NyumbaMiddledocumentsComponent implements OnInit {
 
   onUploadappData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postApplicationfile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   
   }
   onUploadSlipData() {
     // this.user = localStorage.getItem('user');
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     this.restframework.postSlipefile(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        this.ngProgress.done();
+        this.ngProgress.ref().complete();
       }
     );
   

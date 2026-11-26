@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 @Component({
-  selector: 'app-personal-nyumba-details',
-  templateUrl: './personal-nyumba-details.component.html',
-  styleUrls: ['./personal-nyumba-details.component.css']
+    selector: 'app-personal-nyumba-details',
+    templateUrl: './personal-nyumba-details.component.html',
+    styleUrls: ['./personal-nyumba-details.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PersonalNyumbaDetailsComponent implements OnInit {
 
@@ -47,9 +49,8 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
   FirstDate;
   SecDate;
   getTime;
-  condtn={ 'condition':'stop', 'name':this.Username};
-
-  STP={ 'condition':'start', 'name':this.Username};
+  condtn;
+  STP;
   estmatd: number;
   last;
   // d = new Date();
@@ -97,6 +98,8 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
 
   constructor( public router:Router, public restframework: RestframeworkService) {
 
+    this.condtn = { 'condition': 'stop', 'name': this.Username };
+    this.STP = { 'condition': 'start', 'name': this.Username };
 
     this.getvalue();
 
@@ -217,7 +220,7 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
                         //   // console.log('weee'+this.balanc)
                         //   // localStorage.setItem('userData2', this.responseData);
                         //   // this.router.navigate(['/Nyumba-dash/personalDetails/Personali-details']);
-                        //   // this.ngProgress.done();
+                        //   // this.ngProgress.ref().complete();
                         //   }, (err) => {
                         //     alert('error');
                      
@@ -320,7 +323,7 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
       // console.log('weee'+this.balanc)
       localStorage.setItem('userData2', this.responseData);
       // this.router.navigate(['/Nyumba-dash/personalDetails/Personali-details']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       this.getvalue()
       }, (err) => {
         alert('error');
@@ -335,7 +338,7 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
       // console.log('weee'+this.balanc)
       localStorage.setItem('userData2', this.responseData);
       // this.router.navigate(['/Nyumba-dash/personalDetails/Personali-details']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       this.getvalue()
       }, (err) => {
         alert('error');
@@ -345,11 +348,11 @@ export class PersonalNyumbaDetailsComponent implements OnInit {
 
    onUploadProfileData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postProfileNyumbadata(this.selectedFile, this.Username, this.pin, this.Simu).subscribe(
       data => {
         // console.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
   

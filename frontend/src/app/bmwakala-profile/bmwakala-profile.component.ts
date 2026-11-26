@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-bmwakala-profile',
-  templateUrl: './bmwakala-profile.component.html',
-  styleUrls: ['./bmwakala-profile.component.css']
+    selector: 'app-bmwakala-profile',
+    templateUrl: './bmwakala-profile.component.html',
+    styleUrls: ['./bmwakala-profile.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class BmwakalaProfileComponent implements OnInit {
   all;

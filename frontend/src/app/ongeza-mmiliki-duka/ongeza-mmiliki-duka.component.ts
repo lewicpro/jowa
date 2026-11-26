@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-ongeza-mmiliki-duka',
-  templateUrl: './ongeza-mmiliki-duka.component.html',
-  styleUrls: ['./ongeza-mmiliki-duka.component.css']
+    selector: 'app-ongeza-mmiliki-duka',
+    templateUrl: './ongeza-mmiliki-duka.component.html',
+    styleUrls: ['./ongeza-mmiliki-duka.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaMmilikiDukaComponent implements OnInit {
   userData = {'user': '',
@@ -111,7 +113,7 @@ export class OngezaMmilikiDukaComponent implements OnInit {
 
 
   Register() {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.userData, 'RegisterWamiliki/').then((result) => {
       this.responseData = result;
@@ -141,12 +143,12 @@ export class OngezaMmilikiDukaComponent implements OnInit {
 
 
       }
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
   }
 
   UserCreate() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
       this.responseData = result;
@@ -156,7 +158,7 @@ export class OngezaMmilikiDukaComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       this.router.navigate(['/duka/Wamiliki']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 
@@ -164,7 +166,7 @@ export class OngezaMmilikiDukaComponent implements OnInit {
 
   }
   UserInfo() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     //.log('passed');
     this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
       this.responseData = result;
@@ -174,7 +176,7 @@ export class OngezaMmilikiDukaComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       this.router.navigate(['/duka/Wamiliki']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 

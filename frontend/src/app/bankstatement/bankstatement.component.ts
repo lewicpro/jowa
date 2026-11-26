@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-bankstatement',
-  templateUrl: './bankstatement.component.html',
-  styleUrls: ['./bankstatement.component.css']
+    selector: 'app-bankstatement',
+    templateUrl: './bankstatement.component.html',
+    styleUrls: ['./bankstatement.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class BankstatementComponent implements OnInit {
   datar;
@@ -67,11 +69,11 @@ export class BankstatementComponent implements OnInit {
 
   onUploadfiles() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postFiledata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
   
@@ -80,11 +82,11 @@ export class BankstatementComponent implements OnInit {
 
   onUploadData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
   
@@ -92,22 +94,22 @@ export class BankstatementComponent implements OnInit {
 
   onUploadAtmData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postAtmdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
   
   }
   onUploadSlipData() {
     // this.user = localStorage.getItem('user');
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     this.restframework.postSlipdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
       data => {
         //.log('done');
-        // this.ngProgress.done();
+        // this.ngProgress.ref().complete();
       }
     );
   

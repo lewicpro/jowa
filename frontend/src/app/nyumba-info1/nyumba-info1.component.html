@@ -1,16 +1,16 @@
 
 
 <!-- <div class="d-flex justify-content-center">
-  <mat-form-field style="width:40%">
+<mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
+</mat-form-field>
 </div> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
   <h5 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> KIASI KINACHOINGIA</h5>
   <div style="max-height:400px; overflow: auto">
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-    <thead>
-     <!-- <tr>
+    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+      <thead>
+        <!-- <tr>
         <th scope="col">#</th>
         <th scope="col">Jina</th>
         <th scope="col">Simu</th>
@@ -24,61 +24,86 @@
         <th scope="col">TSD</th>
       </tr> -->
       <tr>
-          <th scope="col">Year</th>
-          <th scope="col">Jan</th>
-          <th scope="col">Feb</th>
-          <th scope="col">Mar</th>
-          <th scope="col">Apr</th>
-          <th scope="col">May</th>
-          <th scope="col">Jun</th>
-          <th scope="col">Jul</th>
-          <th scope="col" nowrap>Aug</th>
-          <th scope="col">Sep</th>
-          <th scope="col" nowrap>Oct</th>
-          <th scope="col" nowrap>Nov</th>
-          <th scope="col">Dec</th>
-          
-    
-        </tr>
+        <th scope="col">Year</th>
+        <th scope="col">Jan</th>
+        <th scope="col">Feb</th>
+        <th scope="col">Mar</th>
+        <th scope="col">Apr</th>
+        <th scope="col">May</th>
+        <th scope="col">Jun</th>
+        <th scope="col">Jul</th>
+        <th scope="col" nowrap>Aug</th>
+        <th scope="col">Sep</th>
+        <th scope="col" nowrap>Oct</th>
+        <th scope="col" nowrap>Nov</th>
+        <th scope="col">Dec</th>
+
+
+      </tr>
     </thead>
     <tbody>
-      <tr style="cursor:pointer" id="customers" *ngFor="let form of malip">
-
- 
-        <td *ngIf='form.nyumba == mona' nowrap>{{form.nyumba}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.January | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.February | currency: 'tsh '}}</td>
-        <!-- <td nowrap> {{form.March}}</td> -->
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.March | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.April | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap >{{form.May | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.June | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.July | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap  >{{form.August | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.September | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.October | currency: 'tsh '}}</td>
-        <td *ngIf='form.nyumba == mona'  nowrap>{{form.November | currency: 'tsh '}}</td>
-      
-        <td *ngIf='form.nyumba == mona'  nowrap >{{form.December | currency: 'tsh '}} </td>
-      </tr>
+      @for (form of malip; track form) {
+        <tr style="cursor:pointer" id="customers">
+          @if (form.nyumba == mona) {
+            <td nowrap>{{form.nyumba}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.January | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.February | currency: 'tsh '}}</td>
+          }
+          <!-- <td nowrap> {{form.March}}</td> -->
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.March | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.April | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap >{{form.May | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.June | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.July | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap  >{{form.August | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.September | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.October | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap>{{form.November | currency: 'tsh '}}</td>
+          }
+          @if (form.nyumba == mona) {
+            <td  nowrap >{{form.December | currency: 'tsh '}} </td>
+          }
+        </tr>
+      }
       <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
-  </div>
-  </div>
+      <!--<td scope="row">2</td>-->
+      <!--<td>BA</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+    <!--<tr id="customers">-->
+    <!--<td scope="row">3</td>-->
+    <!--<td>Accountancy</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+</tbody>
+</table>
+</div>
+</div>
 
-  <div style="padding:10px;"></div>
+<div style="padding:10px;"></div>
 
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

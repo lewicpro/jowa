@@ -1,11 +1,13 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-worker-madeni',
-  templateUrl: './worker-madeni.component.html',
-  styleUrls: ['./worker-madeni.component.css']
+    selector: 'app-worker-madeni',
+    templateUrl: './worker-madeni.component.html',
+    styleUrls: ['./worker-madeni.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WorkerMadeniComponent implements OnInit {
   all;
@@ -64,7 +66,7 @@ export class WorkerMadeniComponent implements OnInit {
    }
    calculate(){
     // this.time();
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
   if(this.mopai){
     // console.log('remainder1: '+ this.times)
     this.mdaa = this.mopai;
@@ -108,7 +110,7 @@ export class WorkerMadeniComponent implements OnInit {
     })
     //  this.clean();
   
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
  

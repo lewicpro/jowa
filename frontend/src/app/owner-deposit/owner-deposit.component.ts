@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { MmilikiDetailsComponent } from '../mmiliki-details/mmiliki-details.component';
 
 @Component({
-  selector: 'app-owner-deposit',
-  templateUrl: './owner-deposit.component.html',
-  styleUrls: ['./owner-deposit.component.css']
+    selector: 'app-owner-deposit',
+    templateUrl: './owner-deposit.component.html',
+    styleUrls: ['./owner-deposit.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerDepositComponent {
   Create ={

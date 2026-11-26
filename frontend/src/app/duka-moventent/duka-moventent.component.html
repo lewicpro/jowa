@@ -19,82 +19,100 @@
           </thead>
           <tbody>
 
-            <tr *ngFor="let m of alldata" style="cursor:pointer; background-color: rgba(0, 0, 0, 0.039);" id="customers">
-              <td class="youo" style="color: white; background:#EE2040;" *ngIf="selectedleft == m.Name_of_the_product"  nowrap>{{m.Name_of_the_product | titlecase}}</td>
-              <td class="youo" *ngIf="selectedleft != m.Name_of_the_product"  nowrap (click)="selectLeft(m)">{{m.Name_of_the_product | titlecase}}</td>
-
-
-              <td class="youo" style="color: white; background:#EE2040;" *ngIf="selectedleft == m.Name_of_the_product"   nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
-              <td class="youo" *ngIf="selectedleft != m.Name_of_the_product" (click)="selectLeft(m)" nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
-              <td class="youo" style="color: white; background:#EE2040;" *ngIf="selectedleft == m.Name_of_the_product"   nowrap>{{m.Number_of_products}}</td>
-              <td class="youo" *ngIf="selectedleft != m.Name_of_the_product" (click)="selectLeft(m)" nowrap>{{m.Number_of_products}}</td>
-            </tr>
+            @for (m of alldata; track m) {
+              <tr style="cursor:pointer; background-color: rgba(0, 0, 0, 0.039);" id="customers">
+                @if (selectedleft == m.Name_of_the_product) {
+                  <td class="youo" style="color: white; background:#EE2040;"  nowrap>{{m.Name_of_the_product | titlecase}}</td>
+                }
+                @if (selectedleft != m.Name_of_the_product) {
+                  <td class="youo"  nowrap (click)="selectLeft(m)">{{m.Name_of_the_product | titlecase}}</td>
+                }
+                @if (selectedleft == m.Name_of_the_product) {
+                  <td class="youo" style="color: white; background:#EE2040;"   nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
+                }
+                @if (selectedleft != m.Name_of_the_product) {
+                  <td class="youo" (click)="selectLeft(m)" nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
+                }
+                @if (selectedleft == m.Name_of_the_product) {
+                  <td class="youo" style="color: white; background:#EE2040;"   nowrap>{{m.Number_of_products}}</td>
+                }
+                @if (selectedleft != m.Name_of_the_product) {
+                  <td class="youo" (click)="selectLeft(m)" nowrap>{{m.Number_of_products}}</td>
+                }
+              </tr>
+            }
             <!-- <tr style="cursor:pointer; background-color: rgba(0, 0, 0, 0.039);" id="customers">
-              <td  nowrap scope="row">sdfgdsfgsfdg</td>
+            <td  nowrap scope="row">sdfgdsfgsfdg</td>
 
 
-              <td >sfsdfgdf</td>
-            </tr> -->
+            <td >sfsdfgdf</td>
+          </tr> -->
           <div style="padding: 30px;"></div>
 
-            <!--<tr id="customers">-->
-              <!--<td scope="row">2</td>-->
-              <!--<td>BA</td>-->
-              <!--<td>3</td>-->
-              <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-            <!--</tr>-->
-            <!--<tr id="customers">-->
-              <!--<td scope="row">3</td>-->
-              <!--<td>Accountancy</td>-->
-              <!--<td>3</td>-->
-              <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-            <!--</tr>-->
-          </tbody>
-        </table>
-      </div>
-
-
-    </div>
-    <div class="col" align="center">
-      <input class="wako" disabled placeholder="search for the Shop" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
-
-      <div style="padding: 20px;"></div>
-      <table class="table table-sm table-light">
-
-        <thead>
-          <tr style="background:rgba(23, 23, 23, 0.711); color: white;">
-            <th scope="col">Office</th>
-            <!-- <th scope="col"></th> -->
-
-          </tr>
-        </thead>
-        <tbody>
-
-          <tr *ngFor="let n of companies" style="cursor:pointer; background-color: rgba(0, 0, 0, 0.039);" id="customers" >
-            <td style="color: white; background:#EE2040;"  nowrap scope="row"  *ngIf="selectedright == n.company" >{{n.company}}</td>
-            <td nowrap scope="row"  *ngIf="selectedright != n.company" (click)="selectRight(n)">{{n.company}}</td>
-          </tr>
-
-        <div style="padding: 30px;"></div>
-
           <!--<tr id="customers">-->
-            <!--<td scope="row">2</td>-->
-            <!--<td>BA</td>-->
-            <!--<td>3</td>-->
-            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-          <!--</tr>-->
-          <!--<tr id="customers">-->
-            <!--<td scope="row">3</td>-->
-            <!--<td>Accountancy</td>-->
-            <!--<td>3</td>-->
-            <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-          <!--</tr>-->
-        </tbody>
-      </table>
+          <!--<td scope="row">2</td>-->
+          <!--<td>BA</td>-->
+          <!--<td>3</td>-->
+          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+        <!--</tr>-->
+        <!--<tr id="customers">-->
+        <!--<td scope="row">3</td>-->
+        <!--<td>Accountancy</td>-->
+        <!--<td>3</td>-->
+        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+</div>
 
-    </div>
 
-  </div>
+</div>
+<div class="col" align="center">
+  <input class="wako" disabled placeholder="search for the Shop" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
+
+  <div style="padding: 20px;"></div>
+  <table class="table table-sm table-light">
+
+    <thead>
+      <tr style="background:rgba(23, 23, 23, 0.711); color: white;">
+        <th scope="col">Office</th>
+        <!-- <th scope="col"></th> -->
+
+      </tr>
+    </thead>
+    <tbody>
+
+      @for (n of companies; track n) {
+        <tr style="cursor:pointer; background-color: rgba(0, 0, 0, 0.039);" id="customers" >
+          @if (selectedright == n.company) {
+            <td style="color: white; background:#EE2040;"  nowrap scope="row"  >{{n.company}}</td>
+          }
+          @if (selectedright != n.company) {
+            <td nowrap scope="row"  (click)="selectRight(n)">{{n.company}}</td>
+          }
+        </tr>
+      }
+
+      <div style="padding: 30px;"></div>
+
+      <!--<tr id="customers">-->
+      <!--<td scope="row">2</td>-->
+      <!--<td>BA</td>-->
+      <!--<td>3</td>-->
+      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+    <!--</tr>-->
+    <!--<tr id="customers">-->
+    <!--<td scope="row">3</td>-->
+    <!--<td>Accountancy</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+</tbody>
+</table>
+
+</div>
+
+</div>
 
 </div>
 
@@ -102,34 +120,29 @@
 <div style="text-align: center;"><button class="btn btn-secondary" style="width: 20%;" (click)="submit()"> SUBMIT</button></div>
 
 
-<div *ngIf="pop=='True'" class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
-  <div *ngIf="pop=='True'" style="width:450px; margin-top: 100px;" class="momo1 animation-target ">
-    <div align="center" style="font-weight: bolder; padding:5px; color:#666">EDIT PRODUCT</div>
-
-    <div style="padding:10px"></div>
-    <div align="center">
-      <input #number (blur)="Number_of_product(number.value)" class="mogon" placeholder="Number of products" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
-
-
+@if (pop=='True') {
+  <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
+    @if (pop=='True') {
+      <div style="width:450px; margin-top: 100px;" class="momo1 animation-target ">
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">EDIT PRODUCT</div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #number (blur)="Number_of_product(number.value)" class="mogon" placeholder="Number of products" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+        </div>
+        <div style="padding:10px"></div>
+        <div align="center">
+          <input #box23 (blur)="description(box23.value)" class="mogon" placeholder="Descriptions " type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        </div>
+        <div style="padding:20px"></div> -->
+        <div style="text-align: center;">
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
+          <button class="mogolia btn-primary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitedproduct()">Submit</button>
+        </div>
+        <!-- <div align="center">
+        <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
+        <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
+      </div> -->
     </div>
-    <div style="padding:10px"></div>
-    <div align="center">
-      <input #box23 (blur)="description(box23.value)" class="mogon" placeholder="Descriptions " type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
-
-
-    </div>
-
-    <div style="padding:20px"></div> -->
-    <div style="text-align: center;">
-      <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
-      <button class="mogolia btn-primary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitedproduct()">Submit</button>
-
-
-    </div>
-    <!-- <div align="center">
-      <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
-      <button type="button" style="width:40%" class="btn btn-secondary btn-sm " (click)="edit()">Submit</button>
-
-    </div> -->
-  </div>
+  }
 </div>
+}

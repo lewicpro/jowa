@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-maduka-yote',
-  templateUrl: './maduka-yote.component.html',
-  styleUrls: ['./maduka-yote.component.css']
+    selector: 'app-maduka-yote',
+    templateUrl: './maduka-yote.component.html',
+    styleUrls: ['./maduka-yote.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MadukaYoteComponent {
   users;

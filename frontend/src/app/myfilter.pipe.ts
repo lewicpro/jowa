@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { RestframeworkService } from './apiservice/restframework.service';
 
 @Pipe({
-  name: 'myfilter'
+    name: 'myfilter',
+    standalone: false
 })
 export class MyfilterPipe implements PipeTransform {
   users;

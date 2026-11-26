@@ -1,11 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import * as jspdf from 'jspdf';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
 @Component({
-  selector: 'app-receipt',
-  templateUrl: './receipt.component.html',
-  styleUrls: ['./receipt.component.css']
+    selector: 'app-receipt',
+    templateUrl: './receipt.component.html',
+    styleUrls: ['./receipt.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ReceiptComponent implements OnInit {
   @ViewChild('content')content:ElementRef;

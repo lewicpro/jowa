@@ -2,35 +2,37 @@
 <div style="background:rgba(2, 2, 2, 0.082); border-radius: 5px">
 
 
-    <div class="" *ngFor="let m of all">
-        <div class="row">
-          <div class="col-sm">
-              <ul class="list-group">
-                  <li class="list-group-item">Jina: {{m.jina}}</li>
-                  <li class="list-group-item">Status:{{m.Status}}</li>
-                  <li class="list-group-item">Branch Position: 2/10</li>
-                  <li class="list-group-item">Customers Served:102</li>
-                  <li class="list-group-item">Email:{{m.Email}}</li>
-                </ul>
-          </div>
-          <div class="col-sm">
-              <ul class="list-group">
-                  <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
-                  <li class="list-group-item">Workers:3</li>
-                  <li class="list-group-item">Monthly rev:tsh {{m.Monthly}}</li>
-                  <li class="list-group-item">Yearly rev:tsh {{m.Yealy}}</li>
-                  <li class="list-group-item">Daily rev:tsh {{m.Daily}}</li>
-                </ul>
-          </div>
-          <div class="col-sm">
-              <ul class="list-group">
-                  <li class="list-group-item">Capital roundly: tsh {{m.Capital_roundly}}</li>
-                  <li class="list-group-item">Static capital:tsh {{m.Static_capital}}</li>
-                  <li class="list-group-item">Location:{{m.Location}}</li>
-                  <li class="list-group-item">Profit:tsh {{m.Profit}}</li>
-                  <li class="list-group-item">Registered on: {{m.Registered}}</li>
-                </ul>
-          </div>
+  @for (m of all; track m) {
+    <div class="">
+      <div class="row">
+        <div class="col-sm">
+          <ul class="list-group">
+            <li class="list-group-item">Jina: {{m.jina}}</li>
+            <li class="list-group-item">Status:{{m.Status}}</li>
+            <li class="list-group-item">Branch Position: 2/10</li>
+            <li class="list-group-item">Customers Served:102</li>
+            <li class="list-group-item">Email:{{m.Email}}</li>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <ul class="list-group">
+            <li class="list-group-item">Growth rate: {{m.Growth_rate}}%</li>
+            <li class="list-group-item">Workers:3</li>
+            <li class="list-group-item">Monthly rev:tsh {{m.Monthly}}</li>
+            <li class="list-group-item">Yearly rev:tsh {{m.Yealy}}</li>
+            <li class="list-group-item">Daily rev:tsh {{m.Daily}}</li>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <ul class="list-group">
+            <li class="list-group-item">Capital roundly: tsh {{m.Capital_roundly}}</li>
+            <li class="list-group-item">Static capital:tsh {{m.Static_capital}}</li>
+            <li class="list-group-item">Location:{{m.Location}}</li>
+            <li class="list-group-item">Profit:tsh {{m.Profit}}</li>
+            <li class="list-group-item">Registered on: {{m.Registered}}</li>
+          </ul>
         </div>
       </div>
-  </div>
+    </div>
+  }
+</div>

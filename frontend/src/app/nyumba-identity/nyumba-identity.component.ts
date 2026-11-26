@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-nyumba-identity',
-  templateUrl: './nyumba-identity.component.html',
-  styleUrls: ['./nyumba-identity.component.css']
+    selector: 'app-nyumba-identity',
+    templateUrl: './nyumba-identity.component.html',
+    styleUrls: ['./nyumba-identity.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaIdentityComponent implements OnInit {
   imageUrl;

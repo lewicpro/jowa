@@ -1,14 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { P } from '@angular/core/src/render3';
 
 @Component({
-  selector: 'app-duka-director-matumizi',
-  templateUrl: './duka-director-matumizi.component.html',
-  styleUrls: ['./duka-director-matumizi.component.css']
+    selector: 'app-duka-director-matumizi',
+    templateUrl: './duka-director-matumizi.component.html',
+    styleUrls: ['./duka-director-matumizi.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DukaDirectorMatumiziComponent implements OnInit {
   options;

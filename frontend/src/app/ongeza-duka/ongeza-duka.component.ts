@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-ongeza-duka',
-  templateUrl: './ongeza-duka.component.html',
-  styleUrls: ['./ongeza-duka.component.css']
+    selector: 'app-ongeza-duka',
+    templateUrl: './ongeza-duka.component.html',
+    styleUrls: ['./ongeza-duka.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaDukaComponent implements OnInit {
   userData = {'Username': '',
@@ -113,7 +115,7 @@ export class OngezaDukaComponent implements OnInit {
 
 
  Register() {
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.userData, 'Register/').then((result) => {
      this.responseData = result;
@@ -143,12 +145,12 @@ export class OngezaDukaComponent implements OnInit {
 
 
      }
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
 
  }
 
  UserCreate() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    // console.log('passed');
    this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -158,7 +160,7 @@ export class OngezaDukaComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -166,7 +168,7 @@ export class OngezaDukaComponent implements OnInit {
 
  }
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
    //.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -176,7 +178,7 @@ export class OngezaDukaComponent implements OnInit {
      // localStorage.setItem('userData2', this.responseData);
      // localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

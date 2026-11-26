@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -7,9 +7,11 @@ import { NgProgress } from 'ngx-progressbar';
 import { NyumbaConnectorComponent } from '../nyumba-connector/nyumba-connector.component';
 
 @Component({
-  selector: 'app-pangisha',
-  templateUrl: './pangisha.component.html',
-  styleUrls: ['./pangisha.component.css']
+    selector: 'app-pangisha',
+    templateUrl: './pangisha.component.html',
+    styleUrls: ['./pangisha.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PangishaComponent implements OnInit {
   value;
@@ -50,7 +52,7 @@ export class PangishaComponent implements OnInit {
     'file_no':'',
     'wilaya_kikazi':'',
     'muda':'',
-    'mwezi':this.getMwezi,
+    'mwezi':undefined,
     'kulipia':'',
     'kiasi':'',
     'service_officer':'',
@@ -160,7 +162,7 @@ export class PangishaComponent implements OnInit {
   }
 
   UserCreate() {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.wapangajiPost(this.Created, 'wapangaji/').then((result) => {
       this.responseData = result;
@@ -173,7 +175,7 @@ export class PangishaComponent implements OnInit {
   
       // localStorage.setItem('userData2', this.responseData);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
       }, (err) => {
         alert('ended on creating wapangaji');
  
@@ -193,7 +195,7 @@ export class PangishaComponent implements OnInit {
   }
   
   UserCreates() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.Createm, 'UserCreate/').then((result) => {
       this.responseData = result;
@@ -203,7 +205,7 @@ export class PangishaComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('ended on creating user');
 

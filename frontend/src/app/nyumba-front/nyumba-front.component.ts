@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NyumbaFrontDetailsComponent } from '../nyumba-front-details/nyumba-front-details.component';
 
 @Component({
-  selector: 'app-nyumba-front',
-  templateUrl: './nyumba-front.component.html',
-  // styleUrls: ['./nyumba-front.component.css'],
-  styles: [`
-     /deep/ .carousel-inner{
+    selector: 'app-nyumba-front',
+    templateUrl: './nyumba-front.component.html',
+    // styleUrls: ['./nyumba-front.component.css'],
+    styles: [`
+     ::ng-deep .carousel-inner{
       overflow:unset;
       height: 200px;
       width:100%;
   }
 
-  `]
+  `],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaFrontComponent implements OnInit {
   det;

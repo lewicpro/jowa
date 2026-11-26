@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-mwezihuumeseji',
-  templateUrl: './mwezihuumeseji.component.html',
-  styleUrls: ['./mwezihuumeseji.component.css']
+    selector: 'app-mwezihuumeseji',
+    templateUrl: './mwezihuumeseji.component.html',
+    styleUrls: ['./mwezihuumeseji.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MwezihuumesejiComponent implements OnInit {
   meseji;

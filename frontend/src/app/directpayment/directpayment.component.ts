@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-directpayment',
-  templateUrl: './directpayment.component.html',
-  styleUrls: ['./directpayment.component.css']
+    selector: 'app-directpayment',
+    templateUrl: './directpayment.component.html',
+    styleUrls: ['./directpayment.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DirectpaymentComponent implements OnInit {
   givenid;

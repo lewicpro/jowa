@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LowlayerComponent } from '../lowlayer/lowlayer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-wakala-mmiliki-wote',
-  templateUrl: './wakala-mmiliki-wote.component.html',
-  styleUrls: ['./wakala-mmiliki-wote.component.css']
+    selector: 'app-wakala-mmiliki-wote',
+    templateUrl: './wakala-mmiliki-wote.component.html',
+    styleUrls: ['./wakala-mmiliki-wote.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WakalaMmilikiWoteComponent  {
   users;

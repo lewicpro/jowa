@@ -16,167 +16,313 @@
       <tr>
         <th scope="col" nowrap>#</th>
         <th scope="col" nowrap>Tarehe</th>
-        <th *ngIf="mpesa_float =='True'" scope="col" title="Date" nowrap>Balance Mpesa float</th>
-        <th *ngIf="mpesa_working_acc =='True'" scope="col" title="Date" nowrap>Balance Mpesa Working Account</th>
-        <th *ngIf="Tigopas =='True'" scope="col" title="Total Payment (L+I+6)" nowrap>Balance Tigopesa</th>
-        <th *ngIf="tpb =='True'" scope="col" title="Loan Repayment" nowrap>Balance TPB</th>
-        <th *ngIf="Nbc =='True'" scope="col" title="Interest Paid" nowrap>Balance NBC</th>
-        <th *ngIf="Nmb =='True'" scope="col" title="Interest Paid" nowrap>Balance NMB</th>
-        <th *ngIf="Selcom =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance SELCOM</th>
-        <th *ngIf="dtb =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance DTB</th>
-        <th *ngIf="crdb =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance CRDB</th>
-        <th *ngIf="ttcl_money =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance TTCL</th>
-        <th *ngIf="halopexa =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa</th>
-        <th *ngIf="halopesa_superagent =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Super Agent</th>
-        <th *ngIf="halopesa_subsuperagent =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Sub Super Agent</th>
-        <th *ngIf="vodacom_superAgent =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Super Agent</th>
-        <th *ngIf="vodacom_agent2 =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Agent 2</th>
-        <th *ngIf="access_bank =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Access Bank</th>
-        <th *ngIf="kcb =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance KCB Bank</th>
-        <th *ngIf="equity =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Equity Bank</th>
-        <th *ngIf="airtel_money =='True'" scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Airtel Money</th>
+        @if (mpesa_float =='True') {
+          <th scope="col" title="Date" nowrap>Balance Mpesa float</th>
+        }
+        @if (mpesa_working_acc =='True') {
+          <th scope="col" title="Date" nowrap>Balance Mpesa Working Account</th>
+        }
+        @if (Tigopas =='True') {
+          <th scope="col" title="Total Payment (L+I+6)" nowrap>Balance Tigopesa</th>
+        }
+        @if (tpb =='True') {
+          <th scope="col" title="Loan Repayment" nowrap>Balance TPB</th>
+        }
+        @if (Nbc =='True') {
+          <th scope="col" title="Interest Paid" nowrap>Balance NBC</th>
+        }
+        @if (Nmb =='True') {
+          <th scope="col" title="Interest Paid" nowrap>Balance NMB</th>
+        }
+        @if (Selcom =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance SELCOM</th>
+        }
+        @if (dtb =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance DTB</th>
+        }
+        @if (crdb =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance CRDB</th>
+        }
+        @if (ttcl_money =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance TTCL</th>
+        }
+        @if (halopexa =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa</th>
+        }
+        @if (halopesa_superagent =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Super Agent</th>
+        }
+        @if (halopesa_subsuperagent =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Sub Super Agent</th>
+        }
+        @if (vodacom_superAgent =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Super Agent</th>
+        }
+        @if (vodacom_agent2 =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Agent 2</th>
+        }
+        @if (access_bank =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Access Bank</th>
+        }
+        @if (kcb =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance KCB Bank</th>
+        }
+        @if (equity =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Equity Bank</th>
+        }
+        @if (airtel_money =='True') {
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Airtel Money</th>
+        }
         <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Kilichobaki Siku</th>
         <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Jumla</th>
         <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Loss/Profit</th>
         <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Status</th>
         <th scope="col" title="Action">Action</th>
-        
+
       </tr>
     </thead>
     <tbody >
       <!-- <div >
-        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-        
-      </div> -->
-      <tr style="cursor:pointer" id="customers">
-        <td class="text-center" ></td>
-          <td class="text-center" ><input [(ngModel)]="Tarehe" (keyup)="calculate()"  style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
-          <td *ngIf="mpesa_float == 'True'" style="white-space: nowrap; min-width:7%"><input [(ngModel)]="Mpesa_Float" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Float"></td>
-          <td *ngIf="mpesa_working_acc =='True'" style="white-space: nowrap; min-width:7%"><input [(ngModel)]="MpesaWorking_Balance" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Working Balance"></td>
-          <td *ngIf="Tigopas =='True'"><input [(ngModel)]="Tigopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Tigopesa"></td>
-          <td *ngIf="tpb =='True'"><input [(ngModel)]="TPB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;"  type="number" placeholder="*Tpb"></td>
-          <td *ngIf="Nbc =='True'"><input [(ngModel)]="NBC" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;"  placeholder="*Nbc"></td>
-          <td *ngIf="Nmb =='True'"><input [(ngModel)]="NMB" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;" placeholder="*Nmb"></td>
-          <td *ngIf="Selcom =='True'"><input [(ngModel)]="SELCOM" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Selcom" ></td>
-          <td *ngIf="dtb =='True'"><input [(ngModel)]="DTB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*DTB" ></td>
-          <td *ngIf="crdb =='True'"><input [(ngModel)]="CRDB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Crdb" ></td>
-          <td *ngIf="ttcl_money =='True'"><input [(ngModel)]="TTCL_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*TTCL" ></td>
-          <td *ngIf="halopexa =='True'"><input [(ngModel)]="Halopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa" ></td>
-          <td *ngIf="halopesa_superagent =='True'"><input [(ngModel)]="Halopesa_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Super Agent" ></td>
-          <td *ngIf="halopesa_subsuperagent =='True'"><input [(ngModel)]="Halopesa_SubSuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Sub Super Agent" ></td>
-          <td *ngIf="vodacom_superAgent =='True'"><input [(ngModel)]="Vodacom_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom super agent" ></td>
-          <td *ngIf="vodacom_agent2 =='True'"><input [(ngModel)]="Vodacom_Agent2" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom agent2" ></td>
-          <td *ngIf="access_bank =='True'"><input [(ngModel)]="Access_Bank" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Access Bank" ></td>
-          <td *ngIf="kcb =='True'"><input [(ngModel)]="KCB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*KCB" ></td>
-          <td *ngIf="equity =='True'"><input [(ngModel)]="Equity" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Equity" ></td>
-          <td *ngIf="airtel_money =='True'"><input [(ngModel)]="Airtel_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*airtel money" ></td>
-          <td><input [(ngModel)]="Mkononi" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Cash Mkononi"></td>
-          <td *ngIf="State_output == null" >0</td>
-          <td *ngIf="State_output !== null" >{{totol}}</td>
-          <td *ngIf="State_output >= 0" style="color: green;">{{State_output}}</td>
-          <td *ngIf="State_output < 0" style="color: red;"> {{State_output}}</td>
-          <td *ngIf="State_output == null" style="color: red;"> 0</td>
-          <td *ngIf="Mtaji > totol">Loss -</td>
-          <td *ngIf="Mtaji < totol">Profit +</td>
-          <td *ngIf="Mtaji == null">Unchecked</td>
-          <td class="moaa"><a (click)="openModal(template)"  class="moaa">Tunza</a></td>
-          <!-- <td></td> -->
-          <td></td>
-          </tr>
-      <tr  id="customers" *ngFor="let k of allz let i = index" >
-          
+      <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+    </div> -->
+    <tr style="cursor:pointer" id="customers">
+      <td class="text-center" ></td>
+      <td class="text-center" ><input [(ngModel)]="Tarehe" (keyup)="calculate()"  style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
+      @if (mpesa_float == 'True') {
+        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="Mpesa_Float" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Float"></td>
+      }
+      @if (mpesa_working_acc =='True') {
+        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="MpesaWorking_Balance" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Working Balance"></td>
+      }
+      @if (Tigopas =='True') {
+        <td><input [(ngModel)]="Tigopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Tigopesa"></td>
+      }
+      @if (tpb =='True') {
+        <td><input [(ngModel)]="TPB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;"  type="number" placeholder="*Tpb"></td>
+      }
+      @if (Nbc =='True') {
+        <td><input [(ngModel)]="NBC" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;"  placeholder="*Nbc"></td>
+      }
+      @if (Nmb =='True') {
+        <td><input [(ngModel)]="NMB" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;" placeholder="*Nmb"></td>
+      }
+      @if (Selcom =='True') {
+        <td><input [(ngModel)]="SELCOM" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Selcom" ></td>
+      }
+      @if (dtb =='True') {
+        <td><input [(ngModel)]="DTB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*DTB" ></td>
+      }
+      @if (crdb =='True') {
+        <td><input [(ngModel)]="CRDB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Crdb" ></td>
+      }
+      @if (ttcl_money =='True') {
+        <td><input [(ngModel)]="TTCL_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*TTCL" ></td>
+      }
+      @if (halopexa =='True') {
+        <td><input [(ngModel)]="Halopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa" ></td>
+      }
+      @if (halopesa_superagent =='True') {
+        <td><input [(ngModel)]="Halopesa_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Super Agent" ></td>
+      }
+      @if (halopesa_subsuperagent =='True') {
+        <td><input [(ngModel)]="Halopesa_SubSuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Sub Super Agent" ></td>
+      }
+      @if (vodacom_superAgent =='True') {
+        <td><input [(ngModel)]="Vodacom_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom super agent" ></td>
+      }
+      @if (vodacom_agent2 =='True') {
+        <td><input [(ngModel)]="Vodacom_Agent2" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom agent2" ></td>
+      }
+      @if (access_bank =='True') {
+        <td><input [(ngModel)]="Access_Bank" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Access Bank" ></td>
+      }
+      @if (kcb =='True') {
+        <td><input [(ngModel)]="KCB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*KCB" ></td>
+      }
+      @if (equity =='True') {
+        <td><input [(ngModel)]="Equity" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Equity" ></td>
+      }
+      @if (airtel_money =='True') {
+        <td><input [(ngModel)]="Airtel_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*airtel money" ></td>
+      }
+      <td><input [(ngModel)]="Mkononi" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Cash Mkononi"></td>
+      @if (State_output == null) {
+        <td >0</td>
+      }
+      @if (State_output !== null) {
+        <td >{{totol}}</td>
+      }
+      @if (State_output >= 0) {
+        <td style="color: green;">{{State_output}}</td>
+      }
+      @if (State_output < 0) {
+        <td style="color: red;"> {{State_output}}</td>
+      }
+      @if (State_output == null) {
+        <td style="color: red;"> 0</td>
+      }
+      @if (Mtaji > totol) {
+        <td>Loss -</td>
+      }
+      @if (Mtaji < totol) {
+        <td>Profit +</td>
+      }
+      @if (Mtaji == null) {
+        <td>Unchecked</td>
+      }
+      <td class="moaa"><a (click)="openModal(template)"  class="moaa">Tunza</a></td>
+      <!-- <td></td> -->
+      <td></td>
+    </tr>
+    @for (k of allz; track k; let i = $index) {
+      <tr  id="customers" >
         <td nowrap> {{i*1 + 1*1}}</td>
         <td nowrap> {{k.Tarehe}}</td>
-        <td *ngIf="mpesa_float == 'True'" style="white-space: nowrap">{{k.Mpesa_Float}}</td>
-        <td *ngIf="mpesa_working_acc == 'True'" style="white-space: nowrap">{{k.MpesaWorking_Balance}}</td>
-        <td *ngIf="Tigopas =='True'" style="white-space: nowrap">{{k.Tigopesa }}</td>
-        <td *ngIf="tpb =='True'" style="white-space: nowrap">{{k.TPB}}</td>
-        <td *ngIf="Nbc =='True'" style="white-space: nowrap; ">{{k.NBC}}</td>
-        <td *ngIf="Nmb =='True'" style="white-space: nowrap; ">{{k.NMB}}</td>
-        <td *ngIf="Selcom =='True'" style="white-space: nowrap; ">{{k.SELCOM}}</td>
-        <td *ngIf="dtb =='True'" style="white-space: nowrap; ">{{k.DTB}}</td>
-        <td *ngIf="crdb =='True'" style="white-space: nowrap; ">{{k.CRDB}}</td>
-        <td *ngIf="ttcl_money =='True'" style="white-space: nowrap; ">{{k.TTCL_Money}}</td>
-        <td *ngIf="halopexa =='True'" style="white-space: nowrap; ">{{k.Halopesa}}</td>
-        <td *ngIf="halopesa_superagent =='True'" style="white-space: nowrap; ">{{k.Halopesa_SuperAgent}}</td>
-        <td *ngIf="halopesa_subsuperagent =='True'" style="white-space: nowrap; ">{{k.Halopesa_SubSuperAgent}}</td>
-        <td *ngIf="vodacom_superAgent =='True'" style="white-space: nowrap; ">{{k.Vodacom_SuperAgent}}</td>
-        <td *ngIf="vodacom_agent2 =='True'" style="white-space: nowrap; ">{{k.Vodacom_Agent2}}</td>
-        <td *ngIf="access_bank =='True'" style="white-space: nowrap; ">{{k.Access_Bank}}</td>
-        <td *ngIf="kcb =='True'" style="white-space: nowrap; ">{{k.KCB}}</td>
-        <td *ngIf="equity =='True'" style="white-space: nowrap; ">{{k.Equity}}</td>
-        <td *ngIf="airtel_money =='True'" style="white-space: nowrap; ">{{k.Airtel_Money}}</td>
+        @if (mpesa_float == 'True') {
+          <td style="white-space: nowrap">{{k.Mpesa_Float}}</td>
+        }
+        @if (mpesa_working_acc == 'True') {
+          <td style="white-space: nowrap">{{k.MpesaWorking_Balance}}</td>
+        }
+        @if (Tigopas =='True') {
+          <td style="white-space: nowrap">{{k.Tigopesa }}</td>
+        }
+        @if (tpb =='True') {
+          <td style="white-space: nowrap">{{k.TPB}}</td>
+        }
+        @if (Nbc =='True') {
+          <td style="white-space: nowrap; ">{{k.NBC}}</td>
+        }
+        @if (Nmb =='True') {
+          <td style="white-space: nowrap; ">{{k.NMB}}</td>
+        }
+        @if (Selcom =='True') {
+          <td style="white-space: nowrap; ">{{k.SELCOM}}</td>
+        }
+        @if (dtb =='True') {
+          <td style="white-space: nowrap; ">{{k.DTB}}</td>
+        }
+        @if (crdb =='True') {
+          <td style="white-space: nowrap; ">{{k.CRDB}}</td>
+        }
+        @if (ttcl_money =='True') {
+          <td style="white-space: nowrap; ">{{k.TTCL_Money}}</td>
+        }
+        @if (halopexa =='True') {
+          <td style="white-space: nowrap; ">{{k.Halopesa}}</td>
+        }
+        @if (halopesa_superagent =='True') {
+          <td style="white-space: nowrap; ">{{k.Halopesa_SuperAgent}}</td>
+        }
+        @if (halopesa_subsuperagent =='True') {
+          <td style="white-space: nowrap; ">{{k.Halopesa_SubSuperAgent}}</td>
+        }
+        @if (vodacom_superAgent =='True') {
+          <td style="white-space: nowrap; ">{{k.Vodacom_SuperAgent}}</td>
+        }
+        @if (vodacom_agent2 =='True') {
+          <td style="white-space: nowrap; ">{{k.Vodacom_Agent2}}</td>
+        }
+        @if (access_bank =='True') {
+          <td style="white-space: nowrap; ">{{k.Access_Bank}}</td>
+        }
+        @if (kcb =='True') {
+          <td style="white-space: nowrap; ">{{k.KCB}}</td>
+        }
+        @if (equity =='True') {
+          <td style="white-space: nowrap; ">{{k.Equity}}</td>
+        }
+        @if (airtel_money =='True') {
+          <td style="white-space: nowrap; ">{{k.Airtel_Money}}</td>
+        }
         <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td> -->
         <td style="white-space: nowrap;">{{k.Mkononi | currency: 'tsh '}}</td>
         <td style="color:red">{{k.Total}}</td>
-        <td *ngIf="k.Output_Status >= 0" style="color: green;">{{k.Output_Status}}</td>
-        <td *ngIf="k.Output_Status < 0 "  style="color: red;">{{k.Output_Status}}</td>
+        @if (k.Output_Status >= 0) {
+          <td style="color: green;">{{k.Output_Status}}</td>
+        }
+        @if (k.Output_Status < 0 ) {
+          <td  style="color: red;">{{k.Output_Status}}</td>
+        }
         <!-- <td >{{k.Output_Status}}</td> -->
-        <td *ngIf="k.Status === 'Profit'" style="color: Green; " nowrap>{{k.Status}} +</td>
-        <td *ngIf="k.Status === 'Loss'" style="color: red; " nowrap>{{k.Status}} -</td>
+        @if (k.Status === 'Profit') {
+          <td style="color: Green; " nowrap>{{k.Status}} +</td>
+        }
+        @if (k.Status === 'Loss') {
+          <td style="color: red; " nowrap>{{k.Status}} -</td>
+        }
         <td style="color:red"></td>
         <!-- <td style="color:red"></td> -->
         <td style="color:red"></td>
         <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
-  <!-- 
+        <!--
         <td *ngIf="k.user === username && k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run()'>delete</button></td>
         <td *ngIf="k.user === username && k.info === '';"   style="color:red"></td>
         <td *ngIf="k.user === username && k.info === 'deleted';"   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
-       -->
-  
+        -->
       </tr>
-      <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
-  <div style="background-color: #f8f8ff;">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center pagination-sm">
-        <li class="page-item disabled">
-          <a *ngIf="prev1 === null" class="page-link"  aria-label="Previous">
-            <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span> 
+    }
+    <!--<tr id="customers">-->
+    <!--<td scope="row">2</td>-->
+    <!--<td>BA</td>-->
+    <!--<td>3</td>-->
+    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+  <!--</tr>-->
+  <!--<tr id="customers">-->
+  <!--<td scope="row">3</td>-->
+  <!--<td>Accountancy</td>-->
+  <!--<td>3</td>-->
+  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+<div style="background-color: #f8f8ff;">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pagination-sm">
+      <li class="page-item disabled">
+        @if (prev1 === null) {
+          <a class="page-link"  aria-label="Previous">
+            <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
-         
-        </li>
-        <li  class="page-item">
-          <a *ngIf="prev1" class="page-link" (click)="prev()" aria-label="Previous">
+        }
+
+      </li>
+      <li  class="page-item">
+        @if (prev1) {
+          <a class="page-link" (click)="prev()" aria-label="Previous">
             <span   aria-hidden="true">&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
-  
-        </li>
-        <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
-        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-        
-        <li class="page-item disabled">
-          <a  *ngIf="next1 === null" class="page-link"  aria-label="Next">
+        }
+
+      </li>
+      <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
+      <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+
+      <li class="page-item disabled">
+        @if (next1 === null) {
+          <a  class="page-link"  aria-label="Next">
             <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
-          
-        </li>
-  
-        <li class="page-item">
-          <a *ngIf="next1" class="page-link" (click)="next()" aria-label="Next">
+        }
+
+      </li>
+
+      <li class="page-item">
+        @if (next1) {
+          <a class="page-link" (click)="next()" aria-label="Next">
             <span  aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
-  
-        </li>
-      </ul>
-    </nav>
-  
-  </div>
-  
+        }
+
+      </li>
+    </ul>
+  </nav>
+
+</div>
+
 </div>

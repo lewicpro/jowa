@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-ongeza-account',
-  templateUrl: './ongeza-account.component.html',
-  styleUrls: ['./ongeza-account.component.css']
+    selector: 'app-ongeza-account',
+    templateUrl: './ongeza-account.component.html',
+    styleUrls: ['./ongeza-account.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaAccountComponent implements OnInit {
   userData = {
@@ -117,7 +119,7 @@ export class OngezaAccountComponent implements OnInit {
   Register() {
     this.stats ='filed'
 
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.userData, 'Register/').then((result) => {
       this.responseData = result;
@@ -162,12 +164,12 @@ export class OngezaAccountComponent implements OnInit {
 
       }
       
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
   }
 
   UserCreate() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
       this.responseData = result;
@@ -177,7 +179,7 @@ export class OngezaAccountComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert(' Sorry, Imeishia pa kumtengeneza user');
 
@@ -185,7 +187,7 @@ export class OngezaAccountComponent implements OnInit {
 
   }
   UserInfo() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     //.log('passed');
     this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
       this.responseData = result;
@@ -195,7 +197,7 @@ export class OngezaAccountComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       // this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('Imeishia pa kutengeneza taarifa za hesabu');
 

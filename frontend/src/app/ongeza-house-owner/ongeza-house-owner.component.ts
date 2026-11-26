@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-ongeza-house-owner',
-  templateUrl: './ongeza-house-owner.component.html',
-  styleUrls: ['./ongeza-house-owner.component.css']
+    selector: 'app-ongeza-house-owner',
+    templateUrl: './ongeza-house-owner.component.html',
+    styleUrls: ['./ongeza-house-owner.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaHouseOwnerComponent implements OnInit {
   userData = {'Username': '',
@@ -113,7 +115,7 @@ export class OngezaHouseOwnerComponent implements OnInit {
 
 
   Register() {
-    this.ngProgress.start();
+    this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.userData, 'Register/').then((result) => {
       this.responseData = result;
@@ -143,12 +145,12 @@ export class OngezaHouseOwnerComponent implements OnInit {
 
 
       }
-      this.ngProgress.done();
+      this.ngProgress.ref().complete();
 
   }
 
   UserCreate() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     // console.log('passed');
     this.rest_framework.getLoginPosts(this.Created, 'UserCreate/').then((result) => {
       this.responseData = result;
@@ -158,7 +160,7 @@ export class OngezaHouseOwnerComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 
@@ -166,7 +168,7 @@ export class OngezaHouseOwnerComponent implements OnInit {
 
   }
   UserInfo() {
-    // this.ngProgress.start();
+    // this.ngProgress.ref().start();
     //.log('passed');
     this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
       this.responseData = result;
@@ -176,7 +178,7 @@ export class OngezaHouseOwnerComponent implements OnInit {
       // localStorage.setItem('userData2', this.responseData);
       // localStorage.setItem('user', this.userData.Username);
       this.router.navigate(['/Admindash/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 

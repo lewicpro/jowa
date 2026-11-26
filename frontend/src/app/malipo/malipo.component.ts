@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-malipo',
-  templateUrl: './malipo.component.html',
-  styleUrls: ['./malipo.component.css']
+    selector: 'app-malipo',
+    templateUrl: './malipo.component.html',
+    styleUrls: ['./malipo.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class MalipoComponent implements OnInit {
   malipo;

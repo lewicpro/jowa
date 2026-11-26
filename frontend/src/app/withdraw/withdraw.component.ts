@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-withdraw',
-  templateUrl: './withdraw.component.html',
-  styleUrls: ['./withdraw.component.css']
+    selector: 'app-withdraw',
+    templateUrl: './withdraw.component.html',
+    styleUrls: ['./withdraw.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WithdrawComponent implements OnInit {
   all;

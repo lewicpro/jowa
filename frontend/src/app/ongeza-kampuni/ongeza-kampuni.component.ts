@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-ongeza-kampuni',
-  templateUrl: './ongeza-kampuni.component.html',
-  styleUrls: ['./ongeza-kampuni.component.css']
+    selector: 'app-ongeza-kampuni',
+    templateUrl: './ongeza-kampuni.component.html',
+    styleUrls: ['./ongeza-kampuni.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OngezaKampuniComponent implements OnInit {
  // foods = [
@@ -79,7 +81,7 @@ export class OngezaKampuniComponent implements OnInit {
 
  Microfinance() {
   this.userData.service_officer = this.reg.Username;
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.wapangajiPost(this.userData, 'Microcredit/').then((result) => {
      this.responseData = result;
@@ -93,7 +95,7 @@ export class OngezaKampuniComponent implements OnInit {
      this.reg.company_username = this.userData.company_username;
      this.register()
      this.UserCreate()
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -117,7 +119,7 @@ export class OngezaKampuniComponent implements OnInit {
  }
 
  UserCreate() {
-   this.ngProgress.start();
+   this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.wapangajiPost(this.Created, 'UserCreate/').then((result) => {
      this.responseData = result;
@@ -127,7 +129,7 @@ export class OngezaKampuniComponent implements OnInit {
     //  localStorage.setItem('userData2', this.responseData);
     //  localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Admindash/Wateja']);
-     this.ngProgress.done();
+     this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 
@@ -140,7 +142,7 @@ export class OngezaKampuniComponent implements OnInit {
  register(){
 
     
-        // this.ngProgress.start();
+        // this.ngProgress.ref().start();
     //  console.log('passed');
     this.rest_framework.wapangajiPost(this.reg, 'Register/').then((resulta) => {
       this.responseData = resulta;
@@ -150,7 +152,7 @@ export class OngezaKampuniComponent implements OnInit {
     //  localStorage.setItem('userData2', this.responseData);
     //  localStorage.setItem('user', this.userData.Username);
       this.router.navigate(['/Sub/Ongeza-mkopo']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 
@@ -161,7 +163,7 @@ export class OngezaKampuniComponent implements OnInit {
  }
 
  UserInfo() {
-   // this.ngProgress.start();
+   // this.ngProgress.ref().start();
   //  console.log('passed');
    this.rest_framework.getLoginPosts(this.Infos, 'Info/').then((result) => {
      this.responseData = result;
@@ -171,7 +173,7 @@ export class OngezaKampuniComponent implements OnInit {
     //  localStorage.setItem('userData2', this.responseData);
     //  localStorage.setItem('user', this.userData.Username);
      this.router.navigate(['/Sub/Ongeza-mkopo']);
-     // this.ngProgress.done();
+     // this.ngProgress.ref().complete();
      }, (err) => {
        alert('error');
 

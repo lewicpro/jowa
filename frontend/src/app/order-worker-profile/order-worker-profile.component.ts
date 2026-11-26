@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-order-worker-profile',
-  templateUrl: './order-worker-profile.component.html',
-  styleUrls: ['./order-worker-profile.component.css']
+    selector: 'app-order-worker-profile',
+    templateUrl: './order-worker-profile.component.html',
+    styleUrls: ['./order-worker-profile.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderWorkerProfileComponent implements OnInit {
   all;

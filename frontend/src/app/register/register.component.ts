@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '../../../node_modules/@angular/router';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   responseData;
@@ -81,7 +83,7 @@ export class RegisterComponent implements OnInit {
 
 
   Register() {
-     this.ngProgress.start();
+     this.ngProgress.ref().start();
     this.rest_framework.getLoginPosts(this.userData, 'Register/').then((result) => {
       this.responseData = result;
       // alert(this.userData.username)
@@ -90,12 +92,12 @@ export class RegisterComponent implements OnInit {
       // this.UserCreate();
       // this.UserInfo();
       this.router.navigate(['/Admindash/Wateja']);
-      // this.ngProgress.done();
+      // this.ngProgress.ref().complete();
       }, (err) => {
         alert('error');
 
       });
-       this.ngProgress.done();
+       this.ngProgress.ref().complete();
   }
 
 }

@@ -1,507 +1,486 @@
 <!-- <div class="d-flex justify-content-center">
-  <button (click)="fuo()">click</button>
-  <mat-form-field style="width:40%;">
+<button (click)="fuo()">click</button>
+<mat-form-field style="width:40%;">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
+</mat-form-field>
 </div> -->
 <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
   <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">Form ya kupangisha</h4>
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <thead>
       <!-- <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Jina kamili</th>
-        <th scope="col" title="Idadi ya miezi">Simu</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Nyumba number</th> -->
-        
-      <!-- </tr> --> 
-    </thead>
-    <tbody >
-      <!-- <div >
-        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-        
-      </div> -->
-        <tr style="cursor:pointer" id="customers">
-            <!-- <td class="text-center">muda wa sasa</td> -->
-          
-            <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  [(ngModel)]="Created.full_name" name="full_name" placeholder="jina kamili" (keyup)="Mir()"></td>
-            <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  [(ngModel)]="Created.name" name="name" placeholder="jina kamili" (keyup)="Mir()"></td>
-            <td><select [(ngModel)]="mor" (change)="ajir()"  style="width:100%;">
-                <option selected>Choose...</option>
-                <option  value="ajira">ajira</option>
-                <option value="biashara">biashara</option>
-                <option value="mkulima">mkulima</option>
-            </select></td>
-            <td><input   style="border-radius:3px; width:100%; background:white" type="text"  [(ngModel)]="Created.simu" name="simu" placeholder="Simu"></td>
-            <td nowrap><input  style="border-radius:3px; background:white;  width:100%;" [(ngModel)]="Created.anwani" name="anwani" placeholder="Anwani" type="text"   nowrap></td>
-            <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
- 
-          </tr>
-      <!-- <tr style="cursor:pointer" id="customers"  >
-        <td > </td>
-        <td  style="white-space: nowrap"></td>
-        <td  style="white-space: nowrap"></td>
-        <td  style="white-space: nowrap"></td> -->
-        <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
-        <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
-     
+      <th scope="col">Tarehe</th>
 
-      <!-- </tr> -->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
+      <th scope="col" title="Loan (L+I+6)">Jina kamili</th>
+      <th scope="col" title="Idadi ya miezi">Simu</th>
+      <th scope="col" title="Interest Paid">Riba</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Nyumba number</th> -->
 
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="mor === 'ajira'">
-      <!-- <thead>
-        <tr>
-          <th scope="col">Tarehe</th>
-         
-          <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-          <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-          <!-- <th scope="col" title="Action">Riba</th> -->
-          
-        <!-- </tr> -->
-      <!-- </thead> -->
-      <tbody >
-  
-  <tr style="cursor:pointer" id="customers" >
+    <!-- </tr> -->
+  </thead>
+  <tbody >
+    <!-- <div >
+    <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+  </div> -->
+  <tr style="cursor:pointer" id="customers">
+    <!-- <td class="text-center">muda wa sasa</td> -->
+
+    <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  [(ngModel)]="Created.full_name" name="full_name" placeholder="jina kamili" (keyup)="Mir()"></td>
+    <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  [(ngModel)]="Created.name" name="name" placeholder="jina kamili" (keyup)="Mir()"></td>
+    <td><select [(ngModel)]="mor" (change)="ajir()"  style="width:100%;">
+      <option selected>Choose...</option>
+      <option  value="ajira">ajira</option>
+      <option value="biashara">biashara</option>
+      <option value="mkulima">mkulima</option>
+    </select></td>
+    <td><input   style="border-radius:3px; width:100%; background:white" type="text"  [(ngModel)]="Created.simu" name="simu" placeholder="Simu"></td>
+    <td nowrap><input  style="border-radius:3px; background:white;  width:100%;" [(ngModel)]="Created.anwani" name="anwani" placeholder="Anwani" type="text"   nowrap></td>
+    <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+
+  </tr>
+  <!-- <tr style="cursor:pointer" id="customers"  >
+  <td > </td>
+  <td  style="white-space: nowrap"></td>
+  <td  style="white-space: nowrap"></td>
+  <td  style="white-space: nowrap"></td> -->
+  <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
+  <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
+
+
+<!-- </tr> -->
+<!--<tr id="customers">-->
+<!--<td scope="row">2</td>-->
+<!--<td>BA</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+<!--<tr id="customers">-->
+<!--<td scope="row">3</td>-->
+<!--<td>Accountancy</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+
+@if (mor === 'ajira') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+    <!-- <thead>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+      <th scope="col" title="Interest Paid">Riba</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-    
       <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa" placeholder="mahala ulipoajiriwa"></td>
       <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text"  placeholder="idara unapofanyia" [(ngModel)]="Created.idara" name="idara"></td>
       <td><input   style="border-radius:3px; background:white;  width:100%;" type="text"  placeholder="wilaya" ></td>
       <td nowrap><input  style="border-radius:3px; background:ghostwhite;  width:100%;" [(ngModel)]="Created.shughuri" name="shughuri" value="ajira" type="text"   nowrap disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-  
     </tr>
   </tbody>
-  </table>
+</table>
+}
 
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="mor === 'biashara'">
-      <!-- <thead>
-        <tr>
-          <th scope="col">Tarehe</th>
-         
-          <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-          <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-          <!-- <th scope="col" title="Action">Riba</th> -->
-          
-        <!-- </tr> -->
-      <!-- </thead> -->
-      <tbody >
-  
-  <tr style="cursor:pointer" id="customers" >
+@if (mor === 'biashara') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+    <!-- <thead>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+      <th scope="col" title="Interest Paid">Riba</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-    
       <td><input    style="border-radius:3px; background:white;  width:100%;"  type="text" placeholder="mahala unapofanyia biashara" [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa"></td>
       <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  placeholder="aina ya biashara" [(ngModel)]="Created.idara" name="idara" ></td>
       <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  placeholder="wilaya" [(ngModel)]="Created.wilaya_kikazi" name="wilaya_kikazi"></td>
       <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" value="biashara" [(ngModel)]="Created.shughuri" name="shughuri" placeholder="biashara" type="text"   nowrap  disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-  
     </tr>
   </tbody>
-  </table>
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="mor === 'mkulima'">
-      <!-- <thead>
-        <tr>
-          <th scope="col">Tarehe</th>
-         
-          <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-          <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-          <!-- <th scope="col" title="Action">Riba</th> -->
-          
-        <!-- </tr> -->
-      <!-- </thead> -->
-      <tbody >
-  
-  <tr style="cursor:pointer" id="customers" >
+</table>
+}
+@if (mor === 'mkulima') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+    <!-- <thead>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+      <th scope="col" title="Interest Paid">Riba</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-    
       <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name = "ulipoajiriwa" placeholder="mahala unapofanyia kilimo"></td>
       <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.idara" name = "idara" placeholder="aina ya kilimo" ></td>
       <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  [(ngModel)]="Created.wilaya_kikazi" name = "wilaya_kikazi" placeholder="wilaya" ></td>
       <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" [(ngModel)]="Created.shughuri" name="shughuri" value="kilimo" placeholder="kilimo" type="text"   nowrap  disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-  
     </tr>
   </tbody>
-  </table>
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
-    <!-- <thead>
-      <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-      <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Riba</th> -->
-        
-      <!-- </tr> -->
-    <!-- </thead> -->
-    <tbody >
-      <!-- <div >
-        <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-        
-      </div> -->
-        <tr style="cursor:pointer" id="customers">
-            <!-- <td class="text-center">muda wa sasa</td> -->
-          
-            <td><input     style="border-radius:3px; background:white; width:100%;" placeholder="Nyumba number" [(ngModel)]="Created.nyumba_number" name="nyumba_number"  type="text" ></td>
-            <td>
-          
-                <select [(ngModel)]="Created.aina_ya_chumba" style="width:90%;">
-                <option selected > Choose chumba...</option>
-                <option  value="vyumba2 na sebule na choo">vyumba2 na sebule na choo</option>
-                <option  value="vyumba2 na sebule bila choo">vyumba2 na sebule bila choo</option>
-                <option value="chumba kimoja na choo">chumba kimoja na choo</option>
-                <option value="chumba kimoja bila choo">chumba kimoja bila choo </option>
-            </select>
-          </td>
-            <td>
-              <select [(ngModel)]="value" (change)="mimi(this.value)" id="inputGroupSelect01" style="width:100%;">
-                  <option selected>Choose wakati wa malipo. ..</option>
-                  <option  value="1">kila baada ya mwezi 1</option>
-                  <option value="2">kila baada ya miezi 2</option>
-                  <option value="3">kila baada ya miezi 3 </option>
-                  <option value="4">kila baada ya mwaka </option>
-              </select>
-          </td>
-            <td nowrap><input   style="border-radius:3px; background:white; width:100%;" placeholder="kiasi kinacholipwa" type="text" [(ngModel)]="Created.kiasi" name="kiasi"   nowrap></td>
-            <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-        
-          </tr>
+</table>
+}
+<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+  <!-- <thead>
+  <tr>
+    <th scope="col">Tarehe</th>
+
+    <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+    <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <th scope="col" title="Interest Paid">Riba</th>
+    <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+    <!-- <th scope="col" title="Action">Riba</th> -->
+
+  <!-- </tr> -->
+<!-- </thead> -->
+<tbody >
+  <!-- <div >
+  <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+</div> -->
+<tr style="cursor:pointer" id="customers">
+  <!-- <td class="text-center">muda wa sasa</td> -->
+
+  <td><input     style="border-radius:3px; background:white; width:100%;" placeholder="Nyumba number" [(ngModel)]="Created.nyumba_number" name="nyumba_number"  type="text" ></td>
+  <td>
+
+    <select [(ngModel)]="Created.aina_ya_chumba" style="width:90%;">
+      <option selected > Choose chumba...</option>
+      <option  value="vyumba2 na sebule na choo">vyumba2 na sebule na choo</option>
+      <option  value="vyumba2 na sebule bila choo">vyumba2 na sebule bila choo</option>
+      <option value="chumba kimoja na choo">chumba kimoja na choo</option>
+      <option value="chumba kimoja bila choo">chumba kimoja bila choo </option>
+    </select>
+  </td>
+  <td>
+    <select [(ngModel)]="value" (change)="mimi(this.value)" id="inputGroupSelect01" style="width:100%;">
+      <option selected>Choose wakati wa malipo. ..</option>
+      <option  value="1">kila baada ya mwezi 1</option>
+      <option value="2">kila baada ya miezi 2</option>
+      <option value="3">kila baada ya miezi 3 </option>
+      <option value="4">kila baada ya mwaka </option>
+    </select>
+  </td>
+  <td nowrap><input   style="border-radius:3px; background:white; width:100%;" placeholder="kiasi kinacholipwa" type="text" [(ngModel)]="Created.kiasi" name="kiasi"   nowrap></td>
+  <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+
+</tr>
 
 
-      
-            
-            
-       
-        
-        
-      
-
-      <!-- <tr style="cursor:pointer" id="customers"  >
-        <td > </td>
-        <td  style="white-space: nowrap"></td>
-        <td  style="white-space: nowrap"></td>
-        <td  style="white-space: nowrap"></td> -->
-        <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
-        <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
 
 
-      <!-- </tr> -->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-        <!--<td scope="row">3</td>-->
-        <!--<td>Accountancy</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
-  
+
+
+
+
+
+
+<!-- <tr style="cursor:pointer" id="customers"  >
+<td > </td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td> -->
+<!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
+<!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
+
+
+<!-- </tr> -->
+<!--<tr id="customers">-->
+<!--<td scope="row">2</td>-->
+<!--<td>BA</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+<!--<tr id="customers">-->
+<!--<td scope="row">3</td>-->
+<!--<td>Accountancy</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+
 
 
 
 <!-- <div style="padding:5px"></div> -->
-<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="value === '1'">
+@if (value === '1') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <!-- <thead>
-      <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
       <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Riba</th> -->
-        
-      <!-- </tr> -->
-    <!-- </thead> -->
-    <tbody >
-
-<tr style="cursor:pointer" id="customers" >
-    <!-- <td class="text-center">muda wa sasa</td> -->
-  
-    <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.mwezi1" name="mwezi1" placeholder="Kila baada ya mwezi mmoja" (keyup)="calc()"></td>
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili" disabled></td>
-    <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-    <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
-    <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-
-  </tr>
-</tbody>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
+      <!-- <td class="text-center">muda wa sasa</td> -->
+      <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.mwezi1" name="mwezi1" placeholder="Kila baada ya mwezi mmoja" (keyup)="calc()"></td>
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili" disabled></td>
+      <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+    </tr>
+  </tbody>
 </table>
-<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="value === '2'">
+}
+@if (value === '2') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <!-- <thead>
-      <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
       <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Riba</th> -->
-        
-      <!-- </tr> -->
-    <!-- </thead> -->
-    <tbody >
-
-<tr style="cursor:pointer" id="customers" >
-    <!-- <td class="text-center">muda wa sasa</td> -->
-  
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja" disabled></td>
-    <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.miezi2" name="miezi2" placeholder="kila baada ya miezi miwili" (keyup)="calc()"></td>
-    <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-    <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
-    <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-
-  </tr>
-</tbody>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
+      <!-- <td class="text-center">muda wa sasa</td> -->
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja" disabled></td>
+      <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.miezi2" name="miezi2" placeholder="kila baada ya miezi miwili" (keyup)="calc()"></td>
+      <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+    </tr>
+  </tbody>
 </table>
-<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="value === '3'">
+}
+@if (value === '3') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <!-- <thead>
-      <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
       <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Riba</th> -->
-        
-      <!-- </tr> -->
-    <!-- </thead> -->
-    <tbody >
-
-<tr style="cursor:pointer" id="customers" >
-    <!-- <td class="text-center">muda wa sasa</td> -->
-  
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
-    <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" [(ngModel)]="Created.miezi3" name="miezi3" (keyup)="calc()"> </td>
-    <td nowrap> <input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
-    <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-
-  </tr>
-</tbody>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
+      <!-- <td class="text-center">muda wa sasa</td> -->
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
+      <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" [(ngModel)]="Created.miezi3" name="miezi3" (keyup)="calc()"> </td>
+      <td nowrap> <input  style="border-radius:3px; background:ghostwhite; width:100%;" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+    </tr>
+  </tbody>
 </table>
-<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   "  *ngIf="value === '4'">
+}
+@if (value === '4') {
+  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <!-- <thead>
-      <tr>
-        <th scope="col">Tarehe</th>
-       
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <tr>
+      <th scope="col">Tarehe</th>
+      <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+      <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
       <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <!-- <th scope="col" title="Action">Riba</th> -->
-        
-      <!-- </tr> -->
-    <!-- </thead> -->
-    <tbody >
-
-<tr style="cursor:pointer" id="customers" >
-    <!-- <td class="text-center">muda wa sasa</td> -->
-  
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
-    <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
-    <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-    <td nowrap><input  style="border-radius:3px; background:white; width:100%;" placeholder="kila baada ya mwaka" type="text" [(ngModel)]="Created.year" name="year" (keyup)="calc()"> </td>
-    <!-- <td> <input [(ngModel)]="userData.Balance" type="text"></td> -->
-
-  </tr>
-</tbody>
+      <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+      <!-- <th scope="col" title="Action">Riba</th> -->
+    <!-- </tr> -->
+  <!-- </thead> -->
+  <tbody >
+    <tr style="cursor:pointer" id="customers" >
+      <!-- <td class="text-center">muda wa sasa</td> -->
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite; width:100%;"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
+      <td><input   style="border-radius:3px; background:ghostwhite; width:100%;" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:white; width:100%;" placeholder="kila baada ya mwaka" type="text" [(ngModel)]="Created.year" name="year" (keyup)="calc()"> </td>
+      <!-- <td> <input [(ngModel)]="userData.Balance" type="text"></td> -->
+    </tr>
+  </tbody>
 </table>
+}
 <div style="padding:20px"></div>
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
-      <thead>
-        <!-- <tr>
-          <th scope="col">Tarehe</th>
-         
-          <th scope="col" title="Loan (L+I+6)">Jina kamili</th>
-          <th scope="col" title="Idadi ya miezi">Simu</th>
-          <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-          <!-- <th scope="col" title="Action">Nyumba number</th> -->
-          
-        <!-- </tr> --> 
-      </thead>
-      <tbody >
-        <!-- <div >
-          <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-          
-        </div> -->
-          <tr style="cursor:pointer" id="customers">
-              <!-- <td class="text-center">muda wa sasa</td> -->
-            
-              <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.kata" name="kata" placeholder="kata"></td>
-              <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  placeholder="wilaya" [(ngModel)]="Created.wilaya" name="wilaya"></td>
-              <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  placeholder="mkoa" [(ngModel)]="Created.mkoa" name="mkoa"></td>
-              <td nowrap><input   style="border-radius:3px; background:white; width:100%;" placeholder="eneo" type="text" [(ngModel)]="Created.eneo" name="eneo"   nowrap></td>
-              <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-   
-            </tr>
-        <!-- <tr style="cursor:pointer" id="customers"  >
-          <td > </td>
-          <td  style="white-space: nowrap"></td>
-          <td  style="white-space: nowrap"></td>
-          <td  style="white-space: nowrap"></td> -->
-          <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
-          <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
-       
-  
-        <!-- </tr> -->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
-      <!-- <thead>
-        <tr>
-          <th scope="col">Tarehe</th>
-         
-          <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-          <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-          <!-- <th scope="col" title="Action">Riba</th> -->
-          
-        <!-- </tr> -->
-      <!-- </thead> -->
-      <tbody >
-        <!-- <div >
-          <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-          
-        </div> -->
-          <tr style="cursor:pointer" id="customers">
-              <!-- <td class="text-center">muda wa sasa</td> -->
-            
-              <td><input   style="border-radius:3px; background:white; width:100%;" placeholder="Jina la mdhamini" [(ngModel)]="Created.jina_mdhamini" name="jina_mdhamini"  type="text" ></td>
-              <td><input     style="border-radius:3px; background:white; width:100%;" placeholder="Kazi ya mhamini"  type="text" [(ngModel)]="Created.cheo" name="cheo" ></td>
-              <td><input  style="border-radius:3px; background:white; width:100%;" placeholder="Simu ya mdhamini" type="text" [(ngModel)]="Created.simu_dalali" name="simu_dalali" ></td>
-              <td nowrap><input  style="border-radius:3px; background:white; width:100%;" placeholder="mahusiano" type="text"   nowrap></td>
-              <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-          
-            </tr>
-        <!-- <tr style="cursor:pointer" id="customers"  > -->
-          <!-- <td > </td>
-          <td  style="white-space: nowrap"></td>
-          <td  style="white-space: nowrap"></td>
-          <td  style="white-space: nowrap"></td> -->
-          <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
-          <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
-  
-  
-        <!-- </tr> -->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
+<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+  <thead>
+    <!-- <tr>
+    <th scope="col">Tarehe</th>
+
+    <th scope="col" title="Loan (L+I+6)">Jina kamili</th>
+    <th scope="col" title="Idadi ya miezi">Simu</th>
+    <th scope="col" title="Interest Paid">Riba</th>
+    <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+    <!-- <th scope="col" title="Action">Nyumba number</th> -->
+
+  <!-- </tr> -->
+</thead>
+<tbody >
+  <!-- <div >
+  <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+</div> -->
+<tr style="cursor:pointer" id="customers">
+  <!-- <td class="text-center">muda wa sasa</td> -->
+
+  <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  [(ngModel)]="Created.kata" name="kata" placeholder="kata"></td>
+  <td><input    style="border-radius:3px; background:white; width:100%;"  type="text"  placeholder="wilaya" [(ngModel)]="Created.wilaya" name="wilaya"></td>
+  <td><input   style="border-radius:3px; background:white; width:100%;" type="text"  placeholder="mkoa" [(ngModel)]="Created.mkoa" name="mkoa"></td>
+  <td nowrap><input   style="border-radius:3px; background:white; width:100%;" placeholder="eneo" type="text" [(ngModel)]="Created.eneo" name="eneo"   nowrap></td>
+  <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+
+</tr>
+<!-- <tr style="cursor:pointer" id="customers"  >
+<td > </td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td> -->
+<!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
+<!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
 
 
-    <div style="padding:20px;"></div>
+<!-- </tr> -->
+<!--<tr id="customers">-->
+<!--<td scope="row">2</td>-->
+<!--<td>BA</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+<!--<tr id="customers">-->
+<!--<td scope="row">3</td>-->
+<!--<td>Accountancy</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
+  <!-- <thead>
+  <tr>
+    <th scope="col">Tarehe</th>
 
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-      <thead>
-        <tr>
-          
-         
-          <th scope="col" title="Loan (L+I+6)"> Jumla ya kiasi kinacholipwa</th>
-          <th scope="col" title="Idadi ya miezi">Faida</th>
-          <th scope="col" title="Interest Paid">Pesa ilinayolipwa kwa mwezi</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Note, maelezo mafupi</th>
-          <!-- <th scope="col" title="Action">Mwezi wa nne</th> -->
-          
-        </tr>
-      </thead>
-      <tbody >
-        <!-- <div >
-          <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
-          
-        </div> -->
-          
-        <tr style="cursor:pointer" id="customers"  >
-          <td  style="white-space: nowrap; color:#666; font-size:12px">Nyumba inauwezo wa kupangisha watu: </td>
-          <!-- <td  style="white-space: nowrap"></td> -->
-          <!-- <td  style="white-space: nowrap"><span *ngIf="totalAmount">Tsh</span>  {{totalAmount}}</td> -->
-          <!-- <td  style="white-space: nowrap"><span *ngIf="kilamwezi">Tsh</span> {{kilamwezi}}</td> -->
-          <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
-          <td  style="white-space: nowrap">{{k.Balance}}</td> -->
-          <td  style="white-space: nowrap"><input [(ngModel)]="caution" placeholder="Caution money"   type="text" ></td>
-  
-        </tr>
+    <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
+    <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
+    <th scope="col" title="Interest Paid">Riba</th>
+    <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
+    <!-- <th scope="col" title="Action">Riba</th> -->
 
-        <tr style="cursor:pointer" id="customers"  >
-            <td  style="white-space: nowrap; color:#666; font-size:12px">Idadi ya watu waliopangishwa ni:</td>
-            <!-- <td  style="white-space: nowrap"></td> -->
-            <!-- <td  style="white-space: nowrap"><span *ngIf="totalAmount">Tsh</span>  {{totalAmount}}</td> -->
-            <!-- <td  style="white-space: nowrap"><span *ngIf="kilamwezi">Tsh</span> {{kilamwezi}}</td> -->
-            <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
-            <td  style="white-space: nowrap">{{k.Balance}}</td> -->
-            <td  style="white-space: nowrap"><input   type="text" ></td>
-    
-          </tr>
-        <!--<tr id="customers">-->
-          <!--<td scope="row">2</td>-->
-          <!--<td>BA</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-        <!--<tr id="customers">-->
-          <!--<td scope="row">3</td>-->
-          <!--<td>Accountancy</td>-->
-          <!--<td>3</td>-->
-          <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-        <!--</tr>-->
-      </tbody>
-    </table>
-    <div style="padding:10px;"></div>
-    <button style="width:100%" type="submit" (click)="UserCreate()">TUMA</button>
-  </div>
+  <!-- </tr> -->
+<!-- </thead> -->
+<tbody >
+  <!-- <div >
+  <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+</div> -->
+<tr style="cursor:pointer" id="customers">
+  <!-- <td class="text-center">muda wa sasa</td> -->
+
+  <td><input   style="border-radius:3px; background:white; width:100%;" placeholder="Jina la mdhamini" [(ngModel)]="Created.jina_mdhamini" name="jina_mdhamini"  type="text" ></td>
+  <td><input     style="border-radius:3px; background:white; width:100%;" placeholder="Kazi ya mhamini"  type="text" [(ngModel)]="Created.cheo" name="cheo" ></td>
+  <td><input  style="border-radius:3px; background:white; width:100%;" placeholder="Simu ya mdhamini" type="text" [(ngModel)]="Created.simu_dalali" name="simu_dalali" ></td>
+  <td nowrap><input  style="border-radius:3px; background:white; width:100%;" placeholder="mahusiano" type="text"   nowrap></td>
+  <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
+
+</tr>
+<!-- <tr style="cursor:pointer" id="customers"  > -->
+<!-- <td > </td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td>
+<td  style="white-space: nowrap"></td> -->
+<!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
+<!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
+
+
+<!-- </tr> -->
+<!--<tr id="customers">-->
+<!--<td scope="row">2</td>-->
+<!--<td>BA</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+<!--<tr id="customers">-->
+<!--<td scope="row">3</td>-->
+<!--<td>Accountancy</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+
+
+<div style="padding:20px;"></div>
+
+<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+  <thead>
+    <tr>
+
+
+      <th scope="col" title="Loan (L+I+6)"> Jumla ya kiasi kinacholipwa</th>
+      <th scope="col" title="Idadi ya miezi">Faida</th>
+      <th scope="col" title="Interest Paid">Pesa ilinayolipwa kwa mwezi</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">Note, maelezo mafupi</th>
+      <!-- <th scope="col" title="Action">Mwezi wa nne</th> -->
+
+    </tr>
+  </thead>
+  <tbody >
+    <!-- <div >
+    <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+
+  </div> -->
+
+  <tr style="cursor:pointer" id="customers"  >
+    <td  style="white-space: nowrap; color:#666; font-size:12px">Nyumba inauwezo wa kupangisha watu: </td>
+    <!-- <td  style="white-space: nowrap"></td> -->
+    <!-- <td  style="white-space: nowrap"><span *ngIf="totalAmount">Tsh</span>  {{totalAmount}}</td> -->
+    <!-- <td  style="white-space: nowrap"><span *ngIf="kilamwezi">Tsh</span> {{kilamwezi}}</td> -->
+    <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
+    <td  style="white-space: nowrap">{{k.Balance}}</td> -->
+    <td  style="white-space: nowrap"><input [(ngModel)]="caution" placeholder="Caution money"   type="text" ></td>
+
+  </tr>
+
+  <tr style="cursor:pointer" id="customers"  >
+    <td  style="white-space: nowrap; color:#666; font-size:12px">Idadi ya watu waliopangishwa ni:</td>
+    <!-- <td  style="white-space: nowrap"></td> -->
+    <!-- <td  style="white-space: nowrap"><span *ngIf="totalAmount">Tsh</span>  {{totalAmount}}</td> -->
+    <!-- <td  style="white-space: nowrap"><span *ngIf="kilamwezi">Tsh</span> {{kilamwezi}}</td> -->
+    <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
+    <td  style="white-space: nowrap">{{k.Balance}}</td> -->
+    <td  style="white-space: nowrap"><input   type="text" ></td>
+
+  </tr>
+  <!--<tr id="customers">-->
+  <!--<td scope="row">2</td>-->
+  <!--<td>BA</td>-->
+  <!--<td>3</td>-->
+  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+<!--<tr id="customers">-->
+<!--<td scope="row">3</td>-->
+<!--<td>Accountancy</td>-->
+<!--<td>3</td>-->
+<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
+<!--</tr>-->
+</tbody>
+</table>
+<div style="padding:10px;"></div>
+<button style="width:100%" type="submit" (click)="UserCreate()">TUMA</button>
+</div>

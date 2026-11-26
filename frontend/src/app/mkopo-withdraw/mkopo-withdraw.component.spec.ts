@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MkopoWithdrawComponent } from './mkopo-withdraw.component';
 
@@ -6,7 +6,7 @@ describe('MkopoWithdrawComponent', () => {
   let component: MkopoWithdrawComponent;
   let fixture: ComponentFixture<MkopoWithdrawComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MkopoWithdrawComponent ]
     })

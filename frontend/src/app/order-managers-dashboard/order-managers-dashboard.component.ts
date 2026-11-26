@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-order-managers-dashboard',
-  templateUrl: './order-managers-dashboard.component.html',
-  styleUrls: ['./order-managers-dashboard.component.css']
+    selector: 'app-order-managers-dashboard',
+    templateUrl: './order-managers-dashboard.component.html',
+    styleUrls: ['./order-managers-dashboard.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderManagersDashboardComponent implements OnInit {
   

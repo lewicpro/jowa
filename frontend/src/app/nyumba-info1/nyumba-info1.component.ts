@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-nyumba-info1',
-  templateUrl: './nyumba-info1.component.html',
-  styleUrls: ['./nyumba-info1.component.css']
+    selector: 'app-nyumba-info1',
+    templateUrl: './nyumba-info1.component.html',
+    styleUrls: ['./nyumba-info1.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaInfo1Component implements OnInit {
   malip;

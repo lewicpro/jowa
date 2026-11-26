@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
 @Component({
-  selector: 'app-owner-kitambulisho',
-  templateUrl: './owner-kitambulisho.component.html',
-  styleUrls: ['./owner-kitambulisho.component.css']
+    selector: 'app-owner-kitambulisho',
+    templateUrl: './owner-kitambulisho.component.html',
+    styleUrls: ['./owner-kitambulisho.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OwnerKitambulishoComponent implements OnInit {
   imageUrl;

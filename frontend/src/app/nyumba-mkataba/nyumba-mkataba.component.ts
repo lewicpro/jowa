@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { NgProgress } from 'ngx-progressbar';
 @Component({
-  selector: 'app-nyumba-mkataba',
-  templateUrl: './nyumba-mkataba.component.html',
-  styleUrls: ['./nyumba-mkataba.component.css']
+    selector: 'app-nyumba-mkataba',
+    templateUrl: './nyumba-mkataba.component.html',
+    styleUrls: ['./nyumba-mkataba.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NyumbaMkatabaComponent implements OnInit {
   imageUrl;

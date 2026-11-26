@@ -1,252 +1,255 @@
 
 <ng-progress></ng-progress>
 <form  #form="ngForm" (ngSubmit)="Register()">
-    <div style="padding:20px;"></div>
-    
-    <div class="d-flex justify-content-center">
-      
-        <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI  WORKER</h4></div>
-    
+  <div style="padding:20px;"></div>
+
+  <div class="d-flex justify-content-center">
+
+    <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI  WORKER</h4></div>
+
+  </div>
+
+
+
+
+  <div style="padding:20px;"></div>
+  <div class="row">
+    <div class="col-sm"><div class="">
+
+      <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+        <div class="input-group-prepend "  style="width:110px;">
+          <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px;" >Jina tambulishi</span>
+        </div>
+        <input [(ngModel)]="userData.user" (input)="validate()" required pattern="[a-zA-Z()123456789!@#$%^&*+_]*" #ng1Form="ngModel"  name="Username" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && userData.user !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
+
+        <div class="is-invalid && ng1Form.touched"  class="invalid-feedback">
+          Please provide user.
+        </div>
+
+
+
+        @if (userData.user === giveoout) {
+          <div style="font-size:10px; color:red;     width: 100%">username exists</div>
+        }
+
+
+
+        <!-- <div>
+        {{giveoout}}
+      </div> -->
+
     </div>
-    
-    
-    
-    
-    <div style="padding:20px;"></div>
-    <div class="row">
-        <div class="col-sm"><div class="">
-      
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-          
-            <div class="input-group-prepend "  style="width:110px;">
-                <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px;" >Jina tambulishi</span>
-            </div>
-            <input [(ngModel)]="userData.user" (input)="validate()" required pattern="[a-zA-Z()123456789!@#$%^&*+_]*" #ng1Form="ngModel"  name="Username" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && userData.user !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
-          
-            <div class="is-invalid && ng1Form.touched"  class="invalid-feedback">
-                Please provide user.
-              </div>
-            
-              
-    
-                <div *ngIf="userData.user === giveoout" style="font-size:10px; color:red;     width: 100%">username exists</div>
-             
-              
-    
-            <!-- <div>
-                {{giveoout}}
-              </div> -->
-    
-          </div>
-        
-     
-         <!-- <span  style="padding-right:55px;" *ngIf="ngForm.invalid">Choose another name {{ngForm.valid}}</span> -->
-         <!-- <span class="help-block"  style="padding-right:55px;" *ngIf="ngForm.invalid">unChoose another name {{ngForm.invalid}}</span> -->
-    
-          
-          </div></div>
-          
-        <div class="col-sm"><div class="">
-      
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-          
-            <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Majina yote</span>
-            </div>
-            <input [(ngModel)]="userData.jina_kamili" required #ngnameForm="ngModel"  name="jina_kamili" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
-                Please provide names.
-              </div>
-        </div>
-          
-          </div></div>
-            <div class="col-sm"><div class="">
-          
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-        
-          <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Password</span>
-          </div>
-          <input [(ngModel)]="userData.Password" name="Password" required #ngnFileForm="ngModel" [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Password.
-          </div>
-        </div>
-        
-        </div></div>
-          </div>
-        <div class="row">
-            <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-              
-                <div class="input-group-prepend" style="width:110px;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Number.</span>
-                </div>
-                <input [(ngModel)]="userData.Phone" name="Phone" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                    Please provide Phone number.
-                  </div>  
-            </div>
-              
-              </div></div>
-            <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-  
-                <div class="input-group-prepend" style="width:110px;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">kazi</span>
-                </div>
-                <input [(ngModel)]="userData.ofisi" name="ofisi" required #ngoffisiForm="ngModel" [class.is-invalid]="ngoffisiForm.invalid && ngoffisiForm.touched"  [class.is-valid]="ngoffisiForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                    Please provide Offisi.
-                  </div> 
-            </div>
-              
-              </div></div>
-            <div class="col-sm"><div class="">
-          
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-        
-          <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account No.</span>
-          </div>
-          <input [(ngModel)]="userData.Account_No" name="Account_No" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-            Please provide Accountno.
-          </div> 
-          <!-- <div *ngIf="userData.Account_no === accountee" style="font-size:10px; color:red;     width: 100%">Account no exists</div> -->
-        </div>
-        
-        </div></div>
-          </div>
-        <div class="row">
-            <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-              
-                <div class="input-group-prepend" style="width:110px;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Kata</span>
-                </div>
-                <input [(ngModel)]="userData.kata" name="kata" required #ngkataForm="ngModel" [class.is-invalid]="ngkataForm.invalid && ngkataForm.touched"  [class.is-valid]="ngkataForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngkataForm.touched"  class="invalid-feedback">
-                    Please provide Kata.
-                  </div> 
-            </div>
-              
-              </div></div>
-            <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-              
-                <div class="input-group-prepend" style="width:110px;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Wilaya</span>
-                </div>
-                <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngwilayaForm="ngModel" [class.is-invalid]="ngwilayaForm.invalid && ngwilayaForm.touched"  [class.is-valid]="ngwilayaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-                    Please provide Wilaya.
-                  </div>   
-            </div>
-              
-              </div></div>
-            <div class="col-sm"><div class="">
-          
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-        
-          <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Mkoa</span>
-          </div>
-          <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" required #ngMkoaForm="ngModel" [class.is-invalid]="ngMkoaForm.invalid && ngMkoaForm.touched"  [class.is-valid]="ngMkoaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngMkoaForm.touched"  class="invalid-feedback">
-            Please provide Mkoa.
-          </div> 
-        </div>
-        
-        </div>
+
+
+    <!-- <span  style="padding-right:55px;" *ngIf="ngForm.invalid">Choose another name {{ngForm.valid}}</span> -->
+    <!-- <span class="help-block"  style="padding-right:55px;" *ngIf="ngForm.invalid">unChoose another name {{ngForm.invalid}}</span> -->
+
+
+  </div></div>
+
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Majina yote</span>
       </div>
-          
+      <input [(ngModel)]="userData.jina_kamili" required #ngnameForm="ngModel"  name="jina_kamili" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
+        Please provide names.
+      </div>
     </div>
-    
-    
-    
-        <div class="row">
-            <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-              
-                <div class="input-group-prepend" style="width:110px;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Email</span>
-                </div>
-                <input [(ngModel)]="userData.email" name="email" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngAgeForm="ngModel" [class.is-invalid]="ngAgeForm.invalid && ngAgeForm.touched"  [class.is-valid]="ngAgeForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngAgeForm.touched"  class="invalid-feedback">
-                    Please provide email.
-                  </div> 
-            </div>
-              
-              </div></div>
-              <div class="col-sm"><div class="">
-          
-                <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-              
-                <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Jinsia</span>
-                </div>
-                <input [(ngModel)]="userData.Jinsia" name="Jinsia" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngJinsiaForm="ngModel" [class.is-invalid]="ngJinsiaForm.invalid && ngJinsiaForm.touched"  [class.is-valid]="ngJinsiaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngJinsiaForm.touched"  class="invalid-feedback">
-                    Please provide Jinsia.
-                  </div> 
-            </div>
-              
-              </div></div>
-            <div class="col-sm"><div class="">
-          
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-        
-          <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Birthdate</span>
-          </div>
-          <input [(ngModel)]="userData.Birthdate" name="Birthdate" type="text" class="form-control" required #ngCardForm="ngModel" [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-            Please provide Birthdate.
-          </div> 
-        </div>
-        
-    
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Password</span>
       </div>
-          
-  
- 
+      <input [(ngModel)]="userData.Password" name="Password" required #ngnFileForm="ngModel" [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+        Please provide Password.
       </div>
-          
     </div>
-        
-    <div style="padding:10px;"></div>
-      
-    <div class="d-flex justify-content-center">
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
-            <mat-form-field>
-                <mat-select placeholder="Manager"  required #ngOwnerForm="ngModel" [class.is-invalid]="ngOwnerForm.invalid && ngOwnerForm.touched"  [class.is-valid]="ngOwnerForm.valid" [(ngModel)]="userData.Manager" name="Manager">
-                  <div *ngFor="let food of all">
-                      <mat-option  [value]="food.user">
-                          {{ food.user }}
-                            
-                          </mat-option> </div>
-                </mat-select>
-                <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
-                    Please provide Owner.
-                  </div> 
-                
-              </mat-form-field>
-              
-        </div>
+
+  </div></div>
+</div>
+<div class="row">
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Number.</span>
       </div>
-        
-        <div class="d-flex justify-content-center">
-            <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
-          
-            <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >Tuma</button>
-            
-            </div>
-          </div>
-    
-        </form>
+      <input [(ngModel)]="userData.Phone" name="Phone" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+        Please provide Phone number.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">kazi</span>
+      </div>
+      <input [(ngModel)]="userData.ofisi" name="ofisi" required #ngoffisiForm="ngModel" [class.is-invalid]="ngoffisiForm.invalid && ngoffisiForm.touched"  [class.is-valid]="ngoffisiForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
+        Please provide Offisi.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account No.</span>
+      </div>
+      <input [(ngModel)]="userData.Account_No" name="Account_No" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+        Please provide Accountno.
+      </div>
+      <!-- <div *ngIf="userData.Account_no === accountee" style="font-size:10px; color:red;     width: 100%">Account no exists</div> -->
+    </div>
+
+  </div></div>
+</div>
+<div class="row">
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Kata</span>
+      </div>
+      <input [(ngModel)]="userData.kata" name="kata" required #ngkataForm="ngModel" [class.is-invalid]="ngkataForm.invalid && ngkataForm.touched"  [class.is-valid]="ngkataForm.valid" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngkataForm.touched"  class="invalid-feedback">
+        Please provide Kata.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Wilaya</span>
+      </div>
+      <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngwilayaForm="ngModel" [class.is-invalid]="ngwilayaForm.invalid && ngwilayaForm.touched"  [class.is-valid]="ngwilayaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+        Please provide Wilaya.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Mkoa</span>
+      </div>
+      <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" required #ngMkoaForm="ngModel" [class.is-invalid]="ngMkoaForm.invalid && ngMkoaForm.touched"  [class.is-valid]="ngMkoaForm.valid" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngMkoaForm.touched"  class="invalid-feedback">
+        Please provide Mkoa.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Email</span>
+      </div>
+      <input [(ngModel)]="userData.email" name="email" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngAgeForm="ngModel" [class.is-invalid]="ngAgeForm.invalid && ngAgeForm.touched"  [class.is-valid]="ngAgeForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngAgeForm.touched"  class="invalid-feedback">
+        Please provide email.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">Jinsia</span>
+      </div>
+      <input [(ngModel)]="userData.Jinsia" name="Jinsia" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngJinsiaForm="ngModel" [class.is-invalid]="ngJinsiaForm.invalid && ngJinsiaForm.touched"  [class.is-valid]="ngJinsiaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngJinsiaForm.touched"  class="invalid-feedback">
+        Please provide Jinsia.
+      </div>
+    </div>
+
+  </div></div>
+  <div class="col-sm"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Birthdate</span>
+      </div>
+      <input [(ngModel)]="userData.Birthdate" name="Birthdate" type="text" class="form-control" required #ngCardForm="ngModel" [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
+        Please provide Birthdate.
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+<div style="padding:10px;"></div>
+
+<div class="d-flex justify-content-center">
+  <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+    <mat-form-field>
+      <mat-select placeholder="Manager"  required #ngOwnerForm="ngModel" [class.is-invalid]="ngOwnerForm.invalid && ngOwnerForm.touched"  [class.is-valid]="ngOwnerForm.valid" [(ngModel)]="userData.Manager" name="Manager">
+        @for (food of all; track food) {
+          <div>
+            <mat-option  [value]="food.user">
+              {{ food.user }}
+            </mat-option> </div>
+          }
+        </mat-select>
+        <div class="is-invalid && ngOwnerForm.touched"  class="invalid-feedback">
+          Please provide Owner.
+        </div>
+
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
+
+      <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >Tuma</button>
+
+    </div>
+  </div>
+
+</form>
