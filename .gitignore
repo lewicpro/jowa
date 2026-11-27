@@ -7,6 +7,12 @@ credentials.json
 /backend/*.png
 /backend/*.jpg
 /backend/*.jpeg
+# other files uploaded through the app land in backend/ too
+/backend/*.pdf
+/backend/*.gif
+/backend/*.webp
+/backend/*.bmp
+/backend/*.heic
 frontend/src/assets/images/lewis document.pdf
 
 # Local databases and user uploads
