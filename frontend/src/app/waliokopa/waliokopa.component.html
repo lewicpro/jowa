@@ -157,7 +157,7 @@
                   <td>{{installment.scheduled_amount | money}}</td>
                   <td>{{installment.paid_amount | money}}</td>
                   <td>{{installment.balance | money}}</td>
-                  <td><span class="installment-status" [ngClass]="'status-' + installment.status.toLowerCase().replace(' ', '-')">{{(installment.status === 'Paid' ? 'Imelipwa' : installment.status === 'Overdue' ? 'Imechelewa' : installment.status === 'Upcoming' ? 'Inakuja' : 'Haijawekwa') | t}}</span></td>
+                  <td><span class="installment-status" [ngClass]="'status-' + installment.status.toLowerCase().replace(' ', '-')">{{ statusLabel(installment.status) | t }}</span></td>
                 </tr>
               }
             </tbody>

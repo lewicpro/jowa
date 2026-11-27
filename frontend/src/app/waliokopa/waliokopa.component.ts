@@ -50,7 +50,8 @@ export class WaliokopaComponent implements OnInit {
     }
 
     this.scheduleLoan = form;
-    if (this.installmentsByLoan[loanId] || this.installmentsLoading[loanId]) {
+    // load again every time, so payments made since the last look are shown
+    if (this.installmentsLoading[loanId]) {
       return;
     }
 
@@ -76,21 +77,49 @@ export class WaliokopaComponent implements OnInit {
     this.closeInstallments();
   }
 
-  getInstallmentStatus(installment: any): string {
-    const balance = Number(installment && installment.balance);
-    if (Number.isFinite(balance) && balance <= 0) {
+  // Paid: nothing left to pay
+  // Partial: some money paid, but not all (e.g. 53,002 of 130,000)
+  // Partial-Overdue: partly paid and the date has passed
+  // Overdue: nothing paid and the date has passed
+  // Upcoming: nothing paid yet, the date has not come
+  getInstallmentStatus(installment) {
+    const balance = Number(installment.balance);
+    const paid = Number(installment.paid_amount) || 0;
+    if (isFinite(balance) && balance <= 0) {
       return 'Paid';
     }
 
-    const dueDate = installment && installment.due_date;
-    if (!dueDate) {
-      return 'Not provided';
+    let late = false;
+    if (installment.due_date) {
+      const due = new Date(installment.due_date + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      late = due < today;
     }
 
-    const due = new Date(`${dueDate}T00:00:00`);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return due < today ? 'Overdue' : 'Upcoming';
+    if (paid > 0) {
+      if (late) {
+        return 'Partial-Overdue';
+      }
+      return 'Partial';
+    }
+    if (!installment.due_date) {
+      return 'Not provided';
+    }
+    if (late) {
+      return 'Overdue';
+    }
+    return 'Upcoming';
+  }
+
+  // the words shown in the "Hali" column
+  statusLabel(status) {
+    if (status === 'Paid') { return 'Imelipwa'; }
+    if (status === 'Partial') { return 'Sehemu imelipwa'; }
+    if (status === 'Partial-Overdue') { return 'Sehemu · imechelewa'; }
+    if (status === 'Overdue') { return 'Imechelewa'; }
+    if (status === 'Upcoming') { return 'Inakuja'; }
+    return 'Haijawekwa';
   }
 
 
