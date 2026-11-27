@@ -27,7 +27,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Jina tambulishi' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.Username"  name="Username" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Jina tambulishi' | t">
+              <input [(ngModel)]="userData.Username"  name="Username" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Jina tambulishi' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Jina tambulishi' | t">
             </div>
             
             </div></div>
@@ -38,7 +38,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Majina yote' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.jina" name="jina" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Majina yote' | t">
+              <input [(ngModel)]="userData.jina" name="jina" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Majina yote' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Majina yote' | t">
             </div>
             
             </div></div>
@@ -52,7 +52,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:77px; max-width:300px; background:white"><a (click)="fileInput.click()" style="cursor: pointer; font-size:10px;">{{ 'Chukua pasport size ya mteja' | t }}</a></span>
               </div>
-              <input #passport type="file" #fileInput   (change)="onfileSelected()"    class="form-control" style="max-width:300px; margin:center; font-size:10px; display:none" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <input #passport type="file" #fileInput   (change)="onfileSelected()"    class="form-control" style="max-width:300px; margin:center; font-size:10px; display:none" [attr.aria-label]="'Picha' | t" aria-describedby="inputGroup-sizing-sm">
             </div>
             
             </div></div>
@@ -63,7 +63,7 @@
         <div class="input-group-prepend" style="width:110px;">
             <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Simu' | t }}</span>
         </div>
-        <input [(ngModel)]="userData.Simu" name="Simu" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Simu' | t">
+        <input [(ngModel)]="userData.Simu" name="Simu" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Simu' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Simu' | t">
       </div>
       
       </div>
@@ -80,7 +80,7 @@
         <div class="input-group-prepend" style="width:110px;">
             <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'File No.' | t }}</span>
         </div>
-        <input [(ngModel)]="userData.file_no" name="file" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'File No.' | t">
+        <input [(ngModel)]="userData.file_no" name="file" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'File No.' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'File No.' | t">
       </div>
       
       </div></div>
@@ -91,7 +91,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'TSD No.' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.TSD" name="TSD" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'TSD No.' | t">
+              <input [(ngModel)]="userData.TSD" name="TSD" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'TSD No.' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'TSD No.' | t">
             </div>
             
             </div></div>
@@ -102,7 +102,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shule/Ofisi' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.ofisi" name="ofisi" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Shule/Ofisi' | t">
+              <input [(ngModel)]="userData.ofisi" name="ofisi" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Shule/Ofisi' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Shule/Ofisi' | t">
             </div>
             
             </div></div>
@@ -113,7 +113,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Check No' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.check" name="check" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Check No' | t">
+              <input [(ngModel)]="userData.check" name="check" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Check No' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Check No' | t">
             </div>
             
             </div></div>
@@ -129,7 +129,7 @@
         <div class="input-group-prepend" style="width:110px;">
           <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Account No.' | t }}</span>
         </div>
-        <input [(ngModel)]="userData.Account_no" name="Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Account No.' | t">
+        <input [(ngModel)]="userData.Account_no" name="Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Account No.' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Account No.' | t">
       </div>
       
       </div></div>
@@ -140,7 +140,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Account Pin' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.pin" name="pin" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Account Pin' | t">
+              <input [(ngModel)]="userData.pin" name="pin" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Account Pin' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Account Pin' | t">
             </div>
             
             </div></div>
@@ -151,7 +151,7 @@
         <div class="input-group-prepend" style="width:110px;">
             <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">{{ 'Card Expire Date' | t }}</span>
         </div>
-        <input [(ngModel)]="userData.expire" name="expire" type="date" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input [(ngModel)]="userData.expire" name="expire" type="date" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'expire' | t" aria-describedby="inputGroup-sizing-sm">
       </div>
       
       </div>
@@ -163,7 +163,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:85px;">{{ 'CSV' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.csv" name="csv" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'CSV' | t">
+              <input [(ngModel)]="userData.csv" name="csv" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'CSV' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'CSV' | t">
             </div>
             
             </div></div>
@@ -179,7 +179,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Kata' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.kata" name="kata" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Kata' | t">
+              <input [(ngModel)]="userData.kata" name="kata" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Kata' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Kata' | t">
             </div>
             
             </div></div>
@@ -190,7 +190,7 @@
               <div class="input-group-prepend" style="width:110px;">
                   <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:65px;">{{ 'Wilaya' | t }}</span>
               </div>
-              <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Wilaya' | t">
+              <input [(ngModel)]="userData.wilaya" name="wilaya" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Wilaya' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Wilaya' | t">
             </div>
             
             </div></div>
@@ -201,7 +201,7 @@
         <div class="input-group-prepend" style="width:110px;">
             <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Mkoa' | t }}</span>
         </div>
-        <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Mkoa' | t">
+        <input [(ngModel)]="userData.mkoa" name="mkoa" type="text" class="form-control" style="max-width:300px; margin:center;" [attr.aria-label]="'Mkoa' | t" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Mkoa' | t">
       </div>
       
       </div>

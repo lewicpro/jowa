@@ -4,7 +4,7 @@
     <div class="panel-tools">
       <label class="search">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
-        <input type="search" [(ngModel)]="filtertext" [placeholder]="'Tafuta jina, simu, account…' | t" aria-label="Filter">
+        <input type="search" [(ngModel)]="filtertext" [placeholder]="'Tafuta jina, simu, account…' | t" [attr.aria-label]="'Filter' | t">
       </label>
       <button type="button" class="print-btn" (click)="printe()">{{ 'Print all clients' | t }}</button>
     </div>
@@ -12,7 +12,7 @@
 
   <!-- Keep the title and full client table together as the print-only content. -->
   <div id="componentID">
-    <div class="print-brand" aria-label="Aleco Group">
+    <div class="print-brand" [attr.aria-label]="'Aleco Group' | t">
       <img src="/assets/images/aleco-logo.png" alt="Aleco Group logo">
       <span>Aleco Group</span>
     </div>

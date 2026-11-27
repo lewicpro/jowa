@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EN } from './translations';
+import { EN, SW } from './translations';
 
 // Settings of the dashboard: language, currency and cents.
 // They are saved in the browser (localStorage) so they stay after a refresh.
@@ -87,10 +87,20 @@ export class SettingsService {
   // Kiswahili is the language of the site, so in Kiswahili the text comes back as it is.
   // A "*" in front and ":" "." "-" at the end are kept.
   t(text) {
-    if (text == null || this.prefs.lang === 'sw') {
+    if (text == null) {
       return text;
     }
+    // Kiswahili chosen: text written in English in the pages is turned into Kiswahili
+    if (this.prefs.lang === 'sw') {
+      return this.toSwahili(text);
+    }
     const raw = String(text);
+
+    // the whole text first (some sentences end with "." in the word list)
+    const whole = this.findEnglish(raw);
+    if (whole != null) {
+      return whole;
+    }
 
     // split "* Jina:" into "* " + "Jina" + ":"
     const parts = raw.match(/^(\s*\*?\s*)([\s\S]*?)([\s:.\-]*)$/);
@@ -125,6 +135,42 @@ export class SettingsService {
       return raw;
     }
     return front + this.sameCase(word, english) + back;
+  }
+
+  // English text in the pages -> Kiswahili (the SW word list). Unknown text stays as it is.
+  toSwahili(text) {
+    const raw = String(text);
+    const whole = this.findIn(SW, raw);
+    if (whole != null) {
+      return whole;
+    }
+    const parts = raw.match(/^(\s*\*?\s*)([\s\S]*?)([\s:.\-]*)$/);
+    if (parts == null) {
+      return raw;
+    }
+    const swahili = this.findIn(SW, parts[2]);
+    if (swahili == null) {
+      return raw;
+    }
+    return parts[1] + this.sameCase(parts[2], swahili) + parts[3];
+  }
+
+  // look for a text in a word list, first exactly, then in small letters
+  findIn(list, word) {
+    const key = String(word).trim();
+    if (key === '') {
+      return null;
+    }
+    if (list[key] != null) {
+      return list[key];
+    }
+    const small = key.toLowerCase();
+    for (const k of Object.keys(list)) {
+      if (k.toLowerCase() === small) {
+        return list[k];
+      }
+    }
+    return null;
   }
 
   // look for the word in the dictionary, first exactly, then in small letters

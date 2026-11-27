@@ -5,7 +5,7 @@
       <div class="row-1">
         <div class="brand-and-modules">
           <img class="brand" src="assets/images/aleco-logo.png" alt="Aleco">
-          <nav class="modules" aria-label="Moduli">
+          <nav class="modules" [attr.aria-label]="'Moduli' | t">
             <a class="pill pill-current" [routerLink]="['Ongeza-Account']" aria-current="page">{{ 'Mikopo' | t }}</a>
             <a class="pill" [routerLink]="['Ongeza-Account']" (click)="changerouter()">{{ 'Nyumba' | t }}</a>
             <button type="button" class="pill" (click)="changeclik()">{{ 'Duka' | t }}</button>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="row-2">
-        <nav class="tabs" aria-label="Sehemu za Mikopo">
+        <nav class="tabs" [attr.aria-label]="'Sehemu za Mikopo' | t">
           <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Wateja']">{{ 'Wateja wote' | t }}</a>
           <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['wadaiwa']">{{ 'Wanaodaiwa mwezi huu' | t }}</a>
           <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Malipo']">{{ 'Malipo' | t }}</a>
@@ -38,7 +38,7 @@
 
   <main class="dash-inner dash-main">
     <!-- Summary: same values as the old one-line summary -->
-    <section class="kpis" aria-label="Muhtasari">
+    <section class="kpis" [attr.aria-label]="'Muhtasari' | t">
       <div class="kpi">
         <span class="kpi-label">{{ 'Jumla ya Mikopo' | t }}</span>
         <span class="kpi-value">{{mkopo | money}}</span>

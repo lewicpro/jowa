@@ -1,6 +1,6 @@
 
 <div class="sms-service-page">
-  <nav class="sms-service-tabs" aria-label="SMS service">
+  <nav class="sms-service-tabs" [attr.aria-label]="'SMS service' | t">
     <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Mwezihuu']">{{ 'List ya mwezi huu' | t }}</a>
     <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Overdue']">{{ 'Waliopitisha mwezi' | t }}</a>
     <a class="monno" [routerLinkActive]="['active']" [routerLink]="['TumaMsj']">{{ 'Tuma meseji' | t }}</a>

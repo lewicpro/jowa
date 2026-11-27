@@ -25,10 +25,10 @@
         <tr *ngFor="let form of overdue; let i = index">
           <td>{{pageIndex * pageSize + i + 1}}</td>
           <td>{{form.due_date | date}}</td>
-          <td>{{form.Account_no || 'Not provided'}}</td>
-          <td>{{form.pin || 'Not provided'}}</td>
-          <td>{{form.Simu || 'Not provided'}}</td>
-          <td>{{(form.jina || 'Not provided') | titlecase}}</td>
+          <td>{{form.Account_no || ('Not provided' | t)}}</td>
+          <td>{{form.pin || ('Not provided' | t)}}</td>
+          <td>{{form.Simu || ('Not provided' | t)}}</td>
+          <td>{{(form.jina || ('Not provided' | t)) | titlecase}}</td>
           <td>{{form.RealMkopo | money: 'raw'}}</td>
           <td>{{form.jumla | money: 'raw'}}</td>
           <td>{{form.sequence}} / {{form.Miezi}}</td>
@@ -45,17 +45,17 @@
       </tbody>
     </table>
   </div>
-  <div class="overdue-pagination" *ngIf="totalOverdue > 0" aria-label="Overdue pages">
+  <div class="overdue-pagination" *ngIf="totalOverdue > 0" [attr.aria-label]="'Overdue pages' | t">
     <button type="button" class="btn btn-outline-secondary"
       [disabled]="loading || pageIndex === 0"
       (click)="loadPage(pageIndex - 1)">
-      Previous
+      {{ 'Previous' | t }}
     </button>
-    <span>Page {{pageIndex + 1}} of {{totalPages}} · Showing {{pageIndex * pageSize + 1}}–{{pageEnd}} of {{totalOverdue}}</span>
+    <span>{{ 'Page' | t }} {{pageIndex + 1}} {{ 'of' | t }} {{totalPages}} · {{ 'Showing' | t }} {{pageIndex * pageSize + 1}}–{{pageEnd}} {{ 'of' | t }} {{totalOverdue}}</span>
     <button type="button" class="btn btn-outline-secondary"
       [disabled]="loading || pageIndex + 1 >= totalPages"
       (click)="loadPage(pageIndex + 1)">
-      Next
+      {{ 'Next' | t }}
     </button>
   </div>
 </div>

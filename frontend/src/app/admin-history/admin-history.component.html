@@ -11,11 +11,11 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col" title="Date">{{ 'Tarehe' | t }}</th>
-        <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
-        <th scope="col" title="Loan Repayment">{{ 'Malipo ya mkopo' | t }}</th>
-        <th scope="col" title="Interest Paid">{{ 'Riba' | t }}</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Baki au salio' | t }}</th>
+        <th scope="col" [title]="'Tarehe' | t">{{ 'Tarehe' | t }}</th>
+        <th scope="col" [title]="'Jumla ya malipo' | t">{{ 'Jumla ya malipo' | t }}</th>
+        <th scope="col" [title]="'Malipo ya mkopo' | t">{{ 'Malipo ya mkopo' | t }}</th>
+        <th scope="col" [title]="'Riba' | t">{{ 'Riba' | t }}</th>
+        <th scope="col" [title]="'Baki au salio' | t">{{ 'Baki au salio' | t }}</th>
 
       </tr>
     </thead>
