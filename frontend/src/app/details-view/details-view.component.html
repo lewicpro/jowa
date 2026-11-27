@@ -45,7 +45,7 @@
       <!-- summary of this customer: same size as before (full width, 42px high), content centred -->
       <div class="sumbar">
         <div class="sb-side sb-left">
-          <span class="sb-item sb-green"><span class="sb-dot"></span><span class="sb-label">{{ 'Monthly returns' | t }} {{date}}</span><strong>{{n.Rejesho_mwezi | money}}</strong></span>
+          <span class="sb-item sb-green"><span class="sb-dot"></span><span class="sb-label">{{ 'Monthly returns' | t }} {{date}}</span><strong>{{monthlyReturns() | money}}</strong></span>
           <span class="sb-sep"></span>
           <span class="sb-item sb-blue"><span class="sb-dot"></span><span class="sb-label">{{ 'Loan' | t }}</span><strong>{{n.mkopo | money}}</strong></span>
         </div>

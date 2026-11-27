@@ -496,6 +496,25 @@ export class DetailsViewComponent implements OnInit {
   fuck(){
     // console.log('yeeeeeeeahhhhhh we getdata')
     this.getdata();
+    // a payment was made: get this month's repayments again
+    this.restframework.getPersonalWeka().then(data => {
+      this.malipzo = data;
+    });
+  }
+
+  // what this customer repaid this month (from the monthly repayments record, PersonalWeka)
+  monthlyReturns() {
+    const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const today = new Date();
+    const month = names[today.getMonth()];
+    const year = String(today.getFullYear());
+    let total = 0;
+    for (const p of (this.malipzo || [])) {
+      if (String(p.user).toLowerCase() === String(this.Username || '').toLowerCase() && String(p.mwaka) === year) {
+        total = total + (Number(p[month]) || 0);
+      }
+    }
+    return total;
   }
 
 
