@@ -10,26 +10,26 @@
 <!-- <button (click)="wow()">ddd</button> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)" id="componentID">
 
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> ALL ORDERS </h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'ALL ORDERS' | t }} </h4>
   <div style="max-height:400px; overflow:auto" >
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <tr>
           <tr>
-            <th style="padding-left:10px;">Time</th>
+            <th style="padding-left:10px;">{{ 'Time' | t }}</th>
             <!-- <th style="padding-left:10px;">pk</th> -->
-            <th>User</th>
-            <th>Name</th>
-            <th>Poduct</th>
-            <th>Number</th>
-            <th>Selling Price</th>
-            <th>Profit</th>
-            <th>Phone</th>
-            <th>Officer</th>
+            <th>{{ 'User' | t }}</th>
+            <th>{{ 'Name' | t }}</th>
+            <th>{{ 'Poduct' | t }}</th>
+            <th>{{ 'Number' | t }}</th>
+            <th>{{ 'Selling Price' | t }}</th>
+            <th>{{ 'Profit' | t }}</th>
+            <th>{{ 'Phone' | t }}</th>
+            <th>{{ 'Officer' | t }}</th>
 
-            <th>Remained</th>
-            <th>Type</th>
-            <th>Status</th>
+            <th>{{ 'Remained' | t }}</th>
+            <th>{{ 'Type' | t }}</th>
+            <th>{{ 'Status' | t }}</th>
             <!-- <th></th>
             <th></th> -->
           </tr>
@@ -43,8 +43,8 @@
             <td  nowrap>{{m.jina_kamili}}</td>
             <td  nowrap>{{m.Name_of_the_product}}</td>
             <td  nowrap>{{m.Number_of_products}}</td>
-            <td  nowrap>{{m.Selling_price}}</td>
-            <td  nowrap>{{m.Profit}}</td>
+            <td  nowrap>{{ m.Selling_price | money: 'raw' }}</td>
+            <td  nowrap>{{ m.Profit | money: 'raw' }}</td>
             <td  nowrap>{{m.Phone}}</td>
             <td   nowrap>{{m.Officer_worker}}</td>
             <td  nowrap>{{m.Number_of_products}}</td>

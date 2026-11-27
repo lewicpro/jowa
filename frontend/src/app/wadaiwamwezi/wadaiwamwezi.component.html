@@ -5,11 +5,16 @@
     <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
     </mat-form-field>
   </div> -->
-  <div  class="animated fadeIn" style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); ">
+  <div id="monthOwingPrintArea" class="animated fadeIn month-owing-list" style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); ">
       
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> MWEZI HUU</h4>
-  <div style="max-height:400px; overflow:auto">
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+  <div class="month-owing-header">
+    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'MWEZI HUU' | t }}</h4>
+    <div class="month-owing-actions no-print">
+      <button type="button" class="month-owing-print-btn" (click)="printe()">{{ 'Chapisha' | t }}</button>
+    </div>
+  </div>
+  <div class="month-owing-table-wrap" style="max-height:400px; overflow:auto">
+    <table class="table table-sm table-bordered table-striped table-light month-owing-table" style=" overflow:hidden; " >
       <thead>
        <!-- <tr>
           <th scope="col">#</th>
@@ -26,30 +31,32 @@
         </tr> -->
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Tarehe</th>
+            <th scope="col">{{ 'Tarehe' | t }}</th>
     
-            <th scope="col" nowrap>Account no</th>
-            <th scope="col">pin</th>
-            <th scope="col">Simu</th>
-            <th scope="col">Jina</th>
+            <th scope="col" nowrap>{{ 'Account no' | t }}</th>
+            <th scope="col">{{ 'pin' | t }}</th>
+            <th scope="col">{{ 'Simu' | t }}</th>
+            <th scope="col">{{ 'Jina' | t }}</th>
+            <th scope="col">{{ 'Mkopo' | t }}</th>
             <!-- <th scope="col">mkopo</th> -->
-            <th scope="col" nowrap>Mkopo + Faida</th>
-            <th scope="col">Awamu</th>
-            <th scope="col">Riba</th>
+            <th scope="col" nowrap>{{ 'Mkopo + Faida' | t }}</th>
+            <th scope="col">{{ 'Awamu' | t }}</th>
+            <th scope="col">{{ 'Riba' | t }}</th>
             
-            <th scope="col">Faida</th>
-            <th scope="col">Mwezi1</th>
-            <th scope="col">Mwezi2</th>
-            <th scope="col">Mwezi3</th>
-            <th scope="col">Mwezi4</th>
-            <th scope="col">Mwezi5</th>
-            <th scope="col">Mwezi6</th>
-            <th scope="col">Mwezi7</th>
-            <th scope="col">Mwezi8</th>
-            <th scope="col">Mwezi9</th>
-            <th scope="col">Mwezi10</th>
-            <th scope="col">Mwezi11</th>
-            <th scope="col">Mwezi12</th>
+            <th scope="col">{{ 'Faida' | t }}</th>
+            <th scope="col">{{ 'Mwezi1' | t }}</th>
+            <th scope="col">{{ 'Mwezi2' | t }}</th>
+            <th scope="col">{{ 'Mwezi3' | t }}</th>
+            <th scope="col">{{ 'Mwezi4' | t }}</th>
+            <th scope="col">{{ 'Mwezi5' | t }}</th>
+            <th scope="col">{{ 'Mwezi6' | t }}</th>
+            <th scope="col">{{ 'Mwezi7' | t }}</th>
+            <th scope="col">{{ 'Mwezi8' | t }}</th>
+            <th scope="col">{{ 'Mwezi9' | t }}</th>
+            <th scope="col">{{ 'Mwezi10' | t }}</th>
+            <th scope="col">{{ 'Mwezi11' | t }}</th>
+            <th scope="col">{{ 'Mwezi12' | t }}</th>
+            <th scope="col">{{ 'Fungua' | t }}</th>
             
       
           </tr>
@@ -92,25 +99,25 @@
           <td *ngIf="mwezi === form.mwezi1 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi1 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.jina | titlecase}}</td>
-          <!-- <td *ngIf="mwezi === form.mwezi1" nowrap >{{form.RealMkopo | currency: 'tsh '}}</td> -->
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.jumla | currency: 'tsh '}}</td>
+          <td *ngIf="mwezi === form.mwezi1" nowrap>{{form.RealMkopo | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.jumla | money}}</td>
           <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.Miezi}}</td>
           <td *ngIf="mwezi === form.mwezi1 " nowrap>10</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.Faida | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 "  nowrap>{{form.mwezi1}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw1 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 "  nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw2 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw3 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw4 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw5 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw6 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw7 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw8 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw9 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw10 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw11 | currency: 'tsh '}}</td>
-          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw12 | currency: 'tsh '}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.Faida | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 "  nowrap>{{form.mwezi1}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw1 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 "  nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw2 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw3 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw4 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw5 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw6 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw7 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw8 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw9 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw10 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw11 | money}}</td>
+          <td *ngIf="mwezi === form.mwezi1 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi1 "> : </span> {{form.mw12 | money}}</td>
         
-          <td *ngIf="mwezi === form.mwezi1 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi1 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
           <td *ngIf="form.mwezi2 === mwezi" >{{i*1 + 1*1}}</td>
@@ -119,25 +126,25 @@
           <td *ngIf="mwezi === form.mwezi2 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi2 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi2" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi2" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi1}}<span *ngIf="mwezi === form.mwezi2 "> : </span>{{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi2" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi1}}<span *ngIf="mwezi === form.mwezi2 "> : </span>{{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi2 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi2 "> : </span> {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi2 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi2 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
@@ -153,25 +160,25 @@
           <td *ngIf="mwezi === form.mwezi3 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi3 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi3" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi3" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi3" nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3" nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi3 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi3 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi3 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
@@ -182,25 +189,25 @@
           <td *ngIf="mwezi === form.mwezi4 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi4 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi4" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi4" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi4" nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4" nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi4 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi4 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi4 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
@@ -208,31 +215,31 @@
 
 
 
-          <td *ngIf="form.mwezi5 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi5 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi5 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi5"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi5 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi5 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi5" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi5" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi5" nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5" nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi5 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi5 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi5 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
@@ -240,177 +247,204 @@
 
 
 
-          <td *ngIf="form.mwezi6 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi6 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi6 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi6"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi6 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi6 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi6" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi6" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi6" nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6" nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi6 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi6 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi6 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
 
 
-          <td *ngIf="form.mwezi7 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi7 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi7 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi7"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi7 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi7 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi7" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi7" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi7" nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
-          <td *ngIf="mwezi === form.mwezi7 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7" nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi7 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
 
-          <td *ngIf="form.mwezi8 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi8 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi8 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi8"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi8 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi8 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi8" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi8" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi1}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi8" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi1}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi2}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi3}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi4}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi5}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi6}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi7}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi8}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi9}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8" nowrap>{{form.mwezi10}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi11}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi8 " nowrap>{{form.mwezi12}} <span *ngIf="mwezi === form.mwezi8 "> : </span> {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi8 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi8 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
 
 
-          <td *ngIf="form.mwezi9 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi10 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi9 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi9"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi9 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi9 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi9" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi9" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi1}}  {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi2}} ' ' {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi1}}  {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi2}} ' ' {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi9 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi9 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi9 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
 
-          <td *ngIf="form.mwezi9 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi9 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi10 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi10"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi10 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi10 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi10" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi10" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi10" nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi910" nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10" nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi10" nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi10 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi10 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
 
 
 
 
-          <td *ngIf="form.mwezi11 === mwezi" >No-</td>
+          <td *ngIf="form.mwezi11 === mwezi" >{{ 'No-' | t }}</td>
           <td *ngIf="mwezi === form.mwezi11 "nowrap>{{form.tarehe}}</td>
           <td *ngIf="mwezi === form.mwezi11"> {{form.Account_no}}</td>
           <td *ngIf="mwezi === form.mwezi11 ">{{form.pin}}</td>
           <td *ngIf="mwezi === form.mwezi11 ">{{form.Simu}}</td>
           <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.jina | titlecase}}</td>
-          <td *ngIf="mwezi === form.mwezi11" nowrap >{{form.RealMkopo}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.jumla}}</td>
+          <td *ngIf="mwezi === form.mwezi11" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{ form.jumla | money: 'raw' }}</td>
           <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.Miezi}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.Riba}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.Faida}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi1}} : {{form.mw1}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi2}} : {{form.mw2}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi3}} : {{form.mw3}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi4}} : {{form.mw4}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi5}} : {{form.mw5}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi6}} : {{form.mw6}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi7}} : {{form.mw7}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi8}} : {{form.mw8}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi9}} : {{form.mw9}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi10}} : {{form.mw10}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi11}} : {{form.mw11}}</td>
-          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi12}} : {{form.mw12}}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi11 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
         
-          <td *ngIf="mwezi === form.mwezi11 "><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+          <td *ngIf="mwezi === form.mwezi11 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
+
+
+
+          <td *ngIf="form.mwezi12 === mwezi" >{{ 'No-' | t }}</td>
+          <td *ngIf="mwezi === form.mwezi12 "nowrap>{{form.tarehe}}</td>
+          <td *ngIf="mwezi === form.mwezi12"> {{form.Account_no}}</td>
+          <td *ngIf="mwezi === form.mwezi12 ">{{form.pin}}</td>
+          <td *ngIf="mwezi === form.mwezi12 ">{{form.Simu}}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.jina | titlecase}}</td>
+          <td *ngIf="mwezi === form.mwezi12" nowrap >{{ form.RealMkopo | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{ form.jumla | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.Miezi}}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{ form.Riba | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{ form.Faida | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi1}} : {{ form.mw1 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi2}} : {{ form.mw2 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi3}} : {{ form.mw3 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi4}} : {{ form.mw4 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi5}} : {{ form.mw5 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi6}} : {{ form.mw6 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi7}} : {{ form.mw7 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi8}} : {{ form.mw8 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi9}} : {{ form.mw9 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi10}} : {{ form.mw10 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi11}} : {{ form.mw11 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 " nowrap>{{form.mwezi12}} : {{ form.mw12 | money: 'raw' }}</td>
+          <td *ngIf="mwezi === form.mwezi12 "><button type="button" (click)="onselected(form)" [attr.aria-label]="'Fungua' | t"><i class="fas fa-arrow-down" aria-hidden="true"></i></button></td>
         </tr>
         <!--<tr id="customers">-->
           <!--<td scope="row">2</td>-->

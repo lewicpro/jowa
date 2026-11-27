@@ -1,333 +1,124 @@
 <ng-progress></ng-progress>
-<div class="d-flex justify-content-center">
-  <mat-form-field style="width:40%;">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
-</div>
 
-<!-- <br><br> -->
-<!-- <pre class="card card-block card-header">{{message}}</pre> -->
+<!-- confirm before sending (same as before) -->
 <ng-template #templates>
-  <div class="modal-body text-center">
-    <!-- <li>name: {{jina}}</li>  <br>
-    <li>kiasi: {{jumla}} </li><br>
-    <li>miezi: {{miezi}} </li><br> -->
-    <p>Do you want to confirm? </p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  <div class="lm-confirm">
+    <h3>{{ 'Thibitisha mkopo?' | t }}</h3>
+    <p>
+      {{ 'Kiasi' | t }}: <strong>{{ Kiasi | money }}</strong> ·
+      {{ 'Miezi' | t }}: <strong>{{ miezi }}</strong><br>
+      {{ 'Jumla' | t }}: <strong>{{ jumla | money }}</strong> ({{ 'kila mwezi' | t }} {{ kilamwezi | money }})
+    </p>
+    <div class="lm-actions">
+      <button type="button" class="lm-btn lm-btn-ghost" (click)="decline()">{{ 'Hapana' | t }}</button>
+      <button type="button" class="lm-btn lm-btn-primary" (click)="confirm()">{{ 'Ndiyo, tuma' | t }}</button>
+    </div>
   </div>
 </ng-template>
-<!-- <button (click)="time()">click</button> -->
-<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">Form ya Mkopo</h4>
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
-    <thead>
-      <tr style="cursor:pointer" id="customers">
-        <td class="text-center"> </td>
-        <td style="white-space: nowrap"></td>
-        <td><input [(ngModel)]="Kiasi_Pesa"    style="border-radius:3px;" placeholder="Kiwango kilichowekwa"  type="text" (keyup)="kokotoa()"></td>
-        <td><input [(ngModel)]="miezi_Pesa"  style="border-radius:3px;" type="text" placeholder="miezi" (keyup)="kokotoa()"></td>
-        <td nowrap></td>
-        <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-        <td><a  ></a></td>
-      </tr>
-      <tr>
-        <th scope="col">Tarehe</th>
-        <th scope="col" title="Date">Jina</th>
-        <th scope="col" title="Loan (L+I+6)">Kiasi kinachokopwa</th>
-        <th scope="col" title="Idadi ya miezi">Idadi ya miezi</th>
-        <!-- <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th> -->
-        <th scope="col" title="Action">Riba</th>
 
-      </tr>
-    </thead>
-    <tbody >
-      <!-- <div >
-      <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+<!-- ============ Loan application: design 1 (pills + summary on the side) ============ -->
+<div class="lm">
 
-    </div> -->
-    <tr style="cursor:pointer" id="customers">
-      <td class="text-center"><input [(ngModel)]="mopai" (keyup)="updateTotal()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
-      <td style="white-space: nowrap">{{jina}}</td>
-      <td><input [(ngModel)]="Kiasi"    style="border-radius:3px;"  type="text" (keyup)="updateTotal()"></td>
-      <td><input [(ngModel)]="miezi"  style="border-radius:3px;" type="text" (keyup)="updateTotal()"></td>
-      <td nowrap><input [(ngModel)]="riba"  style="border-radius:3px;" type="text" [value]="ribaa" (keyup)="updateTotal()" nowrap>%</td>
-      <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
-      <td><a  ></a></td>
-    </tr>
-    <tr style="cursor:pointer" id="customers"  >
-      <td > </td>
-      <td  style="white-space: nowrap"></td>
-      <td  style="white-space: nowrap"></td>
-      <td  style="white-space: nowrap"></td>
-      <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>-->
-      <!-- <td  style="white-space: nowrap">{{k.Balance}}</td>  -->
-      <td  style="white-space: nowrap"></td>
+  <div class="lm-main">
+    <p class="lm-h">{{ 'Taarifa za mkopo' | t }}</p>
+    <div class="lm-grid">
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-cal lm-t-ink" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Tarehe' | t }}</small>
+          <input type="text" [ngModel]="mopai" (ngModelChange)="mopai = $event; updateTotal()" [placeholder]="mdaa || ('Muda wa sasa' | t)">
+        </span>
+      </label>
 
-    </tr>
-    <!--<tr id="customers">-->
-    <!--<td scope="row">2</td>-->
-    <!--<td>BA</td>-->
-    <!--<td>3</td>-->
-    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-  <!--</tr>-->
-  <!--<tr id="customers">-->
-  <!--<td scope="row">3</td>-->
-  <!--<td>Accountancy</td>-->
-  <!--<td>3</td>-->
-  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-<!--</tr>-->
-</tbody>
-</table>
-<div style="padding:20px;"></div>
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-user lm-t-blue" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Jina' | t }}</small>
+          <input type="text" [value]="jina | titlecase" readonly tabindex="-1">
+        </span>
+      </label>
 
-<table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-  <thead>
-    <tr>
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-money lm-t-green" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Kiasi kinachokopwa' | t }}</small>
+          <input type="text" inputmode="numeric" [ngModel]="Kiasi" (ngModelChange)="Kiasi = $event; updateTotal()" [placeholder]="'Mfano: 200000' | t">
+        </span>
+        <span class="lm-unit">tsh</span>
+      </label>
 
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-clock" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Idadi ya miezi (1–12)' | t }}</small>
+          <input type="text" inputmode="numeric" [ngModel]="miezi" (ngModelChange)="miezi = $event; updateTotal()" [placeholder]="'Miezi' | t">
+        </span>
+      </label>
 
-      <th scope="col" title="Loan (L+I+6)"> Jumla ya kiasi kinacholipwa</th>
-      <th scope="col" title="Idadi ya miezi">Faida</th>
-      <th scope="col" title="Interest Paid">Kila mwezi inalipwa kwa miezi {{miezi}}</th>
-      <th scope="col" title="(Mkopo + Riba) Balance">Note, maelezo mafupi</th>
-      <!-- <th scope="col" title="Action">Mwezi wa nne</th> -->
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-pct lm-t-crimson" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Riba (%)' | t }} — {{ 'kawaida' | t }} {{ (miezi || 0) * 10 }}%</small>
+          <input type="text" inputmode="decimal" [ngModel]="riba" (ngModelChange)="riba = $event; updateTotal()" [placeholder]="'Acha wazi kwa kawaida' | t">
+        </span>
+        <span class="lm-unit">%</span>
+      </label>
 
-    </tr>
-  </thead>
-  <tbody >
-    <!-- <div >
-    <div *ngIf="k.user ==='Lewicpro'">{{k.user}}</div>
+      <label class="lm-pill">
+        <span class="lm-ic lm-i-note lm-t-ink" aria-hidden="true"></span>
+        <span class="lm-b"><small>{{ 'Note, maelezo mafupi' | t }}</small>
+          <input type="text" [ngModel]="mavi" (ngModelChange)="mavi = $event; updateTotal()" [placeholder]="'Hiari' | t">
+        </span>
+      </label>
+    </div>
 
-  </div> -->
-
-  <tr style="cursor:pointer" id="customers"  >
-    <td  style="white-space: nowrap"><input [value]="jumla"></td>
-    <!-- <td  style="white-space: nowrap"></td> -->
-    <td  style="white-space: nowrap">@if (totalAmount) {
-      <span>Tsh</span>
-    }  {{totalAmount | currency: 'tsh '}}</td>
-    <td  style="white-space: nowrap">@if (kilamwezi) {
-      <span>Tsh</span>
-    } {{kilamwezi | currency: 'tsh '}}</td>
-    <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
-    <td  style="white-space: nowrap">{{k.Balance}}</td> -->
-    <td  style="white-space: nowrap"><input [(ngModel)]="mavi"   type="text" (keyup)="updateTotal()"></td>
-
-  </tr>
-  <!--<tr id="customers">-->
-  <!--<td scope="row">2</td>-->
-  <!--<td>BA</td>-->
-  <!--<td>3</td>-->
-  <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-<!--</tr>-->
-<!--<tr id="customers">-->
-<!--<td scope="row">3</td>-->
-<!--<td>Accountancy</td>-->
-<!--<td>3</td>-->
-<!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-<!--</tr>-->
-</tbody>
-</table>
-</div>
-
-<div style="padding:10px;"></div>
-@if (miezi) {
-  <mat-card appearance="outlined" style="background:ghostwhite;">
-    @if (miezi <= 1) {
-      <div>
-        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1" matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-        <li style="list-style-type:none">Jumla ya  <span style="font-weight:700"> {{jumla | currency: 'tsh '}}</span> </li>
-        <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)" > Tunza </button></div>
+    <!-- quick reverse calculation: total to repay + months -> loan amount -->
+    <div class="lm-quick">
+      <p class="lm-h">{{ 'Hesabu ya haraka (kurudi nyuma)' | t }}</p>
+      <div class="lm-grid">
+        <label class="lm-pill">
+          <span class="lm-ic lm-i-back lm-t-blue" aria-hidden="true"></span>
+          <span class="lm-b"><small>{{ 'Kiwango kilichowekwa (jumla)' | t }}</small>
+            <input type="text" inputmode="numeric" [ngModel]="Kiasi_Pesa" (ngModelChange)="Kiasi_Pesa = $event; kokotoa()" [placeholder]="'Jumla atakayolipa' | t">
+          </span>
+        </label>
+        <label class="lm-pill">
+          <span class="lm-ic lm-i-clock" aria-hidden="true"></span>
+          <span class="lm-b"><small>{{ 'Miezi' | t }}</small>
+            <input type="text" inputmode="numeric" [ngModel]="miezi_Pesa" (ngModelChange)="miezi_Pesa = $event; kokotoa()" [placeholder]="'Miezi' | t">
+          </span>
+        </label>
       </div>
+    </div>
+
+    <!-- payment schedule: every month can be changed -->
+    <p class="lm-h lm-h-gap">{{ 'Ratiba ya malipo' | t }}</p>
+    @if (monthNumbers().length === 0) {
+      <p class="lm-empty">{{ 'Andika kiasi na miezi kuona ratiba.' | t }}</p>
     } @else {
-      @if (miezi <= 2) {
-        <div>
-          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1" matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2" matInput style="background:ghostwhite" [value]="kilamwezi " type="text" (keyup)="updateTotal()"></mat-form-field></li>
-          <li style="list-style-type:none">Jumla ya <span style="font-weight:700"> {{jumla | currency: 'tsh '}}</span> </li>
-          <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-        </div>
-      } @else {
-        @if (miezi <= 3) {
-          <div>
-            <li style="list-style-type:none" nowrap><label nowrap style="width:120px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input matInput [(ngModel)]="m1" name="m1" style="background:ghostwhite" [value]="kilamwezi" (keyup)="updateTotal()" type="text" ></mat-form-field></li>
-            <li style="list-style-type:none" nowrap> <label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input matInput [(ngModel)]="m2" name="m2" style="width:100%" [value]="kilamwezi" type="text"  (keyup)="updateTotal()"></mat-form-field></li>
-            <li style="list-style-type:none" nowrap> <label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input matInput [(ngModel)]="m3" name="m3" style="background:ghostwhite" [value]="kilamwezi" (keyup)="updateTotal()" type="text" ></mat-form-field></li>
-            <li style="list-style-type:none">Jumla ya <span style="font-weight:700"> Tsh {{jumla}}</span></li>
-            <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-            <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-            @if (prev1) {
-              <span class="float-right"><button (click)="addall()">add +</button></span>
-              }<br>
-              <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-            </div>
-          } @else {
-            @if (miezi <= 4) {
-              <div>
-                <li nowrap style="white-space: nowrap; list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input matInput [(ngModel)]="m1" name="m1" style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                <li nowrap style="white-space: nowrap; list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili:</label><mat-form-field><input matInput [(ngModel)]="m2" name="m2" style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                <li nowrap style="white-space: nowrap; list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu:</label><mat-form-field><input matInput [(ngModel)]="m3" name="m3" style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                <li nowrap style="white-space: nowrap; list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne:</label><mat-form-field><input matInput [(ngModel)]="m4" name="m4" style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                <li style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh {{jumla | currency: 'tsh '}}</span></li>
-                <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-              </div>
-            } @else {
-              @if (miezi <= 5) {
-                <div>
-                  <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input matInput [(ngModel)]="m1"  style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                  <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input matInput [(ngModel)]="m2"  style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                  <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input matInput [(ngModel)]="m3"  style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                  <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input matInput [(ngModel)]="m4"  style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                  <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input matInput [(ngModel)]="m5"  style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                  <li style="list-style-type:none"> <span style="font-weight:700">Jumla ya Tsh {{jumla | currency: 'tsh '}}</span></li>
-                  <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                  <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                  <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                  <span class="float-right" >{{prev4 | currency: 'tsh '}}</span>
-                  <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                </div>
-              } @else {
-                @if (miezi <= 6) {
-                  <div>
-                    <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input  [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input [(ngModel)]="m4"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                    <li style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh  {{jumla | currency: 'tsh '}}</span> </li>
-                    <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                    <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                    <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                    <span class="float-right" >{{prev4 | currency: 'tsh '}}</span><br>
-                    <span class="float-right" >{{prev5 | currency: 'tsh '}}</span>
-                    <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                  </div>
-                } @else {
-                  @if (miezi <= 7) {
-                    <div>
-                      <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input  [(ngModel)]="m4" matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa saba: </label><mat-form-field><input [(ngModel)]="m7"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                      <li style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh {{jumla}}</span> </li>
-                      <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                      <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                      <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                      <span class="float-right" >{{prev4 | currency: 'tsh '}}</span><br>
-                      <span class="float-right" >{{prev5 | currency: 'tsh '}}</span><br>
-                      <span class="float-right" >{{prev6 | currency: 'tsh '}}</span>
-                      <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                    </div>
-                  } @else {
-                    @if (miezi <= 8) {
-                      <div>
-                        <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input [(ngModel)]="m4"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa saba: </label><mat-form-field><input  [(ngModel)]="m7" matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nane: </label><mat-form-field><input [(ngModel)]="m8"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                        <li  style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh {{jumla}}</span> </li>
-                        <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev4 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev5 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev6 | currency: 'tsh '}}</span><br>
-                        <span class="float-right" >{{prev7 | currency: 'tsh '}}</span>
-                        <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                      </div>
-                    } @else {
-                      @if (miezi <= 9) {
-                        <div>
-                          <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input [(ngModel)]="m4"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa saba: </label><mat-form-field><input [(ngModel)]="m7"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nane: </label><mat-form-field><input [(ngModel)]="m8"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tisa: </label><mat-form-field><input [(ngModel)]="m9"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                          <li style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh {{jumla}} </span></li>
-                          <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev4 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev5 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev6 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev7 | currency: 'tsh '}}</span><br>
-                          <span class="float-right" >{{prev8 | currency: 'tsh '}}</span>
-                          <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                        </div>
-                      } @else {
-                        @if (miezi <= 10) {
-                          <div>
-                            <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input [(ngModel)]="m4"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa saba: </label><mat-form-field><input [(ngModel)]="m7"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nane: </label><mat-form-field><input [(ngModel)]="m8"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tisa: </label><mat-form-field><input [(ngModel)]="m9"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kumi: </label><mat-form-field><input [(ngModel)]="m10"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                            <li style="list-style-type:none">Jumla ya <span style="font-weight:700">Tsh {{jumla}}</span></li>
-                            <span class="float-right" >{{prev1 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev2 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev3 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev4 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev5 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev6 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev7 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev8 | currency: 'tsh '}}</span><br>
-                            <span class="float-right" >{{prev9 | currency: 'tsh '}}</span>
-                            <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)"> Tunza </button></div>
-                          </div>
-                        } @else {
-                          @if (miezi <= 11) {
-                            <div>
-                              <li style="list-style-type:none"><label nowrap style="width:119px; white-space: nowrap">mwezi wa kwanza: </label><mat-form-field><input [(ngModel)]="m1"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa pili: </label><mat-form-field><input [(ngModel)]="m2"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tatu: </label><mat-form-field><input [(ngModel)]="m3"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nne: </label><mat-form-field><input [(ngModel)]="m4"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tano: </label><mat-form-field><input [(ngModel)]="m5"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa sita: </label><mat-form-field><input [(ngModel)]="m6"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa saba: </label><mat-form-field><input [(ngModel)]="m7" name='m7' matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa nane: </label><mat-form-field><input [(ngModel)]="m8"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa tisa: </label><mat-form-field><input [(ngModel)]="m9"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kumi: </label><mat-form-field><input [(ngModel)]="m10"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none"><label nowrap style="width:120px; white-space: nowrap">mwezi wa kumi na moja: </label><mat-form-field><input [(ngModel)]="m11"  matInput style="background:ghostwhite" [value]="kilamwezi" type="text" (keyup)="updateTotal()"></mat-form-field></li>
-                              <li style="list-style-type:none">Jumla ya Tsh {{jumla | currency: 'tsh '}}</li>
-                              <div class="float-right"> <button class="mon" mat-raised-button (click)="openModal(templates)">  Tunza </button></div>
-                            </div>
-                          } @else {
-                            <ng-template [ngTemplateOutlet]="twelventh"></ng-template>
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+      <div class="lm-sched">
+        @for (i of monthNumbers(); track i) {
+          <div class="lm-row">
+            <span class="lm-m">{{ 'Mwezi' | t }} {{ i }}<small>{{ monthName(i) | t }} {{ monthYear(i) }}</small></span>
+            <input type="text" inputmode="numeric" [ngModel]="getM(i)" (ngModelChange)="setM(i, $event)" [placeholder]="monthPay(i)">
+          </div>
         }
-      }
-    </mat-card>
-  }
-  <div style="padding:50px;"></div>
-  <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
+      </div>
+      <div class="lm-stotal">
+        <span>{{ 'Jumla ya ratiba' | t }}
+          @if (scheduleOk()) { <span class="lm-ok">✓ {{ 'Ratiba = Jumla' | t }}</span> }
+          @else { <span class="lm-warn">{{ 'Ratiba inatofautiana na jumla' | t }}</span> }
+        </span>
+        <strong>{{ scheduleTotal() | money }}</strong>
+      </div>
+    }
+  </div>
 
-
+  <!-- summary on the side (stays in view) -->
+  <aside class="lm-summary">
+    <p class="lm-h">{{ 'Muhtasari' | t }}</p>
+    <small class="lm-muted">{{ 'Kila mwezi' | t }}</small>
+    <div class="lm-big">{{ kilamwezi ? (kilamwezi | money) : '—' }}</div>
+    <div class="lm-kv"><span>{{ 'Kiasi' | t }}</span><strong>{{ Kiasi ? (Kiasi | money) : '—' }}</strong></div>
+    <div class="lm-kv"><span>{{ 'Riba' | t }}</span><strong>{{ ribaShown() }}%</strong></div>
+    <div class="lm-kv"><span>{{ 'Faida' | t }}</span><strong>{{ totalAmount ? (totalAmount | money) : '—' }}</strong></div>
+    <div class="lm-kv"><span>{{ 'Jumla ya kulipwa' | t }}</span><strong>{{ jumla ? (jumla | money) : '—' }}</strong></div>
+    <div class="lm-kv"><span>{{ 'Inaanza' | t }}</span><strong>{{ mwezi1 ? ((mwezi1 | t) + ' ' + monthYear(1)) : '—' }}</strong></div>
+    <button type="button" class="lm-btn lm-btn-primary lm-send" [disabled]="!canSend()" (click)="openModal(templates)">{{ 'Tuma mkopo' | t }}</button>
+  </aside>
+</div>

@@ -6,7 +6,7 @@
 </mat-form-field>
 </div> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WALIOKOPA</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'WALIOKOPA' | t }}</h4>
   <div style="max-height:400px; overflow: auto">
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
@@ -25,58 +25,80 @@
       </tr> -->
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Tarehe</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
 
-        <th scope="col" nowrap>Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col">Jina</th>
+        <th scope="col" nowrap>{{ 'Account no' | t }}</th>
+        <th scope="col">{{ 'pin' | t }}</th>
+        <th scope="col">{{ 'Jina' | t }}</th>
         <!-- <th scope="col">mkopo</th> -->
-        <th scope="col" nowrap>Mkopo + Faida</th>
-        <th scope="col">Awamu</th>
-        <th scope="col">Riba</th>
+        <th scope="col" nowrap>{{ 'Mkopo + Faida' | t }}</th>
+        <th scope="col">{{ 'Awamu' | t }}</th>
+        <th scope="col">{{ 'Ahadi ya malipo' | t }}</th>
+        <th scope="col">{{ 'Riba' | t }}</th>
 
         <!-- <th scope="col">Faida</th> -->
-        <th scope="col">Mwezi1</th>
-        <th scope="col">Mwezi2</th>
-        <th scope="col">Mwezi3</th>
-        <th scope="col">Mwezi4</th>
-        <th scope="col">Mwezi5</th>
-        <th scope="col">Mwezi6</th>
-        <th scope="col">Mwezi7</th>
-        <th scope="col">Mwezi8</th>
-        <th scope="col">Mwezi9</th>
-        <th scope="col">Mwezi10</th>
-        <th scope="col">Mwezi11</th>
-        <th scope="col">Mwezi12</th>
+        <th scope="col">{{ 'Mwezi1' | t }}</th>
+        <th scope="col">{{ 'Mwezi2' | t }}</th>
+        <th scope="col">{{ 'Mwezi3' | t }}</th>
+        <th scope="col">{{ 'Mwezi4' | t }}</th>
+        <th scope="col">{{ 'Mwezi5' | t }}</th>
+        <th scope="col">{{ 'Mwezi6' | t }}</th>
+        <th scope="col">{{ 'Mwezi7' | t }}</th>
+        <th scope="col">{{ 'Mwezi8' | t }}</th>
+        <th scope="col">{{ 'Mwezi9' | t }}</th>
+        <th scope="col">{{ 'Mwezi10' | t }}</th>
+        <th scope="col">{{ 'Mwezi11' | t }}</th>
+        <th scope="col">{{ 'Mwezi12' | t }}</th>
+        <th scope="col">{{ 'Kitendo' | t }}</th>
 
 
       </tr>
     </thead>
     <tbody>
       @for (form of malipo; track form; let i = $index) {
-        <tr style="cursor:pointer" id="customers">
+        <tr style="cursor:pointer" id="customers" class="borrower-loan-row"
+          tabindex="0"
+          [attr.aria-label]="'Fungua ratiba ya awamu' | t"
+          (click)="openInstallments(form)"
+          (keydown.enter)="openInstallments(form)"
+          (keydown.space)="$event.preventDefault(); openInstallments(form)">
           <td >{{i*1 + 1*1}}</td>
           <td nowrap>{{form.tarehe}}</td>
           <td nowrap> {{form.Account_no}}</td>
           <td nowrap>{{form.pin}}</td>
           <td nowrap>{{form.jina | titlecase}}</td>
-          <!-- <td nowrap>{{form.RealMkopo | currency: 'tsh '}}</td> -->
-          <td nowrap>{{form.jumla | currency: 'tsh '}}</td>
+          <!-- <td nowrap>{{form.RealMkopo | money}}</td> -->
+          <td nowrap>{{form.jumla | money}}</td>
           <td nowrap>{{form.Miezi}}</td>
+          <td class="borrower-promises">
+            @if (promisesByLoan[getLoanId(form)]?.length) {
+              @for (promise of promisesByLoan[getLoanId(form)]; track promise.id) {
+                <div class="borrower-promise-item">
+                  <span>{{ 'Awamu ya' | t }} {{promise.sequence}}</span>
+                  <strong>{{promise.promised_date | date:'mediumDate':undefined:(settings.lang() === 'sw' ? 'sw' : 'en-US')}}</strong>
+                </div>
+                @if (promise.promise_note) {
+                  <small class="borrower-promise-note">{{promise.promise_note}}</small>
+                }
+              }
+            } @else {
+              <span class="no-borrower-promise">—</span>
+            }
+          </td>
           <td nowrap>10</td>
-          <!-- <td nowrap>{{form.Faida | currency: 'tsh '}}</td> -->
-          <td nowrap>{{form.mw1 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw2 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw3 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw4 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw5 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw6 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw7 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw8 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw9 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw10 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw11 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw12 | currency: 'tsh '}}</td>
+          <!-- <td nowrap>{{form.Faida | money}}</td> -->
+          <td nowrap>{{form.mw1 | money}}</td>
+          <td nowrap>{{form.mw2 | money}}</td>
+          <td nowrap>{{form.mw3 | money}}</td>
+          <td nowrap>{{form.mw4 | money}}</td>
+          <td nowrap>{{form.mw5 | money}}</td>
+          <td nowrap>{{form.mw6 | money}}</td>
+          <td nowrap>{{form.mw7 | money}}</td>
+          <td nowrap>{{form.mw8 | money}}</td>
+          <td nowrap>{{form.mw9 | money}}</td>
+          <td nowrap>{{form.mw10 | money}}</td>
+          <td nowrap>{{form.mw11 | money}}</td>
+          <td nowrap>{{form.mw12 | money}}</td>
           @if (form.loan_repay) {
             <td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
           }
@@ -97,6 +119,61 @@
 </tbody>
 </table>
 </div>
+
+@if (scheduleLoan) {
+  <div class="installment-modal-backdrop" (click)="closeInstallments()">
+    <section class="installment-modal" role="dialog" aria-modal="true"
+      aria-labelledby="installment-modal-title" (click)="$event.stopPropagation()">
+      <header class="installment-modal-header">
+        <div>
+          <p class="installment-modal-eyebrow">{{ 'Ratiba ya mkopo' | t }}</p>
+          <h2 id="installment-modal-title">{{scheduleLoan.jina | titlecase}}</h2>
+          <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.jumla | money}}</p>
+        </div>
+        <button type="button" class="installment-modal-close" [attr.aria-label]="'Funga ratiba ya awamu' | t"
+          (click)="closeInstallments()">&times;</button>
+      </header>
+
+      @if (installmentsLoading[getLoanId(scheduleLoan)]) {
+        <div class="installment-modal-message">{{ 'Inapakia awamu za mkopo huu…' | t }}</div>
+      } @else if (installmentsByLoan[getLoanId(scheduleLoan)]?.length) {
+        <div class="installment-modal-table-wrap">
+          <table class="installment-modal-table">
+            <thead>
+              <tr>
+                <th scope="col">{{ 'Awamu' | t }}</th>
+                <th scope="col">{{ 'Tarehe ya malipo' | t }}</th>
+                <th scope="col">{{ 'Kiasi kilichopangwa' | t }}</th>
+                <th scope="col">{{ 'Kiasi kilicholipwa' | t }}</th>
+                <th scope="col">{{ 'Kiasi kilichobaki' | t }}</th>
+                <th scope="col">{{ 'Hali' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (installment of installmentsByLoan[getLoanId(scheduleLoan)]; track installment.id) {
+                <tr>
+                  <td class="installment-number">{{ 'Awamu ya' | t }} {{installment.sequence}} <span>{{ 'kati ya' | t }} {{installmentsByLoan[getLoanId(scheduleLoan)].length}}</span></td>
+                  <td>{{installment.due_date | date:'mediumDate':undefined:(settings.lang() === 'sw' ? 'sw' : 'en-US')}}</td>
+                  <td>{{installment.scheduled_amount | money}}</td>
+                  <td>{{installment.paid_amount | money}}</td>
+                  <td>{{installment.balance | money}}</td>
+                  <td><span class="installment-status" [ngClass]="'status-' + installment.status.toLowerCase().replace(' ', '-')">{{(installment.status === 'Paid' ? 'Imelipwa' : installment.status === 'Overdue' ? 'Imechelewa' : installment.status === 'Upcoming' ? 'Inakuja' : 'Haijawekwa') | t}}</span></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="installment-modal-message">{{ 'Hakuna ratiba ya awamu iliyohifadhiwa kwa mkopo huu.' | t }}</div>
+      }
+
+      <footer class="installment-modal-footer">
+        <span>{{ 'Idadi ya awamu:' | t }} {{installmentsByLoan[getLoanId(scheduleLoan)]?.length || 0}}</span>
+        <button type="button" class="installment-done" (click)="closeInstallments()">{{ 'Sawa' | t }}</button>
+      </footer>
+    </section>
+  </div>
+}
 </div>
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

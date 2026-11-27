@@ -1,16 +1,20 @@
 
 <ng-progress></ng-progress>
 <div style="text-align: center;">
-  <button class="btn botto" (click)="variant()">by variant</button>
-  <button class="btn botto"  (click)="year()">by sales</button>
-  <button class="btn botto"  (click)="expenses()">by expenses</button>
-  <button class="btn botto"  (click)="borrowers()">by borrowers</button>
-  <button class="btn botto"  (click)="profit()">by profit</button>
+  <button class="btn botto" (click)="variant()">{{ 'by variant' | t }}</button>
+  <button class="btn botto"  (click)="year()">{{ 'by sales' | t }}</button>
+  <button class="btn botto"  (click)="expenses()">{{ 'by expenses' | t }}</button>
+  <button class="btn botto"  (click)="borrowers()">{{ 'by borrowers' | t }}</button>
+  <button class="btn botto"  (click)="profit()">{{ 'by profit' | t }}</button>
   <!-- <button class="btn botto"  (click)="netprofit()">by net profit</button> -->
 </div>
 <div style="padding:5px"></div>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Report' | t }}</h3>
+<div class="f5-body">
 <div *ngIf="variantval==='True'" style="text-align: center;">
-  <input type="text" class="wako" #box168 (change)="rmemo(box168.value)" placeholder="display ramained below">
+  <input type="text" class="wako" #box168 (change)="rmemo(box168.value)" [placeholder]="'display ramained below' | t">
   <!-- <button (click)="submit()">submit</button> -->
   <div>
 
@@ -20,9 +24,15 @@
 
 </div>
 
-<div class="d-flex justify-content-center" style="font-weight: bolder; font-family:Arial, Helvetica, sans-serif; padding:20px"> <div *ngIf="showbar=='True'">Profit:{{prof | currency: 'Tsh '}}tsh  |  Total revenue:{{sum | currency: 'Tsh '}}tsh</div>  </div>
+<div class="d-flex justify-content-center" style="font-weight: bolder; font-family:Arial, Helvetica, sans-serif; padding:20px"> <div *ngIf="showbar=='True'">Profit:{{ prof | money: 'Tsh ' : '' : 'tsh' }}  |  Total revenue:{{ sum | money: 'Tsh ' : '' : 'tsh' }}</div>  </div>
+</div>
+</section>
 
 
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Expenses report-' | t }}</h3>
+<div class="f5-body">
 <div id="myprint">
   <div class="d-flex justify-content-center">
     <!-- <mat-form-field style="width:40%">
@@ -39,23 +49,23 @@
             <th style="padding-left:10px;">#</th>
             <th style="padding-left:10px;">Date & Time</th>
             <!-- <th style="padding-left:10px;">pk</th> -->
-            <th>Name</th>
-            <th nowrap> Product number</th>
-            <th nowrap> Purchasing price</th>
-            <th>Price</th>
+            <th>{{ 'Name' | t }}</th>
+            <th nowrap> {{ 'Product number' | t }}</th>
+            <th nowrap> {{ 'Purchasing price' | t }}</th>
+            <th>{{ 'Price' | t }}</th>
             <!-- <th style="padding-left:10px;">Image</th> -->
-            <th>Type</th>
-            <th>Officer</th>
-            <th nowrap>Shelf No</th>
+            <th>{{ 'Type' | t }}</th>
+            <th>{{ 'Officer' | t }}</th>
+            <th nowrap>{{ 'Shelf No' | t }}</th>
 
-            <th>Remained</th>
-            <th>Measure</th>
+            <th>{{ 'Remained' | t }}</th>
+            <th>{{ 'Measure' | t }}</th>
             <!-- <th>Expiration</th> -->
-            <th nowrap>Total Selling price</th>
-            <th nowrap>Total bought price</th>
-            <th>Sold</th>
-            <th>Description</th>
-            <th>Action</th>
+            <th nowrap>{{ 'Total Selling price' | t }}</th>
+            <th nowrap>{{ 'Total bought price' | t }}</th>
+            <th>{{ 'Sold' | t }}</th>
+            <th>{{ 'Description' | t }}</th>
+            <th>{{ 'Action' | t }}</th>
         </tr>
         </thead>
         <tbody >
@@ -67,8 +77,8 @@
             <td *ngIf="n.Number_of_products <= gemon"  style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
             <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap (click)="menufunct(n)">{{n.Name_of_the_product | titlecase}}</td>
             <td *ngIf="n.Number_of_products <= gemon" class="youo"  nowrap >{{n.Product_serial}}</td>
-            <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap>{{n.Price_bought| currency: 'Tsh '}}</td>
-            <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap>{{n.Selling_price| currency: 'Tsh '}}</td>
+            <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap>{{n.Price_bought| money: 'Tsh '}}</td>
+            <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap>{{n.Selling_price| money: 'Tsh '}}</td>
             <!-- <td *ngIf="n.Number_of_products <= gemon" style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" [src]="n.photo" alt=""></td> -->
             <td *ngIf="n.Number_of_products <= gemon"  class="youo"  nowrap>{{n.Type_of_product}}</td>
             <td *ngIf="n.Number_of_products <= gemon" class="youo"  nowrap>{{n.user}}</td>
@@ -77,11 +87,11 @@
             <td *ngIf="n.Number_of_products <= gemon" class="youo" nowrap>{{n.Number_of_products}}</td>
             <td *ngIf="n.Number_of_products <= gemon"  class="youo" nowrap>{{n.amountofproductval}}</td>
             <!-- <td class="youo" nowrap>{{n.Expiration_date}}</td> -->
-            <td *ngIf="n.Number_of_products <= gemon" class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'Tsh '}}</td>
-            <td *ngIf="n.Number_of_products <= gemon"  class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'Tsh '}}</td>
+            <td *ngIf="n.Number_of_products <= gemon" class="youo" nowrap>{{n.Total_Available_product_wise | money: 'Tsh '}}</td>
+            <td *ngIf="n.Number_of_products <= gemon"  class="youo" nowrap>{{n.Total_brought_product_wise | money: 'Tsh '}}</td>
             <td *ngIf="n.Number_of_products <= gemon"  class="youo" nowrap>{{n.Number_of_products_sold}}</td>
             <td *ngIf="n.Number_of_products <= gemon"  class="youo" nowrap>{{n.Description}}</td>
-            <td *ngIf="n.Number_of_products <= gemon"  class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
+            <td *ngIf="n.Number_of_products <= gemon"  class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">{{ 'Sell' | t }}</td>
         </tr>
 
           <!--<tr id="customers">-->
@@ -104,7 +114,7 @@
   </div>
   <div  *ngIf="expenseval=='True'">
     <select #month (change)="expensestask(month.value)" name="" id="" style="height:50px; width:300px; border: 1px solid transparent; background:rgb(236, 236, 236); padding:5px">
-      <option>duration</option>
+      <option>{{ 'duration' | t }}</option>
       <option value="01">january / {{yeare}}</option>
       <option value="02">February  / {{yeare}}</option>
       <option value="03">March / {{yeare}}</option>
@@ -121,14 +131,14 @@
     <button class="btn botto" style="float: right;" (click)="shownclick()">{{title}}</button>
     <div *ngIf="shown=='table'">
       <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">EXPENSES REPORT-</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'EXPENSES REPORT-' | t }}</h4>
 
       <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
 
         <thead>
           <tr>
-            <th style="padding-left:10px;" nowrap>Date</th>
-            <th style="padding-left:10px;" nowrap>Amount</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Date' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Amount' | t }}</th>
 
         </tr>
         </thead>
@@ -137,14 +147,14 @@
 
           <tr class="youo" style="  cursor: pointer; background-color: rgba(251, 146, 146, 0.437);" scrollX="true">
             <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
-            <td style="padding-left:10px;"  nowrap>TOTAL EXPENSES</td>
-            <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | currency: 'Tsh '}}</td>
+            <td style="padding-left:10px;"  nowrap>{{ 'TOTAL EXPENSES' | t }}</td>
+            <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | money: 'Tsh '}}</td>
 
         </tr>
           <tr class="youo" style="  cursor: pointer;" scrollX="true" *ngFor="let m of wowo">
             <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
             <td style="padding-left:10px;"  nowrap>{{m.Tarehe_given | date: 'EEEE, MMMM d, y' }}</td>
-            <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum  | currency: 'Tsh '}}</td>
+            <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum  | money: 'Tsh '}}</td>
 
         </tr>
 
@@ -201,16 +211,16 @@
   <div *ngIf="table">
     <div *ngIf="table=='day'">
       <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">REPORT-</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'REPORT-' | t }}</h4>
         <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
         <!-- <br><br> -->
         <!-- <pre class="card card-block card-header">{{message}}</pre> -->
         <div style="max-height:400px; overflow:auto" >
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
-              <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+              <p>{{ 'Do you want to confirm?' | t }}</p>
+              <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
             </div>
           </ng-template>
 
@@ -225,18 +235,18 @@
             </tr> -->
               <tr >
                 <th scope="col">#</th>
-                <th scope="col">Tarehe</th>
-                <th scope="col" title="Date">Product</th>
-                <th scope="col" title="Date" nowrap>T products</th>
-                <th scope="col" title="Date" nowrap>Remained</th>
-                <th scope="col" title="Date" nowrap>Receipts No</th>
-                <th scope="col" title="Date" nowrap>Officer</th>
-                <th scope="col" title="Date" nowrap>profit</th>
-                <th scope="col" title="Date" nowrap>Type</th>
-                <th scope="col" title="Total Payment (L+I+6)">Amount</th>
-                <th scope="col" title="Total Payment (L+I+6)">Total</th>
-                <th scope="col" >Description</th>
-                <th scope="col" title="Action">Status</th>
+                <th scope="col">{{ 'Tarehe' | t }}</th>
+                <th scope="col" title="Date">{{ 'Product' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'T products' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Remained' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Receipts No' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Officer' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'profit' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Type' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Amount' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Total' | t }}</th>
+                <th scope="col" >{{ 'Description' | t }}</th>
+                <th scope="col" title="Action">{{ 'Status' | t }}</th>
                 <th scope="col" title="Action"></th>
 
               </tr>
@@ -252,10 +262,10 @@
                   <td style="padding-left:10px;" class="youo"  nowrap>{{a.quantity_remained}}</td>
                   <td style="padding-left:10px;" class="youo"  nowrap>{{a.receipt}}</td>
                   <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-                  <td style="padding-left:10px;" class="youo"  nowrap>{{a.Profit}}</td>
+                  <td style="padding-left:10px;" class="youo"  nowrap>{{ a.Profit | money: 'raw' }}</td>
                   <td style="padding-left:10px;" class="youo"  nowrap>{{a.Type_of_product}}</td>
-                  <td class="youo"  nowrap>{{a.Selling_price| currency: 'tsh '}}</td>
-                  <td class="youo" nowrap >{{a.Total| currency: 'tsh '}}</td>
+                  <td class="youo"  nowrap>{{a.Selling_price| money}}</td>
+                  <td class="youo" nowrap >{{a.Total| money}}</td>
                   <td class="youo"  nowrap>{{a.Description}}</td>
                   <td class="youo"  nowrap>{{a.info}}</td>
                   <td class="youo"></td>
@@ -287,16 +297,16 @@
     </div>
     <div *ngIf="table=='month'">
       <div *ngIf="variantval=='False'" class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">MONTH REPORT-</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'MONTH REPORT-' | t }}</h4>
         <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
         <!-- <br><br> -->
         <!-- <pre class="card card-block card-header">{{message}}</pre> -->
         <div style="max-height:800px; overflow:auto" >
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
-              <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+              <p>{{ 'Do you want to confirm?' | t }}</p>
+              <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
             </div>
           </ng-template>
 
@@ -310,19 +320,19 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Tarehe</th>
-                <th scope="col" title="Date">Product</th>
-                <th scope="col" title="Date">T products</th>
-                <th scope="col" title="Date">Remained</th>
+                <th scope="col">{{ 'Tarehe' | t }}</th>
+                <th scope="col" title="Date">{{ 'Product' | t }}</th>
+                <th scope="col" title="Date">{{ 'T products' | t }}</th>
+                <th scope="col" title="Date">{{ 'Remained' | t }}</th>
                 <!-- <th scope="col" title="Date">Receipts No</th> -->
-                <th scope="col" title="Date">Officer</th>
-                <th scope="col" title="Date">profit</th>
-                <th scope="col" title="Date">Type</th>
-                <th scope="col" title="Total Payment (L+I+6)">Amount</th>
-                <th scope="col" title="Total Payment (L+I+6)">Total</th>
-                <th scope="col" >Description</th>
+                <th scope="col" title="Date">{{ 'Officer' | t }}</th>
+                <th scope="col" title="Date">{{ 'profit' | t }}</th>
+                <th scope="col" title="Date">{{ 'Type' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Amount' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Total' | t }}</th>
+                <th scope="col" >{{ 'Description' | t }}</th>
 
-                <th scope="col" title="Action">Status</th>
+                <th scope="col" title="Action">{{ 'Status' | t }}</th>
                 <th scope="col" title="Action"></th>
 
               </tr>
@@ -338,10 +348,10 @@
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.quantity_remained}}</td>
                 <!-- <td style="padding-left:10px;" class="youo"  nowrap>{{a.receipt}}</td> -->
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-                <td style="padding-left:10px;" class="youo"  nowrap>{{a.Profit}}</td>
+                <td style="padding-left:10px;" class="youo"  nowrap>{{ a.Profit | money: 'raw' }}</td>
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.Type_of_product}}</td>
-                <td class="youo"  nowrap>{{a.Selling_price| currency: 'tsh '}}</td>
-                <td class="youo"  nowrap>{{a.Total| currency: 'tsh '}}</td>
+                <td class="youo"  nowrap>{{a.Selling_price| money}}</td>
+                <td class="youo"  nowrap>{{a.Total| money}}</td>
                 <td class="youo"  nowrap>{{a.Description}}</td>
                 <td class="youo"  nowrap>{{a.info}}</td>
                 <td class="youo"  ></td>
@@ -368,16 +378,16 @@
 
     <div *ngIf="table=='year'">
       <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> YEAR REPORT-</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'YEAR REPORT-' | t }}</h4>
         <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
         <!-- <br><br> -->
         <!-- <pre class="card card-block card-header">{{message}}</pre> -->
         <div style="max-height:800px; overflow:auto" >
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
-              <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+              <p>{{ 'Do you want to confirm?' | t }}</p>
+              <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
             </div>
           </ng-template>
 
@@ -386,19 +396,19 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Tarehe</th>
-                <th scope="col" title="Date">Product</th>
-                <th scope="col" title="Date" nowrap>T products</th>
-                <th scope="col" title="Date" nowrap> Remained</th>
+                <th scope="col">{{ 'Tarehe' | t }}</th>
+                <th scope="col" title="Date">{{ 'Product' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'T products' | t }}</th>
+                <th scope="col" title="Date" nowrap> {{ 'Remained' | t }}</th>
                 <!-- <th scope="col" title="Date" nowrap>Receipts No</th> -->
-                <th scope="col" title="Date" nowrap>Officer</th>
-                <th scope="col" title="Date" nowrap>profit</th>
-                <th scope="col" title="Date">Type</th>
-                <th scope="col" title="Total Payment (L+I+6)">Amount</th>
-                <th scope="col" title="Total Payment (L+I+6)">Total</th>
-                <th scope="col" >Description</th>
+                <th scope="col" title="Date" nowrap>{{ 'Officer' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'profit' | t }}</th>
+                <th scope="col" title="Date">{{ 'Type' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Amount' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Total' | t }}</th>
+                <th scope="col" >{{ 'Description' | t }}</th>
 
-                <th scope="col" title="Action">Status</th>
+                <th scope="col" title="Action">{{ 'Status' | t }}</th>
                 <th scope="col" title="Action"></th>
 
               </tr>
@@ -414,10 +424,10 @@
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.quantity_remained}}</td>
                 <!-- <td style="padding-left:10px;" class="youo"  nowrap>{{a.receipt}}</td> -->
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-                <td style="padding-left:10px;" class="youo"  nowrap>{{a.Profit}}</td>
+                <td style="padding-left:10px;" class="youo"  nowrap>{{ a.Profit | money: 'raw' }}</td>
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.Type_of_product}}</td>
-                <td class="youo"  nowrap>{{a.Selling_price| currency: 'tsh '}}</td>
-                <td class="youo"  nowrap>{{a.Total| currency: 'tsh '}}</td>
+                <td class="youo"  nowrap>{{a.Selling_price| money}}</td>
+                <td class="youo"  nowrap>{{a.Total| money}}</td>
                 <td class="youo"  nowrap>{{a.Description}}</td>
                 <td class="youo"  nowrap>{{a.info}}</td>
                 <!-- <td class="youo"  ></td> -->
@@ -459,30 +469,30 @@
     </div> -->
     <div class="col-sm" style="background-color: rgb(217, 217, 252);;">
       <!-- <label for="date">From</label> -->
-      <input style="width: 100%;  height: 100%; border: 1px solid transparent; background:rgb(246, 246, 246)" type="date" #box1 (change)="start(box1.value)" placeholder="From">
+      <input style="width: 100%;  height: 100%; border: 1px solid transparent; background:rgb(246, 246, 246)" type="date" #box1 (change)="start(box1.value)" [placeholder]="'From' | t">
     </div>
     <div  class="col-sm" style="background-color: rgb(217, 217, 252);">
       <!-- <label for="date">To</label> -->
-      <input style="width: 100%; height: 100%; border: 1px solid transparent; background:rgb(246, 246, 246)" #box2 (change)="end(box2.value)"  type="date" placeholder="From">
+      <input style="width: 100%; height: 100%; border: 1px solid transparent; background:rgb(246, 246, 246)" #box2 (change)="end(box2.value)"  type="date" [placeholder]="'From' | t">
     </div>
 
     <div class="col-sm">
-      <a class="btn btn-secondary btn-sm" (click)="submitdate()" style="cursor: pointer; width:100%; color:white">Submit</a>
+      <a class="btn btn-secondary btn-sm" (click)="submitdate()" style="cursor: pointer; width:100%; color:white">{{ 'Submit' | t }}</a>
     </div>
   </div>
 </div>
     <div *ngIf="table=='custom'">
       <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">REPORT-</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'REPORT-' | t }}</h4>
         <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
         <!-- <br><br> -->
         <!-- <pre class="card card-block card-header">{{message}}</pre> -->
         <div style="max-height:800px; overflow:auto" >
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
-              <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+              <p>{{ 'Do you want to confirm?' | t }}</p>
+              <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
             </div>
           </ng-template>
 
@@ -490,20 +500,20 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col" nowrap>Tarehe</th>
-                <th scope="col" title="Date" nowrap>Product</th>
-                <th scope="col" title="Date" nowrap>T Products</th>
-                <th scope="col" title="Date" nowrap>Remained</th>
+                <th scope="col" nowrap>{{ 'Tarehe' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Product' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'T Products' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'Remained' | t }}</th>
                 <!-- <th scope="col" title="Date" nowrap>Receipts No</th> -->
-                <th scope="col" title="Date" nowrap>Officer</th>
-                <th scope="col" title="Date" nowrap>profit</th>
-                <th scope="col" title="Date">Type</th>
-                <th scope="col" title="Date">Officer</th>
-                <th scope="col" title="Total Payment (L+I+6)">Amount</th>
-                <th scope="col" title="Total Payment (L+I+6)">Total</th>
-                <th scope="col" nowrap>Description</th>
+                <th scope="col" title="Date" nowrap>{{ 'Officer' | t }}</th>
+                <th scope="col" title="Date" nowrap>{{ 'profit' | t }}</th>
+                <th scope="col" title="Date">{{ 'Type' | t }}</th>
+                <th scope="col" title="Date">{{ 'Officer' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Amount' | t }}</th>
+                <th scope="col" title="Total Payment (L+I+6)">{{ 'Total' | t }}</th>
+                <th scope="col" nowrap>{{ 'Description' | t }}</th>
 
-                <th scope="col" title="Action" nowrap>Status</th>
+                <th scope="col" title="Action" nowrap>{{ 'Status' | t }}</th>
                 <th scope="col" title="Action"></th>
 
               </tr>
@@ -519,11 +529,11 @@
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.quantity_remained}}</td>
                 <!-- <td style="padding-left:10px;" class="youo"  nowrap>{{a.receipt}}</td> -->
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.Officer_worker}}</td>
-                <td style="padding-left:10px;" class="youo"  nowrap>{{a.Profit}}</td>
+                <td style="padding-left:10px;" class="youo"  nowrap>{{ a.Profit | money: 'raw' }}</td>
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.Type_of_product}}</td>
                 <td style="padding-left:10px;" class="youo"  nowrap>{{a.user}}</td>
-                <td class="youo"  nowrap>{{a.Selling_price| currency: 'tsh '}}</td>
-                <td class="youo"  nowrap>{{a.Total| currency: 'tsh '}}</td>
+                <td class="youo"  nowrap>{{a.Selling_price| money}}</td>
+                <td class="youo"  nowrap>{{a.Total| money}}</td>
                 <td class="youo"  nowrap>{{a.Description}}</td>
                 <td class="youo"  ></td>
                 <td class="youo"  ></td>
@@ -559,9 +569,15 @@
 
 
 </div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Borrowers report-' | t }}</h3>
+<div class="f5-body">
 <div  *ngIf="borrowersval=='True'">
   <select #month (change)="borrowersvalues(month.value)" name="" id="" style="height:50px; width:300px; border: 1px solid transparent; background:rgb(236, 236, 236); padding:5px">
-    <option>duration</option>
+    <option>{{ 'duration' | t }}</option>
     <option value="01">january  / {{yeare}}</option>
     <option value="02">February / {{yeare}}</option>
     <option value="03">March / {{yeare}}</option>
@@ -578,22 +594,22 @@
   <button class="btn botto" style="float: right;" (click)="shownclick()">{{title}}</button>
   <div *ngIf="shown=='table'">
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">BORROWERS REPORT-</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'BORROWERS REPORT-' | t }}</h4>
 
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
 
       <thead>
         <tr>
-          <th style="padding-left:10px;" nowrap>Date</th>
-          <th style="padding-left:10px;" nowrap>Amount</th>
+          <th style="padding-left:10px;" nowrap>{{ 'Date' | t }}</th>
+          <th style="padding-left:10px;" nowrap>{{ 'Amount' | t }}</th>
 
       </tr>
       </thead>
       <tbody >
         <tr class="youo" style="  cursor: pointer; background-color: rgba(251, 146, 146, 0.437);" scrollX="true">
           <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
-          <td style="padding-left:10px;"  nowrap>TOTAL BORROWERS</td>
-          <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | currency: 'Tsh '}}</td>
+          <td style="padding-left:10px;"  nowrap>{{ 'TOTAL BORROWERS' | t }}</td>
+          <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | money: 'Tsh '}}</td>
 
       </tr>
 
@@ -601,7 +617,7 @@
         <tr class="youo" style="  cursor: pointer;" scrollX="true" *ngFor="let m of wowo">
           <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
           <td style="padding-left:10px;"  nowrap>{{m.Tarehe_given | date: 'EEEE, MMMM d, y' }}</td>
-          <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | currency: 'Tsh '}}</td>
+          <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | money: 'Tsh '}}</td>
 
       </tr>
 
@@ -627,7 +643,7 @@
   <div *ngIf="shown=='graph'">
     <div style="text-align: center;">
 
-      Sorry this section still under construction
+      {{ 'Sorry this section still under construction' | t }}
     </div>
     <div>
 
@@ -651,9 +667,15 @@
 
 
 </div >
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Net profit report-' | t }}</h3>
+<div class="f5-body">
 <div  *ngIf="netprofitval=='True'">
   <select #month (change)="submitselected(month.value)" name="" id="" style="height:50px; width:300px; border: 1px solid transparent; background:rgb(236, 236, 236); padding:5px">
-    <option>duration</option>
+    <option>{{ 'duration' | t }}</option>
     <option value="01">january / {{yeare}}</option>
     <option value="02">February / {{yeare}}</option>
     <option value="03">March / {{yeare}}</option>
@@ -670,14 +692,14 @@
   <button class="btn botto" style="float: right;" (click)="shownclick()">{{title}}</button>
   <div *ngIf="shown=='table'">
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">NET PROFIT REPORT-</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'NET PROFIT REPORT-' | t }}</h4>
 
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
 
         <thead>
           <tr>
-            <th style="padding-left:10px;" nowrap>Date</th>
-            <th style="padding-left:10px;" nowrap>Amount</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Date' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Amount' | t }}</th>
 
         </tr>
         </thead>
@@ -687,7 +709,7 @@
           <tr class="youo" style="  cursor: pointer;" scrollX="true" *ngFor="let m of wowo">
             <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
             <td style="padding-left:10px;"  nowrap>{{m.Tarehe_given | date: 'EEEE, MMMM d, y' }}</td>
-            <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | currency: 'Tsh '}}</td>
+            <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | money: 'Tsh '}}</td>
 
         </tr>
 
@@ -713,7 +735,7 @@
   <div *ngIf="shown=='graph'">
     <div style="text-align: center;">
 
-      Sorry this section still under construction
+      {{ 'Sorry this section still under construction' | t }}
     </div>
     <div>
 
@@ -737,9 +759,15 @@
 
 
 </div >
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Profit report-' | t }}</h3>
+<div class="f5-body">
 <div  *ngIf="profitval=='True'">
   <select #month (change)="profitmonth(month.value)" name="" id="" style="height:50px; width:300px; border: 1px solid transparent; background:rgb(236, 236, 236); padding:5px">
-    <option>duration</option>
+    <option>{{ 'duration' | t }}</option>
     <option value="01">january / {{yeare}}</option>
     <option value="02">February / {{yeare}}</option>
     <option value="03">March / {{yeare}}</option>
@@ -756,22 +784,22 @@
   <button class="btn botto" style="float: right;" (click)="shownclick()">{{title}}</button>
   <div *ngIf="shown=='table'">
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">PROFIT REPORT-</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'PROFIT REPORT-' | t }}</h4>
 
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
 
       <thead>
         <tr>
-          <th style="padding-left:10px;" nowrap>Date</th>
-          <th style="padding-left:10px;" nowrap>Amount</th>
+          <th style="padding-left:10px;" nowrap>{{ 'Date' | t }}</th>
+          <th style="padding-left:10px;" nowrap>{{ 'Amount' | t }}</th>
 
       </tr>
       </thead>
       <tbody >
         <tr class="youo" style="  cursor: pointer; background-color: rgba(251, 146, 146, 0.437);" scrollX="true">
           <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
-          <td style="padding-left:10px;"  nowrap>TOTAL PROFIT</td>
-          <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | currency: 'Tsh '}}</td>
+          <td style="padding-left:10px;"  nowrap>{{ 'TOTAL PROFIT' | t }}</td>
+          <td style="padding-left:10px; font-weight: bolder; " class="youo" nowrap>{{sum | money: 'Tsh '}}</td>
 
       </tr>
 
@@ -779,7 +807,7 @@
         <tr class="youo" style="cursor: pointer;" scrollX="true" *ngFor="let m of wowo">
           <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
           <td style="padding-left:10px;"  nowrap>{{m.Tarehe_given | date: 'EEEE, MMMM d, y'}}</td>
-          <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | currency: 'Tsh '}}</td>
+          <td style="padding-left:10px; font-weight: bolder;" class="youo" nowrap>{{m.sum | money: 'Tsh '}}</td>
 
       </tr>
 
@@ -805,7 +833,7 @@
   <div *ngIf="shown=='graph'">
     <div style="text-align: center;">
 
-      Sorry this section still under construction
+      {{ 'Sorry this section still under construction' | t }}
     </div>
     <div>
 
@@ -829,8 +857,12 @@
 
 
 </div >
+</div>
+</section>
+</div>
+
 
 <div style="padding: 10px;"></div>
 <div style="text-align: center;">
-  <button class="btn btn-primary" style="width: 200px;" onclick="printDiv()">Print</button>
+  <button class="btn btn-primary" style="width: 200px;" onclick="printDiv()">{{ 'Print' | t }}</button>
 </div>

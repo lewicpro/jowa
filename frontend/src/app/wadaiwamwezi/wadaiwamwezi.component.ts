@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestframeworkService } from '../apiservice/restframework.service';
 
@@ -17,7 +18,18 @@ export class WadaiwamweziComponent {
 
   mwezi;
   d = new Date(); 
-  constructor(public restframework: RestframeworkService) {
+
+  printe() {
+    window.print();
+  }
+
+  onselected(form) {
+    localStorage.removeItem('id');
+    localStorage.setItem('id', form.pk);
+    this.router.navigate(['/Admindash/Details/Mkopoadmin']);
+  }
+
+  constructor(public restframework: RestframeworkService, private router: Router) {
     this.restframework.getMkopos().then(data => {
       this.malipo = data;
       this.mwezi = this.monthes[this.d.getMonth()];

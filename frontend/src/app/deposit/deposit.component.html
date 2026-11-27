@@ -1,30 +1,40 @@
 
 <ng-progress></ng-progress>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Deposit' | t }}</h3>
+<div class="f5-body">
 <!-- <div class="d-flex justify-content-center">
 <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
 </mat-form-field>
 </div> -->
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Deposit' | t }}</h3>
+<div class="f5-body">
 <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">Deposit</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'Deposit' | t }}</h4>
   <ng-template #templatee>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
     <thead>
       <tr>
-        <th scope="col">Tarehe</th>
-        <th scope="col" title="Date">Jina</th>
-        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
-        <th scope="col" title="Loan Repayment">Phone</th>
-        <th scope="col" title="Interest Paid">Officer</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">email</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
+        <th scope="col" title="Date">{{ 'Jina' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
+        <th scope="col" title="Loan Repayment">{{ 'Phone' | t }}</th>
+        <th scope="col" title="Interest Paid">{{ 'Officer' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'email' | t }}</th>
 
-        <th scope="col" title="Action">Action</th>
+        <th scope="col" title="Action">{{ 'Action' | t }}</th>
 
       </tr>
     </thead>
@@ -34,14 +44,14 @@
 
     </div> -->
     <tr style="cursor:pointer" id="customers">
-      <td class="text-center" >muda wa sasa</td>
+      <td class="text-center" >{{ 'muda wa sasa' | t }}</td>
       <td style="white-space: nowrap">{{Create.user}}</td>
 
       <td><input [(ngModel)]="Create.Amount" style="border-radius:3px;" type="number" min="0"></td>
       <td><input [(ngModel)]="Create.Phone"  style="border-radius:3px;"  type="text"></td>
       <td><input disabled [(ngModel)]="Create.service_officer"  type="text" style="border-radius:3px;"></td>
       <td><input [(ngModel)]="Create.email" style="border-radius:3px;" type="text"></td>
-      <td><a (click)="gonj()" >Tunza</a></td>
+      <td><a (click)="gonj()" >{{ 'Tunza' | t }}</a></td>
     </tr>
     @for (k of all; track k) {
       <tr  id="customers" >
@@ -52,7 +62,7 @@
           <td style="white-space: nowrap">{{k.user}}</td>
         }
         @if (k.user === Create.user) {
-          <td style="white-space: nowrap">{{k.Amount | currency: 'tsh '}}</td>
+          <td style="white-space: nowrap">{{k.Amount | money}}</td>
         }
         @if (k.user === Create.user) {
           <td style="white-space: nowrap">{{k.Phone}}</td>
@@ -69,13 +79,13 @@
           <td  style="color:red"></td>
         }
         @if (k.user === Create.user && k.info === 'delete';) {
-          <td   style="color:red"><button (click)='run()'>delete</button></td>
+          <td   style="color:red"><button (click)='run()'>{{ 'delete' | t }}</button></td>
         }
         @if (k.user === Create.user && k.info === '';) {
           <td   style="color:red"></td>
         }
         @if (k.user === Create.user && k.info === 'deleted';) {
-          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">{{ 'deleted' | t }}</td>
         }
       </tr>
     }
@@ -94,6 +104,10 @@
 </tbody>
 </table>
 </div>
+</div>
+</section>
+</div>
+
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
 

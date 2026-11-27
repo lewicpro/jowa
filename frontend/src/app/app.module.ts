@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localeSw from '@angular/common/locales/sw';
 import { NgModule } from '@angular/core';
 import { NgProgressModule } from 'ngx-progressbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,6 +9,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { NgChartsModule as ChartsModule } from 'ng2-charts';
+registerLocaleData(localeSw, 'sw');
 // import {ConnectionServiceModule} from 'ngx-connection-service';
 
 // import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -66,6 +69,9 @@ import { OngezaAccountComponent } from './ongeza-account/ongeza-account.componen
 import { WaliojulishwaComponent } from './waliojulishwa/waliojulishwa.component';
 import { OngezaMkopoComponent } from './ongeza-mkopo/ongeza-mkopo.component';
 import { MyfilterPipe } from './myfilter.pipe';
+import { MoneyPipe, TranslatePipe } from './settings/settings.pipes';
+import { SettingsMenuComponent } from './settings/settings-menu.component';
+import { CloseFormDirective } from './settings/close-form.directive';
 import { DetailsViewComponent } from './details-view/details-view.component';
 import { AdminKopaComponent } from './admin-kopa/admin-kopa.component';
 import { AdminHistoryComponent } from './admin-history/admin-history.component';
@@ -74,6 +80,7 @@ import { EditaccountComponent } from './editaccount/editaccount.component';
 import { BankstatementComponent } from './bankstatement/bankstatement.component';
 import { OpenSnackerComponent } from './open-snacker/open-snacker.component';
 import { MwezihuumesejiComponent } from './mwezihuumeseji/mwezihuumeseji.component';
+import { OverdueThisMonthComponent } from './overdue-this-month/overdue-this-month.component';
 import { BankComponent } from './bank/bank.component';
 import { AtmComponent } from './atm/atm.component';
 import { SlipComponent } from './slip/slip.component';
@@ -325,6 +332,10 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
         WaliojulishwaComponent,
         OngezaMkopoComponent,
         MyfilterPipe,
+        MoneyPipe,
+        TranslatePipe,
+        SettingsMenuComponent,
+        CloseFormDirective,
         DetailsViewComponent,
         AdminKopaComponent,
         AdminHistoryComponent,
@@ -335,6 +346,7 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
         ReceiptComponent,
         OpenSnackerComponent,
         MwezihuumesejiComponent,
+        OverdueThisMonthComponent,
         BankComponent,
         AtmComponent,
         SlipComponent,
@@ -926,10 +938,12 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
                     { path: 'Malipo', component: MalipoComponent },
                     { path: 'Waliojulishwa', component: WaliojulishwaComponent, children: [
                             { path: 'Mwezihuu', component: MwezihuumesejiComponent },
+                            { path: 'Overdue', component: OverdueThisMonthComponent },
                             { path: 'TumaMsj', component: TumaMesgComponent }
                         ] },
                     { path: 'Details', component: DetailsViewComponent, children: [
                             { path: 'Mkopoadmin', component: AdminKopaComponent },
+                            { path: 'Hati', component: DashboardHatiMikopoComponent },
                             { path: 'Historia', component: AdminHistoryComponent },
                             { path: 'Ongeza-mkopo', component: OngezaMkopoComponent },
                             { path: 'receipt', component: ReceiptComponent },

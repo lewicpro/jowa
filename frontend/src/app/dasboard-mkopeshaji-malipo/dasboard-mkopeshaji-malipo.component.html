@@ -9,7 +9,7 @@
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
   <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> MALIPO</h4>
   <div style="max-height:800px; overflow: auto">
-    <!-- <div style="background-color: #dee2e6;"><marquee direction="right"> Given:{{given | currency: 'tsh '}} / Kutoa:{{kutoa | currency: 'tsh '}} / Baki:{{baki | currency: 'tsh '}}</marquee></div> -->
+    <!-- <div style="background-color: #dee2e6;"><marquee direction="right"> Given:{{given | money}} / Kutoa:{{kutoa | money}} / Baki:{{baki | money}}</marquee></div> -->
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <!-- <tr>
@@ -48,15 +48,15 @@
 
         <td style="background-color: rgb(102, 87, 87);" > </td>
         <td style="white-space: nowrap" colspan="5"><marquee direction="right"> ALECO BUSINESS PLAN</marquee></td>
-        <td style="white-space: nowrap">Total Loans:{{given | currency: 'tsh '}} </td>
+        <td style="white-space: nowrap">Total Loans:{{given | money}} </td>
         <td style="white-space: nowrap"></td>
         <td style="white-space: nowrap"></td>
         <!-- <td style="white-space: nowrap; "></td> -->
         <!-- <td style="white-space: nowrap; font-size: 10px;"> </td>
         <td style ="color:blue"><a ></a></td>
         <td style="color:red"></td> -->
-        <td style="white-space: nowrap; font-size: 10px;">Total : {{sum | currency: 'tsh '}}</td>
-        <td style="white-space: nowrap; font-size: 10px;">Total : {{kilichokopwa | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap; font-size: 10px;">Total : {{sum | money}}</td>
+        <td style="white-space: nowrap; font-size: 10px;">Total : {{kilichokopwa | money}}</td>
         <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
 
         <!-- <td style="color:red" ><button class="mben" (click)='run()'>delete</button></td> -->
@@ -108,10 +108,10 @@
             <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.jina}}</td>
           }
           @if (form.info !== 'deleted') {
-            <td  nowrap style="color:blue">{{form.loan_repay | currency: 'tsh '}}</td>
+            <td  nowrap style="color:blue">{{form.loan_repay | money}}</td>
           }
           @if (form.info === 'deleted') {
-            <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.loan_repay | currency: 'tsh '}}</td>
+            <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.loan_repay | money}}</td>
           }
           @if (form.info !== 'deleted') {
             <td  nowrap>{{form.awamu}}</td>
@@ -126,13 +126,13 @@
             <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.tangu}}</td>
           }
           @if (form.info !== 'deleted') {
-            <td  nowrap  style="color:red">{{form.Balance | currency: 'tsh '}}</td>
+            <td  nowrap  style="color:red">{{form.Balance | money}}</td>
           }
           @if (form.info === 'deleted') {
-            <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.Balance}}</td>
+            <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{ form.Balance | money: 'raw' }}</td>
           }
           @if (form.info !== 'deleted') {
-            <td  nowrap>{{form.kilichokopwa | currency: 'tsh '}}</td>
+            <td  nowrap>{{form.kilichokopwa | money}}</td>
           }
           @if (form.info === 'deleted') {
             <td nowrap style="background:rgb(204, 116, 133); color:ghostwhite">{{form.kilichokopwa}}</td>

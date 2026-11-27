@@ -3,23 +3,33 @@
 <div class="d-flex justify-content-center">
 
 </div>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Duka director order' | t }}</h3>
+<div class="f5-body">
 <div style="text-align: center;"><input class="wako" type="text" placeholder="" style="width: 400px;"></div>
 <div style="padding: 5px;"></div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'List of orders' | t }}</h3>
+<div class="f5-body">
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">LIST OF ORDERS</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'LIST OF ORDERS' | t }}</h4>
 
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Do you want to confirm Delete?</p>
-      <button type="button" class="btn btn-default" (click)="confirm(pk)" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm Delete?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm(pk)" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
   <ng-template #template2>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm2(pk)" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline2()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm2(pk)" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline2()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
 
@@ -27,17 +37,17 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Tarehe</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
         <!-- <th scope="col" title="Date">Jina</th> -->
-        <th scope="col" title="Total Payment (L+I+6)">Product</th>
-        <th scope="col" title="Total Payment (L+I+6)">Quantity</th>
-        <th scope="col" title="Total Payment (L+I+6)" nowrap>Type of product</th>
-        <th scope="col" title="Total Payment (L+I+6)">Price</th>
-        <th scope="col" title="Total Payment (L+I+6)">Total</th>
-        <th scope="col" >Description</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Product' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Quantity' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)" nowrap>{{ 'Type of product' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Price' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Total' | t }}</th>
+        <th scope="col" >{{ 'Description' | t }}</th>
 
-        <th scope="col" title="Action">Officer</th>
-        <th scope="col" title="Action">Company</th>
+        <th scope="col" title="Action">{{ 'Officer' | t }}</th>
+        <th scope="col" title="Action">{{ 'Company' | t }}</th>
         <th scope="col" title="Action"></th>
 
       </tr>
@@ -46,19 +56,19 @@
 
       <tr style="cursor:pointer" id="customers" >
         <td class="text-center" ></td>
-        <td class="text-center" ><input [value]="times" disabled  style="border-radius:3px; width:100%" type="text" placeholder="Muda wa sasa"> </td>
+        <td class="text-center" ><input [value]="times" disabled  style="border-radius:3px; width:100%" type="text" [placeholder]="'Muda wa sasa' | t"> </td>
         <!-- <td style="white-space: nowrap"><input #box (blur)="Jina_Mtejafun(box.value)"  [value]="Jina_Mtejaval" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td> -->
-        <td><input #box1 (blur)="Product(box1.value)" [value]="Productval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
-        <td><input #box2 (blur)="Quantity(box2.value)" [value]="Quantityval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
-        <td><input #box22 (blur)="Typeproduct(box22.value)" [value]="Typeproductval" style="border-radius:3px; width:100%"   type="text" placeholder="eg: new or used"></td>
-        <td><input #box3 (blur)="Amount(box3.value)" [value]="Amountval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
-        <td><input #box32 (blur)="Total(box32.value)" [value]="Totalval" style="border-radius:3px; width:100%"   type="number" placeholder="*Important"></td>
-        <td><input #box4 (blur)="Description(box4.value)" [value]="Descriptionval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"></td>
+        <td><input #box1 (blur)="Product(box1.value)" [value]="Productval" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Important' | t"></td>
+        <td><input #box2 (blur)="Quantity(box2.value)" [value]="Quantityval" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Important' | t"></td>
+        <td><input #box22 (blur)="Typeproduct(box22.value)" [value]="Typeproductval" style="border-radius:3px; width:100%"   type="text" [placeholder]="'eg: new or used' | t"></td>
+        <td><input #box3 (blur)="Amount(box3.value)" [value]="Amountval" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Important' | t"></td>
+        <td><input #box32 (blur)="Total(box32.value)" [value]="Totalval" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Important' | t"></td>
+        <td><input #box4 (blur)="Description(box4.value)" [value]="Descriptionval" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Important' | t"></td>
 
         <td>{{user}}</td>
         <td>{{company}}</td>
         <!-- <td></td> -->
-        <td><a (click)="submitorder()"  >Tunza</a></td>
+        <td><a (click)="submitorder()"  >{{ 'Tunza' | t }}</a></td>
       </tr>
 
 
@@ -70,13 +80,13 @@
           <td class="youo"  >{{a.Product}}</td>
           <td class="youo"  >{{a.Quantity}}</td>
           <td class="youo"  >{{a.Typeproduct}}</td>
-          <td class="youo"  >{{a.Amount | currency: 'tsh ' }}</td>
-          <td class="youo"  >{{a.Total | currency: 'tsh ' }}</td>
+          <td class="youo"  >{{a.Amount | money }}</td>
+          <td class="youo"  >{{a.Total | money }}</td>
           <td class="youo"  >{{a.Description}}</td>
           <td class="youo"  >{{a.officer}}</td>
           <td class="youo"  >{{a.company}}</td>
           <!-- <td class="youo"  >{{a.info}}</td> -->
-          <td nowrap> <a style="font-weight:bolder; cursor: pointer;" (click)="delete('order', a.pk)">Delete</a>  </td>
+          <td nowrap> <a style="font-weight:bolder; cursor: pointer;" (click)="delete('order', a.pk)">{{ 'Delete' | t }}</a>  </td>
         </tr>
       }
 
@@ -87,6 +97,10 @@
 
 
 </div>
+</div>
+</section>
+</div>
+
 
 
 

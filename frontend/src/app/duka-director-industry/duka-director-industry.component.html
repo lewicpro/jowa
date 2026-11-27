@@ -3,22 +3,22 @@
   <div align="center">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a  class="nav-link active" (click)="rawmaterials()" style="cursor: pointer;">Raw materials</a>
+        <a  class="nav-link active" (click)="rawmaterials()" style="cursor: pointer;">{{ 'Raw materials' | t }}</a>
       </li>
       <li class="nav-item">
-        <a   class="nav-link active" (click)="industryexpenses()" style="cursor: pointer;">Expenses </a>
+        <a   class="nav-link active" (click)="industryexpenses()" style="cursor: pointer;">{{ 'Expenses' | t }} </a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link active" (click)="output()" style="cursor: pointer;">Output</a>
+        <a  class="nav-link active" (click)="output()" style="cursor: pointer;">{{ 'Output' | t }}</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link active" (click)="lossfaults()" style="cursor: pointer;">Loses/Faults</a>
+        <a  class="nav-link active" (click)="lossfaults()" style="cursor: pointer;">{{ 'Loses/Faults' | t }}</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link active" (click)="workers()" style="cursor: pointer;">Workers</a>
+        <a  class="nav-link active" (click)="workers()" style="cursor: pointer;">{{ 'Workers' | t }}</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">Settings</a>
+        <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">{{ 'Settings' | t }}</a>
       </li>
     </ul>
     <div style="padding: 20px;"></div>
@@ -26,16 +26,20 @@
 }
 
 
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'List of raw materials' | t }}</h3>
+<div class="f5-body">
 @if (rawmaterialval=='True') {
   <div>
-    <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added Materials</a></div><div  align="right" class="col">@if (statux=='sell') {
-    <a   (click)="regis()" style="cursor: pointer;">Register Material</a>
+    <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">{{ 'Added Materials' | t }}</a></div><div  align="right" class="col">@if (statux=='sell') {
+    <a   (click)="regis()" style="cursor: pointer;">{{ 'Register Material' | t }}</a>
     }@if (statux=='register') {
-    <a (click)="materials()" style="cursor: pointer;"><span class="material-icons">close</span></a>
+    <a (click)="materials()" style="cursor: pointer;"><span class="material-icons">{{ 'close' | t }}</span></a>
   }</div></div>
   <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
   <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(85, 85, 85, 0.06); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-    <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> LIST OF RAW MATERIALS</h4>
+    <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> {{ 'LIST OF RAW MATERIALS' | t }}</h4>
     <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
     <!-- <br><br> -->
     <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -46,16 +50,16 @@
             <th style="padding-left:10px;">#</th>
             <th style="padding-left:10px;">Date & Time</th>
             <!-- <th style="padding-left:10px;">pk</th> -->
-            <th>Name of Material</th>
-            <th nowrap> Material number</th>
-            <th nowrap>Amount of material</th>
-            <th>Remaining</th>
-            <th>Measure</th>
-            <th>Officer</th>
-            <th nowrap>Purchasing</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>{{ 'Name of Material' | t }}</th>
+            <th nowrap> {{ 'Material number' | t }}</th>
+            <th nowrap>{{ 'Amount of material' | t }}</th>
+            <th>{{ 'Remaining' | t }}</th>
+            <th>{{ 'Measure' | t }}</th>
+            <th>{{ 'Officer' | t }}</th>
+            <th nowrap>{{ 'Purchasing' | t }}</th>
+            <th>{{ 'Description' | t }}</th>
+            <th>{{ 'Status' | t }}</th>
+            <th>{{ 'Action' | t }}</th>
           </tr>
           @for (n of rawmaterial; track n; let i = $index) {
             <tr class="youo" style="  cursor: pointer;" scrollX="true">
@@ -68,10 +72,10 @@
               <td class="youo"  nowrap>{{n.Amount_of_rawmaterial_remained}}</td>
               <td class="youo"  nowrap>0</td>
               <td class="youo"  nowrap>{{n.Officer_worker}}</td>
-              <td class="youo"  nowrap>{{n.buying_price}}</td>
+              <td class="youo"  nowrap>{{ n.buying_price | money: 'raw' }}</td>
               <td class="youo"  nowrap>{{n.Description}}</td>
               <td class="youo" nowrap>{{n.status}}</td>
-              <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('rawmaterial', n.pk)">Delete</td>
+              <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('rawmaterial', n.pk)">{{ 'Delete' | t }}</td>
             </tr>
           }
           <div style="padding: 30px;"></div>
@@ -91,7 +95,7 @@
   </table>
   @if (receipt=='on'                                                        ) {
     <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-      <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+      <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
       <div align="center">
         <label class="switch">
           @if (route=='active') {
@@ -104,36 +108,36 @@
         </label>
       </div>
       <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-        <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+        <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
         <div style="padding:10px"></div>
         <div align="center" style="font-size:13px;">{{username}}</div>
         <div align="center" style="font-size:13px;">{{Email}}</div>
         <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
         <div align="center" style="font-size:13px;">{{wilaya}}</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
         <div align="center" style="font-size:13px;">-----------------------------------</div>
         @for (m of allgiv; track m) {
           <div>
-            <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+            <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
           </div>
         }
         <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
         <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+        <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
         <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
         <div align="center" style="font-size:13px;">---------------------</div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+        <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
         <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
         <div style="padding:10px"></div>
-        <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+        <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
       </div>
       <div style="padding:10px"></div>
-      <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+      <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
     </div>
   }
 </div>
@@ -141,12 +145,18 @@
 </div>
 }
 <!--  -->
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'List of output' | t }}</h3>
+<div class="f5-body">
 @if (outputval=='True') {
   <div>
     <!-- <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added Materials</a></div><div  align="right" class="col"><a  *ngIf="statux=='sell'"  (click)="regis()" style="cursor: pointer;">Register Material</a><a *ngIf="statux=='register'" (click)="materials()" style="cursor: pointer;"><span class="material-icons">close</span></a></div></div> -->
     <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(85, 85, 85, 0.06); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> LIST OF OUTPUT</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> {{ 'LIST OF OUTPUT' | t }}</h4>
       <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
       <!-- <br><br> -->
       <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -157,30 +167,30 @@
               <th style="padding-left:10px;">#</th>
               <th style="padding-left:10px;">Date & Time</th>
               <!-- <th style="padding-left:10px;">pk</th> -->
-              <th>Name of Material</th>
-              <th nowrap> Material number</th>
-              <th nowrap>Amount of material</th>
-              <th>Remaining</th>
+              <th>{{ 'Name of Material' | t }}</th>
+              <th nowrap> {{ 'Material number' | t }}</th>
+              <th nowrap>{{ 'Amount of material' | t }}</th>
+              <th>{{ 'Remaining' | t }}</th>
               <!-- <th>Measure</th> -->
-              <th>Officer</th>
-              <th nowrap>Selling</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>{{ 'Officer' | t }}</th>
+              <th nowrap>{{ 'Selling' | t }}</th>
+              <th>{{ 'Description' | t }}</th>
+              <th>{{ 'Status' | t }}</th>
+              <th>{{ 'Action' | t }}</th>
             </tr>
             <tr style="cursor:pointer" id="customers">
               <td class="text-center" ></td>
-              <td class="text-center" ><input #boxmo (blur)="Tareheout(boxmo.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" placeholder="Muda wa sasa"> </td>
-              <td style="white-space: nowrap"><input #box530 (blur)="Name_of_the_material(box530.value)" style="border-radius:3px; width:100%"  type="text" placeholder="*Name of the material"></td>
-              <td><input #box301 (blur)="Material_number(box301.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Material number"></td>
-              <td><input #box302 (blur)="Amount_of_material(box302.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Amount of material"></td>
-              <td><input #box303 (blur)="Remaining(box303.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Remaining"></td>
+              <td class="text-center" ><input #boxmo (blur)="Tareheout(boxmo.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
+              <td style="white-space: nowrap"><input #box530 (blur)="Name_of_the_material(box530.value)" style="border-radius:3px; width:100%"  type="text" [placeholder]="'*Name of the material' | t"></td>
+              <td><input #box301 (blur)="Material_number(box301.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Material number' | t"></td>
+              <td><input #box302 (blur)="Amount_of_material(box302.value)" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Amount of material' | t"></td>
+              <td><input #box303 (blur)="Remaining(box303.value)" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Remaining' | t"></td>
               <!-- <td><input #box304 (blur)="Measure(box304.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Measure"></td> -->
-              <td><input disabled style="border-radius:3px; width:100%"   type="text" placeholder="*Officer"></td>
-              <td><input #box306 (blur)="Selling(box306.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Selling"></td>
-              <td><input #box307 (blur)="Description(box307.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Description"></td>
-              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" placeholder="*Status" value="pass"></td>
-              <td><a (click)="submitoutput(boxmo.value)">Tunza</a></td>
+              <td><input disabled style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Officer' | t"></td>
+              <td><input #box306 (blur)="Selling(box306.value)" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Selling' | t"></td>
+              <td><input #box307 (blur)="Description(box307.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Description' | t"></td>
+              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Status' | t" value="pass"></td>
+              <td><a (click)="submitoutput(boxmo.value)">{{ 'Tunza' | t }}</a></td>
             </tr>
             @for (n of outpute; track n; let i = $index) {
               <tr class="youo" style="  cursor: pointer;" scrollX="true">
@@ -193,10 +203,10 @@
                 <td class="youo"  nowrap>{{n.Remaining}}</td>
                 <!-- <td class="youo"  nowrap>{{n.TimeApproved}}</td> -->
                 <td class="youo"  nowrap>{{n.Officer_worker}}</td>
-                <td class="youo"  nowrap>{{n.selling_price| currency: 'Tsh '}}</td>
+                <td class="youo"  nowrap>{{n.selling_price| money: 'Tsh '}}</td>
                 <td class="youo"  nowrap>{{n.Description}}</td>
                 <td class="youo" nowrap>{{n.status}}</td>
-                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('output', n.pk)">Delete</td>
+                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('output', n.pk)">{{ 'Delete' | t }}</td>
               </tr>
             }
             <div style="padding: 30px;"></div>
@@ -216,7 +226,7 @@
     </table>
     @if (receipt=='on'                                                        ) {
       <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
         <div align="center">
           <label class="switch">
             @if (route=='active') {
@@ -229,47 +239,53 @@
           </label>
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:13px;">{{username}}</div>
           <div align="center" style="font-size:13px;">{{Email}}</div>
           <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
           <div align="center" style="font-size:13px;">{{wilaya}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
           <div align="center" style="font-size:13px;">-----------------------------------</div>
           @for (m of allgiv; track m) {
             <div>
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
             </div>
           }
           <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
           <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
         </div>
         <div style="padding:10px"></div>
-        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
       </div>
     }
   </div>
 </div>
 </div>
 }
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Settings' | t }}</h3>
+<div class="f5-body">
 @if (settingsval=='True') {
   <div>
     <!-- <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added Materials</a></div><div  align="right" class="col"><a  *ngIf="statux=='sell'"  (click)="regis()" style="cursor: pointer;">Register Material</a><a *ngIf="statux=='register'" (click)="materials()" style="cursor: pointer;"><span class="material-icons">close</span></a></div></div> -->
     <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
-    <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> SETTINGS</h4>
+    <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> {{ 'SETTINGS' | t }}</h4>
   </div>
 }
 @if (loss=='True') {
@@ -277,7 +293,7 @@
     <!-- <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added Materials</a></div><div  align="right" class="col"><a  *ngIf="statux=='sell'"  (click)="regis()" style="cursor: pointer;">Register Material</a><a *ngIf="statux=='register'" (click)="materials()" style="cursor: pointer;"><span class="material-icons">close</span></a></div></div> -->
     <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(85, 85, 85, 0.06); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> LIST OF LOSS/FAULTS</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> {{ 'LIST OF LOSS/FAULTS' | t }}</h4>
       <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
       <!-- <br><br> -->
       <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -288,24 +304,24 @@
               <th style="padding-left:10px;">#</th>
               <th style="padding-left:10px;">Date & Time</th>
               <!-- <th style="padding-left:10px;">pk</th> -->
-              <th>Caused by</th>
-              <th nowrap> In charge(Officer)</th>
-              <th nowrap>Amount lost</th>
-              <th>Descriptions</th>
+              <th>{{ 'Caused by' | t }}</th>
+              <th nowrap> {{ 'In charge(Officer)' | t }}</th>
+              <th nowrap>{{ 'Amount lost' | t }}</th>
+              <th>{{ 'Descriptions' | t }}</th>
               <!-- <th>Measure</th> -->
-              <th>Status</th>
-              <th>Action</th>
+              <th>{{ 'Status' | t }}</th>
+              <th>{{ 'Action' | t }}</th>
             </tr>
             <tr style="cursor:pointer" id="customers">
               <td class="text-center" ></td>
-              <td class="text-center" ><input #boxmk (blur)="Tareheoute(boxmk.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" placeholder="Muda wa sasa"> </td>
-              <td style="white-space: nowrap"><input #box91 (blur)="causes(box91.value)" style="border-radius:3px; width:100%"  type="text" placeholder="*Reasons for the loss"></td>
-              <td><input #inchar (blur)="incharge(inchar.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*In charge of"></td>
-              <td><input #amountgiv (blur)="amountgiven(amountgiv.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Amount of loss"></td>
-              <td><input #discriptionchan (blur)="discriptionchange(discriptionchan.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Remaining"></td>
+              <td class="text-center" ><input #boxmk (blur)="Tareheoute(boxmk.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
+              <td style="white-space: nowrap"><input #box91 (blur)="causes(box91.value)" style="border-radius:3px; width:100%"  type="text" [placeholder]="'*Reasons for the loss' | t"></td>
+              <td><input #inchar (blur)="incharge(inchar.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*In charge of' | t"></td>
+              <td><input #amountgiv (blur)="amountgiven(amountgiv.value)" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Amount of loss' | t"></td>
+              <td><input #discriptionchan (blur)="discriptionchange(discriptionchan.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Remaining' | t"></td>
               <!-- <td><input #box304 (blur)="Measure(box304.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Measure"></td> -->
-              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" placeholder="*Status" value="pass"></td>
-              <td><a (click)="submitloss(boxmk.value)">Tunza</a></td>
+              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Status' | t" value="pass"></td>
+              <td><a (click)="submitloss(boxmk.value)">{{ 'Tunza' | t }}</a></td>
             </tr>
             @for (n of lossdata; track n; let i = $index) {
               <tr class="youo" style="  cursor: pointer;" scrollX="true">
@@ -314,11 +330,11 @@
                 <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
                 <td class="youo"  nowrap >{{n.cause | titlecase}}</td>
                 <td class="youo"  nowrap >{{n.Officer}}</td>
-                <td class="youo"  nowrap>{{n.Amount_cost}}</td>
+                <td class="youo"  nowrap>{{ n.Amount_cost | money: 'raw' }}</td>
                 <td class="youo"  nowrap>{{n.Discription}}</td>
                 <!-- <td class="youo"  nowrap>{{n.TimeApproved}}</td> -->
                 <td class="youo" nowrap>{{n.status}}</td>
-                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('loss', n.pk)">Delete</td>
+                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('loss', n.pk)">{{ 'Delete' | t }}</td>
               </tr>
             }
             <div style="padding: 30px;"></div>
@@ -338,7 +354,7 @@
     </table>
     @if (receipt=='on'                                                        ) {
       <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
         <div align="center">
           <label class="switch">
             @if (route=='active') {
@@ -351,48 +367,54 @@
           </label>
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:13px;">{{username}}</div>
           <div align="center" style="font-size:13px;">{{Email}}</div>
           <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
           <div align="center" style="font-size:13px;">{{wilaya}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
           <div align="center" style="font-size:13px;">-----------------------------------</div>
           @for (m of allgiv; track m) {
             <div>
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
             </div>
           }
           <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
           <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
         </div>
         <div style="padding:10px"></div>
-        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
       </div>
     }
   </div>
 </div>
 </div>
 }
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'List of workers in a factory' | t }}</h3>
+<div class="f5-body">
 @if (worker=='True') {
   <div>
     <!-- <div class="row"><div class="col"><a  align="left"(click)="addedw()" style="cursor: pointer;">Added Materials</a></div><div  align="right" class="col"><a  *ngIf="statux=='sell'"  (click)="regis()" style="cursor: pointer;">Register Material</a><a *ngIf="statux=='register'" (click)="materials()" style="cursor: pointer;"><span class="material-icons">close</span></a></div></div> -->
     <!-- <div *ngIf="statux=='register'"  style="padding:10px" align="right"></div> -->
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(85, 85, 85, 0.06); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> LIST OF WORKERS IN A FACTORY</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:rgb(102, 102, 102); font-weight:100;"> {{ 'LIST OF WORKERS IN A FACTORY' | t }}</h4>
       <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
       <!-- <br><br> -->
       <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -401,32 +423,32 @@
           <tbody style="overflow-x: scroll;">
             <tr>
               <th style="padding-left:10px;">#</th>
-              <th style="padding-left:10px;">Date Registered</th>
+              <th style="padding-left:10px;">{{ 'Date Registered' | t }}</th>
               <!-- <th style="padding-left:10px;">pk</th> -->
-              <th>Full name</th>
-              <th nowrap> Gender</th>
-              <th nowrap>Birthdate</th>
-              <th>Working Hours</th>
-              <th>Location</th>
-              <th>Position</th>
-              <th>Note</th>
+              <th>{{ 'Full name' | t }}</th>
+              <th nowrap> {{ 'Gender' | t }}</th>
+              <th nowrap>{{ 'Birthdate' | t }}</th>
+              <th>{{ 'Working Hours' | t }}</th>
+              <th>{{ 'Location' | t }}</th>
+              <th>{{ 'Position' | t }}</th>
+              <th>{{ 'Note' | t }}</th>
               <!-- <th>Measure</th> -->
-              <th>Status</th>
-              <th>Action</th>
+              <th>{{ 'Status' | t }}</th>
+              <th>{{ 'Action' | t }}</th>
             </tr>
             <tr style="cursor:pointer" id="customers">
               <td class="text-center" ></td>
-              <td class="text-center" ><input #box099 (blur)="Tareheout(box099.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" placeholder="Muda wa sasa"> </td>
-              <td style="white-space: nowrap"><input #Fullna (blur)="fullname(Fullna.value)" style="border-radius:3px; width:100%"  type="text" placeholder="*Reasons for the loss"></td>
-              <td><input #Gend (blur)="Gender(Gend.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*In charge of"></td>
-              <td><input #Birthd (blur)="Birthdate(Birthd.value)" style="border-radius:3px; width:100%"   type="date" placeholder="*Amount of loss"></td>
-              <td><input #WorkingHo (blur)="WorkingHours(WorkingHo.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Remaining"></td>
-              <td><input #Locati (blur)="Location(Locati.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Remaining"></td>
-              <td><input #Positi (blur)="Position(Positi.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Remaining"></td>
-              <td><input #No (blur)="Note(No.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Remaining"></td>
+              <td class="text-center" ><input #box099 (blur)="Tareheout(box099.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
+              <td style="white-space: nowrap"><input #Fullna (blur)="fullname(Fullna.value)" style="border-radius:3px; width:100%"  type="text" [placeholder]="'*Reasons for the loss' | t"></td>
+              <td><input #Gend (blur)="Gender(Gend.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*In charge of' | t"></td>
+              <td><input #Birthd (blur)="Birthdate(Birthd.value)" style="border-radius:3px; width:100%"   type="date" [placeholder]="'*Amount of loss' | t"></td>
+              <td><input #WorkingHo (blur)="WorkingHours(WorkingHo.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Remaining' | t"></td>
+              <td><input #Locati (blur)="Location(Locati.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Remaining' | t"></td>
+              <td><input #Positi (blur)="Position(Positi.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Remaining' | t"></td>
+              <td><input #No (blur)="Note(No.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Remaining' | t"></td>
               <!-- <td><input #box304 (blur)="Measure(box304.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Measure"></td> -->
-              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" placeholder="*Status" value="Active"></td>
-              <td><a (click)="submitworker(box099.value)">Tunza</a></td>
+              <td><input #box308 disabled style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Status' | t" value="Active"></td>
+              <td><a (click)="submitworker(box099.value)">{{ 'Tunza' | t }}</a></td>
             </tr>
             @for (n of workersdata; track n; let i = $index) {
               <tr class="youo" style="  cursor: pointer;" scrollX="true">
@@ -443,7 +465,7 @@
                 <td class="youo"  nowrap>{{n.status}}</td>
                 <!-- <td class="youo"  nowrap>{{n.TimeApproved}}</td> -->
                 <!-- <td class="youo" nowrap>{{n.status}}</td> -->
-                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('worker', n.pk)">Delete</td>
+                <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('worker', n.pk)">{{ 'Delete' | t }}</td>
               </tr>
             }
             <div style="padding: 30px;"></div>
@@ -463,7 +485,7 @@
     </table>
     @if (receipt=='on'                                                        ) {
       <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
         <div align="center">
           <label class="switch">
             @if (route=='active') {
@@ -476,92 +498,98 @@
           </label>
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:13px;">{{username}}</div>
           <div align="center" style="font-size:13px;">{{Email}}</div>
           <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
           <div align="center" style="font-size:13px;">{{wilaya}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
           <div align="center" style="font-size:13px;">-----------------------------------</div>
           @for (m of allgiv; track m) {
             <div>
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
             </div>
           }
           <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
           <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
         </div>
         <div style="padding:10px"></div>
-        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
       </div>
     }
   </div>
 </div>
 </div>
 }
+</div>
+</section>
 
 
 
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'List of expenses' | t }}</h3>
+<div class="f5-body">
 @if (industryexpensesval=='True') {
   <div  class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-    <h4  style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF EXPENSES</h4>
+    <h4  style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'LIST OF EXPENSES' | t }}</h4>
     <div style="max-height:400px; overflow:auto" >
       <ng-template #template>
         <div class="modal-body text-center">
-          <p>Do you want to confirm?</p>
-          <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-          <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+          <p>{{ 'Do you want to confirm?' | t }}</p>
+          <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+          <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
         </div>
       </ng-template>
       <ng-template #template2>
         <div class="modal-body text-center">
-          <p>Do you want to confirm Delete?</p>
-          <button type="button" class="btn btn-default" (click)="confirm2()" >Yes</button>
-          <button type="button" class="btn btn-primary" (click)="decline2()" >No</button>
+          <p>{{ 'Do you want to confirm Delete?' | t }}</p>
+          <button type="button" class="btn btn-default" (click)="confirm2()" >{{ 'Yes' | t }}</button>
+          <button type="button" class="btn btn-primary" (click)="decline2()" >{{ 'No' | t }}</button>
         </div>
       </ng-template>
       <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Tarehe</th>
-            <th scope="col" title="Date">Jina</th>
-            <th scope="col" title="Total Payment (L+I+6)">Amount</th>
-            <th scope="col" >Description</th>
-            <th scope="col" title="Action">Status</th>
+            <th scope="col">{{ 'Tarehe' | t }}</th>
+            <th scope="col" title="Date">{{ 'Jina' | t }}</th>
+            <th scope="col" title="Total Payment (L+I+6)">{{ 'Amount' | t }}</th>
+            <th scope="col" >{{ 'Description' | t }}</th>
+            <th scope="col" title="Action">{{ 'Status' | t }}</th>
             <!-- <th scope="col" title="Action"></th> -->
           </tr>
         </thead>
         <tbody >
           <tr style="cursor:pointer" id="customers">
             <td class="text-center" ></td>
-            <td class="text-center" ><input #box109 (blur)="Tarehevas(box109.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" placeholder="Muda wa sasa"> </td>
-            <td style="white-space: nowrap"><input #box200 (blur)="Name_of_the_officer(box200.value)" style="border-radius:3px; width:100%"  type="text" placeholder="*Important"></td>
-            <td><input #box201 (blur)="Amount(box201.value)" style="border-radius:3px; width:100%"   type="number" placeholder="*Amount"></td>
-            <td><input #box202 (blur)="Descriptionone(box202.value)" style="border-radius:3px; width:100%"   type="text" placeholder="*Description"></td>
-            <td><a (click)="submitexpenses(box109.value)">Tunza</a></td>
+            <td class="text-center" ><input #box109 (blur)="Tarehevas(box109.value)" style="border-radius:3px; width:100%" [value]="times"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
+            <td style="white-space: nowrap"><input #box200 (blur)="Name_of_the_officer(box200.value)" style="border-radius:3px; width:100%"  type="text" [placeholder]="'*Important' | t"></td>
+            <td><input #box201 (blur)="Amount(box201.value)" style="border-radius:3px; width:100%"   type="number" [placeholder]="'*Amount' | t"></td>
+            <td><input #box202 (blur)="Descriptionone(box202.value)" style="border-radius:3px; width:100%"   type="text" [placeholder]="'*Description' | t"></td>
+            <td><a (click)="submitexpenses(box109.value)">{{ 'Tunza' | t }}</a></td>
           </tr>
           @for (a of Expense; track a) {
             <tr class="youo">
               <td nowrap class="youo"> 1</td>
               <td style="padding-left:10px;" class="youo"  nowrap>{{a.Tarehe}}</td>
               <td style="padding-left:10px;" class="youo"  nowrap>{{a.Name_of_the_officer}}</td>
-              <td class="youo"  >{{a.Amount}}</td>
+              <td class="youo"  >{{ a.Amount | money: 'raw' }}</td>
               <td class="youo"  >{{a.Description}}</td>
-              <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('expenses', a.pk)">Delete</td>
+              <td class="youo" style="color:red; cursor: pointer;"  (click)="delete('expenses', a.pk)">{{ 'Delete' | t }}</td>
               <!-- <td class="youo"  ></td> -->
             </tr>
           }
@@ -574,23 +602,23 @@
 
 @if (statux=='register') {
   <div>
-    <div   align="right"> <a (click)="cancel()" style="cursor: pointer;"><span class="material-icons">close</span></a></div>
+    <div   align="right"> <a (click)="cancel()" style="cursor: pointer;"><span class="material-icons">{{ 'close' | t }}</span></a></div>
     <div align="right">
       <ul class="nav nav-tabs" align="right">
         <li class="nav-item">
           @if (foodindustryval=='true') {
-            <a class="nav-link active" (click)="foodindustry()" style="cursor: pointer;">Food Indusry</a>
+            <a class="nav-link active" (click)="foodindustry()" style="cursor: pointer;">{{ 'Food Indusry' | t }}</a>
           }
           @if (foodindustryval !=='true') {
-            <a class="nav-link" (click)="foodindustry()" style="cursor: pointer;">Food Industry</a>
+            <a class="nav-link" (click)="foodindustry()" style="cursor: pointer;">{{ 'Food Industry' | t }}</a>
           }
         </li>
         <li class="nav-item">
           @if (beautyindustryval=='true') {
-            <a  class="nav-link active" (click)="beautyindustry()" style="cursor: pointer;">Beauty industry</a>
+            <a  class="nav-link active" (click)="beautyindustry()" style="cursor: pointer;">{{ 'Beauty industry' | t }}</a>
           }
           @if (beautyindustryval !=='true') {
-            <a  class="nav-link" (click)="beautyindustry()" style="cursor: pointer;">Beauty industry</a>
+            <a  class="nav-link" (click)="beautyindustry()" style="cursor: pointer;">{{ 'Beauty industry' | t }}</a>
           }
         </li>
       </ul>
@@ -601,71 +629,71 @@
         <div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Name of the material</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Name of the material' | t }}</span>
             </div>
-            <input #box1 (blur)="material_name(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Material">
+            <input #box1 (blur)="material_name(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the Material' | t">
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Material Type</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Material Type' | t }}</span>
             </div>
-            <input #box2 (blur)="materialtype(box2.value)"  name="Tin_Namba" required   placeholder="Material Type"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box2 (blur)="materialtype(box2.value)"  name="Tin_Namba" required   [placeholder]="'Material Type' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
-            </div>
-          </div>
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-            <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Location of material</span>
-            </div>
-            <input #box27 (blur)="location(box27.value)"  name="Tin_Namba" required   placeholder="Location of the material from"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Shelf Number.
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Material number</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Location of material' | t }}</span>
             </div>
-            <input #box3 (blur)="materia_number(box3.value)" name="Material number" required  placeholder="Material number"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box27 (blur)="location(box27.value)"  name="Tin_Namba" required   [placeholder]="'Location of the material from' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Shelf Number.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Amount of material</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Material number' | t }}</span>
             </div>
-            <input #box52 (blur)="amountofmaterial(box52.value)" name="purchasing" required  placeholder="Amount of material"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box3 (blur)="materia_number(box3.value)" name="Material number" required  [placeholder]="'Material number' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">buying price of material</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Amount of material' | t }}</span>
             </div>
-            <input #box35 (blur)="Buyingprice(box35.value)" name="wholesale" required  placeholder="Buying price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box52 (blur)="amountofmaterial(box52.value)" name="purchasing" required  [placeholder]="'Amount of material' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Wholesale price.
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Material Available</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'buying price of material' | t }}</span>
             </div>
-            <input #box5 (blur)="materialavailable(box5.value)"  name="materialavailable" required  placeholder="Material Available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box35 (blur)="Buyingprice(box35.value)" name="wholesale" required  [placeholder]="'Buying price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Wholesale price.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Material Description</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Material Available' | t }}</span>
             </div>
-            <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Material description"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box5 (blur)="materialavailable(box5.value)"  name="materialavailable" required  [placeholder]="'Material Available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Nyumba no.' | t }}
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Material Description' | t }}</span>
+            </div>
+            <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Material description' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
         </div>
@@ -674,53 +702,53 @@
         <div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product' | t }}</span>
             </div>
-            <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Phone">
+            <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the Phone' | t">
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Type</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Phone Type' | t }}</span>
             </div>
-            <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="eg Used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'eg Used or new' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
-            </div>
-          </div>
-          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-            <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-            </div>
-            <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Shelf Number.
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone imei</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
             </div>
-            <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="eg 3510324534534534"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Shelf Number.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Phone Purchasing Price</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Phone imei' | t }}</span>
             </div>
-            <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="eg 950,000"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'eg 3510324534534534' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
             <div class="input-group-prepend" style="width:110px;">
-              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling Price</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> {{ 'Phone Purchasing Price' | t }}</span>
             </div>
-            <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'eg 950,000' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-              Please provide Nyumba no.
+              {{ 'Please provide Nyumba no.' | t }}
+            </div>
+          </div>
+          <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+            <div class="input-group-prepend" style="width:110px;">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling Price' | t }}</span>
+            </div>
+            <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+              {{ 'Please provide Nyumba no.' | t }}
             </div>
           </div>
           <!-- <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
@@ -734,38 +762,38 @@
         </div> -->
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Wholesale price' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Wholesale Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Wholesale Profit' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phones Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Phones Available' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Eg: 12"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Eg: 12' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Descriptions</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Phone Descriptions' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -774,98 +802,98 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the MD Product' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Generic name eg:Paracentamol"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'Generic name eg:Paracentamol' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">{{ 'Expire Date' | t }}</span>
           </div>
           <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-            Please provide Card expiration.
+            {{ 'Please provide Card expiration.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -874,89 +902,89 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Cloth Name</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Cloth Name' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of cloth">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of cloth' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'used or new' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
-          </div>
-        </div>
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-          <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-          </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -965,89 +993,89 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Art Name</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Art Name' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Art">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the Art' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="used or new"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'used or new' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
-          </div>
-        </div>
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-          <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-          </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -1056,89 +1084,89 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the MD Product">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the MD Product' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'Food, Shelter etc' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
-          </div>
-        </div>
-        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-          <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
-          </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
+          </div>
+        </div>
+        <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+          <div class="input-group-prepend" style="width:110px;">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
+          </div>
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -1147,107 +1175,107 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Product">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the Product' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'Food, Shelter etc' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">{{ 'Expire Date' | t }}</span>
           </div>
           <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-            Please provide Card expiration.
+            {{ 'Please provide Card expiration.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box523 (blur)="productPurchasingPrice(box523.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box523 (blur)="productPurchasingPrice(box523.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available in KG' | t }}</span>
           </div>
-          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  [placeholder]="'products available  in g (gram)' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
@@ -1256,114 +1284,118 @@
       <div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Food Product</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Food Product' | t }}</span>
           </div>
-          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Name of the Food Product">
+          <input #box1 (blur)="product(box1.value)"  name="mm" required  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Name of the Food Product' | t">
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Type</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Type' | t }}</span>
           </div>
-          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   placeholder="Food, Shelter etc"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box2 (blur)="producttype(box2.value)"  name="Tin_Namba" required   [placeholder]="'Food, Shelter etc' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">Expire Date</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px; font-size:12px;">{{ 'Expire Date' | t }}</span>
           </div>
           <input #box21 (blur)="productexpiredate(box21.value)" name="expire" type="date" class="form-control" required [class.is-invalid]="ngCardForm.invalid && ngCardForm.touched"  [class.is-valid]="ngCardForm.valid" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngCardForm.touched"  class="invalid-feedback">
-            Please provide Card expiration.
+            {{ 'Please provide Card expiration.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Shelf Number</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Shelf Number' | t }}</span>
           </div>
-          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   placeholder="Shelf Number"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box27 (blur)="shelfno(box27.value)"  name="Tin_Namba" required   [placeholder]="'Shelf Number' | t"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Shelf Number.
+            {{ 'Please provide Shelf Number.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Serial</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Serial' | t }}</span>
           </div>
-          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  placeholder="Serial number of the Product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box3 (blur)="Product_serial(box3.value)" name="Tin_Namba" required  [placeholder]="'Serial number of the Product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Purchasing P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Purchasing P.' | t }}</span>
           </div>
-          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  placeholder="Purchasing price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="productPurchasingPrice(box52.value)" name="purchasing" required  [placeholder]="'Purchasing price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Selling. P.</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Selling. P.' | t }}</span>
           </div>
-          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  placeholder="how much are you willing to sell"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box47 (blur)="productSellingPrice(box47.value)" name="Tin_Namba" required  [placeholder]="'how much are you willing to sell' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. price</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. price' | t }}</span>
           </div>
-          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  placeholder="Wholesale price"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box35 (blur)="Wholesaleprice(box35.value)" name="wholesale" required  [placeholder]="'Wholesale price' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale price.
+            {{ 'Please provide Wholesale price.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">W. Profit</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'W. Profit' | t }}</span>
           </div>
-          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  placeholder="Wholesale profit"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box4 (blur)="Wholesaleprofit(box4.value)" name="Tin_Namba" required  [placeholder]="'Wholesale profit' | t"     type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Wholesale profit.
+            {{ 'Please provide Wholesale profit.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available' | t }}</span>
           </div>
-          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  placeholder="Number of products available"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box5 (blur)="NumberOfProducts(box5.value)"  name="Tin_Namba" required  [placeholder]="'Number of products available' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">P. Available in KG</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'P. Available in KG' | t }}</span>
           </div>
-          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  placeholder="products available  in g (gram)"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box52 (blur)="amountofproduct(box52.value)"  name="Tin_Namba" required  [placeholder]="'products available  in g (gram)' | t"    type="number" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
           <div class="input-group-prepend" style="width:110px;">
-            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Product Description</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Product Description' | t }}</span>
           </div>
-          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  placeholder="Any discription about product"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input #box6 (blur)="Description(box6.value)" name="Tin_Namba" required  [placeholder]="'Any discription about product' | t"     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-            Please provide Nyumba no.
+            {{ 'Please provide Nyumba no.' | t }}
           </div>
         </div>
       </div>
     }
   </div>
-  <div> <span style="padding-left:10px; padding-bottom:10px; border-left: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"> <a (click)="cancel()" style="cursor: pointer;">Cancel</a> </span>  <span style="float:right; padding-right:10px; padding-bottom:10px; border-right: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"><a (click)="subregister()" style="cursor: pointer;">Submit</a> </span></div>
+  <div> <span style="padding-left:10px; padding-bottom:10px; border-left: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"> <a (click)="cancel()" style="cursor: pointer;">{{ 'Cancel' | t }}</a> </span>  <span style="float:right; padding-right:10px; padding-bottom:10px; border-right: 1px solid rgb(154, 154, 154); border-bottom: 1px solid rgb(154, 154, 154);"><a (click)="subregister()" style="cursor: pointer;">{{ 'Submit' | t }}</a> </span></div>
 </div>
 }
+</div>
+</section>
+</div>
+
 
 

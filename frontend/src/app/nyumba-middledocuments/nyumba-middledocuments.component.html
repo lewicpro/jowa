@@ -1,22 +1,32 @@
 
 <ng-progress></ng-progress>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Nyumba middledocuments' | t }}</h3>
+<div class="f5-body">
 <div class="d-flex justify-content-center">
   <mat-form-field style="width:40%">
-  <input   matInput placeholder="Filter">
+  <input   matInput [placeholder]="'Filter' | t">
   </mat-form-field>
 </div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Bank Statements' | t }}</h3>
+<div class="f5-body">
 <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Bank Statements</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Bank Statements' | t }}</h4>
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
     <thead>
       <tr>
-        <th style="white-space: nowrap; text-align:center"  scope="col">Tarehe</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="Date">Jina</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="Total Payment (L+I+6)">Chagua document</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="Loan Repayment">Kitambulisho</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="Interest Paid">ATM</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="(Mkopo + Riba) Balance">Etc #barua</th>
-        <th style="white-space: nowrap; text-align:center" scope="col" title="Action">Action</th>
+        <th style="white-space: nowrap; text-align:center"  scope="col">{{ 'Tarehe' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Date">{{ 'Jina' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Total Payment (L+I+6)">{{ 'Chagua document' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Loan Repayment">{{ 'Kitambulisho' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Interest Paid">{{ 'ATM' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="(Mkopo + Riba) Balance">{{ 'Etc #barua' | t }}</th>
+        <th style="white-space: nowrap; text-align:center" scope="col" title="Action">{{ 'Action' | t }}</th>
         
       </tr>
     </thead>
@@ -27,35 +37,35 @@
       </div> -->
    
         <tr style="cursor:pointer; text-align:center" id="customers">
-            <td style="white-space: nowrap; text-align:center" class="text-center" >muda wa sasa</td>
+            <td style="white-space: nowrap; text-align:center" class="text-center" >{{ 'muda wa sasa' | t }}</td>
             <td style="white-space: nowrap">{{user}}</td>
             <td style="white-space: nowrap; text-align:center">
               <form #imageForm= ngForm (ngSubmit)="onUploadmkatabafiles()">
               
                 <input #mkataba style="font-size:10px; display: none" #fileInput1   (change)="onfileSelected($event.target.files)" type="file"  name="mkataba">
-                <a (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">Mkataba</a>
-                <button type="submit" style="font-size:10px;">Upload</button> 
+                <a (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">{{ 'Mkataba' | t }}</a>
+                <button type="submit" style="font-size:10px;">{{ 'Upload' | t }}</button> 
               </form>
             </td>
             <td style="white-space: nowrap; text-align:center">
               <form #imageForm= ngForm (ngSubmit)="onUploadkitambulishoData()">
                 <input #kitambulisho style="font-size:10px; display: none" #fileInput2   (change)="onfileSelected($event.target.files)" type="file"  name="kitambulisho">
-                <a (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">Kitambulisho</a>
-                <button type="submit" style="font-size:10px;">Upload</button> 
+                <a (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">{{ 'Kitambulisho' | t }}</a>
+                <button type="submit" style="font-size:10px;">{{ 'Upload' | t }}</button> 
               </form>
             </td>
             <td style="white-space: nowrap; text-align:center">
                 <form #imageForm= ngForm (ngSubmit)="onUploadappData()">
                 <input #application_form style="font-size:10px; display: none" #fileInput3   (change)="onfileSelected($event.target.files)" type="file"  name="application_form">
-                <a (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">application form</a>
-                <button type="submit" style="font-size:10px;">Upload</button> 
+                <a (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">{{ 'application form' | t }}</a>
+                <button type="submit" style="font-size:10px;">{{ 'Upload' | t }}</button> 
                 </form>
             </td>
             <td style="white-space: nowrap; text-align:center">
                 <form #imageForm= ngForm (ngSubmit)="onUploadSlipData()">
                 <input #slip style="font-size:10px; display: none" #fileInput4   (change)="onfileSelected($event.target.files)" type="file"  name="slip">
-                <a (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">Slip</a>
-                <button type="submit" style="font-size:10px;">Upload</button> 
+                <a (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">{{ 'Slip' | t }}</a>
+                <button type="submit" style="font-size:10px;">{{ 'Upload' | t }}</button> 
                 </form>
               </td>
             <td></td>
@@ -65,10 +75,10 @@
       <tr  id="customers" >
         <td > </td>
         <td  style="white-space: nowrap"></td>
-        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['mkataba']">Mkataba</a></td>
-        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['Identity']">Kitambulisho</a></td>
-        <td  style="white-space: nowrap; text-align:center "><a [routerLink]="['application']">Application</a></td>
-        <td  style="white-space: nowrap"><a [routerLink]="['statements']">Slip</a></td>
+        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['mkataba']">{{ 'Mkataba' | t }}</a></td>
+        <td  style="white-space: nowrap; text-align:center"><a [routerLink]="['Identity']">{{ 'Kitambulisho' | t }}</a></td>
+        <td  style="white-space: nowrap; text-align:center "><a [routerLink]="['application']">{{ 'Application' | t }}</a></td>
+        <td  style="white-space: nowrap"><a [routerLink]="['statements']">{{ 'Slip' | t }}</a></td>
         <td  style="white-space: nowrap"></td>
       
 
@@ -89,6 +99,10 @@
   </table>
   
   </div>
+</div>
+</section>
+</div>
+
   <div  style="padding:10px;"></div>
   <div><router-outlet></router-outlet></div>
 

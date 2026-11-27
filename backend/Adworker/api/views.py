@@ -8,7 +8,8 @@ from .permissions import IsOwnerOrReadOnly
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import csv
-from django.db.models import Sum,Count,F,Max,Min
+from django.db.models import Sum,Count,F,Max,Min,Q,DecimalField,Value
+from django.db.models.functions import Coalesce
 import smtplib
 from datetime import datetime, timedelta
 from django.conf import settings
@@ -1610,6 +1611,17 @@ class MkatabaView(generics.CreateAPIView, generics.ListAPIView):
 
 	def get_queryset(self):
 		return Mkataba.objects.all()
+
+
+class LoanAgreementTemplateView(generics.ListCreateAPIView):
+	serializer_class = LoanAgreementTemplateSerializer
+	permission_classes = [AllowAny]
+
+	def get_queryset(self):
+		company_username = self.request.query_params.get('company_username', '').strip()
+		if not company_username:
+			return LoanAgreementTemplate.objects.none()
+		return LoanAgreementTemplate.objects.filter(company_username=company_username)
 
 class BidhaaView(generics.CreateAPIView, generics.ListAPIView):
 	lookup_field = 'pk'
@@ -15279,6 +15291,69 @@ class MkopoGetOptionsView( generics.CreateAPIView, generics.ListAPIView):
 							# 												if m.mwezi12 == 'December':
 							# 													return FormMkopo.objects.filter(mwaka=year)
 		
+class LoanInstallmentListView(generics.ListAPIView):
+	serializer_class = LoanInstallmentSerializer
+	permission_classes = [AllowAny]
+
+	def get_queryset(self):
+		installments = LoanInstallment.objects.select_related('loan').annotate(
+			active_paid_amount=Sum(
+				'payment_allocations__amount',
+				filter=Q(payment_allocations__payment__info__isnull=True) | ~Q(payment_allocations__payment__info__in=['delete', 'deleted'])
+			)
+		).all()
+		loan_pk = self.request.query_params.get('loan_pk')
+		if loan_pk:
+			installments = installments.filter(loan_id=loan_pk)
+		if self.request.query_params.get('promised_only') == '1':
+			installments = installments.filter(promised_date__isnull=False)
+		return installments.order_by('due_date', 'sequence', 'pk')
+
+
+class LoanInstallmentPromiseUpdateView(generics.UpdateAPIView):
+	serializer_class = LoanInstallmentPromiseSerializer
+	permission_classes = [AllowAny]
+	queryset = LoanInstallment.objects.select_related('loan').all()
+
+	def update(self, request, *args, **kwargs):
+		installment = self.get_object()
+		paid_amount = PaymentAllocation.objects.filter(
+			installment=installment,
+		).filter(
+			Q(payment__info__isnull=True) | ~Q(payment__info__in=['delete', 'deleted'])
+		).aggregate(total=Sum('amount'))['total'] or 0
+		if paid_amount >= installment.scheduled_amount:
+			return Response({'detail': 'A promise can only be recorded for an unpaid installment.'}, status=HTTP_400_BAD_REQUEST)
+
+		return super().update(request, *args, **kwargs)
+
+
+class OverdueInstallmentPagination(PageNumberPagination):
+	page_size = 100
+
+
+class OverdueInstallmentListView(generics.ListAPIView):
+	serializer_class = LoanInstallmentSerializer
+	permission_classes = [AllowAny]
+	pagination_class = OverdueInstallmentPagination
+
+	def get_queryset(self):
+		paid_amount = Coalesce(
+			Sum(
+				'payment_allocations__amount',
+				filter=Q(payment_allocations__payment__info__isnull=True) | ~Q(payment_allocations__payment__info__in=['delete', 'deleted'])
+			),
+			Value(0),
+			output_field=DecimalField(max_digits=12, decimal_places=2),
+		)
+		return LoanInstallment.objects.select_related('loan').annotate(
+			active_paid_amount=paid_amount,
+		).filter(
+			due_date__lt=timezone.localdate(),
+			scheduled_amount__gt=F('active_paid_amount'),
+		).order_by('due_date', 'loan_id', 'sequence')
+
+
 class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 	lookup_field = 'pk'
 	serializer_class = MalipoSerializer
@@ -15300,8 +15375,12 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 			route =serializer.validated_data['route']
 			loan_repay = serializer.validated_data['loan_repay']
 			if route == 'weka':
-				fil = Malipo.objects.filter(user=user, info='delete').update(info='')
-				mok = serializer.save()
+				reopened_payments = list(Malipo.objects.filter(user=user, info='delete'))
+				Malipo.objects.filter(user=user, info='delete').update(info='')
+				for reopened_payment in reopened_payments:
+					reopened_payment.info = ''
+					allocate_payment_to_installments(reopened_payment)
+				mok = mobm
 				mwezi = serializer.validated_data['mwezi']
 				
 				print(route)
@@ -15333,7 +15412,6 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						if moke.tangu !='':
 							if moke.kilichokopwa !='':
 								mok.awamu = float(moke.awamu) - 1
-								mok.tangu = moke.tangu
 								mok.kilichokopwa = float(moke.kilichokopwa)
 								
 								# moke.save()
@@ -17123,7 +17201,10 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				# mok.save()
 				gom.save()
 				maji.save()
+				mobm.info = ''
 				mobm.save()
+				allocate_payment_to_installments(mobm)
+				set_payment_loan_start_date(mobm)
 				mok.save()
 	
 				mor.save()

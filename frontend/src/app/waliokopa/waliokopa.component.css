@@ -19,3 +19,214 @@ th{
   background-color: rgba(46, 147, 35, 0.2);;
   /* box-shadow:5px 5px 5px 5px black; */
 }
+
+.installment-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, .52);
+  backdrop-filter: blur(2px);
+}
+
+.installment-modal {
+  width: min(920px, 100%);
+  max-height: min(680px, calc(100vh - 48px));
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, .28);
+  color: #1e293b;
+}
+
+.installment-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 26px 18px;
+  border-bottom: 1px solid #e9edf3;
+}
+
+.installment-modal-eyebrow {
+  margin: 0 0 5px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.installment-modal-header h2 {
+  margin: 0;
+  color: #172554;
+  font-size: 21px;
+  font-weight: 650;
+}
+
+.installment-modal-subtitle {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.installment-modal-close {
+  display: inline-flex;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.installment-modal-close:hover {
+  background: #e2e8f0;
+}
+
+.installment-modal-table-wrap {
+  max-height: 470px;
+  overflow: auto;
+  padding: 8px 22px 14px;
+}
+
+.installment-modal-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.installment-modal-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .35px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.installment-modal-table td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #edf1f5;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 400;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.installment-modal-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.installment-number {
+  color: #1e3a8a !important;
+  font-weight: 650 !important;
+}
+
+.installment-number span {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.installment-status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.status-paid {
+  background: #e8f7ee;
+  color: #167343;
+}
+
+.status-upcoming {
+  background: #eef3ff;
+  color: #385bb0;
+}
+
+.status-overdue {
+  background: #fff0ed;
+  color: #b54732;
+}
+
+.installment-modal-message {
+  padding: 36px 26px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+.installment-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-top: 1px solid #e9edf3;
+  background: #fbfcfe;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.installment-done {
+  padding: 8px 17px;
+  border: 0;
+  border-radius: 7px;
+  background: #3156a3;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.installment-done:hover {
+  background: #264784;
+}
+
+.borrower-promises { min-width: 165px; white-space: normal !important; }
+.borrower-promise-item { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; color: #475569; font-size: 12px; }
+.borrower-promise-item strong { color: #1769d2; font-weight: 650; }
+.borrower-promise-note { display: block; margin-top: 3px; color: #64748b; font-size: 11px; white-space: normal; }
+.no-borrower-promise { color: #94a3b8; }
+
+@media (max-width: 640px) {
+  .installment-modal-backdrop {
+    padding: 12px;
+  }
+
+  .installment-modal-header {
+    padding: 18px 18px 15px;
+  }
+
+  .installment-modal-table-wrap {
+    padding: 6px 12px 10px;
+  }
+
+  .installment-modal-table th,
+  .installment-modal-table td {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}

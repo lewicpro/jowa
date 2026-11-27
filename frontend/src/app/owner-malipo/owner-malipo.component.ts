@@ -32,20 +32,18 @@ export class OwnerMalipoComponent {
           this.owner= m.Username;
           this.Phone = m.Simu;
           this.service_officer = this.officer
-          
+
 
         }
 
       }
     })
-   
+
 
     this.restframework.getWapangajiLists().then(data => {
       this.users = data;
-      
+
       for(const m of this.users){
-     
- 
         if(String(m.nyumbaid) ){
           if(m.status === 'clean'){
             this.nyumbaid = m.nyumbaid;
@@ -58,7 +56,7 @@ export class OwnerMalipoComponent {
       }
     });
 
-  
+
   }
 
   ngOnInit() {

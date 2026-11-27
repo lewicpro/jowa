@@ -1,9 +1,13 @@
-<div><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> PRODUCTS MOVEMENT</h4></div>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Products movement' | t }}</h3>
+<div class="f5-body">
+<div><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'PRODUCTS MOVEMENT' | t }}</h4></div>
 <div style="padding: 20px;"></div>
 <div style="border-right:2px solid rgb(209, 209, 209); border-left:2px solid rgb(209, 209, 209)">
   <div class="row">
     <div class="col" align="center">
-      <input class="wako" #boya (keyup)="search(boya.value)" placeholder="search for the Product" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
+      <input class="wako" #boya (keyup)="search(boya.value)" [placeholder]="'search for the Product' | t" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
 
       <div style="padding: 20px;"></div>
       <div style="overflow: scroll; height: 200px;">
@@ -11,9 +15,9 @@
 
           <thead>
             <tr style="background:rgba(23, 23, 23, 0.711); color: white;">
-              <th scope="col">Name</th>
-              <th scope="col">Selling price</th>
-              <th scope="col">Remaining</th>
+              <th scope="col">{{ 'Name' | t }}</th>
+              <th scope="col">{{ 'Selling price' | t }}</th>
+              <th scope="col">{{ 'Remaining' | t }}</th>
 
             </tr>
           </thead>
@@ -28,10 +32,10 @@
                   <td class="youo"  nowrap (click)="selectLeft(m)">{{m.Name_of_the_product | titlecase}}</td>
                 }
                 @if (selectedleft == m.Name_of_the_product) {
-                  <td class="youo" style="color: white; background:#EE2040;"   nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
+                  <td class="youo" style="color: white; background:#EE2040;"   nowrap>{{m.Selling_price| money: 'Tsh '}}</td>
                 }
                 @if (selectedleft != m.Name_of_the_product) {
-                  <td class="youo" (click)="selectLeft(m)" nowrap>{{m.Selling_price| currency: 'Tsh '}}</td>
+                  <td class="youo" (click)="selectLeft(m)" nowrap>{{m.Selling_price| money: 'Tsh '}}</td>
                 }
                 @if (selectedleft == m.Name_of_the_product) {
                   <td class="youo" style="color: white; background:#EE2040;"   nowrap>{{m.Number_of_products}}</td>
@@ -68,14 +72,14 @@
 
 </div>
 <div class="col" align="center">
-  <input class="wako" disabled placeholder="search for the Shop" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
+  <input class="wako" disabled [placeholder]="'search for the Shop' | t" type="text" style="width: 80%; height: 40px; background-color: rgba(195, 195, 195, 0.478); border:1px solid transparent; border-radius: 5px;">
 
   <div style="padding: 20px;"></div>
   <table class="table table-sm table-light">
 
     <thead>
       <tr style="background:rgba(23, 23, 23, 0.711); color: white;">
-        <th scope="col">Office</th>
+        <th scope="col">{{ 'Office' | t }}</th>
         <!-- <th scope="col"></th> -->
 
       </tr>
@@ -117,26 +121,26 @@
 </div>
 
 
-<div style="text-align: center;"><button class="btn btn-secondary" style="width: 20%;" (click)="submit()"> SUBMIT</button></div>
+<div style="text-align: center;"><button class="btn btn-secondary" style="width: 20%;" (click)="submit()"> {{ 'SUBMIT' | t }}</button></div>
 
 
 @if (pop=='True') {
   <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
     @if (pop=='True') {
       <div style="width:450px; margin-top: 100px;" class="momo1 animation-target ">
-        <div align="center" style="font-weight: bolder; padding:5px; color:#666">EDIT PRODUCT</div>
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">{{ 'EDIT PRODUCT' | t }}</div>
         <div style="padding:10px"></div>
         <div align="center">
-          <input #number (blur)="Number_of_product(number.value)" class="mogon" placeholder="Number of products" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+          <input #number (blur)="Number_of_product(number.value)" class="mogon" [placeholder]="'Number of products' | t" type="number"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
         </div>
         <div style="padding:10px"></div>
         <div align="center">
-          <input #box23 (blur)="description(box23.value)" class="mogon" placeholder="Descriptions " type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+          <input #box23 (blur)="description(box23.value)" class="mogon" [placeholder]="'Descriptions ' | t" type="text"  style="width:95%; padding-left:10px; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
         </div>
         <div style="padding:20px"></div> -->
         <div style="text-align: center;">
-          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
-          <button class="mogolia btn-primary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitedproduct()">Submit</button>
+          <button class="mogolia btn-secondary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">{{ 'Cancel' | t }}</button>
+          <button class="mogolia btn-primary" style="width:45%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitedproduct()">{{ 'Submit' | t }}</button>
         </div>
         <!-- <div align="center">
         <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
@@ -146,3 +150,7 @@
   }
 </div>
 }
+</div>
+</section>
+</div>
+

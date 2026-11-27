@@ -1,34 +1,38 @@
 
 <ng-progress></ng-progress>
-<div class="d-flex justify-content-center">
-  <mat-form-field style="width:40%">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
-  <!-- <button (click)="time()">click</button> -->
-</div>
-<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mkopo</h4>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<div class="f5-body">
+<div class="loan-table-panel">
+  <div class="loan-table-toolbar">
+    <h2 class="loan-table-title">{{ 'Mkopo' | t }}</h2>
+    <label class="loan-table-search">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <input class="loan-table-search-input" type="search" [(ngModel)]="filtertext" [placeholder]="'Tafuta jina, tarehe, kiasi, au salio' | t" [attr.aria-label]="'Tafuta jina, tarehe, kiasi, au salio' | t">
+    </label>
+  </div>
   <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
   <!-- <br><br> -->
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
 
-  <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+  <div class="loan-payment-table-wrap">
+  <table class="table table-sm loan-payment-table">
     <thead>
       <tr>
-        <th scope="col">Tarehe</th>
-        <th scope="col" title="Date">Jina</th>
-        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
-        <th scope="col" title="Loan Repayment">Awamu zinazobaki</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Baki au salio</th>
-        <th scope="col" title="Action">Action</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
+        <th scope="col" title="Date">{{ 'Jina' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
+        <th scope="col" title="Loan Repayment">{{ 'Awamu zinazobaki' | t }}</th>
+        <th scope="col" title="Interest Paid">{{ 'Riba' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Baki au salio' | t }}</th>
+        <th scope="col" title="Action">{{ 'Action' | t }}</th>
 
       </tr>
     </thead>
@@ -38,15 +42,15 @@
 
     </div> -->
     <tr style="cursor:pointer" id="customers">
-      <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
+      <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
       <td style="white-space: nowrap">{{jinalote}}</td>
-      <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+      <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" [placeholder]="'*Important' | t"></td>
       <td><input [(ngModel)]="men" (keyup)="calculate()" style="border-radius:3px;" [value]="bwoy" type="text"></td>
       <td><input type="number" style="border-radius:3px;"></td>
-      <td><input [(ngModel)]="v3" (keyup)="calculate()" style="border-radius:3px;" [value]="momba" type="number"></td>
-      <td><a (click)="openModal(template)"  >Tunza</a></td>
+      <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number" readonly aria-label="Remaining balance after payment"></td>
+      <td><a (click)="openModal(template)"  >{{ 'Tunza' | t }}</a></td>
     </tr>
-    @for (k of malipouser2; track k) {
+    @for (k of filteredPayments; track k) {
       <tr  id="customers" >
         @if (k.user === username) {
           <td> {{k.tarehe}}</td>
@@ -55,7 +59,7 @@
           <td style="white-space: nowrap">{{k.jina}}</td>
         }
         @if (k.user === username) {
-          <td style="white-space: nowrap">{{k.loan_repay | currency: 'tsh '}}</td>
+          <td style="white-space: nowrap">{{k.loan_repay | money}}</td>
         }
         @if (k.user === username) {
           <td style="white-space: nowrap">{{k.awamu}}</td>
@@ -64,22 +68,112 @@
           <td style="white-space: nowrap; ">-||-</td>
         }
         @if (k.user === username  && k.rangi ==='blue' ) {
-          <td   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td>
+          <td style="color:blue"><button type="button" class="loan-schedule-link"
+            (click)="openInstallments(k)" [attr.aria-label]="'View installment schedule for ' + k.jina">
+            {{k.Balance | money}}
+          </button></td>
         }
         @if (k.user === username  && k.rangi ==='red' ) {
-          <td  style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+          <td  style="color:red">{{k.Balance | money}}</td>
         }
         <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
         @if (k.user === username && k.info === 'delete';) {
-          <td   style="color:red" ><button class="mben" (click)='run()'>delete</button></td>
+          <td   style="color:red" ><button class="mben" (click)='run()'>{{ 'delete' | t }}</button></td>
         }
         @if (k.user === username && k.info === '';) {
           <td   style="color:red"></td>
         }
         @if (k.user === username && k.info === 'deleted';) {
-          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">deleted</td>
+          <td   style="background-color:rgb(240, 180, 180); font-style: italic; font-size: 12px; color:darkslategrey;">{{ 'deleted' | t }}</td>
         }
       </tr>
+      @if (isScheduleRow(k)) {
+        <tr id="installment-expanded-row" class="installment-expanded-row">
+          <td colspan="7">
+            <div class="installment-dropdown-animation" [@installmentSlide]="isScheduleOpen ? 'open' : 'closed'"
+              (@installmentSlide.done)="onScheduleAnimationDone($event)">
+            <section class="installment-dropdown" aria-labelledby="installment-modal-title">
+              <header class="installment-dropdown-header">
+                <div>
+                  <p class="installment-modal-eyebrow">{{ 'Ratiba ya mkopo' | t }}</p>
+                  <h2 id="installment-modal-title">{{scheduleLoan.jina | titlecase}}</h2>
+                  <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.loan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.loan.jumla | money}}</p>
+                  <p class="installment-promise-help">{{ 'Ahadi hubadilisha tarehe inayotarajiwa tu. Tarehe ya awali ya malipo na salio hubaki hadi malipo halisi yawekwe.' | t }}</p>
+                </div>
+                <button type="button" class="installment-dropdown-close" [attr.aria-label]="'Funga ratiba ya awamu' | t"
+                  (click)="closeInstallments()">{{ 'Funga' | t }}</button>
+              </header>
+
+              @if (installmentsLoading[scheduleLoan.loanId]) {
+                <div class="installment-modal-message">{{ 'Inapakia awamu za mkopo huu…' | t }}</div>
+              } @else if (installmentsByLoan[scheduleLoan.loanId]?.length) {
+                <div class="installment-modal-table-wrap">
+                  <table class="installment-modal-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">{{ 'Awamu' | t }}</th>
+                        <th scope="col">{{ 'Tarehe ya malipo' | t }}</th>
+                        <th scope="col">{{ 'Kiasi kilichopangwa' | t }}</th>
+                        <th scope="col">{{ 'Kiasi kilicholipwa' | t }}</th>
+                        <th scope="col">{{ 'Kiasi kilichobaki' | t }}</th>
+                        <th scope="col">{{ 'Hali' | t }}</th>
+                        <th scope="col">{{ 'Ahadi ya malipo' | t }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (installment of installmentsByLoan[scheduleLoan.loanId]; track installment.id) {
+                        <tr>
+                          <td class="installment-number">{{ 'Awamu ya' | t }} {{installment.sequence}} <span>{{ 'kati ya' | t }} {{installmentsByLoan[scheduleLoan.loanId].length}}</span></td>
+                      <td>{{installment.due_date | date:'mediumDate':undefined:(settings.lang() === 'sw' ? 'sw' : 'en-US')}}</td>
+                          <td>{{installment.scheduled_amount | money}}</td>
+                          <td>{{installment.paid_amount | money}}</td>
+                          <td>{{installment.balance | money}}</td>
+                          <td><span class="installment-status" [ngClass]="'status-' + installment.status.toLowerCase().replace(' ', '-')">{{(installment.status === 'Paid' ? 'Imelipwa' : installment.status === 'Overdue' ? 'Imechelewa' : installment.status === 'Upcoming' ? 'Inakuja' : 'Haijawekwa') | t}}</span></td>
+                          <td class="promise-cell">
+                            @if (installment.balance > 0) {
+                              @if (promiseEditorId === installment.id) {
+                                <div class="promise-editor" [id]="'promise-editor-' + installment.id">
+                                  <label>{{ 'Tarehe ya ahadi' | t }}
+                                    <input type="date" [(ngModel)]="promiseDateDraft" [attr.aria-label]="'Tarehe ya ahadi ya malipo' | t">
+                                  </label>
+                                  <label>{{ 'Maelezo' | t }} <span>({{ 'hiari' | t }})</span>
+                                    <textarea rows="2" [(ngModel)]="promiseNoteDraft" [attr.aria-label]="'Maelezo ya ahadi ya malipo' | t"></textarea>
+                                  </label>
+                                  <div class="promise-editor-actions">
+                                    <button type="button" (click)="savePromise(installment)" [disabled]="!promiseDateDraft || promiseSaving">{{ 'Tunza' | t }}</button>
+                                    <button type="button" class="promise-cancel" (click)="cancelPromiseEdit()">{{ 'Ghairi' | t }}</button>
+                                  </div>
+                                </div>
+                              } @else if (installment.promised_date) {
+                                <div class="promise-saved">{{ 'Imeahidiwa' | t }} {{installment.promised_date | date:'mediumDate':undefined:(settings.lang() === 'sw' ? 'sw' : 'en-US')}}</div>
+                                @if (installment.promise_note) {
+                                  <div class="promise-note">{{installment.promise_note}}</div>
+                                }
+                                <button type="button" class="promise-action" (click)="editPromise(installment)">{{ 'Hariri' | t }}</button>
+                              } @else {
+                                <button type="button" class="promise-action" (click)="editPromise(installment)">{{ 'Rekodi ahadi' | t }}</button>
+                              }
+                            } @else {
+                              <span class="promise-paid">{{ 'Imelipwa' | t }}</span>
+                            }
+                          </td>
+                        </tr>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              } @else {
+                <div class="installment-modal-message">{{ 'Hakuna ratiba ya awamu iliyohifadhiwa kwa mkopo huu.' | t }}</div>
+              }
+
+              <footer class="installment-dropdown-footer">
+                <span>{{ 'Idadi ya awamu:' | t }} {{installmentsByLoan[scheduleLoan.loanId]?.length || 0}}</span>
+              </footer>
+            </section>
+            </div>
+          </td>
+        </tr>
+      }
     }
     <!--<tr id="customers">-->
     <!--<td scope="row">2</td>-->
@@ -96,5 +190,10 @@
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</section>
+</div>
+
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

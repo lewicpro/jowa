@@ -183,6 +183,7 @@ export class NyumbaDetailsComponent implements OnInit {
       //   console.log('from local' + this.datar);
       if (String(m.pk) === String(this.datar)) {
         this.name = m.name;
+        this.makeSlides();
         this.nyumba_number = m.nyumba_number;
         this.kata = m.kata;
         this.mkoa = m.mkoa;
@@ -248,6 +249,7 @@ export class NyumbaDetailsComponent implements OnInit {
     this.ngProgress.ref().start();
     this.restFramework.gethouses().then(hous =>{
       this.houslink = hous;
+      this.makeSlides();
       this.result = this.houslink.filter(user => this.name)
         
         
@@ -372,6 +374,185 @@ export class NyumbaDetailsComponent implements OnInit {
   
   }
 
+
+  // ================= house photos slider =================
+
+  slides = [];       // the photos of this house: { url: '...', missing: false }
+  current = 0;       // the photo shown now
+  timer = null;      // changes the photo every 5 seconds
+  queue = [];        // photos being uploaded: { file, name, preview, state }
+  dragging = false;  // a photo is dragged over the slider
+  touchX = 0;        // where a finger started on the phone
+
+  // keep only the photos of this house (they are saved with the house name)
+  makeSlides() {
+    if (this.houslink == null || this.name == null) {
+      return;
+    }
+    const list = [];
+    for (const h of this.houslink) {
+      if (h.house && String(h.user).toLowerCase().trim() === String(this.name).toLowerCase().trim()) {
+        list.push({ url: h.house, missing: false });
+      }
+    }
+    this.slides = list;
+    if (this.current >= this.slides.length) {
+      this.current = 0;
+    }
+    this.startAuto();
+  }
+
+  // ---------- moving between photos ----------
+
+  next() {
+    if (this.slides.length > 0) {
+      this.current = (this.current + 1) % this.slides.length;
+    }
+  }
+
+  prev() {
+    if (this.slides.length > 0) {
+      this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+    }
+  }
+
+  goTo(i) {
+    this.current = i;
+    this.startAuto();
+  }
+
+  // change the photo every 5 seconds
+  startAuto() {
+    this.stopAuto();
+    if (this.slides.length > 1) {
+      this.timer = setInterval(() => {
+        this.next();
+      }, 5000);
+    }
+  }
+
+  stopAuto() {
+    if (this.timer != null) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  // swipe on the phone
+  onTouchStart(event) {
+    this.touchX = event.touches[0].clientX;
+  }
+
+  onTouchEnd(event) {
+    const moved = event.changedTouches[0].clientX - this.touchX;
+    if (moved > 50) {
+      this.prev();
+    } else if (moved < -50) {
+      this.next();
+    }
+  }
+
+  // the photo file is not on the server
+  onImageError(slide) {
+    slide.missing = true;
+  }
+
+  // ---------- adding photos ----------
+
+  // photos chosen in the window (you can choose many)
+  onPhotosPicked(input) {
+    for (let i = 0; i < input.files.length; i++) {
+      this.addToQueue(input.files[i]);
+    }
+    input.value = '';
+    this.uploadNext();
+  }
+
+  onDragOver(event) {
+    event.preventDefault();
+    this.dragging = true;
+  }
+
+  onDragLeave() {
+    this.dragging = false;
+  }
+
+  onDrop(event) {
+    event.preventDefault();
+    this.dragging = false;
+    for (let i = 0; i < event.dataTransfer.files.length; i++) {
+      this.addToQueue(event.dataTransfer.files[i]);
+    }
+    this.uploadNext();
+  }
+
+  // put a photo in the list waiting to be uploaded (only pictures)
+  addToQueue(file) {
+    if (file.type.indexOf('image/') !== 0) {
+      return;
+    }
+    this.queue.push({
+      file: file,
+      name: file.name,
+      preview: URL.createObjectURL(file),
+      state: 'waiting'
+    });
+  }
+
+  // upload the photos one by one
+  uploadNext() {
+    if (this.name == null) {
+      alert('Taarifa za nyumba bado zinapakia. Jaribu tena baada ya muda mfupi.');
+      return;
+    }
+    // one at a time
+    for (const item of this.queue) {
+      if (item.state === 'uploading') {
+        return;
+      }
+    }
+    let item = null;
+    for (const q of this.queue) {
+      if (q.state === 'waiting') {
+        item = q;
+        break;
+      }
+    }
+    if (item == null) {
+      return;
+    }
+
+    item.state = 'uploading';
+    this.restframework.UploadPictureNyumba(item.file, this.name).subscribe(
+      data => {
+        // done: take it out of the list and show the new photo
+        URL.revokeObjectURL(item.preview);
+        this.queue.splice(this.queue.indexOf(item), 1);
+        this.restFramework.gethouses().then(hous => {
+          this.houslink = hous;
+          this.makeSlides();
+          this.current = this.slides.length - 1;
+          this.startAuto();
+        });
+        this.uploadNext();
+      },
+      err => {
+        // failed: it stays red, click it to try again
+        item.state = 'error';
+        this.uploadNext();
+      }
+    );
+  }
+
+  // a red (failed) photo was clicked
+  retry(item) {
+    item.state = 'waiting';
+    this.uploadNext();
+  }
+
+  ngOnDestroy() {
+    this.stopAuto();
+  }
 
   ngOnInit() {
 

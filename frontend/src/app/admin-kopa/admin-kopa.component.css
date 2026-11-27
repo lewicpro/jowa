@@ -1,22 +1,125 @@
+:host { display: block; }
+
+.loan-table-panel {
+  overflow: hidden;
+  border: 1px solid #DEE2E6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 10px 28px rgba(33, 37, 41, .08);
+}
+
+.loan-table-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #DEE2E6;
+}
+
+.loan-table-title {
+  margin: 0;
+  color: #2A2727;
+  font-family: 'Baloo Paaji 2', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.loan-table-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin: 0 0 0 auto;
+  padding: 0 12px;
+  border: 1px solid #B5B5B5;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #666666;
+}
+
+.loan-table-search:focus-within {
+  border-color: #FA782E;
+  box-shadow: 0 0 0 3px rgba(250, 120, 46, .18);
+}
+
+.loan-table-search input[type="search"] {
+  width: 240px;
+  max-width: 100%;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  appearance: none !important;
+  color: #212529;
+  font: 400 14px -apple-system, 'Segoe UI', sans-serif;
+}
+
+.loan-payment-table-wrap { overflow-x: auto; max-height: 520px; }
+
+.loan-payment-table {
+  width: 100%;
+  min-width: 860px;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.loan-payment-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px;
+  border: 0;
+  border-bottom: 1px solid #DEE2E6;
+  background: #F6F6F6;
+  color: #008000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.loan-payment-table td {
+  padding: 12px;
+  border: 0;
+  border-bottom: 1px solid #DEE2E6;
+  color: #212529;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .loan-table-toolbar { align-items: stretch; flex-direction: column; }
+  .loan-table-search { width: 100%; margin-left: 0; }
+  .loan-table-search input[type="search"] { width: 100%; }
+}
+
  td{
     font-weight:100;
     font-size:12px;
 
-    
+
   }
   th{
     color:green;
     font-weight:200;
   }
-/*   
+/*
   th:hover{
     color:rgb(255, 255, 255);
     font-weight:400;
-  
+
   } */
-  
-  
-  
+
+
+
   #customers:hover{
     background-color: rgba(46, 147, 35, 0.2);;
     /* box-shadow:5px 5px 5px 5px black; */
@@ -25,7 +128,7 @@
   input{
       width:100%;
       background:rgba(255, 255, 255, 0.6)
-  } 
+  }
 
 
 
@@ -34,3 +137,214 @@
     color:white;
     font-weight: 200;
   }
+
+.loan-schedule-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1769d2;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.installment-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, .55);
+}
+
+.installment-modal {
+  width: min(920px, 100%);
+  max-height: min(760px, calc(100vh - 48px));
+  overflow: auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, .28);
+}
+
+.installment-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid #e7ebf1;
+}
+
+.installment-modal-eyebrow {
+  margin: 0 0 6px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.installment-modal-header h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 22px;
+  font-weight: 650;
+}
+
+.installment-modal-subtitle {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.installment-promise-help { margin: 8px 0 0; color: #64748b; font-size: 12px; }
+
+.installment-modal-close {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: #fff;
+  color: #475569;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.installment-modal-table-wrap {
+  overflow-x: auto;
+  padding: 8px 28px 20px;
+}
+
+.installment-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #172033;
+  font-size: 13px;
+}
+
+.installment-modal-table th,
+.installment-modal-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #edf0f5;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.installment-modal-table th {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.installment-number { font-weight: 650; }
+.installment-number span { color: #94a3b8; font-weight: 400; }
+
+.installment-status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.status-paid { background: #ecfdf3; color: #15803d; }
+.status-overdue { background: #fff1f2; color: #be123c; }
+.status-not-provided { background: #f1f5f9; color: #64748b; }
+
+.promise-cell { min-width: 200px; white-space: normal !important; }
+.promise-action { padding: 6px 10px; border: 1px solid #bfd2ea; border-radius: 7px; background: #f5f9ff; color: #1769d2; font-size: 12px; font-weight: 600; cursor: pointer; }
+.promise-saved { color: #1769d2; font-size: 12px; font-weight: 650; }
+.promise-note { max-width: 220px; margin-top: 4px; color: #64748b; font-size: 11px; white-space: normal; }
+.promise-paid { color: #64748b; font-size: 12px; }
+.promise-editor { display: grid; gap: 8px; min-width: 190px; }
+.promise-editor label { display: grid; gap: 4px; margin: 0; color: #475569; font-size: 11px; font-weight: 600; }
+.promise-editor label span { color: #94a3b8; font-weight: 400; }
+.promise-editor input, .promise-editor textarea { width: 100%; padding: 6px 8px; border: 1px solid #d8e0eb; border-radius: 6px; background: #fff; color: #172033; font-size: 12px; }
+.promise-editor textarea { resize: vertical; }
+.promise-editor-actions { display: flex; gap: 8px; }
+.promise-editor-actions button { padding: 6px 10px; border: 0; border-radius: 6px; background: #1769d2; color: #fff; font-size: 12px; cursor: pointer; }
+.promise-editor-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.promise-editor-actions .promise-cancel { border: 1px solid #d8e0eb; background: #fff; color: #475569; }
+
+.installment-modal-message {
+  padding: 36px 28px;
+  color: #64748b;
+  text-align: center;
+}
+
+.installment-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  border-top: 1px solid #e7ebf1;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.installment-done {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #1769d2;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.installment-dropdown {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #e3e9f1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
+}
+
+.installment-expanded-row > td {
+  padding: 0 !important;
+  border-top: 0;
+  background: #f8fafc;
+}
+
+.installment-dropdown-animation {
+  overflow: hidden;
+  padding: 12px 16px;
+}
+
+.installment-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  border-bottom: 1px solid #e7ebf1;
+}
+
+.installment-dropdown-close {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid #d8e0eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #475569;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.installment-dropdown-footer {
+  padding: 12px 22px;
+  border-top: 1px solid #e7ebf1;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .installment-modal-table-wrap { padding-left: 16px; padding-right: 16px; }
+  .installment-dropdown-header { padding: 16px; }
+  .installment-dropdown-header h2 { font-size: 18px; }
+}

@@ -1,21 +1,252 @@
-td{
-  font-weight:100;
-  font-size:12px;
+/* Wateja wote table: "M1" design, Aleco site palette. Styling only. */
+:host { display: block; }
+
+.panel {
+  background: #FFFFFF;
+  border: 1px solid #DEE2E6;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 10px 28px rgba(33, 37, 41, .08);
+  overflow: hidden;
+  animation: fadeUp .5s .15s ease backwards;
 }
-th{
-  color:green;
-  font-weight:200;
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #DEE2E6;
+}
+.panel-title {
+  margin: 0;
+  font-family: 'Baloo Paaji 2', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #2A2727;
+}
+.panel-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #B5B5B5;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #666666;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.search:focus-within { border-color: #FA782E; box-shadow: 0 0 0 3px rgba(250, 120, 46, .18); }
+.search input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #212529;
+  font: 400 14px -apple-system, 'Segoe UI', sans-serif;
+  width: 240px;
+  max-width: 100%;
 }
 
-/* th:hover{
-  color:rgb(255, 255, 255);
-  font-weight:400;
+.print-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #B5B5B5;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #212529;
+  font: 500 14px -apple-system, 'Segoe UI', sans-serif;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.print-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(33, 37, 41, .14); }
 
-} */
+/* Print-only branding stays out of the dashboard screen. */
+.print-brand { display: none; }
+.print-title { display: none; }
 
+@media print {
+  .print-brand {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2mm;
+    width: 100%;
+    margin: 0 0 4mm;
+    color: #8F1115;
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+  }
 
+  .print-brand img {
+    display: block;
+    width: 30mm;
+    height: auto;
+    object-fit: contain;
+  }
 
-#customers:hover{
-  background-color: rgba(46, 147, 35, 0.2);;
-  /* box-shadow:5px 5px 5px 5px black; */
+  .print-title {
+    display: block !important;
+    margin: 0 0 6mm;
+    color: #2A2727;
+    font-size: 16pt;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .table-wrap {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .wateja {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: auto;
+    font-size: 8pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .wateja thead {
+    display: table-header-group;
+  }
+
+  .wateja thead th {
+    position: static;
+    padding: 4px;
+    border: 1px solid #9CA3AF;
+    background: #F1F5F2 !important;
+    color: #176B24;
+    font-size: 8pt;
+    white-space: normal;
+  }
+
+  .wateja td {
+    padding: 4px;
+    border: 1px solid #9CA3AF;
+    color: #212529;
+    font-size: 8pt;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  #customers,
+  #customers td {
+    animation: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  #customers {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+.table-wrap { overflow-x: auto; max-height: 520px; }
+
+.wateja {
+  width: 100%;
+  min-width: 980px;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.wateja thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px;
+  border: 0;
+  background: #F6F6F6;
+  color: #008000;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  white-space: nowrap;
+  text-align: left;
+}
+.wateja thead th:first-child { padding-left: 18px; }
+
+.wateja td {
+  padding: 14px 12px;
+  border: 0;
+  border-top: 1px solid #DEE2E6;
+  color: #212529;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+.wateja td:first-child { padding-left: 18px; }
+.wateja td.num { color: #666666; }
+.wateja td.name { font-weight: 600; }
+.wateja td.muted { color: #666666; }
+.wateja td.go { color: #B5B5B5; }
+
+.chip {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: #C82930;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#customers {
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease;
+  animation: rowIn .5s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+#customers:nth-child(2) { animation-delay: .06s; }
+#customers:nth-child(3) { animation-delay: .12s; }
+#customers:nth-child(4) { animation-delay: .18s; }
+#customers:nth-child(5) { animation-delay: .24s; }
+#customers:nth-child(6) { animation-delay: .30s; }
+#customers:nth-child(7) { animation-delay: .36s; }
+#customers:nth-child(8) { animation-delay: .42s; }
+#customers:nth-child(n+9) { animation-delay: .48s; }
+#customers:hover {
+  background: linear-gradient(90deg, rgba(250, 120, 46, .16) 0%, rgba(250, 120, 46, .05) 60%, #FFFFFF 100%);
+  box-shadow: inset 4px 0 0 #FA782E, 0 6px 16px rgba(33, 37, 41, .08);
+}
+#customers td { transition: transform .2s ease, color .2s ease; }
+#customers:hover td.name { color: #C82930; transform: translateX(4px); }
+#customers:hover td.go { color: #FA782E; transform: translateY(2px); }
+#customers:hover .chip { transform: scale(1.08); box-shadow: 0 4px 10px rgba(200, 41, 48, .35); }
+.chip { transition: transform .2s ease, box-shadow .2s ease; }
+
+.print-btn:hover { transform: translateY(-3px); border-color: #FA782E; box-shadow: 0 10px 22px rgba(33, 37, 41, .14); }
+.panel { animation-duration: .65s; }
+
+@keyframes rowIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+
+/* Rows for non-client users render no cells; hide the empty line they leave */
+#customers:not(:has(td)) { display: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }

@@ -1,153 +1,97 @@
-
-
-<!-- <div class="d-flex justify-content-center">
-<mat-form-field style="width:40%">
-  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-</mat-form-field>
-</div> -->
-<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h5 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> KIASI KINACHOINGIA</h5>
-  <div style="max-height:400px; overflow: auto">
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+<!-- Money in (Miezi) -->
+<section class="panel">
+  <div class="panel-head">
+    <h2 class="panel-title"><span class="dot in" aria-hidden="true"></span>{{ 'Kiasi kinachoingia' | t }}</h2>
+    <span class="panel-note">{{ 'Bofya mwaka kuona maelezo zaidi' | t }}</span>
+  </div>
+  <div class="table-wrap">
+    <table class="table table-sm months">
       <thead>
-        <!-- <tr>
-        <th scope="col">#</th>
-        <th scope="col">Jina</th>
-        <th scope="col">Simu</th>
-        <th scope="col">Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col">expire</th>
-        <th scope="col">ofisi</th>
-        <th scope="col">kata</th>
-        <th scope="col">wilaya</th>
-        <th scope="col">mkoa</th>
-        <th scope="col">TSD</th>
-      </tr> -->
-      <tr>
-        <th scope="col">Year</th>
-        <th scope="col">Jan</th>
-        <th scope="col">Feb</th>
-        <th scope="col">Mar</th>
-        <th scope="col">Apr</th>
-        <th scope="col">May</th>
-        <th scope="col">Jun</th>
-        <th scope="col">Jul</th>
-        <th scope="col" nowrap>Aug</th>
-        <th scope="col">Sep</th>
-        <th scope="col" nowrap>Oct</th>
-        <th scope="col" nowrap>Nov</th>
-        <th scope="col">Dec</th>
-
-
-      </tr>
-    </thead>
-    <tbody>
-      @for (form of malipo; track form) {
-        <tr style="cursor:pointer" id="customers"  (click)="onselect(form)">
-          <td nowrap>{{form.user}}</td>
-          <td nowrap>{{form.January | currency: 'tsh '}}</td>
-          <td nowrap>{{form.February | currency: 'tsh '}}</td>
-          <!-- <td nowrap> {{form.March}}</td> -->
-          <td nowrap>{{form.March | currency: 'tsh '}}</td>
-          <td nowrap>{{form.April | currency: 'tsh '}}</td>
-          <td nowrap >{{form.May | currency: 'tsh '}}</td>
-          <td nowrap>{{form.June | currency: 'tsh '}}</td>
-          <td nowrap>{{form.July | currency: 'tsh '}}</td>
-          <td nowrap  >{{form.August | currency: 'tsh '}}</td>
-          <td nowrap>{{form.September | currency: 'tsh '}}</td>
-          <td nowrap>{{form.October | currency: 'tsh '}}</td>
-          <td nowrap>{{form.November | currency: 'tsh '}}</td>
-          <td nowrap >{{form.December | currency: 'tsh '}} </td>
+        <tr>
+          <th scope="col">{{ 'Year' | t }}</th>
+          <th scope="col">{{ 'Jan' | t }}</th>
+          <th scope="col">{{ 'Feb' | t }}</th>
+          <th scope="col">{{ 'Mar' | t }}</th>
+          <th scope="col">{{ 'Apr' | t }}</th>
+          <th scope="col">{{ 'May' | t }}</th>
+          <th scope="col">{{ 'Jun' | t }}</th>
+          <th scope="col">{{ 'Jul' | t }}</th>
+          <th scope="col">{{ 'Aug' | t }}</th>
+          <th scope="col">{{ 'Sep' | t }}</th>
+          <th scope="col">{{ 'Oct' | t }}</th>
+          <th scope="col">{{ 'Nov' | t }}</th>
+          <th scope="col">{{ 'Dec' | t }}</th>
         </tr>
-      }
-      <!--<tr id="customers">-->
-      <!--<td scope="row">2</td>-->
-      <!--<td>BA</td>-->
-      <!--<td>3</td>-->
-      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-    <!--</tr>-->
-    <!--<tr id="customers">-->
-    <!--<td scope="row">3</td>-->
-    <!--<td>Accountancy</td>-->
-    <!--<td>3</td>-->
-    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-  <!--</tr>-->
-</tbody>
-</table>
-</div>
-</div>
+      </thead>
+      <tbody>
+        @for (form of malipo; track form) {
+          <tr id="customers" class="in" (click)="onselect(form)">
+            <td nowrap class="year">{{form.user}}</td>
+            <td nowrap [class.neg]="form.January < 0" [class.zero]="form.January == 0">{{form.January | money}}</td>
+            <td nowrap [class.neg]="form.February < 0" [class.zero]="form.February == 0">{{form.February | money}}</td>
+            <td nowrap [class.neg]="form.March < 0" [class.zero]="form.March == 0">{{form.March | money}}</td>
+            <td nowrap [class.neg]="form.April < 0" [class.zero]="form.April == 0">{{form.April | money}}</td>
+            <td nowrap [class.neg]="form.May < 0" [class.zero]="form.May == 0">{{form.May | money}}</td>
+            <td nowrap [class.neg]="form.June < 0" [class.zero]="form.June == 0">{{form.June | money}}</td>
+            <td nowrap [class.neg]="form.July < 0" [class.zero]="form.July == 0">{{form.July | money}}</td>
+            <td nowrap [class.neg]="form.August < 0" [class.zero]="form.August == 0">{{form.August | money}}</td>
+            <td nowrap [class.neg]="form.September < 0" [class.zero]="form.September == 0">{{form.September | money}}</td>
+            <td nowrap [class.neg]="form.October < 0" [class.zero]="form.October == 0">{{form.October | money}}</td>
+            <td nowrap [class.neg]="form.November < 0" [class.zero]="form.November == 0">{{form.November | money}}</td>
+            <td nowrap [class.neg]="form.December < 0" [class.zero]="form.December == 0">{{form.December | money}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
 
-<div style="padding:10px;"></div>
-<div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h5 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> KIASI KINACHOTOLEWA</h5>
-  <div style="max-height:400px; overflow: auto">
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
+<!-- Money out (MieziToa) -->
+<section class="panel out-panel">
+  <div class="panel-head">
+    <h2 class="panel-title"><span class="dot out" aria-hidden="true"></span>{{ 'Kiasi kinachotolewa' | t }}</h2>
+    <span class="panel-note">{{ 'Bofya mwaka kuona maelezo zaidi' | t }}</span>
+  </div>
+  <div class="table-wrap">
+    <table class="table table-sm months">
       <thead>
-        <!-- <tr>
-        <th scope="col">#</th>
-        <th scope="col">Jina</th>
-        <th scope="col">Simu</th>
-        <th scope="col">Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col">expire</th>
-        <th scope="col">ofisi</th>
-        <th scope="col">kata</th>
-        <th scope="col">wilaya</th>
-        <th scope="col">mkoa</th>
-        <th scope="col">TSD</th>
-      </tr> -->
-      <tr>
-        <th scope="col">Year</th>
-        <th scope="col">Jan</th>
-        <th scope="col">Feb</th>
-        <th scope="col">Mar</th>
-        <th scope="col">Apr</th>
-        <th scope="col">May</th>
-        <th scope="col">Jun</th>
-        <th scope="col">Jul</th>
-        <th scope="col" nowrap>Aug</th>
-        <th scope="col">Sep</th>
-        <th scope="col" nowrap>Oct</th>
-        <th scope="col" nowrap>Nov</th>
-        <th scope="col">Dec</th>
-
-
-      </tr>
-    </thead>
-    <tbody>
-      @for (form of users; track form) {
-        <tr style="cursor:pointer" id="customers" (click)="onclicked(form)">
-          <td nowrap>{{form.user}}</td>
-          <td nowrap>{{form.January | currency: 'tsh '}}</td>
-          <td nowrap>{{form.February | currency: 'tsh '}}</td>
-          <!-- <td nowrap> {{form.March}}</td> -->
-          <td nowrap>{{form.March | currency: 'tsh '}}</td>
-          <td nowrap>{{form.April | currency: 'tsh '}}</td>
-          <td nowrap >{{form.May | currency: 'tsh '}}</td>
-          <td nowrap>{{form.June | currency: 'tsh '}}</td>
-          <td nowrap>{{form.July | currency: 'tsh '}}</td>
-          <td nowrap  >{{form.August | currency: 'tsh '}}</td>
-          <td nowrap>{{form.September | currency: 'tsh '}}</td>
-          <td nowrap>{{form.October | currency: 'tsh '}}</td>
-          <td nowrap>{{form.November | currency: 'tsh '}}</td>
-          <td nowrap >{{form.December | currency: 'tsh '}} </td>
+        <tr>
+          <th scope="col">{{ 'Year' | t }}</th>
+          <th scope="col">{{ 'Jan' | t }}</th>
+          <th scope="col">{{ 'Feb' | t }}</th>
+          <th scope="col">{{ 'Mar' | t }}</th>
+          <th scope="col">{{ 'Apr' | t }}</th>
+          <th scope="col">{{ 'May' | t }}</th>
+          <th scope="col">{{ 'Jun' | t }}</th>
+          <th scope="col">{{ 'Jul' | t }}</th>
+          <th scope="col">{{ 'Aug' | t }}</th>
+          <th scope="col">{{ 'Sep' | t }}</th>
+          <th scope="col">{{ 'Oct' | t }}</th>
+          <th scope="col">{{ 'Nov' | t }}</th>
+          <th scope="col">{{ 'Dec' | t }}</th>
         </tr>
-      }
-      <!--<tr id="customers">-->
-      <!--<td scope="row">2</td>-->
-      <!--<td>BA</td>-->
-      <!--<td>3</td>-->
-      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-    <!--</tr>-->
-    <!--<tr id="customers">-->
-    <!--<td scope="row">3</td>-->
-    <!--<td>Accountancy</td>-->
-    <!--<td>3</td>-->
-    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-  <!--</tr>-->
-</tbody>
-</table>
-</div>
-</div>
+      </thead>
+      <tbody>
+        @for (form of users; track form) {
+          <tr id="customers" class="out" (click)="onclicked(form)">
+            <td nowrap class="year">{{form.user}}</td>
+            <td nowrap [class.zero]="form.January == 0">{{form.January | money}}</td>
+            <td nowrap [class.zero]="form.February == 0">{{form.February | money}}</td>
+            <td nowrap [class.zero]="form.March == 0">{{form.March | money}}</td>
+            <td nowrap [class.zero]="form.April == 0">{{form.April | money}}</td>
+            <td nowrap [class.zero]="form.May == 0">{{form.May | money}}</td>
+            <td nowrap [class.zero]="form.June == 0">{{form.June | money}}</td>
+            <td nowrap [class.zero]="form.July == 0">{{form.July | money}}</td>
+            <td nowrap [class.zero]="form.August == 0">{{form.August | money}}</td>
+            <td nowrap [class.zero]="form.September == 0">{{form.September | money}}</td>
+            <td nowrap [class.zero]="form.October == 0">{{form.October | money}}</td>
+            <td nowrap [class.zero]="form.November == 0">{{form.November | money}}</td>
+            <td nowrap [class.zero]="form.December == 0">{{form.December | money}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

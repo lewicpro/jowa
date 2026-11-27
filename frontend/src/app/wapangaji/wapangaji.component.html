@@ -2,33 +2,33 @@
 
 <div class="d-flex justify-content-center">
     <mat-form-field style="width:40%">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+    <input   matInput [(ngModel)]="filtertext" [placeholder]="'Filter' | t">
     </mat-form-field>
   </div>
   <div class="animated fadeIn" style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">WAPANGAJI WALIOPO</h4>
+    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'WAPANGAJI WALIOPO' | t }}</h4>
     <div style="max-height:400px; overflow:auto">
     <table class="table table-sm table-bordered table-striped table-light " style=" overflow:hidden; " >
       <thead>
         <tr>
           <!-- <th scope="col">#</th> -->
-          <th scope="col" nowrap>Date</th>
-          <th scope="col" nowrap>Jina</th>
-          <th scope="col" nowrap>Simu</th>
-          <th scope="col" nowrap>namba ya chumba</th>
-          <th scope="col" nowrap>Eneo</th>
-          <th scope="col" nowrap>Chumba</th>
-          <th scope="col" nowrap>kiasi kamili</th>
-          <th scope="col" nowrap>Kodi</th>
-          <th scope="col" nowrap>Baki</th>
-          <th scope="col" nowrap>Daily</th>
+          <th scope="col" nowrap>{{ 'Date' | t }}</th>
+          <th scope="col" nowrap>{{ 'Jina' | t }}</th>
+          <th scope="col" nowrap>{{ 'Simu' | t }}</th>
+          <th scope="col" nowrap>{{ 'namba ya chumba' | t }}</th>
+          <th scope="col" nowrap>{{ 'Eneo' | t }}</th>
+          <th scope="col" nowrap>{{ 'Chumba' | t }}</th>
+          <th scope="col" nowrap>{{ 'kiasi kamili' | t }}</th>
+          <th scope="col" nowrap>{{ 'Kodi' | t }}</th>
+          <th scope="col" nowrap>{{ 'Baki' | t }}</th>
+          <th scope="col" nowrap>{{ 'Daily' | t }}</th>
           
           <!-- <th scope="col">ofisi</th> -->
-          <th scope="col" nowrap>kata</th>
-          <th scope="col" nowrap>wilaya</th>
-          <th scope="col" nowrap>mkoa</th>
-          <th scope="col" nowrap>last date</th>
-          <th scope="col" nowrap>Status</th>
+          <th scope="col" nowrap>{{ 'kata' | t }}</th>
+          <th scope="col" nowrap>{{ 'wilaya' | t }}</th>
+          <th scope="col" nowrap>{{ 'mkoa' | t }}</th>
+          <th scope="col" nowrap>{{ 'last date' | t }}</th>
+          <th scope="col" nowrap>{{ 'Status' | t }}</th>
        
         </tr>
       </thead>
@@ -47,15 +47,15 @@
           <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.eneo | titlecase}}</td>
           <td nowrap *ngIf="form.condition === 'start'">{{form.aina_ya_chumba | titlecase}}</td>
           <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.aina_ya_chumba | titlecase}}</td>
-          <td nowrap *ngIf="form.condition === 'start'">{{form.kiasi}}</td>
-          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.kiasi}}</td>
-          <td nowrap *ngIf="form.condition === 'start'"><span *ngIf="form.mwezi1; else second">{{form.mwezi1}}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{form.miezi2}}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{form.miezi3}}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{form.year}}</span ></ng-template></td>
-          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)"><span *ngIf="form.mwezi1; else second">{{form.mwezi1}}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{form.miezi2}}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{form.miezi3}}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{form.year}}</span ></ng-template></td>
+          <td nowrap *ngIf="form.condition === 'start'">{{ form.kiasi | money: 'raw' }}</td>
+          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{ form.kiasi | money: 'raw' }}</td>
+          <td nowrap *ngIf="form.condition === 'start'"><span *ngIf="form.mwezi1; else second">{{ form.mwezi1 | money: 'raw' }}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{ form.miezi2 | money: 'raw' }}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{ form.miezi3 | money: 'raw' }}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{ form.year | money: 'raw' }}</span ></ng-template></td>
+          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)"><span *ngIf="form.mwezi1; else second">{{ form.mwezi1 | money: 'raw' }}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{ form.miezi2 | money: 'raw' }}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{ form.miezi3 | money: 'raw' }}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{ form.year | money: 'raw' }}</span ></ng-template></td>
           
-          <td nowrap *ngIf="form.condition === 'start'">{{form.baki | currency: 'tsh '}}</td>
-          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.baki | currency: 'tsh '}}</td>
-          <td nowrap *ngIf="form.condition === 'start'">{{form.daily | currency: 'tsh '}}</td>
-          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.daily | currency: 'tsh '}}</td>
+          <td nowrap *ngIf="form.condition === 'start'">{{form.baki | money}}</td>
+          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.baki | money}}</td>
+          <td nowrap *ngIf="form.condition === 'start'">{{form.daily | money}}</td>
+          <td nowrap *ngIf="form.condition === 'stop'" style="background:rgb(204, 116, 133)">{{form.daily | money}}</td>
          
           <!-- <td>{{form.ofisi}}</td> -->
           <td nowrap *ngIf="form.condition === 'start'">{{form.kata | titlecase}}</td>

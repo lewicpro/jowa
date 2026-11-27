@@ -56,6 +56,23 @@ export class AtmComponent implements OnInit {
     });
    }
 
+  // is this document for our customer?
+  // old uploads were saved as "Masatu" or "lewis masatu", so we check both, small letters
+  isMine(m) {
+    if (m.user == null) {
+      return false;
+    }
+    const name = String(m.user).toLowerCase().trim();
+
+    if (this.user != null && name === String(this.user).toLowerCase().trim()) {
+      return true;
+    }
+    if (this.jina != null && name === String(this.jina).toLowerCase().trim()) {
+      return true;
+    }
+    return false;
+  }
+
   ngOnInit() {
   }
 

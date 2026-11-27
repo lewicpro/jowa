@@ -1,11 +1,13 @@
 
 
-<form  #form="ngForm" (ngSubmit)="run(Bei, sifa, ukubwa, Chumba_No)">
+<form class="f10"  #form="ngForm" (ngSubmit)="run(Bei, sifa, ukubwa, Chumba_No)">
+  <button type="button" class="f10-x" alecoBack escapeCloses [attr.aria-label]="'Funga' | t"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+  <div class="f7-alert" role="alert"><span class="f7-alert-i" aria-hidden="true"></span>{{ 'Rekebisha sehemu zenye alama nyekundu kabla ya kutuma' | t }}</div>
   <div style="padding:20px;"></div>
 
   <div class="d-flex justify-content-center">
 
-    <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> SAJILI  </h4></div>
+    <div style="padding-top:15px"><h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'SAJILI' | t }}  </h4></div>
 
   </div>
 
@@ -14,23 +16,106 @@
 
   <div style="padding:20px;"></div>
   <div class="row">
-    <div class="col-sm"><div class="">
+    <div class="f5">
+  <section class="f5-sec">
+    <div class="f7-head"><h3 class="f10-h">{{ 'Utambulisho' | t }}</h3><span class="f7-badge"><span class="f7-ok">{{ 'Imekamilika' | t }}</span><span class="f7-todo">{{ 'Haijakamilika' | t }}</span><span class="f7-bad">{{ 'Kuna kosa' | t }}</span></span></div>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-phone g-orange"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Phone Number.' | t }}</span>
+      </div>
+      <input [(ngModel)]="Create.simu" name="simu" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Phone Number.' | t">
+      <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+        {{ 'Please provide Phone number.' | t }}
+      </div>
+    </div>
+
+  </div></div>
+    </div>
+  </section>
+  <section class="f5-sec">
+    <div class="f7-head"><h3 class="f10-h">{{ 'Kazi na Biashara' | t }}</h3><span class="f7-badge"><span class="f7-ok">{{ 'Imekamilika' | t }}</span><span class="f7-todo">{{ 'Haijakamilika' | t }}</span><span class="f7-bad">{{ 'Kuna kosa' | t }}</span></span></div>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-box g-blue"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Huduma' | t }}</span>
+      </div>
+      <input [(ngModel)]="Create.huduma" name="huduma" type="text" class="form-control" style="max-width:300px; margin:center;" required #nghudumaForm="ngModel" [class.is-invalid]="nghudumaForm.invalid && nghudumaForm.touched"  [class.is-valid]="nghudumaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Huduma' | t">
+      <div class="is-invalid && nghudumaForm.touched"  class="invalid-feedback">
+        {{ 'Please provide Huduma.' | t }}
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+    </div>
+  </section>
+  <section class="f5-sec">
+    <div class="f7-head"><h3 class="f10-h">{{ 'Fedha na Benki' | t }}</h3><span class="f7-badge"><span class="f7-ok">{{ 'Imekamilika' | t }}</span><span class="f7-todo">{{ 'Haijakamilika' | t }}</span><span class="f7-bad">{{ 'Kuna kosa' | t }}</span></span></div>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-money g-crimson"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Bei ya chumba' | t }}</span>
+      </div>
+      <input [(ngModel)]="Create.Bei" name="file_no" required #ngnFileForm="ngModel" #Bei [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Bei ya chumba' | t">
+      <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
+        {{ 'Please provide Bei.' | t }}
+      </div>
+    </div>
+
+  </div></div>
+      <div class="f5-field f5-i-card g-green"><div class="">
+
+    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+
+      <div class="input-group-prepend" style="width:110px;">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Account No.' | t }}</span>
+      </div>
+      <input [(ngModel)]="Create.Account_no" name="Account_no" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  [class.is-valid]="ngAccountForm.valid && Create.Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Account No.' | t">
+      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
+        {{ 'Please provide Accountno.' | t }}
+      </div>
+      @if (Create.Account_no) {
+        <div style="font-size:10px; color:red;     width: 100%">{{ 'Account no exists' | t }}</div>
+      }
+    </div>
+
+  </div></div>
+    </div>
+  </section>
+  <section class="f5-sec">
+    <div class="f7-head"><h3 class="f10-h">{{ 'Makazi na Mali' | t }}</h3><span class="f7-badge"><span class="f7-ok">{{ 'Imekamilika' | t }}</span><span class="f7-todo">{{ 'Haijakamilika' | t }}</span><span class="f7-bad">{{ 'Kuna kosa' | t }}</span></span></div>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-home g-ink"><div class="">
 
       <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
 
         <div class="input-group-prepend "  style="width:110px;">
-          <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px;" >Namba ya chumba</span>
+          <span class="input-group-text control-label" id="inputGroup-sizing-sm" style="padding-right:55px;" >{{ 'Namba ya chumba' | t }}</span>
         </div>
-        <input #Chumba_No [(ngModel)]="Create.Chumba_No" (input)="validate()" required pattern="[a-zA-Z]*" #ng1Form="ngModel"  name="ChumbaNo" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && Create.Chumba_No !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
+        <input #Chumba_No [(ngModel)]="Create.Chumba_No" (input)="validate()" required pattern="[a-zA-Z]*" #ng1Form="ngModel"  name="ChumbaNo" type="text" class="form-control " [class.is-invalid]="ng1Form.invalid && ng1Form.touched"  [class.is-valid]="ng1Form.valid && Create.Chumba_No !== giveoout" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Namba ya chumba' | t"><br>
 
         <div class="is-invalid && ng1Form.touched"  class="invalid-feedback">
-          Please provide ChumbaNo.
+          {{ 'Please provide ChumbaNo.' | t }}
         </div>
 
 
 
         @if (Create.Chumba_No) {
-          <div style="font-size:10px; color:red;     width: 100%">username exists</div>
+          <div style="font-size:10px; color:red;     width: 100%">{{ 'username exists' | t }}</div>
         }
 
 
@@ -47,184 +132,118 @@
 
 
   </div></div>
-
-  <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-home g-orange"><div class="">
 
     <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
 
       <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Sifa za chumba</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Sifa za chumba' | t }}</span>
       </div>
-      <input #sifa [(ngModel)]="Create.sifa" required #ngnameForm="ngModel"  name="jina" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input #sifa [(ngModel)]="Create.sifa" required #ngnameForm="ngModel"  name="jina" type="text" class="form-control" style="max-width:300px; margin:center;"  [class.is-invalid]="ngnameForm.invalid && ngnameForm.touched"  [class.is-valid]="ngnameForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Sifa za chumba' | t">
       <div class="is-invalid && ngnameForm.touched"  class="invalid-feedback">
-        Please Provide Sifa.
+        {{ 'Please Provide Sifa.' | t }}
       </div>
     </div>
 
   </div></div>
-  <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-home g-blue"><div class="">
 
     <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
 
       <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Bei ya chumba</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Ukubwa' | t }}</span>
       </div>
-      <input [(ngModel)]="Create.Bei" name="file_no" required #ngnFileForm="ngModel" #Bei [class.is-invalid]="ngnFileForm.invalid && ngnFileForm.touched"  [class.is-valid]="ngnFileForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-        Please provide Bei.
-      </div>
-    </div>
-
-  </div></div>
-</div>
-<div class="row">
-  <div class="col-sm"><div class="">
-
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Phone Number.</span>
-      </div>
-      <input [(ngModel)]="Create.simu" name="simu" type="text" required #ngTSDForm="ngModel" [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-        Please provide Phone number.
-      </div>
-    </div>
-
-  </div></div>
-  <div class="col-sm"><div class="">
-
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Ukubwa</span>
-      </div>
-      <input #ukubwa [(ngModel)]="Create.ukubwa" name="ofisi" required #ngoffisiForm="ngModel" [class.is-invalid]="ngoffisiForm.invalid && ngoffisiForm.touched"  [class.is-valid]="ngoffisiForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input #ukubwa [(ngModel)]="Create.ukubwa" name="ofisi" required #ngoffisiForm="ngModel" [class.is-invalid]="ngoffisiForm.invalid && ngoffisiForm.touched"  [class.is-valid]="ngoffisiForm.valid"  type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Ukubwa' | t">
       <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-        Please provide Offisi.
+        {{ 'Please provide Offisi.' | t }}
       </div>
     </div>
 
   </div></div>
-  <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-home g-crimson"><div class="">
 
     <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
 
       <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account No.</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Idadi ya vyumba' | t }}</span>
       </div>
-      <input [(ngModel)]="Create.Account_no" name="Account_no" required #ngAccountForm="ngModel" [class.is-invalid]="ngAccountForm.invalid && ngAccountForm.touched"  [class.is-valid]="ngAccountForm.valid && Create.Account_no" type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-        Please provide Accountno.
-      </div>
-      @if (Create.Account_no) {
-        <div style="font-size:10px; color:red;     width: 100%">Account no exists</div>
-      }
-    </div>
-
-  </div></div>
-
-
-
-</div>
-
-
-
-<div class="row">
-  <div class="col-sm"><div class="">
-
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Idadi ya vyumba</span>
-      </div>
-      <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Idadi ya vyumba' | t">
       <div class="is-invalid && ngIdadiVyumbaForm.touched"  class="invalid-feedback">
-        Please provide Rooms.
+        {{ 'Please provide Rooms.' | t }}
       </div>
     </div>
 
   </div></div>
-  <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-home g-green"><div class="">
 
     <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
 
       <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Aina ya chumba</span>
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Aina ya chumba' | t }}</span>
       </div>
-      <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input [(ngModel)]="Create.IdadiVyumba" name="IdadiVyumba" type="text" class="form-control" style="max-width:300px; margin:center;" required #ngIdadiVyumbaForm="ngModel" [class.is-invalid]="ngIdadiVyumbaForm.invalid && ngIdadiVyumbaForm.touched"  [class.is-valid]="ngIdadiVyumbaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [placeholder]="'Aina ya chumba' | t">
       <div class="is-invalid && ngIdadiVyumbaForm.touched"  class="invalid-feedback">
-        Please provide Rooms.
+        {{ 'Please provide Rooms.' | t }}
       </div>
     </div>
 
   </div></div>
-  <div class="col-sm"><div class="">
-
-    <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-
-      <div class="input-group-prepend" style="width:110px;">
-        <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Huduma</span>
-      </div>
-      <input [(ngModel)]="Create.huduma" name="huduma" type="text" class="form-control" style="max-width:300px; margin:center;" required #nghudumaForm="ngModel" [class.is-invalid]="nghudumaForm.invalid && nghudumaForm.touched"  [class.is-valid]="nghudumaForm.valid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      <div class="is-invalid && nghudumaForm.touched"  class="invalid-feedback">
-        Please provide Huduma.
-      </div>
     </div>
-
-
-  </div>
-
-
-
-</div>
-
-</div>
-
-<div style="padding:10px;"></div>
-<div class="d-flex justify-content-center">
+  </section>
+  <section class="f5-sec">
+    <div class="f7-head"><h3 class="f10-h">{{ 'Picha za chumba' | t }}</h3><span class="f7-badge"><span class="f7-ok">{{ 'Imekamilika' | t }}</span><span class="f7-todo">{{ 'Haijakamilika' | t }}</span><span class="f7-bad">{{ 'Kuna kosa' | t }}</span></span></div>
+    <div class="f5-body f5-uploads">
 
   <!-- <form #imageForm= ngForm (ngSubmit)="onUploadData()"> -->
 
   <input #bankstatement style="font-size:10px; display: none" #fileInput1   (change)="onfileSelected($event.target.files)" type="file"  name="bankstatement">
   @if (!selectedFile) {
-    <a (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">Upload photo no 1</a>
+    <a (click)="fileInput1.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 1' | t }}</a>
   }
 
 
   <input #photo2 style="font-size:10px; display: none" #fileInput2   (change)="onfileSelected2($event.target.files)" type="file"  name="photo2">
   @if (selectedFile && !selectedFile2) {
-    <a (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">Upload photo no 2</a>
+    <a (click)="fileInput2.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 2' | t }}</a>
   }
 
   <input #photo3 style="font-size:10px; display: none" #fileInput3   (change)="onfileSelected3($event.target.files)" type="file"  name="photo3">
   @if (selectedFile && selectedFile2 && !selectedFile3) {
-    <a (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">Upload photo no 3</a>
+    <a (click)="fileInput3.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 3' | t }}</a>
   }
 
   <input #photo4 style="font-size:10px; display: none" #fileInput4   (change)="onfileSelected4($event.target.files)" type="file"  name="photo4">
   @if (selectedFile && selectedFile2 && selectedFile3 && !selectedFile4) {
-    <a (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">Upload photo no 4</a>
+    <a (click)="fileInput4.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 4' | t }}</a>
   }
 
   <input #photo5 style="font-size:10px; display: none" #fileInput5   (change)="onfileSelected5($event.target.files)" type="file"  name="photo5">
   @if (selectedFile && selectedFile2 && selectedFile3 && selectedFile4 && !selectedFile5) {
-    <a (click)="fileInput5.click()" style="cursor: pointer; font-size:10px;">Upload photo no 5</a>
+    <a (click)="fileInput5.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 5' | t }}</a>
   }
 
   <input #photo6 style="font-size:10px; display: none" #fileInput6   (change)="onfileSelected6($event.target.files)" type="file"  name="photo6">
   @if (selectedFile && selectedFile2 && selectedFile3 && selectedFile4 && selectedFile5 && !selectedFile6) {
-    <a (click)="fileInput6.click()" style="cursor: pointer; font-size:10px;">Upload photo no 6</a>
+    <a (click)="fileInput6.click()" style="cursor: pointer; font-size:10px;">{{ 'Upload photo no 6' | t }}</a>
   }
   <!-- <button type="submit" style="font-size:10px;">Upload</button>
 </form> -->
 </div>
+  </section>
+</div>
+
+</div>
+
+<div style="padding:10px;"></div>
+
 <div style="padding:10px;"></div>
 
 <div class="d-flex justify-content-center">
   <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
 
-    <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >Tuma</button>
+    <button type="button" class="f10-cancel" alecoBack>{{ 'Ghairi' | t }}</button>
+
+    <button class="btn btn-success form-control" style="max-width:300px;" type="submit" [disabled]="form.invalid" >{{ 'Tuma' | t }}</button>
 
   </div>
 </div>

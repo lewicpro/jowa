@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 from django.core.validators import RegexValidator
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from decimal import Decimal, InvalidOperation
+import calendar
 import random, string
 
 
@@ -131,6 +135,7 @@ class Register(models.Model):
     company_name = models.CharField(max_length=120, blank=True, null=True)
     company_username = models.CharField(max_length=120, blank=True, null=True)
     file_no = models.CharField(max_length=120, blank=True, null=True)
+    check_no = models.CharField(max_length=120, blank=True, null=True)  # "Check No" on the customer forms
     Madai = models.IntegerField(blank=True, default='0')
     Balance = models.IntegerField(blank=True, default='0')
     Jumla_malipo = models.IntegerField(blank=True, default='0')
@@ -1798,6 +1803,146 @@ class FormMkopo(models.Model):
     day = models.CharField(max_length=120, blank=True, null=True)
 
 
+class LoanInstallment(models.Model):
+    loan = models.ForeignKey(FormMkopo, related_name='installments', on_delete=models.CASCADE)
+    sequence = models.PositiveSmallIntegerField()
+    due_date = models.DateField()
+    scheduled_amount = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    promised_date = models.DateField(blank=True, null=True)
+    promise_note = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['due_date', 'sequence', 'pk']
+        unique_together = [('loan', 'sequence')]
+
+
+class PaymentAllocation(models.Model):
+    payment = models.ForeignKey(Malipo, related_name='installment_allocations', on_delete=models.CASCADE)
+    installment = models.ForeignKey(LoanInstallment, related_name='payment_allocations', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=14, decimal_places=2)
+
+    class Meta:
+        unique_together = [('payment', 'installment')]
+
+
+def set_payment_loan_start_date(instance):
+    """Store the start date of the loan receiving this payment in Malipo.tangu."""
+    allocation = PaymentAllocation.objects.filter(
+        payment=instance,
+    ).exclude(
+        payment__info__in=['delete', 'deleted'],
+    ).select_related(
+        'installment__loan',
+    ).order_by(
+        'installment__due_date', 'installment__loan_id', 'installment__sequence', 'pk',
+    ).first()
+    if allocation is None:
+        return
+
+    loan_start_date = (allocation.installment.loan.tarehe or '').strip()
+    if not loan_start_date or instance.tangu == loan_start_date:
+        return
+
+    Malipo.objects.filter(pk=instance.pk).update(tangu=loan_start_date)
+    instance.tangu = loan_start_date
+
+
+def _installment_amount(value):
+    try:
+        return Decimal(str(value or '0').replace(',', '')).quantize(Decimal('0.01'))
+    except (InvalidOperation, ValueError):
+        return Decimal('0.00')
+
+
+@receiver(post_save, sender=FormMkopo)
+def create_loan_installments(sender, instance, created, **kwargs):
+    if not created:
+        return
+
+    month_names = ['January', 'February', 'March', 'April', 'May', 'June',
+                   'July', 'August', 'September', 'October', 'November', 'December']
+    try:
+        year = int(instance.mwaka)
+    except (TypeError, ValueError):
+        year = 0
+    if year < 1 or year > 9999:
+        try:
+            year = datetime.strptime(str(instance.tarehe)[:10], '%Y-%m-%d').year
+        except (TypeError, ValueError):
+            year = timezone.localdate().year
+    try:
+        day = int(instance.day)
+    except (TypeError, ValueError):
+        try:
+            day = datetime.strptime(str(instance.tarehe)[:10], '%Y-%m-%d').day
+        except (TypeError, ValueError):
+            day = 1
+
+    previous_month = None
+    for sequence in range(1, 13):
+        month_name = str(getattr(instance, 'mwezi%s' % sequence, '') or '').strip()
+        month = next((index for index, name in enumerate(month_names, 1)
+                      if name.lower() == month_name.lower()), None)
+        amount = _installment_amount(getattr(instance, 'mw%s' % sequence, None))
+        if month is None or amount <= 0:
+            continue
+        if previous_month is not None and month < previous_month:
+            year += 1
+        previous_month = month
+        due_day = min(max(day, 1), calendar.monthrange(year, month)[1])
+        LoanInstallment.objects.get_or_create(
+            loan=instance,
+            sequence=sequence,
+            defaults={'due_date': datetime(year, month, due_day).date(), 'scheduled_amount': amount}
+        )
+
+
+def allocate_payment_to_installments(instance):
+    if instance.route != 'weka' or instance.info in ('delete', 'deleted'):
+        return
+    amount = _installment_amount(instance.loan_repay)
+    if amount <= 0:
+        amount = _installment_amount(instance.Total_pay)
+    if amount <= 0:
+        return
+
+    already_allocated = sum(
+        instance.installment_allocations.exclude(payment__info__in=['delete', 'deleted']).values_list('amount', flat=True),
+        Decimal('0.00'),
+    )
+    amount = max(Decimal('0.00'), amount - already_allocated)
+    if amount <= 0:
+        return
+
+    loans = FormMkopo.objects.filter(user=instance.user, Account_no=instance.Account_no)
+    if instance.company:
+        loans = loans.filter(company=instance.company)
+    installments = LoanInstallment.objects.filter(loan__in=loans).select_related('loan').order_by('due_date', 'loan_id', 'sequence')
+    for installment in installments:
+        allocated = sum(installment.payment_allocations.exclude(payment__info__in=['delete', 'deleted']).values_list('amount', flat=True), Decimal('0.00'))
+        outstanding = max(Decimal('0.00'), installment.scheduled_amount - allocated)
+        if outstanding <= 0:
+            continue
+        allocation = min(amount, outstanding)
+        PaymentAllocation.objects.get_or_create(
+            payment=instance,
+            installment=installment,
+            defaults={'amount': allocation}
+        )
+        amount -= allocation
+        if amount <= 0:
+            break
+
+
+@receiver(post_save, sender=Malipo)
+def allocate_loan_payment(sender, instance, created, **kwargs):
+    if not created:
+        return
+    allocate_payment_to_installments(instance)
+    if instance.route == 'weka' and instance.info not in ('delete', 'deleted'):
+        set_payment_loan_start_date(instance)
+
+
 class Siku(models.Model):
     company = models.CharField(max_length=120, blank=True, null=True)
     mwaka = models.CharField(max_length=120, blank=True, null=True)
@@ -2685,6 +2830,19 @@ class Mkataba(models.Model):
     pin = models.CharField(max_length=120, blank=True, null=True)
     phone = models.CharField(max_length=120, blank=True, null=True)
     mkataba = models.FileField()
+
+
+class LoanAgreementTemplate(models.Model):
+    company_username = models.CharField(max_length=120)
+    title = models.CharField(max_length=200)
+    pdf_file = models.FileField(upload_to='loan-agreement-templates/%Y/%m/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['title', '-uploaded_at']
+
+    def __str__(self):
+        return f'{self.title} ({self.company_username})'
 
 
 

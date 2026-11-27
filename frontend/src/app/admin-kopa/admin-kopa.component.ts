@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,10 +8,20 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgProgress } from 'ngx-progressbar';
 import { ReceiptComponent } from '../receipt/receipt.component';
+import { SettingsService } from '../settings/settings.service';
+import { AnimationEvent, animate, state, style, transition, trigger } from '@angular/animations';
 @Component({
     selector: 'app-admin-kopa',
     templateUrl: './admin-kopa.component.html',
     styleUrls: ['./admin-kopa.component.css'],
+    animations: [
+      trigger('installmentSlide', [
+        state('open', style({ height: '*', opacity: 1, overflow: 'hidden' })),
+        state('closed', style({ height: '0px', opacity: 0, overflow: 'hidden', margin: 0 })),
+        transition('closed => open', animate('280ms cubic-bezier(.2,.7,.3,1)')),
+        transition('open => closed', animate('220ms ease-in'))
+      ])
+    ],
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
@@ -27,12 +37,12 @@ export class AdminKopaComponent implements OnInit {
     };
   malipouser;
   tambulisha;
-  filtertext;
   selectedData;
   jum: number;
   modalRef: BsModalRef;
   message: string;
   malipouser2;
+  filtertext = '';
   mkopo;
   day;
   Balancem;
@@ -89,13 +99,25 @@ export class AdminKopaComponent implements OnInit {
   times;
   mwzi;
   moxt
+  scheduleLoan: any = null;
+  isScheduleOpen = false;
+  installmentsByLoan: { [loanId: number]: any[] } = {};
+  installmentsLoading: { [loanId: number]: boolean } = {};
+  promiseEditorId: number | null = null;
+  promiseDateDraft = '';
+  promiseNoteDraft = '';
+  promiseSaving = false;
+  private loans: any[] = [];
 
-  constructor(private modalService: BsModalService, public receiptComponet:ReceiptComponent, public ngProgress: NgProgress, public snackbar: MatSnackBar, public detailsview:DetailsViewComponent, public pubdetailsview:AdminDashboardComponent, public restframework: RestframeworkService, public router: Router) {
+  constructor(private modalService: BsModalService, public receiptComponet:ReceiptComponent, public ngProgress: NgProgress, public snackbar: MatSnackBar, public detailsview:DetailsViewComponent, public pubdetailsview:AdminDashboardComponent, public restframework: RestframeworkService, public router: Router, public settings: SettingsService) {
     this.ngProgress.ref().start()
     this.lservice_officer= localStorage.getItem('lservice_officer')
     // console.log('user: ' + this.lservice_officer)
     this.dataget();
     this.mona();
+    this.restframework.getMkopos().then((loans: any) => {
+      this.loans = Array.isArray(loans) ? loans : [];
+    });
     this.mwzi = this.d.getMonth()
     this.moxt = parseInt(this.mwzi) + 1
     this.min = this.d.getMinutes();
@@ -110,93 +132,67 @@ export class AdminKopaComponent implements OnInit {
    }
 
    dataget(){
-     //  alert('Ready');
-  // console.log(this.array1.reduce(this.reducer));
-  
     this.restframework.getLists().then(data => {
       this.users = data;
-      for ( const n of this.users) {
-        // console.log('nafika');
-        this.datar = localStorage.getItem('id');
-        if (String(n.pk) === String(this.datar)) {
-          if (true) {
-            this.username = n.Username;
-            this.jinalote = n.jina;
-            this.Simu = n.Simu;
-            this.account = n.Account_no;
-            this.wilaya = n.wilaya;
-            this.mkoa = n.mkoa;
-            this.pin = n.pin;
-            // this.userData.user = n.Username;
-            // this.userData.jina = n.jina;
+      this.datar = localStorage.getItem('id');
+      const account = this.users.find(n => String(n.pk) === String(this.datar));
+      if (!account) {
+        return;
+      }
 
-          }
-        }
-
+      this.username = account.Username;
+      this.jinalote = account.jina;
+      this.Simu = account.Simu;
+      this.account = account.Account_no;
+      this.wilaya = account.wilaya;
+      this.mkoa = account.mkoa;
+      this.pin = account.pin;
 
       this.restframework.getPayments().then(datat => {
         this.malipouser = datat;
-        for (const m of this.malipouser) {
-          // console.log(this.malipouser.length - 1);
-          if ( this.username === m.user) {
-            this.tambulisha = m.user;
-            // console.log(m.user);
-            if (true) {
-              
-              this.user = m.user;
-              this.jina = m.jina;
-              this.tarehe = m.tarehe;
-              this.Total_pay = m.Total_pay;
-              this.loan_repay = m.loan_repay;
-              this.Balance = m.Balance;
-              this.kilichokopwa = m.kilichokopwa;
-              this.morem.color = m.rangi;
-              this.awamu = m.awamu;
+        const latestLoanRow = (this.malipouser || [])
+          .filter(m => m.user === this.username &&
+            (m.route === 'toa' || m.route === 'weka') &&
+            m.info !== 'delete' && m.info !== 'deleted' &&
+            m.Balance !== null && m.Balance !== undefined && m.Balance !== '' &&
+            Number.isFinite(Number(m.Balance)))
+          .sort((a, b) => Number(b.pk) - Number(a.pk))[0];
 
-              // this.restframework.UserInfo().then(dats =>{
-              //   this.infosw = dats;
-              //   for(const n of this.infosw){
-              //     this.datar = localStorage.getItem('id');
-              //     if(n.user === this.user){
-              //       // console.log(n.user);
-              //       // this.riba = n.Riba;
-              //       this.Balancem = n.Balance;
-              //       // this.mwezi = n.mwezi;
-              //       // this.mkopo = n.mkopo;
-              //       // this.Faida = n.Faida;
-              //       // this.Rejesho_mwezi = n.Rejesho_mwezi;
-              //       // this.date = this.d.getMonth() + 1;
-            
-              //     }
-            
-              //   }
-              // });
-              
-              
-        
-
-          }
-        }}
-
-   });
-
-
+        if (latestLoanRow) {
+          this.tambulisha = latestLoanRow.user;
+          this.user = latestLoanRow.user;
+          this.jina = latestLoanRow.jina;
+          this.tarehe = latestLoanRow.tangu || latestLoanRow.tarehe;
+          this.Total_pay = latestLoanRow.Total_pay;
+          this.loan_repay = latestLoanRow.loan_repay;
+          this.Balance = Number(latestLoanRow.Balance);
+          this.kilichokopwa = latestLoanRow.kilichokopwa;
+          this.morem.color = latestLoanRow.rangi;
+          this.awamu = latestLoanRow.awamu;
+        }
+      });
 
       this.restframework.getPayments2().then(datat2 => {
         this.malipouser2 = datat2;
-
-   });
-
-
-
-  }
-
+      });
     });
-   }
+  }
 
   ngOnInit() {
 
   }
+
+  get filteredPayments(): any[] {
+    const rows = (this.malipouser2 || []).filter(row => row.user === this.username);
+    const query = String(this.filtertext || '').trim().toLocaleLowerCase();
+    if (!query) {
+      return rows;
+    }
+
+    return rows.filter(row => [row.tarehe, row.jina, row.loan_repay, row.awamu, row.Interest, row.Balance, row.info]
+      .some(value => String(value ?? '').toLocaleLowerCase().includes(query)));
+  }
+
   refresh(): void {
 }
 
@@ -253,6 +249,11 @@ time(){
 
 
   tuma() {
+    this.calculate();
+    if (!this.userData) {
+      this.snackbar.open('Enter a payment amount no greater than the remaining balance.');
+      return;
+    }
     this.ngProgress.ref().start()
     
     // console.log('passed');
@@ -321,35 +322,32 @@ time(){
       this.Interest = null;
       this.userData = null;
 
-      this.loan1 = this.v1;
-      this.Interest = this.v2;
-      // console.log(this.awamu);
-      if (this.men) {
-        this.bwoy = this.men
-        // this.v3 = null;
+      const paymentAmount = Number(this.v1);
+      const currentBalance = Number(this.Balance);
+      const scheduledInstallments = Number(this.awamu);
+      this.loan1 = paymentAmount;
+      this.Interest = Number(this.v2) || 0;
+
+      if (this.men !== null && this.men !== undefined && String(this.men).trim() !== '') {
+        this.bwoy = Number(this.men);
       } else {
-        if (this.momba !== 0) {
-          this.bwoy = this.awamu * 1 - 1
- 
-
-        } else {
-          this.bwoy = 0;
-
-        }
+        this.bwoy = Number.isFinite(scheduledInstallments)
+          ? Math.max(0, scheduledInstallments - 1)
+          : 0;
       }
-      if (this.v3) {
-        this.momba = this.v3;
-        this.jum = 0;
-        this.loan1 =0;
-        // this.v3 = null;
-      } else {
-        this.momba = this.Balance - this.loan1;
-        
-        if (this.momba === 0) {
-          this.bwoy = 0;
 
-        }
-        this.dataget()
+      if (!Number.isFinite(currentBalance) || currentBalance < 0 ||
+          !Number.isFinite(paymentAmount) || paymentAmount <= 0 || paymentAmount > currentBalance) {
+        this.userData = null;
+        this.momba = null;
+        this.v3 = null;
+        return;
+      }
+
+      this.momba = Math.max(0, currentBalance - paymentAmount);
+      this.v3 = this.momba;
+      if (this.momba === 0) {
+        this.bwoy = 0;
       }
 
 
@@ -423,6 +421,11 @@ time(){
 
 
   openModal(template: TemplateRef<any>) {
+    this.calculate();
+    if (!this.userData) {
+      this.snackbar.open('Enter a payment amount no greater than the remaining balance.');
+      return;
+    }
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
  
@@ -435,6 +438,147 @@ time(){
   decline(): void {
     // this.message = 'Declined!';
     this.modalRef.hide();
+  }
+
+  getLoanForPayment(payment: any): any {
+    if (!payment) {
+      return null;
+    }
+
+    // Receipt rows carry the original loan timestamp in `tangu`; the original
+    // disbursement row instead carries it in `tarehe`.
+    const loanStart = String(payment.tangu || (payment.route === 'toa' ? payment.tarehe : '') || '').trim();
+    if (!loanStart) {
+      return null;
+    }
+
+    const matchingLoans = this.loans.filter(loan =>
+      String(loan.user || '') === String(payment.user || '') &&
+      String(loan.tarehe || '').trim() === loanStart
+    );
+    return matchingLoans.length === 1 ? matchingLoans[0] : null;
+  }
+
+  openInstallments(payment: any): void {
+    const loan = this.getLoanForPayment(payment);
+    const loanId = Number(loan && (loan.id || loan.pk)) || 0;
+    if (!loanId) {
+      this.snackbar.open(this.settings.t('Malipo haya hayajaunganishwa na ratiba moja ya mkopo.'));
+      return;
+    }
+
+    if (this.scheduleLoan && String(this.scheduleLoan.pk) === String(payment.pk)) {
+      this.isScheduleOpen = !this.isScheduleOpen;
+      if (this.isScheduleOpen) {
+        this.scrollScheduleIntoView();
+      }
+      return;
+    }
+
+    this.scheduleLoan = { ...payment, loan, loanId };
+    this.isScheduleOpen = true;
+    if (this.installmentsByLoan[loanId] || this.installmentsLoading[loanId]) {
+      this.scrollScheduleIntoView();
+      return;
+    }
+
+    this.installmentsLoading[loanId] = true;
+    this.restframework.getInstallmentsForLoan(loanId).then((data: any) => {
+      this.installmentsByLoan[loanId] = Array.isArray(data) ? data.map(installment => ({
+        ...installment,
+        status: this.getInstallmentStatus(installment)
+      })) : [];
+      this.installmentsLoading[loanId] = false;
+      this.scrollScheduleIntoView();
+    }).catch(() => {
+      this.installmentsByLoan[loanId] = [];
+      this.installmentsLoading[loanId] = false;
+      this.scrollScheduleIntoView();
+    });
+  }
+
+  private scrollScheduleIntoView(delayMs = 80): void {
+    setTimeout(() => {
+      document.getElementById('installment-expanded-row')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }, delayMs);
+  }
+
+  closeInstallments(): void {
+    this.isScheduleOpen = false;
+  }
+
+  isScheduleRow(payment: any): boolean {
+    return !!this.scheduleLoan && String(this.scheduleLoan.pk) === String(payment && payment.pk);
+  }
+
+  onScheduleAnimationDone(event: AnimationEvent): void {
+    if (event.toState === 'closed') {
+      this.scheduleLoan = null;
+    }
+  }
+
+  editPromise(installment: any): void {
+    this.promiseEditorId = Number(installment.id);
+    this.promiseDateDraft = installment.promised_date || '';
+    this.promiseNoteDraft = installment.promise_note || '';
+    setTimeout(() => {
+      document.getElementById(`promise-editor-${installment.id}`)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }, 80);
+  }
+
+  cancelPromiseEdit(): void {
+    this.promiseEditorId = null;
+    this.promiseDateDraft = '';
+    this.promiseNoteDraft = '';
+    this.scrollScheduleIntoView(260);
+  }
+
+  savePromise(installment: any): void {
+    if (!this.promiseDateDraft || this.promiseSaving) {
+      return;
+    }
+
+    this.promiseSaving = true;
+    this.restframework.saveInstallmentPromise(installment.id, {
+      promised_date: this.promiseDateDraft,
+      promise_note: this.promiseNoteDraft.trim()
+    }).then((saved: any) => {
+      const installments = this.installmentsByLoan[this.scheduleLoan.loanId] || [];
+      this.installmentsByLoan[this.scheduleLoan.loanId] = installments.map(item =>
+        Number(item.id) === Number(saved.id) ? { ...item, ...saved } : item
+      );
+      this.cancelPromiseEdit();
+      this.snackbar.open(this.settings.t('Ahadi ya malipo imehifadhiwa. Awamu hii itaendelea kuwa haijalipwa hadi malipo yatakaporekodiwa.'));
+    }).catch(() => {
+      this.snackbar.open(this.settings.t('Haikuwezekana kuhifadhi tarehe ya ahadi. Tafadhali jaribu tena.'));
+    }).finally(() => {
+      this.promiseSaving = false;
+    });
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeInstallments();
+  }
+
+  getInstallmentStatus(installment: any): string {
+    const balance = Number(installment && installment.balance);
+    if (Number.isFinite(balance) && balance <= 0) {
+      return 'Paid';
+    }
+    if (!installment || !installment.due_date) {
+      return 'Not provided';
+    }
+    const due = new Date(`${installment.due_date}T00:00:00`);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return due < today ? 'Overdue' : 'Upcoming';
   }
 
   takepdf(k){

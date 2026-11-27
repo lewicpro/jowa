@@ -53,14 +53,14 @@
         <td > {{i*1 + 1*1}}</td>
         <td style="background:#e0dfe098"> {{k.tarehe}}</td>
         <td  style="white-space: nowrap">{{k.jina}}</td>
-        <td  style="white-space: nowrap">{{k.loan_repay | currency: 'tsh '}}</td>
+        <td  style="white-space: nowrap">{{k.loan_repay | money}}</td>
         <td  style="white-space: nowrap">{{k.awamu}}</td>
         <td  style="white-space: nowrap; ">-||-</td>
         @if (k.rangi ==='blue' ) {
-          <td   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td>
+          <td   style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | money}}</a></td>
         }
         @if (k.rangi ==='red' ) {
-          <td  style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+          <td  style="color:red">{{k.Balance | money}}</td>
         }
         <!-- <td *ngIf="k.user === username "  style="color:red"></td> -->
         @if (k.info === 'delete';) {

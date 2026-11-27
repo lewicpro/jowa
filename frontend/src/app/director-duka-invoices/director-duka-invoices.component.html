@@ -1,9 +1,13 @@
 
 <div class="row">
-  <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="profoma()" ><a (click)="profoma()" >proforma invoice</a>   </div>
-  <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="tax()"> <a (click)="tax()">Tax invoice</a>  </div>
+  <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="profoma()" ><a (click)="profoma()" >{{ 'proforma invoice' | t }}</a>   </div>
+  <div class="col bopa" style="text-align: center; border: 1px solid transparent; cursor:pointer" (click)="tax()"> <a (click)="tax()">{{ 'Tax invoice' | t }}</a>  </div>
 </div>
 <hr style="border-bottom: 1px solid rgba(154, 154, 154, 0.664);">
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Invoices' | t }}</h3>
+<div class="f5-body">
 <div id="myprint">
 
 
@@ -18,7 +22,7 @@
     <div  align="left">Tin: {{Tin}}</div>
     <div  align="center">{{mode}} INVOICE</div>
     <div >M/S__________________________________________________________________</div>
-    <div class="row"><div class="col">VAT __________________________________________________________________</div><div class="col" style="text-align: end;">Date:{{times|date}}</div></div>
+    <div class="row"><div class="col">{{ 'VAT __________________________________________________________________' | t }}</div><div class="col" style="text-align: end;">Date:{{times|date}}</div></div>
 
     <div style="padding:10px"></div>
     <div style="min-height: 600px;">
@@ -29,11 +33,11 @@
             <th style="padding-left:10px;">#</th>
             <!-- <th style="padding-left:10px;">Date & Time</th> -->
             <!-- <th style="padding-left:10px;">pk</th> -->
-            <th>Quntity</th>
-            <th>Particulas</th>
+            <th>{{ 'Quntity' | t }}</th>
+            <th>{{ 'Particulas' | t }}</th>
             <!-- <th nowrapp> Part no</th> -->
-            <th>UnitPrice</th>
-            <th style="padding-left:10px;">Amount</th>
+            <th>{{ 'UnitPrice' | t }}</th>
+            <th style="padding-left:10px;">{{ 'Amount' | t }}</th>
 
 
           </tr>
@@ -46,8 +50,8 @@
               <td class="youo"  nowrap (click)="menufunct(n)">{{m.Number_of_products}}</td>
               <td class="youo"  nowrap >{{m.Name_of_the_product}}</td>
               <!-- <td class="youo"  nowrap>{{m.Number_of_products}}</td> -->
-              <td class="youo"  nowrap>&#64;{{m.Selling_price |currency: 'tsh'}}</td>
-              <td class="youo"  nowrap>{{m.Total | currency: 'tsh'}}</td>
+              <td class="youo"  nowrap>&#64;{{m.Selling_price | money: 'tsh'}}</td>
+              <td class="youo"  nowrap>{{m.Total | money: 'tsh'}}</td>
             </tr>
           }
 
@@ -73,9 +77,9 @@
 
 
 <div>
-  <div class="row"><div class="col">Tin: ______________________</div><div class="col" style="text-align: end;"> SUB TOTAL: 0.00</div></div><div></div>
-  <div class="row"><div class="col">VRN: ______________________</div><div class="col" style="text-align: end;">VAT 18%: {{vat}}</div></div><div></div>
-  <div class="row" style="position: relative; bottom:0px"><div class="col">TERMS: Cash/Credit Sales</div><div class="col" style="text-align: end;">GRAND TOTAL: {{sum |  currency: 'tsh '}}</div></div><div></div>
+  <div class="row"><div class="col">{{ 'Tin: ______________________' | t }}</div><div class="col" style="text-align: end;"> {{ 'SUB TOTAL: 0.00' | t }}</div></div><div></div>
+  <div class="row"><div class="col">{{ 'VRN: ______________________' | t }}</div><div class="col" style="text-align: end;">VAT 18%: {{vat}}</div></div><div></div>
+  <div class="row" style="position: relative; bottom:0px"><div class="col">{{ 'TERMS: Cash/Credit Sales' | t }}</div><div class="col" style="text-align: end;">GRAND TOTAL: {{sum | money}}</div></div><div></div>
 
 
 
@@ -85,58 +89,58 @@
 </div>
 
 </div>
-<button (click)="add()">  + Add products</button>
+<button (click)="add()">  {{ '+ Add products' | t }}</button>
 
-<button onclick="printDiv()">  Print invoice</button>
+<button onclick="printDiv()">  {{ 'Print invoice' | t }}</button>
 @if (Credit=='True') {
   <div class="yope d-flex justify-content-center animated fadeIn"  style="width:100%;">
     @if (Credit=='True') {
       <div style="margin-top: 100px; height:40%" class="momo1 animation-target ">
-        <div align="center" style="font-weight: bolder; padding:5px; color:#666">Enter details</div>
+        <div align="center" style="font-weight: bolder; padding:5px; color:#666">{{ 'Enter details' | t }}</div>
         <div style="padding:10px"></div>
         <div class="row">
           <div class="col"><div align="center">
-            <input #box224 (blur)="NameofBorrower(box224.value)" placeholder="Name of the borrower" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+            <input #box224 (blur)="NameofBorrower(box224.value)" [placeholder]="'Name of the borrower' | t" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
           </div>
         </div>
         <div class="col">
           <div align="center">
-            <input #box233 (blur)="DescriptionData(box233.value)" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+            <input #box233 (blur)="DescriptionData(box233.value)" [placeholder]="'Description ' | t" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
           </div>
         </div><div class="col">
         <div align="center">
-          <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+          <input #box232 (blur)="phoneNumber(box232.value)"  [placeholder]="'Phone number ' | t" [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
         </div>
       </div><div class="col">
       <div align="center">
-        <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+        <input #box232 (blur)="phoneNumber(box232.value)"  [placeholder]="'Phone number ' | t" [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
       </div>
     </div>
   </div>
   <div style="padding:10px"></div>
   <div class="row">
     <div class="col"><div align="center">
-      <input #box224 (blur)="NameofBorrower(box224.value)" placeholder="Name of the borrower" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+      <input #box224 (blur)="NameofBorrower(box224.value)" [placeholder]="'Name of the borrower' | t" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px">
     </div>
   </div>
   <div class="col">
     <div align="center">
-      <input #box233 (blur)="DescriptionData(box233.value)" placeholder="Description " [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+      <input #box233 (blur)="DescriptionData(box233.value)" [placeholder]="'Description ' | t" [value]="" type="text"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
     </div>
   </div><div class="col">
   <div align="center">
-    <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+    <input #box232 (blur)="phoneNumber(box232.value)"  [placeholder]="'Phone number ' | t" [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
   </div>
 </div><div class="col">
 <div align="center">
-  <input #box232 (blur)="phoneNumber(box232.value)"  placeholder="Phone number " [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
+  <input #box232 (blur)="phoneNumber(box232.value)"  [placeholder]="'Phone number ' | t" [value]="purchasing" type="number"  style="width:95%; padding-left:10px; height:40px; font-family: Arial, Helvetica, sans-serif; font-size: 16px" >
 </div>
 </div>
 </div>
 <div style="text-align: center;">
   <div style="padding:20px"></div>
-  <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">Cancel</button>
-  <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">Submit</button>
+  <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="cancel()">{{ 'Cancel' | t }}</button>
+  <button class="mogolia btn-secondary" style="width:15%; height:50px; font-family: Arial, Helvetica, sans-serif; font-size: medium;" (click)="submitCredit(pk)">{{ 'Submit' | t }}</button>
 </div>
 <!-- <div align="center">
 <button type="button"  style="width:40%" class="btn btn-primary btn-sm " (click)="canceled()">Cancel</button>
@@ -148,7 +152,7 @@
 }
 @if (receipt=='on') {
   <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-    <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+    <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
     <div align="center">
       <label class="switch">
         @if (route=='active') {
@@ -164,26 +168,26 @@
       <div style="overflow: scroll;">
         @if (typ=='BORROWERS') {
           <table class="table table-sm table-bordered table-striped table-light">
-            <div style="text-align: center; padding-left:30px"><input #boya (keyup)="searche(boya.value)"  class="wako" type="text" placeholder="Search for a product" style="width: 200px;"></div>
-            <div class="ccenter" align="center" style="font-size:15px;">PRODUCTS</div>
+            <div style="text-align: center; padding-left:30px"><input #boya (keyup)="searche(boya.value)"  class="wako" type="text" [placeholder]="'Search for a product' | t" style="width: 200px;"></div>
+            <div class="ccenter" align="center" style="font-size:15px;">{{ 'PRODUCTS' | t }}</div>
             <tbody style="overflow-x: scroll;">
               <tr>
                 <th style="padding-left:10px;">#</th>
                 <th style="padding-left:10px;">Date & Time</th>
                 <!-- <th style="padding-left:10px;">pk</th> -->
-                <th>Name</th>
-                <th nowrapp> Product number</th>
-                <th>Purchasing price</th>
-                <th>Price</th>
-                <th style="padding-left:10px;">Image</th>
-                <th>Type</th>
-                <th>Officer</th>
-                <th nowrap>Shelf No</th>
-                <th>Remained</th>
-                <th>Total product</th>
-                <th>Total bought</th>
-                <th>Sold</th>
-                <th>Description</th>
+                <th>{{ 'Name' | t }}</th>
+                <th nowrapp> {{ 'Product number' | t }}</th>
+                <th>{{ 'Purchasing price' | t }}</th>
+                <th>{{ 'Price' | t }}</th>
+                <th style="padding-left:10px;">{{ 'Image' | t }}</th>
+                <th>{{ 'Type' | t }}</th>
+                <th>{{ 'Officer' | t }}</th>
+                <th nowrap>{{ 'Shelf No' | t }}</th>
+                <th>{{ 'Remained' | t }}</th>
+                <th>{{ 'Total product' | t }}</th>
+                <th>{{ 'Total bought' | t }}</th>
+                <th>{{ 'Sold' | t }}</th>
+                <th>{{ 'Description' | t }}</th>
               </tr>
               @for (n of alls; track n; let i = $index) {
                 <tr class="youo" style="  cursor: pointer;" scrollX="true" (click)="getdatafom(n.Number_of_products, n.Name_of_the_product, n.Selling_price, n.Product_serial)">
@@ -192,16 +196,16 @@
                   <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
                   <td class="youo"  nowrap >{{n.Name_of_the_product | titlecase}}</td>
                   <td class="youo"  nowrap >{{n.Product_serial}}</td>
-                  <td class="youo"  nowrap>{{n.Price_bought| currency: 'tsh '}}</td>
-                  <td class="youo"  nowrap>{{n.Selling_price| currency: 'tsh '}}</td>
+                  <td class="youo"  nowrap>{{n.Price_bought| money}}</td>
+                  <td class="youo"  nowrap>{{n.Selling_price| money}}</td>
                   <td style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" src="assets/images/danube.jpg" alt=""></td>
                   <td class="youo"  nowrap>{{n.Type_of_product}}</td>
                   <td class="youo"  nowrap>{{n.user}}</td>
                   <td class="youo"  nowrap>{{n.Shelf_No}}</td>
                   <td class="youo" nowrap>{{n.Number_of_products}}</td>
-                  <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'tsh '}}</td>
-                  <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'tsh '}}</td>
-                  <td class="youo" nowrap>{{n.Number_of_products_sold| currency: 'tsh '}}</td>
+                  <td class="youo" nowrap>{{n.Total_Available_product_wise | money}}</td>
+                  <td class="youo" nowrap>{{n.Total_brought_product_wise | money}}</td>
+                  <td class="youo" nowrap>{{n.Number_of_products_sold| money}}</td>
                   <td class="youo" nowrap>{{n.Description}}</td>
                 </tr>
               }
@@ -225,16 +229,16 @@
   <div style="overflow: scroll;">
     @if (typ=='SALES') {
       <table class="table table-sm table-bordered table-striped table-light">
-        <div class="ccenter" align="center" style="font-size:15px;">SALES</div>
+        <div class="ccenter" align="center" style="font-size:15px;">{{ 'SALES' | t }}</div>
         <tbody style="overflow-x: scroll;">
           <tr>
             <th style="padding-left:10px;">#</th>
-            <th>Product</th>
-            <th style="padding-left:10px;" nowrap>Product No</th>
-            <th style="padding-left:10px;" nowrap>No of products</th>
-            <th style="padding-left:10px;" nowrap>Customer name</th>
-            <th style="padding-left:10px;" nowrap>Price</th>
-            <th style="padding-left:10px;" nowrap>Status</th>
+            <th>{{ 'Product' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Product No' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'No of products' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Customer name' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Price' | t }}</th>
+            <th style="padding-left:10px;" nowrap>{{ 'Status' | t }}</th>
           </tr>
           @for (b of alldata; track b; let i = $index) {
             <tr class="youo" style="  cursor: pointer;" scrollX="true" (click)="addpurchases(b.quantity, b.Name_of_the_product, b.Selling_price, b.Product_serial)">
@@ -243,7 +247,7 @@
               <td class="youo"  nowrap >{{b.Product_serial}}</td>
               <td class="youo"  nowrap >{{b.quantity}}</td>
               <td class="youo"  nowrap >{{b.Customer_name}}</td>
-              <td class="youo"  nowrap >{{b.Selling_price}}</td>
+              <td class="youo"  nowrap >{{ b.Selling_price | money: 'raw' }}</td>
               <td class="youo"  nowrap >{{b.info}}</td>
             </tr>
           }
@@ -275,33 +279,37 @@
 
 @if (diag=='on') {
   <div class="animated slideInUp" style="position: fixed; top:10%; right:40%; box-shadow: 1px -2px 20px #00000042; background:#eae9e9;; width:400px; backdrop-filter: blur('10px');">
-    <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> Confirm Purchase</div>
+    <div style="padding:10px; background-color: #a5a5a5; font-weight: bolder; font-size: large;" align="center"> {{ 'Confirm Purchase' | t }}</div>
     <div style="padding:2px"></div>
     <div style="padding:10px; background-color: #eae9e9;;">
-      <div style="color: rgb(72, 72, 74); font-size:16px;">Name of the product <span style="float: right;">{{name}}</span></div>
+      <div style="color: rgb(72, 72, 74); font-size:16px;">{{ 'Name of the product' | t }} <span style="float: right;">{{name}}</span></div>
       <div style="padding:20px"></div>
       <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
         <div class="input-group-prepend ">
-          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Price</span>
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">{{ 'Price' | t }}</span>
         </div>
         <input type="text" #box9 (blur)="pricey(box9.value)" name="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="border:1px solid transparent; margin:center;">
       </div>
       <!-- <div style="padding:20px"></div> -->
       <div class="input-group input-group-sm mb-3 d-flex fade-in4" style="width:100%; margin:center;">
         <div class="input-group-prepend ">
-          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">Quantity</span>
+          <span class="input-group-text" style="width:80px; border:1px solid transparent;" id="inputGroup-sizing-sm">{{ 'Quantity' | t }}</span>
         </div>
         <input type="text" #box10 (keyup)="quantitey(box10.value)" name="phone" class="form-control" style=" margin:center; border:1px solid transparent;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
     </div>
     @if (waka) {
-      <div style="padding:10px; font-weight: bolder;">Total Amount: <span style="float:right">{{waka}}</span></div>
+      <div style="padding:10px; font-weight: bolder;">{{ 'Total Amount:' | t }} <span style="float:right">{{waka}}</span></div>
     }
     <div align="center">
-      <div class="row"> <div class="col">  <button type="button"  style="width:100%" class="btn btn-primary btn-sm " (click)="cancela()">Cancel</button>
-      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="sumet(template)">Submit</button>
-      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="selectCredit(template)">Borrow</button>
+      <div class="row"> <div class="col">  <button type="button"  style="width:100%" class="btn btn-primary btn-sm " (click)="cancela()">{{ 'Cancel' | t }}</button>
+      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="sumet(template)">{{ 'Submit' | t }}</button>
+      </div><div class="col">  <button type="button" style="width:100%" class="btn btn-secondary btn-sm " (click)="selectCredit(template)">{{ 'Borrow' | t }}</button>
     </div></div>
   </div>
 </div>
 }
+</div>
+</section>
+</div>
+

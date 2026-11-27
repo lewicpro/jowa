@@ -1,7 +1,7 @@
 
 <ng-progress></ng-progress>
 <div class="d-flex justify-content-center">
-    <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><a [routerLink]="['Customers']" style="text-decoration: none;">All Customers</a></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['Register']" >Register Customer</a> </span></li> <span style="font-size: 20px; font-weight: 100;"> | </span> <li style="display:inline-block"> <span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['OrderList']" >Report</a> </span></li> </div>
+    <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><a [routerLink]="['Customers']" style="text-decoration: none;">{{ 'All Customers' | t }}</a></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['Register']" >{{ 'Register Customer' | t }}</a> </span></li> <span style="font-size: 20px; font-weight: 100;"> | </span> <li style="display:inline-block"> <span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['OrderList']" >{{ 'Report' | t }}</a> </span></li> </div>
 
   <!-- <button (click)="time()">click</button> -->
 </div>

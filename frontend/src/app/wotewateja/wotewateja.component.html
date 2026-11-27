@@ -1,91 +1,85 @@
+<section class="panel">
+  <div class="panel-head">
+    <h2 class="panel-title">{{ 'Wateja wote na kumbukumbu' | t }}</h2>
+    <div class="panel-tools">
+      <label class="search">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <input type="search" [(ngModel)]="filtertext" [placeholder]="'Tafuta jina, simu, account…' | t" aria-label="Filter">
+      </label>
+      <button type="button" class="print-btn" (click)="printe()">{{ 'Print all clients' | t }}</button>
+    </div>
+  </div>
 
-
-<div class="d-flex justify-content-center">
-  <mat-form-field style="width:40%">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-  </mat-form-field>
-
-</div>
-
-<!-- <button (click)="wow()">ddd</button> -->
-<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)" id="componentID">
-
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> WATEJA WOTE NA KUMBUKUMBU </h4>
-  <div style="max-height:400px; overflow:auto" >
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Jina</th>
-          <th scope="col">Simu</th>
-          <th scope="col">Account no</th>
-          <th scope="col">pin</th>
-          <th scope="col">expire</th>
-          <th scope="col">ofisi</th>
-          <th scope="col">kata</th>
-          <th scope="col">wilaya</th>
-          <th scope="col">mkoa</th>
-          <th scope="col">TSD</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (form of users | myfilter : filtertext; track form; let i = $index) {
-          <tr style="cursor:pointer" id="customers" style="overflow-x:scroll;" scrollX="true" (click)="onselected(form)">
-            @if (form.privs === 'Client') {
-              <td nowrap scope="row">{{i*1 - 1*1}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.jina | titlecase}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.Simu}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap> {{form.Account_no}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.pin}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.expire}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.ofisi}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.kata}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.wilaya}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.mkoa}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td nowrap>{{form.TSD}}</td>
-            }
-            @if (form.privs === 'Client') {
-              <td> <i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
-            }
+  <!-- Keep the title and full client table together as the print-only content. -->
+  <div id="componentID">
+    <div class="print-brand" aria-label="Aleco Group">
+      <img src="/assets/images/aleco-logo.png" alt="Aleco Group logo">
+      <span>Aleco Group</span>
+    </div>
+    <h4 class="print-title">{{ 'WATEJA WOTE NA KUMBUKUMBU' | t }}</h4>
+    <div class="table-wrap">
+      <table class="table table-sm wateja">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{ 'Jina' | t }}</th>
+            <th scope="col">{{ 'Simu' | t }}</th>
+            <th scope="col">{{ 'Account no' | t }}</th>
+            <th scope="col">{{ 'pin' | t }}</th>
+            <th scope="col">{{ 'expire' | t }}</th>
+            <th scope="col">{{ 'ofisi' | t }}</th>
+            <th scope="col">{{ 'kata' | t }}</th>
+            <th scope="col">{{ 'wilaya' | t }}</th>
+            <th scope="col">{{ 'mkoa' | t }}</th>
+            <th scope="col">{{ 'TSD' | t }}</th>
+            <th scope="col"><span class="sr-only">{{ 'Fungua' | t }}</span></th>
           </tr>
-        }
-        <!--<tr id="customers">-->
-        <!--<td scope="row">2</td>-->
-        <!--<td>BA</td>-->
-        <!--<td>3</td>-->
-        <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-      <!--</tr>-->
-      <!--<tr id="customers">-->
-      <!--<td scope="row">3</td>-->
-      <!--<td>Accountancy</td>-->
-      <!--<td>3</td>-->
-      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-    <!--</tr>-->
-  </tbody>
-</table>
-
-</div>
-</div>
-<div style="text-align: center; padding-top:10px"><button (click)="printe()">print all clients</button></div>
+        </thead>
+        <tbody>
+          @for (form of users | myfilter : filtertext; track form; let i = $index) {
+            <tr id="customers" (click)="onselected(form)">
+              @if (form.privs === 'Client') {
+                <td nowrap scope="row" class="num">{{i*1 - 1*1}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="name">{{form.jina | titlecase}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap>{{form.Simu}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap> {{form.Account_no}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="muted">{{form.pin}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap><span class="chip">{{form.expire}}</span></td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap>{{form.ofisi}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="muted">{{form.kata}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="muted">{{form.wilaya}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="muted">{{form.mkoa}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td nowrap class="muted">{{form.TSD}}</td>
+              }
+              @if (form.privs === 'Client') {
+                <td class="go"> <i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

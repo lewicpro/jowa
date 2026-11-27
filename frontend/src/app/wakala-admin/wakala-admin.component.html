@@ -1,21 +1,72 @@
+<div class="dash aleco-dash">
+  <!-- Header: logo, modules (same click handlers / links as before), logout -->
+  <header class="dash-header">
+    <div class="dash-inner">
+      <div class="row-1">
+        <div class="brand-and-modules">
+          <img class="brand" src="assets/images/aleco-logo.png" alt="Aleco">
+          <nav class="modules" aria-label="Moduli">
+            <button type="button" class="pill" (click)="mikopo()">{{ 'Mikopo' | t }}</button>
+            <a class="pill" [routerLink]="['Ongeza-Account']" (click)="changerouter()">{{ 'Nyumba' | t }}</a>
+            <button type="button" class="pill" (click)="changeclik()">{{ 'Duka' | t }}</button>
+            <!-- Unchanged from before: this Distribution link calls changeclik() (opens Duka) -->
+            <button type="button" class="pill" (click)="changeclik()">{{ 'Distribution' | t }}</button>
+            <button type="button" class="pill pill-current" aria-current="page" (click)="changeclikWakala()">{{ 'Wakala' | t }}</button>
+          </nav>
+        </div>
+        <div class="hdr-actions">
+          <app-settings-menu></app-settings-menu>
+          <button type="button" class="logout" (click)="execute()">{{ 'Logout' | t }}</button>
+        </div>
+      </div>
 
-<div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
-<div class="container" style="padding-top:10px;">
-  <div style="float:right"> <a (click)="execute()" style="text-decoration:none;  padding:20px; font-size: 15px; background:rgba(248, 248, 255, 0); width:50px; color:red; cursor: pointer;" >Logout</a> </div>
-  <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:#007bff; cursor: pointer;"><a (click)="mikopo()" style="text-decoration: none">Mikopo</a></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['Ongeza-Account']"   (click)="changerouter()">Nyumba</a> </span></li>  <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; color:#007bff; cursor: pointer;;"  (click)="changeclik()">Duka</a> </span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; color:#007bff; cursor: pointer;;"  (click)="changeclik()">Distribution</a> </span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; color:silver; cursor:not-allowed;"  (click)="changeclikWakala()">Wakala</a> </span></li></div>
-  
-  <div style="padding:10px;"></div>
-  <div style="background:rgba(255, 255, 255, 0)">
-    <div  class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);" > <li style="display:inline-block"><span style="font-weight:500">Rejesho mwezi wa {{mwezi}}:</span> {{mez | currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['General-Information']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">Jumla ya Mikopo:</span>  {{mkopo | currency: 'tsh '}} </li> <div style="display:inline-block; text-align:center" > ||  <span style="font-weight:600">Balance: </span>{{balance | currency: 'tsh '}}</div></div>
-    <div style="padding:5px; background:rgba(248, 248, 255, 0)"></div>
-    <div class="float-center " styl e=" font-weight:200; background:ghostwhite">
-
-      <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['ongeza-mmiliki-wakala']" style="text-decoration: none; color:#666666; font-weight: lighter;">Ongeza mmiliki</a></li> <li class="more" style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Wamiliki']" style="text-decoration: none; color:#666666; font-weight: lighter;">Wamiliki Wakala</a></li> <li class="more" style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['ongeza-wakala']" style="text-decoration: none; color:#666666; font-weight: lighter;">Ongeza wakala</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wakala-wote']" style="text-decoration: none; color:#666666; font-weight: lighter;">Wakala wote</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Ongeza-workers']" style="text-decoration: none; color:#666666; font-weight: lighter;">Ongeza workers</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['list-of-workers']" style="text-decoration: none; color:#666666; font-weight: lighter;">List of Workers </a> </li>   <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['waliokopa-wakala']" style="text-decoration: none; color:#666666; font-weight: lighter;">waliokopa</a> </li> <li style="display:inline-block">| <a class="monno" style="text-decoration: none; color:#666666; font-weight: lighter;" [routerLinkActive]="['active']"  [routerLink]="['Waliojulishwa/Mwezihuu']">Huduma ya meseji</a> </li></div>
-      
+      <div class="row-2">
+        <nav class="tabs" aria-label="Sehemu za Wakala">
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Wamiliki']">{{ 'Wamiliki Wakala' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['wakala-wote']">{{ 'Wakala wote' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['list-of-workers']">{{ 'List of Workers' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['waliokopa-wakala']">{{ 'Waliokopa' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Waliojulishwa/Mwezihuu']">{{ 'Huduma ya meseji' | t }}</a>
+        </nav>
+        <div class="actions">
+          <a class="btn-outline more monno" [routerLinkActive]="['active']" [routerLink]="['ongeza-mmiliki-wakala']">{{ 'Ongeza mmiliki' | t }}</a>
+          <a class="btn-outline more monno" [routerLinkActive]="['active']" [routerLink]="['Ongeza-workers']">{{ 'Ongeza workers' | t }}</a>
+          <a class="btn-primary more monno" [routerLinkActive]="['active']" [routerLink]="['ongeza-wakala']">{{ '+ Ongeza wakala' | t }}</a>
+        </div>
+      </div>
     </div>
-    <div style=" font-size:12px; padding:10px; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+  </header>
+  <div class="stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 
-  
-  </div>
-  
+  <main class="dash-inner dash-main">
+    <!-- Summary: same values as the old one-line summary -->
+    <section class="kpis" aria-label="Muhtasari">
+      <div class="kpi">
+        <span class="kpi-label">{{ 'Jumla ya Mikopo' | t }}</span>
+        <span class="kpi-value">{{mkopo | money}}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{{ 'Balance' | t }}</span>
+        <span class="kpi-value" [class.negative]="balance < 0">{{balance | money}}</span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-head">
+          <span class="kpi-label">{{ 'Rejesho mwezi wa' | t }} {{mwezi}}</span>
+          <a class="info-btn monno" [routerLinkActive]="['active']" [routerLink]="['General-Information']">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+            {{ 'Info' | t }}
+          </a>
+        </div>
+        @if (mez != null) {
+          <span class="kpi-value positive">{{mez | money}}</span>
+        } @else {
+          <span class="kpi-value muted">—</span>
+        }
+      </div>
+    </section>
+
+    <div class="outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>

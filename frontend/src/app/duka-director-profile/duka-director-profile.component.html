@@ -1,9 +1,9 @@
 
 @if (status=='done') {
-  <div style="padding:10px;" align="right"><a style="padding:10px; cursor: pointer;"  (click)="Edit()">  Edit My Account</a></div>
+  <div style="padding:10px;" align="right"><a style="padding:10px; cursor: pointer;"  (click)="Edit()">  {{ 'Edit My Account' | t }}</a></div>
 }
 @if (status=='Edit') {
-  <div  style="padding:10px; cursor: pointer;" align="right"> <a (click)="Done()">Done</a>  </div>
+  <div  style="padding:10px; cursor: pointer;" align="right"> <a (click)="Done()">{{ 'Done' | t }}</a>  </div>
 }
 @if (status=='done') {
   <div  style="background: rgba(2, 2, 2, 0.082); border-radius: 5px">
@@ -12,28 +12,28 @@
         <div class="col-sm">
           <ul class="list-group">
             <li class="list-group-item">Jina: {{Director}}</li>
-            <li class="list-group-item">Status: <i>Online</i></li>
-            <li class="list-group-item">Branch Position: 2/10</li>
-            <li class="list-group-item">Customers Served:--</li>
-            <li class="list-group-item">Email:none</li>
+            <li class="list-group-item">{{ 'Status:' | t }} <i>Online</i></li>
+            <li class="list-group-item">{{ 'Branch Position: 2/10' | t }}</li>
+            <li class="list-group-item">{{ 'Customers Served:--' | t }}</li>
+            <li class="list-group-item">{{ 'Email:none' | t }}</li>
           </ul>
         </div>
         <div class="col-sm">
           <ul class="list-group">
-            <li class="list-group-item">Growth rate: none</li>
-            <li class="list-group-item">Workers:3</li>
-            <li class="list-group-item">Monthly rev: --none</li>
-            <li class="list-group-item">Yearly rev: --none</li>
-            <li class="list-group-item">Daily rev: --none</li>
+            <li class="list-group-item">{{ 'Growth rate: none' | t }}</li>
+            <li class="list-group-item">{{ 'Workers:3' | t }}</li>
+            <li class="list-group-item">{{ 'Monthly rev: --none' | t }}</li>
+            <li class="list-group-item">{{ 'Yearly rev: --none' | t }}</li>
+            <li class="list-group-item">{{ 'Daily rev: --none' | t }}</li>
           </ul>
         </div>
         <div class="col-sm">
           <ul class="list-group">
-            <li class="list-group-item">Capital roundly: -- none</li>
-            <li class="list-group-item">Static capital:--none</li>
-            <li class="list-group-item">Location:none</li>
-            <li class="list-group-item">Profit:none</li>
-            <li class="list-group-item">Registered on: none</li>
+            <li class="list-group-item">{{ 'Capital roundly: -- none' | t }}</li>
+            <li class="list-group-item">{{ 'Static capital:--none' | t }}</li>
+            <li class="list-group-item">{{ 'Location:none' | t }}</li>
+            <li class="list-group-item">{{ 'Profit:none' | t }}</li>
+            <li class="list-group-item">{{ 'Registered on: none' | t }}</li>
           </ul>
         </div>
       </div>
@@ -47,143 +47,179 @@
     <div align="center">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a  class="nav-link active" (click)="changepassword()" style="cursor: pointer;">Change password</a>
+          <a  class="nav-link active" (click)="changepassword()" style="cursor: pointer;">{{ 'Change password' | t }}</a>
         </li>
         <li class="nav-item">
-          <a   class="nav-link active" (click)="changecompanydetails()" style="cursor: pointer;">Change Company details </a>
+          <a   class="nav-link active" (click)="changecompanydetails()" style="cursor: pointer;">{{ 'Change Company details' | t }} </a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link active" (click)="addshop()" style="cursor: pointer;">Shops</a>
+          <a  class="nav-link active" (click)="addshop()" style="cursor: pointer;">{{ 'Shops' | t }}</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link active" (click)="paymentsdetails()" style="cursor: pointer;">Payments</a>
+          <a  class="nav-link active" (click)="paymentsdetails()" style="cursor: pointer;">{{ 'Payments' | t }}</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link active" (click)="wokerslist()" style="cursor: pointer;">Workers</a>
+          <a  class="nav-link active" (click)="wokerslist()" style="cursor: pointer;">{{ 'Workers' | t }}</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">Settings</a>
+          <a  class="nav-link active" (click)="Settings()" style="cursor: pointer;">{{ 'Settings' | t }}</a>
         </li>
       </ul>
     </div>
     <div class="">
       @if (companydetailval=='True') {
         <div>
-          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> EDIT COMPANY DETAILS</h4>
+          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'EDIT COMPANY DETAILS' | t }}</h4>
           <div style="padding:20px"></div>
           <div class="row">
-            <div class="col-sm"><div class="">
+            <div class="f5">
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Utambulisho' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-phone g-orange"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">C phone.</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'C phone.' | t }}</span>
                 </div>
-                <!-- <input #Phonevalue name="Simu" [placeholder]="usernameval" type="text" required [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [value]="usernameval"> -->
+                <!-- <input #Phonevalue name="Simu" [placeholder]="usernameval" type="text" required [class.is-invalid]="ngTSDForm.invalid && ngTSDForm.touched"  [class.is-valid]="ngTSDForm.valid"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [value]="usernameval" placeholder="C phone."> -->
                 <!-- <input #Phonevalue [value]="usernameval" style="border-radius:3px; width:100%"   type="text" placeholder="*Important"> -->
-                <input #Phonevalue1 [value]="Phonevalue"  name="Phone" required   placeholder="Phone number"   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #Phonevalue1 [value]="Phonevalue"  name="Phone" required   [placeholder]="'Phone number' | t"   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                  Please provide Phone number.
+                  {{ 'Please provide Phone number.' | t }}
                 </div>
               </div>
             </div></div>
-            <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-user g-blue"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">C names</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'C names' | t }}</span>
                 </div>
-                <input #Companynamesval1 [value]="Companynamesval" name="Tin_no" placeholder="Company names" required   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #Companynamesval1 [value]="Companynamesval" name="Tin_no" [placeholder]="'Company names' | t" required   type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                  Please provide Names.
+                  {{ 'Please provide Names.' | t }}
                 </div>
               </div>
             </div></div>
-            <div class="col-sm"><div class="">
+    </div>
+  </section>
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Fedha na Benki' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-card g-crimson"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Account</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Account' | t }}</span>
                 </div>
-                <input #Accounteval1  [value]="Accounteval" placeholder="Account No/Bank" name="Account_no" required     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #Accounteval1  [value]="Accounteval" [placeholder]="'Account No/Bank' | t" name="Account_no" required     type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-                  Please provide Account.
+                  {{ 'Please provide Account.' | t }}
                 </div>
               </div>
             </div></div>
+    </div>
+  </section>
+</div>
           </div>
           <div style="padding: 10px;"></div>
           <div class="row">
-            <div class="col-sm"><div class="">
+            <div class="f5">
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Kazi na Biashara' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-hash g-green"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Tin number.</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Tin number.' | t }}</span>
                 </div>
-                <input #tinval1 [value]="tinval" name="Tin" placeholder="Tin number(Registration number)" type="text" required  class="form-control"  style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #tinval1 [value]="tinval" name="Tin" [placeholder]="'Tin number(Registration number)' | t" type="text" required  class="form-control"  style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                  Please provide Tin number.
+                  {{ 'Please provide Tin number.' | t }}
                 </div>
               </div>
             </div></div>
-            <div class="col-sm"><div class="">
+    </div>
+  </section>
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Makazi na Mali' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-pin g-ink"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Street</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Street' | t }}</span>
                 </div>
-                <input #Streetval1  [value]="Streetval" type="text" name="Tin_no" placeholder="Street name" required  class="form-control"   style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #Streetval1  [value]="Streetval" type="text" name="Tin_no" [placeholder]="'Street name' | t" required  class="form-control"   style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                  Please provide Street.
+                  {{ 'Please provide Street.' | t }}
                 </div>
               </div>
             </div></div>
-            <div class="col-sm"><div class="">
+      <div class="f5-field f5-i-globe g-orange"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Mkoa.</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Mkoa.' | t }}</span>
                 </div>
-                <input #mkoaval1 [value]="mkoaval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #mkoaval1 [value]="mkoaval" [placeholder]="'District name' | t" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-                  Please provide Account.
+                  {{ 'Please provide Account.' | t }}
                 </div>
               </div>
             </div></div>
+    </div>
+  </section>
+</div>
           </div>
           <div style="padding:10px"></div>
           <div class="row">
-            <div class="col-sm"><div class="">
+            <div class="f5">
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Utambulisho' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-mail g-blue"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> Physical Adress.</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">{{ 'Email' | t }}</span>
                 </div>
-                <input #physicaladdressval1 [value]="physicaladdressval" name="Simu" placeholder="Physical address, eg box" type="text" required  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
-                  Please provide Physical address.
-                </div>
-              </div>
-            </div></div>
-            <div class="col-sm"><div class="">
-              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
-                <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:75px;">Email</span>
-                </div>
-                <input #Emailval1 [value]="Emailval" name="email" placeholder="Email" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #Emailval1 [value]="Emailval" name="email" [placeholder]="'Email' | t" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngoffisiForm.touched"  class="invalid-feedback">
-                  Please provide Email.
+                  {{ 'Please provide Email.' | t }}
                 </div>
               </div>
             </div></div>
-            <div class="col-sm"><div class="">
+    </div>
+  </section>
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Makazi na Mali' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-pin g-crimson"><div class="">
               <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
                 <div class="input-group-prepend" style="width:110px;">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">District.</span>
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;"> {{ 'Physical Adress.' | t }}</span>
                 </div>
-                <input #districtnameval1 [value]="districtnameval" placeholder="District name" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <input #physicaladdressval1 [value]="physicaladdressval" name="Simu" [placeholder]="'Physical address, eg box' | t" type="text" required  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                <div class="is-invalid && ngTSDForm.touched"  class="invalid-feedback">
+                  {{ 'Please provide Physical address.' | t }}
+                </div>
+              </div>
+            </div></div>
+      <div class="f5-field f5-i-map g-green"><div class="">
+              <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
+                <div class="input-group-prepend" style="width:110px;">
+                  <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'District.' | t }}</span>
+                </div>
+                <input #districtnameval1 [value]="districtnameval" [placeholder]="'District name' | t" name="Account_no" required type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 <div class="is-invalid && ngAccountForm.touched"  class="invalid-feedback">
-                  Please provide Account.
+                  {{ 'Please provide Account.' | t }}
                 </div>
               </div>
             </div>
           </div>
+    </div>
+  </section>
+</div>
         </div>
         <div style="padding: 20px;"></div>
         <div class="d-flex justify-content-center">
-          <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, districtnameval1.value, mkoaval1.value, Emailval1.value)">SUBMIT</button>
+          <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, districtnameval1.value, mkoaval1.value, Emailval1.value)">{{ 'SUBMIT' | t }}</button>
           <!-- <button class="btn btn-primary" (click)="submitedit(Phonevalue1.value, Accounteval1.value, tinval1.value, Streetval1.value, streetnameval1.value, districtnameval1.value, Emailval1.value, mkoaz1.value)">SUBMIT</button> -->
         </div>
       </div>
@@ -191,45 +227,52 @@
     <div style="padding: 10px;"></div>
     @if (passwordval=='True') {
       <div>
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CHANGE PASSWORD</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'CHANGE PASSWORD' | t }}</h4>
         <div style="padding: 10px;"></div>
         <div class="row">
           <div class="col-sm">
           </div>
-          <div class="col-sm">
+          <div class="f5">
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Utambulisho' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-at g-ink">
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">username</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'username' | t }}</span>
               </div>
-              <input #box200 (blur)="username(box200.value)"  name="usename" required   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <input #box200 (blur)="username(box200.value)"  name="usename" required   [placeholder]="'username' | t" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
               <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide username.
+                {{ 'Please provide username.' | t }}
               </div>
             </div>
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Password</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Password' | t }}</span>
               </div>
-              <input #box202 (blur)="password(box202.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
+              <input #box202 (blur)="password(box202.value)" name="password" required  [placeholder]="'Password' | t"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
               <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide Password.
+                {{ 'Please provide Password.' | t }}
               </div>
             </div>
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Confirm</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Confirm' | t }}</span>
               </div>
-              <input #box203 (blur)="password_confirm(box203.value)" name="password" required  placeholder="Confirm password"     [type]="show" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <input #box203 (blur)="password_confirm(box203.value)" name="password" required  [placeholder]="'Confirm password' | t"     [type]="show" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
               <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide Paaword confirm.
+                {{ 'Please provide Paaword confirm.' | t }}
               </div>
             </div>
             <div class="d-flex d-flex justify-content-center" style="padding-right:65px;">
-              <button class="mog btn btn-primary" (click)="submit_password()">Submit</button>
+              <button class="mog btn btn-primary" (click)="submit_password()">{{ 'Submit' | t }}</button>
               <div style="padding: 10px;"></div>
               <button class="mog btn btn-secondary" (click)="showpassword()">{{show}}</button>
             </div>
           </div>
+    </div>
+  </section>
+</div>
           <div class="col-sm">
           </div>
         </div>
@@ -237,38 +280,45 @@
     }
     @if (confirm=='True') {
       <div>
-        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> CONFIRM IT IS REAL YOU</h4>
+        <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'CONFIRM IT IS REAL YOU' | t }}</h4>
         <div style="padding: 10px;"></div>
         <div class="row">
           <div class="col-sm">
           </div>
-          <div class="col-sm">
+          <div class="f5">
+  <section class="f5-sec">
+    <h3 class="f10-h">{{ 'Utambulisho' | t }}</h3>
+    <div class="f5-grid">
+      <div class="f5-field f5-i-at g-orange">
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">username</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'username' | t }}</span>
               </div>
-              <input #box209 (blur)="usernamegivenfunct(box209.value)"  name="usename" disabled   placeholder="username" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              <input #box209 (blur)="usernamegivenfunct(box209.value)"  name="usename" disabled   [placeholder]="'username' | t" [value]="usernameval"    type="text" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
               <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide username.
+                {{ 'Please provide username.' | t }}
               </div>
             </div>
             <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:100%; margin:center;">
               <div class="input-group-prepend" style="width:110px;">
-                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">Old Password</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:55px;">{{ 'Old Password' | t }}</span>
               </div>
-              <input #box233 (blur)="passwordgivenfunct(box233.value)" name="password" required  placeholder="Password"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
+              <input #box233 (blur)="passwordgivenfunct(box233.value)" name="password" required  [placeholder]="'Password' | t"  class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [type]="show">
               <div class="is-invalid && ngFileForm.touched"  class="invalid-feedback">
-                Please provide Password.
+                {{ 'Please provide Password.' | t }}
               </div>
             </div>
             <div class="d-flex d-flex justify-content-center" style="padding-right:65px;">
-              <button class="mog btn btn-primary" (click)="submit_confirm()">Submit</button>
+              <button class="mog btn btn-primary" (click)="submit_confirm()">{{ 'Submit' | t }}</button>
               <div style="padding: 10px;"></div>
               <button class="mog btn btn-secondary" (click)="showpassword()">{{show}}</button>
               <div style="padding: 10px;"></div>
-              <button class="mog btn btn-secondary" (click)="cancelsubmitting()">Cancel</button>
+              <button class="mog btn btn-secondary" (click)="cancelsubmitting()">{{ 'Cancel' | t }}</button>
             </div>
           </div>
+    </div>
+  </section>
+</div>
           <div class="col-sm">
           </div>
         </div>
@@ -277,7 +327,7 @@
     @if (addshopval=='True') {
       <div>
         <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF SHOPS</h4>
+          <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'LIST OF SHOPS' | t }}</h4>
           <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
           <!-- <br><br> -->
           <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -285,36 +335,36 @@
             <table class="table table-sm table-light">
               <thead>
                 <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Phone number</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Account</th>
-                  <th scope="col">company</th>
-                  <th scope="col">Tin</th>
-                  <th scope="col">Street</th>
-                  <th scope="col">District</th>
-                  <th scope="col">Region</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">{{ 'id' | t }}</th>
+                  <th scope="col">{{ 'Name' | t }}</th>
+                  <th scope="col">{{ 'Phone number' | t }}</th>
+                  <th scope="col">{{ 'Email' | t }}</th>
+                  <th scope="col">{{ 'Account' | t }}</th>
+                  <th scope="col">{{ 'company' | t }}</th>
+                  <th scope="col">{{ 'Tin' | t }}</th>
+                  <th scope="col">{{ 'Street' | t }}</th>
+                  <th scope="col">{{ 'District' | t }}</th>
+                  <th scope="col">{{ 'Region' | t }}</th>
+                  <th scope="col">{{ 'Action' | t }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style="cursor:pointer" id="customers">
                   <td class="text-center" ></td>
-                  <td class="text-center" ><input #name [value]="Nameval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
-                  <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" placeholder="Simuval"> </td>
-                  <td  style="white-space: nowrap"><input #email [value]="Emailval" style="border-radius:3px; width:100%" placeholder="Email"  type="text" placeholder="*Important"></td>
-                  <td><input #box1 [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
-                  <td><input #box2 [value]="CompanyVal" style="border-radius:3px; width:100%" type="text" placeholder="Company"></td>
-                  <td><input #box3 [value]="Tin_Noval" style="border-radius:3px; width:100%" type="text" placeholder="Tin No"></td>
-                  <td><input #box32 [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
-                  <td><input #box4 [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
-                  <td><input #box43 [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
+                  <td class="text-center" ><input #name [value]="Nameval"  style="border-radius:3px; width:100%" type="text" [placeholder]="'Simuval' | t"> </td>
+                  <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" [placeholder]="'Simuval' | t"> </td>
+                  <td  style="white-space: nowrap"><input #email [value]="Emailval" style="border-radius:3px; width:100%" [placeholder]="'Email' | t"  type="text" [placeholder]="'*Important' | t"></td>
+                  <td><input #box1 [value]="Accountval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Account' | t"></td>
+                  <td><input #box2 [value]="CompanyVal" style="border-radius:3px; width:100%" type="text" [placeholder]="'Company' | t"></td>
+                  <td><input #box3 [value]="Tin_Noval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Tin No' | t"></td>
+                  <td><input #box32 [value]="Kataval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Kata' | t"></td>
+                  <td><input #box4 [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Wilaya' | t"></td>
+                  <td><input #box43 [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Mkoa' | t"></td>
                   <!-- <td></td> -->
                   <td>@if (edit=='False') {
-                    <a (click)="add(simu.value, email.value, box1.value, box2.value, box3.value, box32.value, box4.value, box43.value)"  >+Add</a>
+                    <a (click)="add(simu.value, email.value, box1.value, box2.value, box3.value, box32.value, box4.value, box43.value)"  >{{ '+Add' | t }}</a>
                     }@if (edit=='onedit') {
-                    <a (click)="Editdata()"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditshop()">x</span></a>
+                    <a (click)="Editdata()"  >{{ 'Edit' | t }}<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditshop()">x</span></a>
                   }</td>
                 </tr>
                 @for (form of dukazote | myfilter; track form; let i = $index) {
@@ -330,7 +380,7 @@
                     <td nowrap>{{form.kata | titlecase}}</td>
                     <td nowrap>{{form.wilaya | titlecase}}</td>
                     <td nowrap>{{form.mkoa | titlecase}}</td>
-                    <td nowrap > <a (click)="editshop( form.Simu, form.Email, form.Account_no, form.company, form.Tin_no, form.kata, form.wilaya, form.mkoa, form.pk)" style="color: blue;">Edit</a> </td>
+                    <td nowrap > <a (click)="editshop( form.Simu, form.Email, form.Account_no, form.company, form.Tin_no, form.kata, form.wilaya, form.mkoa, form.pk)" style="color: blue;">{{ 'Edit' | t }}</a> </td>
                   </tr>
                 }
                 <div style="padding: 30px;"></div>
@@ -350,7 +400,7 @@
         </table>
         @if (receipt=='on'                                                        ) {
           <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-            <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+            <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
             <div align="center">
               <label class="switch">
                 @if (route=='active') {
@@ -363,36 +413,36 @@
               </label>
             </div>
             <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-              <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+              <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
               <div style="padding:10px"></div>
               <div align="center" style="font-size:13px;">{{username}}</div>
               <div align="center" style="font-size:13px;">{{Email}}</div>
               <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
               <div align="center" style="font-size:13px;">{{wilaya}}</div>
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
               <div align="center" style="font-size:13px;">-----------------------------------</div>
               @for (m of allgiv; track m) {
                 <div>
-                  <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+                  <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
                 </div>
               }
               <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
               <div align="center" style="font-size:13px;">---------------------</div>
-              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+              <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
               <div align="center" style="font-size:13px;">---------------------</div>
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
               <div align="center" style="font-size:13px;">---------------------</div>
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+              <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
               <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
               <div style="padding:10px"></div>
-              <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+              <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
             </div>
             <div style="padding:10px"></div>
-            <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+            <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
           </div>
         }
       </div>
@@ -402,7 +452,7 @@
 @if (paymentval=='True') {
   <div>
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF PAYMENTS</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'LIST OF PAYMENTS' | t }}</h4>
       <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
       <!-- <br><br> -->
       <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -413,27 +463,27 @@
               <th style="padding-left:10px;">#</th>
               <th style="padding-left:10px;">Date & Time</th>
               <!-- <th style="padding-left:10px;">pk</th> -->
-              <th>Payee Name</th>
-              <th nowrap> Transaction Id</th>
-              <th nowrap>Payment processor</th>
-              <th>Amount paid</th>
-              <th>Time approved</th>
-              <th>Officer</th>
-              <th nowrap>Description</th>
-              <th>Remained</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>{{ 'Payee Name' | t }}</th>
+              <th nowrap> {{ 'Transaction Id' | t }}</th>
+              <th nowrap>{{ 'Payment processor' | t }}</th>
+              <th>{{ 'Amount paid' | t }}</th>
+              <th>{{ 'Time approved' | t }}</th>
+              <th>{{ 'Officer' | t }}</th>
+              <th nowrap>{{ 'Description' | t }}</th>
+              <th>{{ 'Remained' | t }}</th>
+              <th>{{ 'Status' | t }}</th>
+              <th>{{ 'Action' | t }}</th>
             </tr>
             <tr style="background-color: rgb(203, 228, 183);">
               <td style="padding-left:10px;" class="youo" nowrap></td>
               <td style="padding-left:10px;" class="youo" nowrap></td>
               <td style="padding-left:10px;" class="youo" nowrap></td>
-              <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
-              <td class="youo" nowrap>stock</td>
+              <td class="youo" colspan="6" style="background-color: rgb(181, 224, 145);"  nowrap>{{ 'Other Single' | t }}</td>
+              <td class="youo" nowrap>{{ 'stock' | t }}</td>
               <td class="youo" nowrap></td>
               <td class="youo" nowrap></td>
               @if (receipt =='on') {
-                <td class="youo" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">Hide Invoice</td>
+                <td class="youo" nowrap style=" background-color: silver; color:white; cursor: pointer;" (click)="add()">{{ 'Hide Invoice' | t }}</td>
               }
             </tr>
             @for (n of payments; track n; let i = $index) {
@@ -444,13 +494,13 @@
                 <td class="youo"  nowrap (click)="menufunct(n)">{{n.PayeeName | titlecase}}</td>
                 <td class="youo"  nowrap >{{n.TransactionId}}</td>
                 <td class="youo"  nowrap>{{n.PymentProcessor}}</td>
-                <td class="youo"  nowrap>{{n.AmountPaid| currency: 'Tsh '}}</td>
+                <td class="youo"  nowrap>{{n.AmountPaid| money: 'Tsh '}}</td>
                 <td class="youo"  nowrap>{{n.TimeApproved}}</td>
                 <td class="youo"  nowrap>{{n.Officer}}</td>
                 <td class="youo"  nowrap>{{n.Description}}</td>
                 <td class="youo"  nowrap>{{n.Remained}}</td>
                 <td class="youo" nowrap>{{n.status}}</td>
-                <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
+                <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">{{ 'Sell' | t }}</td>
               </tr>
             }
             <div style="padding: 30px;"></div>
@@ -470,7 +520,7 @@
     </table>
     @if (receipt=='on'                                                        ) {
       <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
         <div align="center">
           <label class="switch">
             @if (route=='active') {
@@ -483,36 +533,36 @@
           </label>
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:13px;">{{username}}</div>
           <div align="center" style="font-size:13px;">{{Email}}</div>
           <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
           <div align="center" style="font-size:13px;">{{wilaya}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
           <div align="center" style="font-size:13px;">-----------------------------------</div>
           @for (m of allgiv; track m) {
             <div>
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
             </div>
           }
           <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
           <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
         </div>
         <div style="padding:10px"></div>
-        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
       </div>
     }
   </div>
@@ -522,7 +572,7 @@
 @if (workersval=='True') {
   <div>
     <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF WORKERS</h4>
+      <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'LIST OF WORKERS' | t }}</h4>
       <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
       <!-- <br><br> -->
       <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -531,15 +581,15 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone number</th>
-              <th scope="col">Account no</th>
+              <th scope="col">{{ 'Name' | t }}</th>
+              <th scope="col">{{ 'Phone number' | t }}</th>
+              <th scope="col">{{ 'Account no' | t }}</th>
               <!-- <th scope="col">pin</th> -->
-              <th scope="col">Registered on</th>
-              <th scope="col">Office</th>
-              <th scope="col">Street</th>
-              <th scope="col">District</th>
-              <th scope="col">Region</th>
+              <th scope="col">{{ 'Registered on' | t }}</th>
+              <th scope="col">{{ 'Office' | t }}</th>
+              <th scope="col">{{ 'Street' | t }}</th>
+              <th scope="col">{{ 'District' | t }}</th>
+              <th scope="col">{{ 'Region' | t }}</th>
               <!-- <th scope="col">Tin No</th> -->
             </tr>
           </thead>
@@ -547,17 +597,17 @@
             @if (EditOffcer=='True') {
               <tr style="cursor:pointer" id="customers">
                 <td class="text-center" ></td>
-                <td  style="white-space: nowrap"><input #name [value]="Nameval" style="border-radius:3px; width:100%" placeholder="Phone"  type="text" placeholder="Phone"></td>
-                <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" placeholder="Name"> </td>
-                <td><input #account [value]="Accountval" style="border-radius:3px; width:100%" type="text" placeholder="Account"></td>
-                <td><input #regva [value]="RegVal" style="border-radius:3px; width:100%" type="text" placeholder="Registeration number"></td>
-                <td><input #office [value]="Officeval" style="border-radius:3px; width:100%" type="text" placeholder="Office"></td>
-                <td><input #kata [value]="Kataval" style="border-radius:3px; width:100%" type="text" placeholder="Kata"></td>
-                <td><input #wilaya [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" placeholder="Wilaya"></td>
-                <td><input #mkoa [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" placeholder="Mkoa"></td>
+                <td  style="white-space: nowrap"><input #name [value]="Nameval" style="border-radius:3px; width:100%" [placeholder]="'Phone' | t"  type="text" [placeholder]="'Phone' | t"></td>
+                <td class="text-center" ><input #simu [value]="Simuval"  style="border-radius:3px; width:100%" type="text" [placeholder]="'Name' | t"> </td>
+                <td><input #account [value]="Accountval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Account' | t"></td>
+                <td><input #regva [value]="RegVal" style="border-radius:3px; width:100%" type="text" [placeholder]="'Registeration number' | t"></td>
+                <td><input #office [value]="Officeval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Office' | t"></td>
+                <td><input #kata [value]="Kataval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Kata' | t"></td>
+                <td><input #wilaya [value]="Wilayaval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Wilaya' | t"></td>
+                <td><input #mkoa [value]="Mkoaval" style="border-radius:3px; width:100%" type="text" [placeholder]="'Mkoa' | t"></td>
                 <!-- <td></td> -->
                 <td>@if (EditOffcer=='True') {
-                  <a (click)="Editworkerdata(name.value, simu.value, account.value, regva.value, office.value, kata.value, wilaya.value, mkoa.value)"  >Edit<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditworker()">x</span></a>
+                  <a (click)="Editworkerdata(name.value, simu.value, account.value, regva.value, office.value, kata.value, wilaya.value, mkoa.value)"  >{{ 'Edit' | t }}<span class="badge badge-light" style="position: relative; top:0px; left:10px; border-radius: 15px; cursor: pointer; background-color: white; font-size: small;" (click)="closeeditworker()">x</span></a>
                 }</td>
               </tr>
             }
@@ -574,7 +624,7 @@
                 <td  nowrap>{{form.wilaya}}</td>
                 <td  nowrap>{{form.mkoa}}</td>
                 <td  nowrap>{{form.TSD}}</td>
-                <td > <a (click)="deleteworker(form.pk)" style="color:red" >Delete</a> <i class="fas fa-arrow-down" style="cursor: pointer;"> <a (click)="EditWorkere(form)">Edit</a> </i></td>
+                <td > <a (click)="deleteworker(form.pk)" style="color:red" >{{ 'Delete' | t }}</a> <i class="fas fa-arrow-down" style="cursor: pointer;"> <a (click)="EditWorkere(form)">Edit</a> </i></td>
               </tr>
             }
             <div style="padding: 30px;"></div>
@@ -594,7 +644,7 @@
     </table>
     @if (receipt=='on'                                                        ) {
       <div style="position: fixed; top:10%; right:0%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; background:rgba(2, 2, 2, 0.222); width:400px; min-height:750px;  padding:20px;">
-        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">close</a> </div>
+        <div align="right" style="font-size:15px;"> <a (click)="add()" style="cursor: pointer;">{{ 'close' | t }}</a> </div>
         <div align="center">
           <label class="switch">
             @if (route=='active') {
@@ -607,36 +657,36 @@
           </label>
         </div>
         <div id="prints" style="background-color: white; box-shadow: 0px -1px 20px #868686; width:100%; padding:20px; min-height:600px;  font-family: 'ReceiptDemo';">
-          <div class="ccenter" align="center" style="font-size:15px;">INVOICE</div>
+          <div class="ccenter" align="center" style="font-size:15px;">{{ 'INVOICE' | t }}</div>
           <div style="padding:10px"></div>
           <div align="center" style="font-size:13px;">{{username}}</div>
           <div align="center" style="font-size:13px;">{{Email}}</div>
           <div align="center" style="font-size:13px;">STREET: {{kata}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TIN <span style="float:right">{{Tin}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TIN' | t }} <span style="float:right">{{Tin}}</span></div>
           <div align="center" style="font-size:13px;">{{wilaya}}</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">INVOICE NUMBER <span style="float:right">{{new_receipt}}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'INVOICE NUMBER' | t }} <span style="float:right">{{new_receipt}}</span></div>
           <div align="center" style="font-size:13px;">-----------------------------------</div>
           @for (m of allgiv; track m) {
             <div>
-              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{m.Selling_price* m.quantity}} TSH</span></div>
+              <div style="font-size:13px; padding-left:10px; padding-right:10px;">{{m.Name_of_the_product}} <span style="float:right">{{ (m.Selling_price* m.quantity) | money: 'raw' : '' : ' TSH' }}</span></div>
             </div>
           }
           <!-- <div style="font-size:13px;">MOTOR <span style="float:right">200000TSH</span></div> -->
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">SUB TOTAL <span style="float:right">{{given}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'SUB TOTAL' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAXABLE A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder;  padding-left:10px; padding-right:10px;">TAX A-{{tax}}% <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">TOTAL VAT <span style="float:right">{{sumtax}}TSH</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'TOTAL VAT' | t }} <span style="float:right">{{ sumtax | money: 'raw' : '' : 'TSH' }}</span></div>
           <div align="center" style="font-size:13px;">---------------------</div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">CASH <span style="float:right">{{given}}TSH</span></div>
-          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">ITEMS NUMBER <span style="float:right">--</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'CASH' | t }} <span style="float:right">{{ given | money: 'raw' : '' : 'TSH' }}</span></div>
+          <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">{{ 'ITEMS NUMBER' | t }} <span style="float:right">--</span></div>
           <div style="font-size:13px; font-weight: bolder; padding-left:10px; padding-right:10px;">DATE {{times}}</div>
           <div style="padding:10px"></div>
-          <div align="center" style="font-size:15px;">---END OF INVOICE----</div>
+          <div align="center" style="font-size:15px;">{{ '---END OF INVOICE----' | t }}</div>
         </div>
         <div style="padding:10px"></div>
-        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >New Invoice</a><span style="float:right"><a (click)="print('prints')">Print</a></span></div>
+        <div style="font-size:13px; font-weight: bolder;"><a (click)="newreceipt()" style="color:blue; cursor:pointer" >{{ 'New Invoice' | t }}</a><span style="float:right"><a (click)="print('prints')">{{ 'Print' | t }}</a></span></div>
       </div>
     }
   </div>
@@ -649,7 +699,7 @@
 @if (settings=='True') {
   <div>
     <!-- <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(2, 2, 2, 0.082); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;"> -->
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> LIST OF SETTINGS</h4>
+    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'LIST OF SETTINGS' | t }}</h4>
     <!-- <button type="button" <formclass="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
     <!-- <br><br> -->
     <!-- <pre class="card card-block card-header">{{message}}</pre> -->
@@ -661,7 +711,7 @@
         <input (change)="expiredate()" [checked]="expiredateval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
-    <label style="padding:10px; font-size:medium" for="wawawaw">Add expire date in product list</label>
+    <label style="padding:10px; font-size:medium" for="wawawaw">{{ 'Add expire date in product list' | t }}</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
   <div class="input-group mb-3">
@@ -670,7 +720,7 @@
         <input (change)="bucket()" [checked]="bucketval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
-    <label style="padding:10px; font-size:medium" for="wawawaw">Add bucket list</label>
+    <label style="padding:10px; font-size:medium" for="wawawaw">{{ 'Add bucket list' | t }}</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
   <div class="input-group mb-3">
@@ -679,7 +729,7 @@
         <input (change)="industry()" [checked]="Industryval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
-    <label style="padding:10px; font-size:medium" for="wawawaw">Add Industry</label>
+    <label style="padding:10px; font-size:medium" for="wawawaw">{{ 'Add Industry' | t }}</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
   <hr style="border-bottom: 1px solid rgb(187, 187, 187);">
@@ -689,7 +739,7 @@
         <input (change)="othersource()" [checked]="othersourceval == 'true'" type="checkbox" aria-label="Checkbox for following text input">
       </div>
     </div>
-    <label style="padding:10px; font-size:medium" for="wawawaw">Add Other income sources</label>
+    <label style="padding:10px; font-size:medium" for="wawawaw">{{ 'Add Other income sources' | t }}</label>
     <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
   </div>
 </div>

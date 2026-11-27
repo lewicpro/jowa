@@ -38,8 +38,8 @@
             <td nowrap >{{form.eneo | titlecase}}</td>
             <td nowrap >{{form.aina_ya_chumba | titlecase}}</td>
             <!-- <td nowrap ><span *ngIf="form.mwezi1; else second">{{form.mwezi1}}</span ><ng-template #second><span *ngIf="form.miezi2; else third">{{form.miezi2}}</span ></ng-template><ng-template #third><span *ngIf="form.miezi3; else fourth">{{form.miezi3}}</span ></ng-template><ng-template #fourth><span *ngIf="form.year; else fifth">{{form.year}}</span ></ng-template></td> -->
-            <td nowrap >{{form.kiasi | currency: 'tsh '}}</td>
-            <td nowrap >{{form.baki | currency: 'tsh '}}</td>
+            <td nowrap >{{form.kiasi | money}}</td>
+            <td nowrap >{{form.baki | money}}</td>
             <!-- <td>{{form.ofisi}}</td> -->
             <td nowrap >{{form.kata | titlecase}}</td>
             <td nowrap >{{form.wilaya | titlecase}}</td>

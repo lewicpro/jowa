@@ -19,6 +19,24 @@ export class BankstatementComponent implements OnInit {
   jomo;
   selectedFile: File = null;
 
+  // the four boxes we show on the page (the html loops over this list)
+  kinds = [
+    { key: 'bankstatement', label: 'Bank Statement', tone: 'g-blue', icon: 'up-i-doc' },
+    { key: 'idcard', label: 'Identity card', tone: 'g-orange', icon: 'up-i-id' },
+    { key: 'Atm', label: 'ATM card', tone: 'g-green', icon: 'up-i-card' },
+    { key: 'slip', label: 'Slip', tone: 'g-crimson', icon: 'up-i-slip' },
+  ];
+
+  // for every box we remember:
+  state = {};      // 'idle', 'uploading', 'done' or 'error'
+  files = {};      // the file chosen in that box
+  lastName = {};   // the name of the last file, to show under the title
+  dragOver = null; // the box a file is being dragged over
+
+  // the uploaded documents of this customer, shown at the bottom
+  docs = [];
+  docsLoaded = false;
+
   onfileSelected(file: FileList) {
     this.selectedFile = file[0];
   }
@@ -39,6 +57,7 @@ export class BankstatementComponent implements OnInit {
         }
 
       }
+      this.loadDocs();
 
 
     });
@@ -67,56 +86,160 @@ export class BankstatementComponent implements OnInit {
     });
   }
 
-  onUploadfiles() {
-    // this.user = localStorage.getItem('user');
-    // this.ngProgress.ref().start();
-    this.restframework.postFiledata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
-      data => {
-        //.log('done');
-        // this.ngProgress.ref().complete();
-      }
-    );
-  
+
+  // the button of a box was clicked
+  onButton(kind, picker) {
+    // already sending, do nothing
+    if (this.state[kind] === 'uploading') {
+      return;
+    }
+    // the last upload failed: send the same file again
+    if (this.state[kind] === 'error') {
+      this.upload(kind);
+      return;
+    }
+    // otherwise open the window to choose a file
+    picker.click();
   }
 
 
-  onUploadData() {
-    // this.user = localStorage.getItem('user');
-    // this.ngProgress.ref().start();
-    this.restframework.postdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
-      data => {
-        //.log('done');
-        // this.ngProgress.ref().complete();
-      }
-    );
-  
+  // a file was chosen in the window: upload it at once
+  onPicked(kind, input) {
+    if (input.files.length > 0) {
+      this.files[kind] = input.files[0];
+      input.value = '';
+      this.upload(kind);
+    }
   }
 
-  onUploadAtmData() {
-    // this.user = localStorage.getItem('user');
-    // this.ngProgress.ref().start();
-    this.restframework.postAtmdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
+
+  // a file is dragged over a box
+  onDragOver(event, kind) {
+    event.preventDefault();
+    this.dragOver = kind;
+  }
+
+
+  // a file was dropped on a box: upload it at once
+  onDrop(event, kind) {
+    event.preventDefault();
+    this.dragOver = null;
+    if (event.dataTransfer.files.length > 0) {
+      this.files[kind] = event.dataTransfer.files[0];
+      this.upload(kind);
+    }
+  }
+
+
+  // send the file of a box to the backend
+  upload(kind) {
+    const file = this.files[kind];
+    if (file == null) {
+      return;
+    }
+    if (this.user == null) {
+      alert('Taarifa za mteja bado zinapakia. Jaribu tena baada ya muda mfupi.');
+      return;
+    }
+
+    this.state[kind] = 'uploading';
+    this.lastName[kind] = file.name;
+
+    // every box has its own address in the backend
+    let request;
+    if (kind === 'bankstatement') {
+      request = this.restframework.postdata(file, this.user, this.pin, this.phone);
+    } else if (kind === 'idcard') {
+      request = this.restframework.postFiledata(file, this.user, this.pin, this.phone);
+    } else if (kind === 'Atm') {
+      request = this.restframework.postAtmdata(file, this.user, this.pin, this.phone);
+    } else if (kind === 'slip') {
+      request = this.restframework.postSlipdata(file, this.user, this.pin, this.phone);
+    }
+
+    request.subscribe(
       data => {
-        //.log('done');
-        // this.ngProgress.ref().complete();
+        // it worked
+        this.state[kind] = 'done';
+        this.files[kind] = null;
+        this.loadDocs();
+
+        // after 3 seconds the button says "Pakia nyingine" again
+        setTimeout(() => {
+          if (this.state[kind] === 'done') {
+            this.state[kind] = 'idle';
+          }
+        }, 2800);
+      },
+      err => {
+        // it failed: the button will say "Jaribu tena"
+        this.state[kind] = 'error';
       }
     );
-  
   }
-  onUploadSlipData() {
-    // this.user = localStorage.getItem('user');
-    // this.ngProgress.ref().start();
-    this.restframework.postSlipdata(this.selectedFile, this.user, this.pin, this.phone).subscribe(
-      data => {
-        //.log('done');
-        // this.ngProgress.ref().complete();
+
+
+  // is this document for our customer?
+  // old uploads were saved as "Masatu" or "lewis masatu", so we check both, small letters
+  isMine(m) {
+    if (m.user == null) {
+      return false;
+    }
+    const name = String(m.user).toLowerCase().trim();
+
+    if (this.user != null && name === String(this.user).toLowerCase().trim()) {
+      return true;
+    }
+    if (this.jina != null && name === String(this.jina).toLowerCase().trim()) {
+      return true;
+    }
+    return false;
+  }
+
+
+  // get the uploaded documents of this customer, one list after the other
+  loadDocs() {
+    const list = [];
+
+    this.restframework.getBankstats().then(data1 => {
+      this.addDocs(list, data1, 'bankstatement', 'Bank Statement');
+      return this.restframework.getIdentitystats();
+
+    }).then(data2 => {
+      this.addDocs(list, data2, 'idcard', 'Identity card');
+      return this.restframework.getAtmstats();
+
+    }).then(data3 => {
+      this.addDocs(list, data3, 'Atm', 'ATM card');
+      return this.restframework.getSlipstats();
+
+    }).then(data4 => {
+      this.addDocs(list, data4, 'slip', 'Slip');
+
+      this.docs = list.reverse();   // newest first
+      this.docsLoaded = true;
+    });
+  }
+
+
+  // put the documents of our customer from one list into "list"
+  addDocs(list, data, field, label) {
+    for (const m of data) {
+      if (m[field] && this.isMine(m)) {
+        const url = m[field];
+        const name = decodeURIComponent(url.split('/').pop());
+        const ext = name.split('.').pop().toLowerCase();
+
+        let isImage = false;
+        if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'gif' || ext === 'webp' || ext === 'bmp') {
+          isImage = true;
+        }
+
+        list.push({ label: label, url: url, name: name, ext: ext, isImage: isImage, missing: false });
       }
-    );
-  
+    }
   }
-  onUploadkitambulishoData(){
-    
-  }
+
 
   ngOnInit() {
   }

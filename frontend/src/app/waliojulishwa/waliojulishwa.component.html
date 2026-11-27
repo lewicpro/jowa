@@ -1,25 +1,12 @@
 
-<div style="padding:2px; background:rgba(248, 248, 255, 0)"></div>
-<div class="container">
-
-<div style="background:rgba(255, 255, 255, 0)">
-  <div>
-
-</div>
-</div>
-
-</div>
-<div class="container">
-  
-  <div style="background:rgba(255, 255, 255, 0)">
-    <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
-
-      <div  style="display:inline-block; font-size:12px;  padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Mwezihuu']" style="text-decoration: none;">List ya mwezi huu</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Ongeza-mkopo']" style="text-decoration: none;">Waliopitisha mwezi</a> </li>  <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['TumaMsj']" style="text-decoration: none;">Tuma meseji</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Edit']" style="text-decoration: none;">Edit Account</a> </li> </div>
-      
-    </div>
-    <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
-
-  
+<div class="sms-service-page">
+  <nav class="sms-service-tabs" aria-label="SMS service">
+    <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Mwezihuu']">{{ 'List ya mwezi huu' | t }}</a>
+    <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Overdue']">{{ 'Waliopitisha mwezi' | t }}</a>
+    <a class="monno" [routerLinkActive]="['active']" [routerLink]="['TumaMsj']">{{ 'Tuma meseji' | t }}</a>
+    <a class="monno" [routerLinkActive]="['active']" [routerLink]="['Edit']">{{ 'Edit Account' | t }}</a>
+  </nav>
+  <div class="sms-service-content">
+    <router-outlet></router-outlet>
   </div>
-  
 </div>

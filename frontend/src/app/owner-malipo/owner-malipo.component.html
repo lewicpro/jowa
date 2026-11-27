@@ -6,28 +6,28 @@
   </mat-form-field>
 </div> -->
 <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">MALIPO</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'MALIPO' | t }}</h4>
   <div style="max-height:400px; overflow:auto">
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <tr>
           <!-- <th scope="col">#</th> -->
-          <th scope="col" nowrap>Date</th>
-          <th scope="col" nowrap>Jina</th>
-          <th scope="col" nowrap>Simu</th>
-          <th scope="col" nowrap>namba ya chumba</th>
-          <th scope="col" nowrap>Eneo</th>
-          <th scope="col" nowrap>Chumba</th>
-          <th scope="col" nowrap>kiasi kilicholipwa</th>
-          <th scope="col" nowrap>kiasi kamili</th>
-          <th scope="col" nowrap>Baki</th>
+          <th scope="col" nowrap>{{ 'Date' | t }}</th>
+          <th scope="col" nowrap>{{ 'Jina' | t }}</th>
+          <th scope="col" nowrap>{{ 'Simu' | t }}</th>
+          <th scope="col" nowrap>{{ 'namba ya chumba' | t }}</th>
+          <th scope="col" nowrap>{{ 'Eneo' | t }}</th>
+          <th scope="col" nowrap>{{ 'Chumba' | t }}</th>
+          <th scope="col" nowrap>{{ 'kiasi kilicholipwa' | t }}</th>
+          <th scope="col" nowrap>{{ 'kiasi kamili' | t }}</th>
+          <th scope="col" nowrap>{{ 'Baki' | t }}</th>
 
           <!-- <th scope="col">ofisi</th> -->
-          <th scope="col" nowrap>kata</th>
-          <th scope="col" nowrap>wilaya</th>
-          <th scope="col" nowrap>mkoa</th>
-          <th scope="col" nowrap>last date</th>
-          <th scope="col" nowrap>Status</th>
+          <th scope="col" nowrap>{{ 'kata' | t }}</th>
+          <th scope="col" nowrap>{{ 'wilaya' | t }}</th>
+          <th scope="col" nowrap>{{ 'mkoa' | t }}</th>
+          <th scope="col" nowrap>{{ 'last date' | t }}</th>
+          <th scope="col" nowrap>{{ 'Status' | t }}</th>
 
         </tr>
       </thead>
@@ -55,16 +55,16 @@
             }
             @if (form.House_Owner === owner) {
               <td nowrap>@if (form.mwezi1) {
-                <span>{{form.mwezi1}}</span >
+                <span>{{ form.mwezi1 | money: 'raw' }}</span >
               } @else {
                 @if (form.miezi2) {
-                  <span>{{form.miezi2}}</span >
+                  <span>{{ form.miezi2 | money: 'raw' }}</span >
                 } @else {
                   @if (form.miezi3) {
-                    <span>{{form.miezi3}}</span >
+                    <span>{{ form.miezi3 | money: 'raw' }}</span >
                   } @else {
                     @if (form.year) {
-                      <span>{{form.year}}</span >
+                      <span>{{ form.year | money: 'raw' }}</span >
                     } @else {
                       <ng-template [ngTemplateOutlet]="fifth"></ng-template>
                     }
@@ -73,10 +73,10 @@
               }</td>
             }
             @if (form.House_Owner === owner) {
-              <td nowrap>{{form.kiasi | currency: 'tsh '}}</td>
+              <td nowrap>{{form.kiasi | money}}</td>
             }
             @if (form.House_Owner === owner) {
-              <td nowrap>{{form.baki | currency: 'tsh '}}</td>
+              <td nowrap>{{form.baki | money}}</td>
             }
             <!-- <td>{{form.ofisi}}</td> -->
             @if (form.House_Owner === owner) {

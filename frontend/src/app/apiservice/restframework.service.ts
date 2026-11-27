@@ -1570,6 +1570,17 @@ line += ',' + array[i][head];
           });
     }
 
+  getMalipos() {
+    return new Promise(resolve => {
+      this.http.get(this.malipo).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve([]);
+      });
+    });
+  }
+
   getMalipoGet() {
     this.company_username =localStorage.getItem('company_username')
     this.datar =localStorage.getItem('id')
@@ -2062,6 +2073,15 @@ getWapangajiNyumbaList(mpangajiid) {
           });
     }
 
+    getLoanAgreementTemplates(companyUsername: string) {
+      const company = encodeURIComponent(companyUsername || '');
+      return this.http.get(this.link + '/api/Adworker/LoanAgreementTemplates/?company_username=' + company);
+    }
+
+    uploadLoanAgreementTemplate(formData: FormData) {
+      return this.http.post(this.link + '/api/Adworker/LoanAgreementTemplates/', formData);
+    }
+
     gethouses() {
     return new Promise(resolve => {
 
@@ -2176,6 +2196,54 @@ getWapangajiNyumbaList(mpangajiid) {
               });
           });
     }
+  getInstallments() {
+    return new Promise(resolve => {
+      this.http.get(this.link + '/api/Adworker/Installments/').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve([]);
+      });
+    });
+  }
+  getInstallmentsForLoan(loanId: number) {
+    return new Promise(resolve => {
+      this.http.get(this.link + '/api/Adworker/Installments/?loan_pk=' + encodeURIComponent(String(loanId))).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve([]);
+      });
+    });
+  }
+  getPromisedInstallments() {
+    return new Promise(resolve => {
+      this.http.get(this.link + '/api/Adworker/Installments/?promised_only=1').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve([]);
+      });
+    });
+  }
+  saveInstallmentPromise(installmentId: number, promise: { promised_date: string | null; promise_note: string }) {
+    return new Promise((resolve, reject) => {
+      this.http.patch(
+        this.link + '/api/Adworker/Installments/' + encodeURIComponent(String(installmentId)) + '/promise/',
+        promise
+      ).subscribe(data => resolve(data), error => reject(error));
+    });
+  }
+  getOverdueInstallments(page = 1) {
+    return new Promise(resolve => {
+      this.http.get(this.link + '/api/Adworker/OverdueInstallments/?page=' + page).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve({ count: 0, next: null, previous: null, results: [] });
+      });
+    });
+  }
   getWaliokopa() {
     this.company_username =localStorage.getItem('company_username')
     this.datar =localStorage.getItem('id')

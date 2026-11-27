@@ -9040,18 +9040,18 @@ a.text-dark:hover, a.text-dark:focus {
         </div>
         <div style="float: right; padding-top:30px; padding-right: 20px ">
             <img  src="assets/images/aleco.png" alt="" width="200" height="150">
-          <li style="list-style-type: none"><span style="font-size: 29px;  font-family: sans-serif">Aleco Tanzania</span>,</li> 
+          <li style="list-style-type: none"><span style="font-size: 29px;  font-family: sans-serif">{{ 'Aleco Tanzania' | t }}</span>,</li> 
           <!-- <li style="list-style-type: none"> Box 1234, Musoma,</li> -->
           <li style="list-style-type: none; padding: 5px;  font-family: sans-serif; text-align: center">0719060504</li> 
-          <li style="list-style-type: none; padding: 5px;  font-family: sans-serif; text-align: center">P.o Box 171, Musoma</li> 
+          <li style="list-style-type: none; padding: 5px;  font-family: sans-serif; text-align: center">{{ 'P.o Box 171, Musoma' | t }}</li> 
         </div>
         <div style="padding: 150px"></div>
-        <div style="border-right-style: solid; border-top-style: solid; border-width:4px; border-color:#d0542b; border-width:2px; padding:30px"><span style="float: right; font-family: sans-serif">Balance: {{balance | currency: 'tsh '}}</span></div>
+        <div style="border-right-style: solid; border-top-style: solid; border-width:4px; border-color:#d0542b; border-width:2px; padding:30px"><span style="float: right; font-family: sans-serif">Balance: {{balance | money}}</span></div>
       
         <div style="padding-top:30px"> 
-            <li style="list-style-type: none; font-weight: 100; padding: 10px"><span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif"> Invoice date:</span>  <span>  {{date}}</span> ,</li> 
-            <li style="list-style-type: none; font-weight: 100; padding: 10px"> <span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif"> Terms   :</span> Due on Receipt,</li>
-            <li style="list-style-type: none; font-weight: 100; padding: 10px"><span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif">Ocupation:</span> {{matumizi}}</li> 
+            <li style="list-style-type: none; font-weight: 100; padding: 10px"><span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif"> {{ 'Invoice date:' | t }}</span>  <span>  {{date}}</span> ,</li> 
+            <li style="list-style-type: none; font-weight: 100; padding: 10px"> <span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif"> {{ 'Terms :' | t }}</span> {{ 'Due on Receipt,' | t }}</li>
+            <li style="list-style-type: none; font-weight: 100; padding: 10px"><span style="color: #d0542b; padding-right: 20px;  font-family: sans-serif">{{ 'Ocupation:' | t }}</span> {{ matumizi | money: 'raw' }}</li> 
           
         </div>
       
@@ -9061,16 +9061,16 @@ a.text-dark:hover, a.text-dark:focus {
                   <tr>
                     <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px; " scope="col">#</th>
                     <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px;  " scope="col">Item & Description</th>
-                    <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px;  " scope="col">Quantity</th>
-                    <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px;  " scope="col">Amount</th>
+                    <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px;  " scope="col">{{ 'Quantity' | t }}</th>
+                    <th style="width: 100%; margin:auto; border:1px solid rgb(90, 90, 90); border-collapse: collapse; text-align: center;  table-layout: fixed; background: rgb(90, 90, 90); color:white; font-weight: 100; font-family: sans-serif; padding: 5px; font-size: 15px;  " scope="col">{{ 'Amount' | t }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">1</th>
-                    <td style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">Purposely for {{matumizi}} use</td>
+                    <td style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">Purposely for {{ matumizi | money: 'raw' }} use</td>
                     <td style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">1</td>
-                    <td style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">{{balance | currency: 'tsh '}}</td>
+                    <td style="width: 100%; margin:auto; border:0.1px solid rgb(163, 163, 163); border-collapse: collapse; text-align: center;  table-layout: fixed; background: white; color:rgb(32, 32, 32);  font-family: sans-serif; padding: 5px">{{balance | money}}</td>
                   </tr>
                 
                
@@ -9083,14 +9083,14 @@ a.text-dark:hover, a.text-dark:focus {
       </div>
       <div style="background:#f7f6f5; height:240px; border-left-style: solid; border-bottom-style: solid; border-width:4px; border-color:#d0542b; border-width:2px;">
         <div style="float: left; padding:10px">
-            <span style="color:#d0542b;  font-family: sans-serif">Payment option :</span><span style="color:#666">{{payment}}</span>
+            <span style="color:#d0542b;  font-family: sans-serif">{{ 'Payment option :' | t }}</span><span style="color:#666">{{payment}}</span>
         </div>
         <div style="float: right; padding:10px; width:400px">
-            <li style="list-style-type: none; padding: 10px"><span style="color: #d0542b;  font-family: sans-serif; float: left"> Sub total:</span>  <span style="float: right">  {{balance | currency: 'tsh '}}</span> ,</li> 
-            <li style="list-style-type: none; padding: 10px"> <span style="color: #d0542b;  font-family: sans-serif; float: left"> Tax: <i style="color: #888; font-size:15px">10%</i></span > <span style="float: right">{{balance *0.1 | currency: 'tsh '}}</span> ,</li>
-            <li style="list-style-type: none; padding: 10px"><span style="color: #d0542b;  font-family: sans-serif; float: left">Total:</span> <span style="float: right">{{balance *1 + balance *0.1 | currency: 'tsh '}}</span> </li> 
+            <li style="list-style-type: none; padding: 10px"><span style="color: #d0542b;  font-family: sans-serif; float: left"> {{ 'Sub total:' | t }}</span>  <span style="float: right">  {{balance | money}}</span> ,</li> 
+            <li style="list-style-type: none; padding: 10px"> <span style="color: #d0542b;  font-family: sans-serif; float: left"> {{ 'Tax:' | t }} <i style="color: #888; font-size:15px">10%</i></span > <span style="float: right">{{balance *0.1 | money}}</span> ,</li>
+            <li style="list-style-type: none; padding: 10px"><span style="color: #d0542b;  font-family: sans-serif; float: left">{{ 'Total:' | t }}</span> <span style="float: right">{{balance *1 + balance *0.1 | money}}</span> </li> 
             <div style="padding: 10px"></div>
-            <div nowrap style="background:#d0542b; border-top-left-radius:5px; border-bottom-left-radius:5px; color:ghostwhite; font-size:16px; padding:5px; text-align: center;  font-family: sans-serif" nowrap>Balance due {{balance *1 + balance *0.1 | currency: 'tsh '}}</div>
+            <div nowrap style="background:#d0542b; border-top-left-radius:5px; border-bottom-left-radius:5px; color:ghostwhite; font-size:16px; padding:5px; text-align: center;  font-family: sans-serif" nowrap>Balance due {{balance *1 + balance *0.1 | money}}</div>
       
         </div>
       
@@ -9098,4 +9098,4 @@ a.text-dark:hover, a.text-dark:focus {
       
       
     </div>
-    <div style="text-align: center; padding-top:10px;  font-family: sans-serif"><button (click)="printe()">print invoice</button></div>
+    <div style="text-align: center; padding-top:10px;  font-family: sans-serif"><button (click)="printe()">{{ 'print invoice' | t }}</button></div>

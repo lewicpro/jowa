@@ -1,49 +1,79 @@
 
 
 <ng-progress></ng-progress>
-<div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
-<div class="container">
+<!-- House photos: slider + thumbnails + add photos -->
+<section class="hs" [class.dragging]="dragging" (dragover)="onDragOver($event)" (dragleave)="onDragLeave()" (drop)="onDrop($event)">
 
-  <div style="background:gray; height: 500px; padding-top: 50px;" >
-    <div style="background:red; height: 400px; overflow: hidden;">
+  <input #photoPicker type="file" accept="image/*" multiple class="hs-file" (change)="onPhotosPicked(photoPicker)">
 
-      <carousel  >
+  @if (slides.length > 0) {
+    <div class="hs-stage" tabindex="0" [attr.aria-label]="'Picha za nyumba' | t"
+         (mouseenter)="stopAuto()" (mouseleave)="startAuto()"
+         (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)"
+         (keydown.arrowRight)="next()" (keydown.arrowLeft)="prev()">
 
-        @for (m of houslink; track m) {
-          <slide >
-            <img  src= {{m.house}}  style="display: block; width: 100%;" height="450">
-          </slide>
-        }
-      </carousel>
+      @for (s of slides; track s.url; let i = $index) {
+        <div class="hs-slide" [class.on]="i === current">
+          @if (!s.missing) {
+            <img [src]="s.url" [alt]="name" (error)="onImageError(s)">
+          } @else {
+            <div class="hs-missing"><span class="hs-house" aria-hidden="true"></span>{{ 'Picha haipatikani' | t }}</div>
+          }
+        </div>
+      }
 
+      <div class="hs-caption">
+        <strong>{{ name }}</strong>
+        <span>{{ current + 1 }} / {{ slides.length }}</span>
+      </div>
 
-
-
-
-
-
-
-
+      @if (slides.length > 1) {
+        <button type="button" class="hs-arrow hs-prev" (click)="prev()" [attr.aria-label]="'Iliyotangulia' | t">&#8249;</button>
+        <button type="button" class="hs-arrow hs-next" (click)="next()" [attr.aria-label]="'Inayofuata' | t">&#8250;</button>
+        <div class="hs-dots">
+          @for (s of slides; track s.url; let i = $index) {
+            <button type="button" [class.on]="i === current" (click)="goTo(i)" [attr.aria-label]="(i + 1) + ''"></button>
+          }
+        </div>
+      }
     </div>
+  } @else {
+    <div class="hs-empty">
+      <span class="hs-house" aria-hidden="true"></span>
+      <strong>{{ 'Hakuna picha za nyumba hii bado' | t }}</strong>
+      <span>{{ 'Ongeza picha, au buruta picha hapa' | t }}</span>
+      <button type="button" class="hs-add-btn" (click)="photoPicker.click()">＋ {{ 'Ongeza picha' | t }}</button>
+    </div>
+  }
 
-
+  <!-- thumbnails, photos being uploaded, and the add tile -->
+  <div class="hs-strip">
+    @for (s of slides; track s.url; let i = $index) {
+      <button type="button" class="hs-thumb" [class.on]="i === current" (click)="goTo(i)">
+        @if (!s.missing) { <img [src]="s.url" alt=""> } @else { <span class="hs-house" aria-hidden="true"></span> }
+      </button>
+    }
+    @for (q of queue; track q.preview) {
+      <button type="button" class="hs-thumb hs-up" [attr.data-state]="q.state" (click)="q.state === 'error' && retry(q)" [title]="q.name">
+        <img [src]="q.preview" alt="">
+        @if (q.state === 'error') { <span class="hs-up-label">{{ 'Jaribu tena' | t }}</span> } @else { <span class="hs-spin" aria-hidden="true"></span> }
+      </button>
+    }
+    <button type="button" class="hs-thumb hs-add" (click)="photoPicker.click()">
+      <span aria-hidden="true">＋</span>{{ 'Ongeza picha' | t }}
+    </button>
   </div>
+</section>
 
-
-
-</div>
 <div class="container" style="padding-top:10px;">
-  <form  #imageForm= ngForm (ngSubmit)="onUploadProfileData()">
-    <input (change)="onfileSelected($event.target.files)" accept="image/*" style="font-size: 10px; color: black; display: none;" #files type="file"> <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><button type="button" (click)="files.click()" class="btn btn-outline-dark">Select</button></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><button type="button" class="btn btn-outline-dark" type="submit">Upload</button> </span></li></div>
-  </form>
 
   <div style="padding-top:10px;"></div>
   <div style="background:rgba(255, 255, 255, 0)">
-    <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);"><li class="more" style="display:inline-block"><span style="font-weight:500">Jumla ya kilichoingia:</span> {{jumla_malipo| currency: 'tsh '}}</li> <li style="display:inline-block">||  <span style="font-weight:500">Jumla ya kinachodaiwa:</span>{{Madai| currency: 'tsh '}} </li> <li style="display:inline-block">||  <span style="font-weight:500">Rejesho la mwezi {{mwez}}:</span> {{Rejesho_mwezi| currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['SingleNyumba-Info']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">Estimated Daily:</span>  Tsh {{Jumla_priceDays| currency: 'tsh '}} </li></div>
+    <div class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);"><li class="more" style="display:inline-block"><span style="font-weight:500">{{ 'Jumla ya kilichoingia:' | t }}</span> {{jumla_malipo| money}}</li> <li style="display:inline-block">||  <span style="font-weight:500">{{ 'Jumla ya kinachodaiwa:' | t }}</span>{{Madai| money}} </li> <li style="display:inline-block">||  <span style="font-weight:500">Rejesho la mwezi {{mwez}}:</span> {{Rejesho_mwezi| money}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['SingleNyumba-Info']">{{ 'Info' | t }} </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">{{ 'Estimated Daily:' | t }}</span>  {{ Jumla_priceDays | money: 'tsh ' : 'Tsh ' }} </li></div>
     <div style="padding:5px; background:rgba(248, 248, 255, 0)"></div>
     <div class="float-center " style=" font-weight:200; background:rgba(248, 248, 255, 0)">
 
-      <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wapangaji']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Wapangaji</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wazi']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Vyumba vilivyowazi</a> </li>  <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['marekebisho']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Marekebisho </a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['pangisha']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Pangisha</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['EditNyumba']" style="text-decoration: none;  color:#666666; font-weight: bolder;">Edit Account</a> </li> </div>
+      <div  style="display:inline-block; font-size:12px; padding:8px; color:white; background:#eeeeee; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wapangaji']" style="text-decoration: none;  color:#666666; font-weight: bolder;">{{ 'Wapangaji' | t }}</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wazi']" style="text-decoration: none;  color:#666666; font-weight: bolder;">{{ 'Vyumba vilivyowazi' | t }}</a> </li>  <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['marekebisho']" style="text-decoration: none;  color:#666666; font-weight: bolder;">{{ 'Marekebisho' | t }} </a> </li> <li style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['pangisha']" style="text-decoration: none;  color:#666666; font-weight: bolder;">{{ 'Pangisha' | t }}</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['EditNyumba']" style="text-decoration: none;  color:#666666; font-weight: bolder;">{{ 'Edit Account' | t }}</a> </li> </div>
 
     </div>
 

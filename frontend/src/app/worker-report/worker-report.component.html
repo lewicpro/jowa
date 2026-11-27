@@ -6,71 +6,71 @@
 </mat-form-field> -->
 <!-- <button (click)="time()">click</button> -->
 </div>
-<a  style="text-decoration: none; cursor: pointer;" (click)="All()" > <span style="color: green; padding:4px"> All </span></a>
+<a  style="text-decoration: none; cursor: pointer;" (click)="All()" > <span style="color: green; padding:4px"> {{ 'All' | t }} </span></a>
 @for (c of allz; track c) {
   <div style="white-space:nowrap; display: inline-block;">
     <!-- <a  style="text-decoration: none; cursor: pointer;" (click)="All()" > <span style="color: green; padding:4px"> All </span></a> -->
     @if (c.Mtandao == 'TPB') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="tpb()" > | <span style="color: green; padding:4px"> TPB </span></a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="tpb()" > | <span style="color: green; padding:4px"> {{ 'TPB' | t }} </span></a>
     }
     @if (c.Mtandao == 'Nbc') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="nbc()" > | <span style="color: green; padding:4px"> NBC </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="nbc()" > | <span style="color: green; padding:4px"> {{ 'NBC' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Selcom') {
-      <a style="text-decoration: none; cursor: pointer;" (click)="selcom()" > | <span style="color: green; padding:4px"> SELCOM </span> </a>
+      <a style="text-decoration: none; cursor: pointer;" (click)="selcom()" > | <span style="color: green; padding:4px"> {{ 'SELCOM' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Mpesa') {
-      <a style="text-decoration: none; cursor: pointer;" (click)="mpesa()" > | <span style="color: green; padding:4px"> M-pesa </span>  </a>
+      <a style="text-decoration: none; cursor: pointer;" (click)="mpesa()" > | <span style="color: green; padding:4px"> {{ 'M-pesa' | t }} </span>  </a>
     }
     @if (c.Mtandao == 'NMB') {
-      <a style="text-decoration: none; cursor: pointer;" (click)="nmb()" > | <span style="color: green; padding:4px"> Nmb </span> </a>
+      <a style="text-decoration: none; cursor: pointer;" (click)="nmb()" > | <span style="color: green; padding:4px"> {{ 'Nmb' | t }} </span> </a>
     }
     @if (c.Mtandao == 'CRDB') {
-      <a style="text-decoration: none; cursor: pointer;" (click)="CRDB()" > | <span style="color: green; padding:4px"> CRDB </span> </a>
+      <a style="text-decoration: none; cursor: pointer;" (click)="CRDB()" > | <span style="color: green; padding:4px"> {{ 'CRDB' | t }} </span> </a>
     }
     @if (c.Mtandao == 'DTB') {
-      <a style="text-decoration: none; cursor: pointer;" (click)="DTB()" > | <span style="color: green; padding:4px"> DTB </span> </a>
+      <a style="text-decoration: none; cursor: pointer;" (click)="DTB()" > | <span style="color: green; padding:4px"> {{ 'DTB' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Tigopesa') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="tigopesa()"> | <span style="color: green; padding:4px"> Tigopesa </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="tigopesa()"> | <span style="color: green; padding:4px"> {{ 'Tigopesa' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Access_Bank') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Access_Bank()"> | <span style="color: green; padding:4px"> Access Bank </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Access_Bank()"> | <span style="color: green; padding:4px"> {{ 'Access Bank' | t }} </span> </a>
     }
     @if (c.Mtandao == 'KCB') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="KCB()"> | <span style="color: green; padding:4px"> KCB </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="KCB()"> | <span style="color: green; padding:4px"> {{ 'KCB' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Equity') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Equity()"> | <span style="color: green; padding:4px"> Equity </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Equity()"> | <span style="color: green; padding:4px"> {{ 'Equity' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Airtel_Money') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Airtel_Money()"> | <span style="color: green; padding:4px"> Airtel Money </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Airtel_Money()"> | <span style="color: green; padding:4px"> {{ 'Airtel Money' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Halopesa') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Halopesa()"> | <span style="color: green; padding:4px"> Halopesa </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Halopesa()"> | <span style="color: green; padding:4px"> {{ 'Halopesa' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Mpesa_Float') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Mpesa_Float()"> | <span style="color: green; padding:4px"> Mpesa_Float </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Mpesa_Float()"> | <span style="color: green; padding:4px"> {{ 'Mpesa_Float' | t }} </span> </a>
     }
     @if (c.Mtandao == 'Vodacom_SuperAgent') {
-      <a  style="text-decoration: none; cursor: pointer;" (click)="Vodacom_SuperAgent()"> | <span style="color: green; padding:4px"> Vodacom_SuperAgent </span> </a>
+      <a  style="text-decoration: none; cursor: pointer;" (click)="Vodacom_SuperAgent()"> | <span style="color: green; padding:4px"> {{ 'Vodacom_SuperAgent' | t }} </span> </a>
     }
   </div>
 }
 <!-- <div *ngFor="let c of allz" class="col-sm"><div  class="text-center" style=" font-size:12px;"> <li *ngIf="c.Mtandao == 'TPB'" style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="tpb()" >TPB</a> </span></li> <li *ngIf="c.Mtandao == 'NBC'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span> <span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="nbc()" >NBC</a> </span></li>  <li *ngIf="c.Mtandao == 'SELCOM'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="selcom()" >SELCOM</a> </span></li> <li *ngIf="c.Mtandao == 'Mpesa'" style="display:inline-block"> <span style="font-size: 20px; font-weight: 100;">|</span><span  style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="mpesa()" >M-pesa</a> </span></li> <li *ngIf="c.Mtandao == 'Tigopesa'" style="display:inline-block"><span style="font-size: 20px; font-weight: 100;">|</span><span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="tigopesa()">Tigopesa</a> </span></li><li *ngIf="c.Mtandao == 'NMB'" style="display:inline-block"> <span style="font-size: 20px; font-weight: 100;">|</span> <span style="font-weight:500; color:green"><a style="text-decoration: none; cursor: pointer;" (click)="nmb()" >Nmb</a> </span> </li></div></div> -->
 
-<div class="col-sm"><div class="text-center" style=" font-size:12px;"> <span style="padding-left:10%;" >From <input [(ngModel)]="start" style="max-width:150px; margin:center; border-radius: 5px;" type="date"> to <input [(ngModel)]="end"  style="max-width:150px; margin:center; border-radius: 5px;" type="date">  </span> <button style="background-color: rgb(176, 199, 176); border-radius: 10px;" (click)="req()">submit</button> </div></div>
+<div class="col-sm"><div class="text-center" style=" font-size:12px;"> <span style="padding-left:10%;" >{{ 'From' | t }} <input [(ngModel)]="start" style="max-width:150px; margin:center; border-radius: 5px;" type="date"> {{ 'to' | t }} <input [(ngModel)]="end"  style="max-width:150px; margin:center; border-radius: 5px;" type="date">  </span> <button style="background-color: rgb(176, 199, 176); border-radius: 10px;" (click)="req()">{{ 'submit' | t }}</button> </div></div>
 
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mkopo</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Mkopo' | t }}</h4>
   <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
   <!-- <br><br> -->
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
   <div style="overflow: auto;">
@@ -79,14 +79,14 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Tarehe</th>
-          <th scope="col" title="Date">Jina</th>
-          <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
-          <th scope="col" title="Total Payment (L+I+6)">Salio</th>
-          <th scope="col" title="Loan Repayment">Aina ya Bank</th>
-          <th scope="col" title="Interest Paid">Riba</th>
-          <th scope="col" title="(Mkopo + Riba) Balance">Aina</th>
-          <th scope="col" title="Action">Action</th>
+          <th scope="col">{{ 'Tarehe' | t }}</th>
+          <th scope="col" title="Date">{{ 'Jina' | t }}</th>
+          <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
+          <th scope="col" title="Total Payment (L+I+6)">{{ 'Salio' | t }}</th>
+          <th scope="col" title="Loan Repayment">{{ 'Aina ya Bank' | t }}</th>
+          <th scope="col" title="Interest Paid">{{ 'Riba' | t }}</th>
+          <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Aina' | t }}</th>
+          <th scope="col" title="Action">{{ 'Action' | t }}</th>
 
         </tr>
       </thead>
@@ -101,20 +101,20 @@
           <td>{{i + 1}}</td>
           <td>{{k.Tarehe}}</td>
           <td style="white-space: nowrap">{{k.Jina_Mteja}}</td>
-          <td style="white-space: nowrap">{{k.Amount}}</td>
-          <td style="white-space: nowrap">{{k.Salio | currency: 'tsh '}}</td>
+          <td style="white-space: nowrap">{{ k.Amount | money: 'raw' }}</td>
+          <td style="white-space: nowrap">{{k.Salio | money}}</td>
           <td style="white-space: nowrap">{{k.Mtandao_au_Benki}}</td>
           <td>-||-</td>
           <td style="color:blue"><a>{{k.Process}}</a></td>
-          <td style="color:red">{{k.Balance | currency: 'tsh '}}</td>
+          <td style="color:red">{{k.Balance | money}}</td>
           <td style="color:red; border-radius: 10px;"></td>
         </tr>
       }
       <tr id="customers" style="background-color: #dee2e6;">
         <td style="background-color: rgb(102, 87, 87);"></td>
-        <td style="white-space: nowrap; font-size: 10px;">Kuweka: {{kuweka | currency: 'tsh '}} / Kutoa: {{kutoa | currency: 'tsh '}} / Baki: {{baki | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap; font-size: 10px;">Kuweka: {{kuweka | money}} / Kutoa: {{kutoa | money}} / Baki: {{baki | money}}</td>
         <td></td>
-        <td style="white-space: nowrap; font-size: 10px;">Total: {{sum | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap; font-size: 10px;">Total: {{sum | money}}</td>
         <td></td>
         <td></td>
         <td></td>

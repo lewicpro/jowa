@@ -1,34 +1,44 @@
 
 <ng-progress></ng-progress>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Matumizi' | t }}</h3>
+<div class="f5-body">
 <div class="d-flex justify-content-center">
   <!-- <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
 </mat-form-field> -->
 <!-- <button (click)="time()">click</button> -->
 </div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Matumizi' | t }}</h3>
+<div class="f5-body">
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Matumizi</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Matumizi' | t }}</h4>
   <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
   <!-- <br><br> -->
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
 
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
     <thead>
       <tr>
-        <th scope="col">Tarehe</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
         <!-- <th scope="col" title="Date">Jina</th> -->
-        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
         <!-- <th scope="col" title="Loan Repayment">Salio zinazobaki</th> -->
         <!-- <th scope="col" title="Interest Paid">Riba</th> -->
-        <th scope="col" title="(Mkopo + Riba) Balance">Matumizi</th>
-        <th nowrap scope="col" title="Action">Transactions id</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Matumizi' | t }}</th>
+        <th nowrap scope="col" title="Action">{{ 'Transactions id' | t }}</th>
         <th nowrap scope="col" title="Action"></th>
 
       </tr>
@@ -39,7 +49,7 @@
 
     </div> -->
     <tr style="cursor:pointer" id="customers">
-      <td  ><input [(ngModel)]="UserData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" type="text" placeholder="Muda wa sasa"> </td>
+      <td  ><input [(ngModel)]="UserData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" type="text" [placeholder]="'Muda wa sasa' | t"> </td>
       <!-- <td><input [(ngModel)]="UserData.user" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="text" placeholder="*Important"></td> -->
       <!-- <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td> -->
       <!-- <td><input [(ngModel)]="UserData.Salio" (keyup)="calculate()" style="border-radius:3px;" [value]="bwoy" type="text"></td> -->
@@ -47,14 +57,14 @@
       <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;"  type="text"></td>
       <td><input [(ngModel)]="UserData.Description" (keyup)="calculate()" style="border-radius:3px;"  type="text"></td>
       <td><input type="number" style="border-radius:3px;"></td>
-      <td><a (click)="PostData()"  >Tunza</a></td>
+      <td><a (click)="PostData()"  >{{ 'Tunza' | t }}</a></td>
     </tr>
     @for (k of all; track k) {
       <tr  id="customers" >
         <td > {{k.Tarehe}}</td>
         <!-- <td style="white-space: nowrap">{{k.Jina}}</td> -->
-        <td  style="white-space: nowrap">{{k.Amount | currency: 'tsh '}}</td>
-        <td style="white-space: nowrap">{{k.Salio | currency: 'tsh '}}</td>
+        <td  style="white-space: nowrap">{{k.Amount | money}}</td>
+        <td style="white-space: nowrap">{{k.Salio | money}}</td>
         <!-- <td style="white-space: nowrap; ">-||-</td> -->
         <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Matumizi }}</a></td> -->
         @if (k.user === username  && k.rangi ==='red' ) {
@@ -81,5 +91,9 @@
 </tbody>
 </table>
 </div>
+</div>
+</section>
+</div>
+
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->

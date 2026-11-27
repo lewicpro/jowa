@@ -1,102 +1,98 @@
+<ng-progress></ng-progress>
 
+<main class="la">
 
-<!-- <div class="d-flex justify-content-center">
-<mat-form-field style="width:40%">
-  <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
-</mat-form-field>
-</div> -->
-<div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Hati</h4>
-  <div style="max-height:400px; overflow: auto">
-    <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
-      <thead>
-        <!-- <tr>
-        <th scope="col">#</th>
-        <th scope="col">Jina</th>
-        <th scope="col">Simu</th>
-        <th scope="col">Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col">expire</th>
-        <th scope="col">ofisi</th>
-        <th scope="col">kata</th>
-        <th scope="col">wilaya</th>
-        <th scope="col">mkoa</th>
-        <th scope="col">TSD</th>
-      </tr> -->
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Tarehe</th>
+  <!-- title -->
+  <header class="la-head">
+    <span class="la-head-icon" aria-hidden="true"></span>
+    <div>
+      <p class="la-eyebrow">{{ 'Mkataba wa kampuni' | t }}</p>
+      <h1>{{ 'Fomu za makubaliano ya mkopo' | t }}</h1>
+      <p class="la-sub">{{ 'Hifadhi PDF za makubaliano hapa, kisha zipakue au uzichapishe kwa mkopaji.' | t }}</p>
+    </div>
+    <span class="la-count">{{ forms.length }} {{ 'fomu' | t }}</span>
+  </header>
 
-        <th scope="col" nowrap>Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col" >Jina</th>
-        <!-- <th scope="col">mkopo</th> -->
-        <th scope="col" nowrap>Mkopo + Faida</th>
-        <th scope="col">Awamu</th>
-        <th scope="col">Riba</th>
+  <!-- upload a new form -->
+  <form class="la-upload" (ngSubmit)="upload()">
+    <h2 class="la-h">{{ 'Pakia fomu mpya' | t }}</h2>
 
-        <!-- <th scope="col">Faida</th> -->
-        <th scope="col">Mwezi1</th>
-        <th scope="col">Mwezi2</th>
-        <th scope="col">Mwezi3</th>
-        <th scope="col">Mwezi4</th>
-        <th scope="col">Mwezi5</th>
-        <th scope="col">Mwezi6</th>
-        <th scope="col">Mwezi7</th>
-        <th scope="col">Mwezi8</th>
-        <th scope="col">Mwezi9</th>
-        <th scope="col">Mwezi10</th>
-        <th scope="col">Mwezi11</th>
-        <th scope="col">Mwezi12</th>
+    <div class="la-grid">
+      <!-- form name: pill with an icon -->
+      <label class="la-pill g-orange">
+        <span class="la-pill-icon la-i-pen" aria-hidden="true"></span>
+        <span class="la-pill-body">
+          <span class="la-pill-label">{{ 'Jina la fomu' | t }}</span>
+          <input type="text" name="title" [(ngModel)]="title" maxlength="200" [placeholder]="'Mfano: Mkataba wa mkopo' | t">
+        </span>
+      </label>
 
-
-      </tr>
-    </thead>
-    <tbody>
-      @for (form of malipo; track form; let i = $index) {
-        <tr style="cursor:pointer" id="customers">
-          <td >{{i*1 + 1*1}}</td>
-          <td nowrap>{{form.tarehe}}</td>
-          <td nowrap> {{form.Account_no}}</td>
-          <td nowrap>{{form.pin}}</td>
-          <td nowrap>{{form.jina | titlecase}}</td>
-          <!-- <td nowrap>{{form.RealMkopo | currency: 'tsh '}}</td> -->
-          <td nowrap>{{form.jumla | currency: 'tsh '}}</td>
-          <td nowrap>{{form.Miezi}}</td>
-          <td nowrap>10</td>
-          <!-- <td nowrap>{{form.Faida | currency: 'tsh '}}</td> -->
-          <td nowrap>{{form.mw1 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw2 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw3 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw4 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw5 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw6 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw7 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw8 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw9 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw10 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw11 | currency: 'tsh '}}</td>
-          <td nowrap>{{form.mw12 | currency: 'tsh '}}</td>
-          @if (form.loan_repay) {
-            <td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
-          }
-        </tr>
+      <!-- the PDF: click or drop -->
+      <input #pdfPicker type="file" class="la-file" accept="application/pdf,.pdf" (change)="onPicked(pdfPicker)">
+      @if (pdf == null) {
+        <button type="button" class="la-drop" [class.dragging]="dragging"
+                (click)="pdfPicker.click()" (dragover)="onDragOver($event)" (dragleave)="onDragLeave()" (drop)="onDrop($event)">
+          <span class="la-pill-icon la-i-up" aria-hidden="true"></span>
+          <span class="la-pill-body">
+            <span class="la-drop-title">{{ 'Chagua PDF au iburute hapa' | t }}</span>
+            <span class="la-pill-label">{{ 'PDF tu, hadi MB 20' | t }}</span>
+          </span>
+        </button>
+      } @else {
+        <div class="la-chosen">
+          <span class="la-pdf" aria-hidden="true">PDF</span>
+          <span class="la-pill-body">
+            <span class="la-drop-title">{{ pdf.name }}</span>
+            <span class="la-pill-label">{{ size(pdf.size) }}</span>
+          </span>
+          <button type="button" class="la-x" (click)="removePdf()" [attr.aria-label]="'Ondoa' | t">✕</button>
+        </div>
       }
-      <!--<tr id="customers">-->
-      <!--<td scope="row">2</td>-->
-      <!--<td>BA</td>-->
-      <!--<td>3</td>-->
-      <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-    <!--</tr>-->
-    <!--<tr id="customers">-->
-    <!--<td scope="row">3</td>-->
-    <!--<td>Accountancy</td>-->
-    <!--<td>3</td>-->
-    <!--<td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>-->
-  <!--</tr>-->
-</tbody>
-</table>
-</div>
-</div>
+    </div>
 
-<!-- <app-details-view [form] = "selectedData"></app-details-view> -->
+    @if (message) { <p class="la-msg ok" role="status">✓ {{ message | t }}</p> }
+    @if (error) { <p class="la-msg bad" role="alert">{{ error | t }}</p> }
+
+    <div class="la-actions">
+      <button type="submit" class="la-btn" [disabled]="uploading">
+        @if (uploading) { <span class="la-spin" aria-hidden="true"></span>{{ 'Inapakia…' | t }} } @else { {{ 'Pakia fomu' | t }} }
+      </button>
+    </div>
+  </form>
+
+  <!-- the uploaded forms -->
+  <section class="la-list">
+    <h2 class="la-h">
+      {{ 'Fomu zilizopakiwa' | t }}
+      @if (loading) { <span class="la-loading">{{ 'Inapakia…' | t }}</span> }
+    </h2>
+
+    @if (!loading && forms.length === 0) {
+      <div class="la-empty">
+        <span class="la-pdf big" aria-hidden="true">PDF</span>
+        <p>{{ 'Bado hakuna fomu. Pakia PDF ya kwanza hapo juu.' | t }}</p>
+      </div>
+    }
+
+    <div class="la-cards">
+      @for (form of forms; track form.pk) {
+        <div class="la-card" role="button" tabindex="0" [class.busy]="downloading === form"
+             (click)="download(form)" (keydown.enter)="download(form)" [title]="'Bofya kupakua' | t">
+          <span class="la-pdf" aria-hidden="true">PDF</span>
+          <div class="la-card-text">
+            <strong>{{ form.title }}</strong>
+            <span>{{ 'Imepakiwa' | t }} {{ form.uploaded_at | date:'mediumDate' }}</span>
+          </div>
+          <div class="la-card-actions">
+            <button type="button" class="la-open" (click)="open(form, $event)">{{ 'Fungua' | t }}</button>
+            <span class="la-dl">
+              @if (downloading === form) { <span class="la-spin dark" aria-hidden="true"></span> } @else { <span class="la-i-down" aria-hidden="true"></span> }
+              {{ 'Pakua' | t }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+</main>

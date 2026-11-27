@@ -1,3 +1,7 @@
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Ingia' | t }}</h3>
+<div class="f5-body">
 <div style="margin-bottom:0%;">
     <div style="padding:10px;"></div>
     <!-- <div>{{moran}}</div>
@@ -16,9 +20,9 @@
         <!-- <span class="input-group-text" id="inputGroup-sizing-sm">Jina</span> -->
       </div>
       <select [(ngModel)]="malipz"  (change)="malip()" id="inputGroupSelect01"  class="custom-select" style="width:25%; ">
-          <option selected>Choose wakati wa malipo. ..</option>
-          <option  value="malizia">Malizia deni</option>
-          <option value="ongeza">Ongeza pesa mkataba mpya</option>
+          <option selected>{{ 'Choose wakati wa malipo. ..' | t }}</option>
+          <option  value="malizia">{{ 'Malizia deni' | t }}</option>
+          <option value="ongeza">{{ 'Ongeza pesa mkataba mpya' | t }}</option>
        
       </select>
     </div>
@@ -31,7 +35,7 @@
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
       
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">kiasi</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">{{ 'kiasi' | t }}</span>
         </div>
         <input type="text" [(ngModel)]="poze.kiasi" name="kiasi" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
@@ -43,7 +47,7 @@
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
       
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:20px;">file</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="padding-right:20px;">{{ 'file' | t }}</span>
         </div>
         <input type="text" [(ngModel)]="poze.file" name="password" class="form-control" style="max-width:300px; margin:center;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
@@ -55,7 +59,7 @@
     <div class="d-flex justify-content-center">
         <div class="input-group input-group-sm mb-3 d-flex justify-content-center" style="width:60%; margin:center;">
       
-        <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:black" (click)="UserCreate()" >ingia</button>
+        <button mat-raised-button color="primary" type="button" class="btn btn-success form-control" style="max-width:300px; color:black" (click)="UserCreate()" >{{ 'ingia' | t }}</button>
         
         </div>
       </div>
@@ -63,3 +67,7 @@
   
     
     </div>
+</div>
+</section>
+</div>
+

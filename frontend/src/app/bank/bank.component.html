@@ -2,7 +2,7 @@
 <div class="row " >
   @for (m of alls; track m) {
     <div class="" style="padding-top:5px;">
-      @if (m.user === user) {
+      @if (isMine(m)) {
         <img class="" width="265px;" #image height="160px" [src]="m.bankstatement" aria-hidden="true">
       }
     </div>

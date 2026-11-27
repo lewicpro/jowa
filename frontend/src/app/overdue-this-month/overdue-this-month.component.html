@@ -1,0 +1,61 @@
+<div class="animated fadeIn overdue-list" style="padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
+  <h4 style="text-align:center; letter-spacing:6px; color:#666; font-weight:100;">{{ 'Waliopitisha mwezi' | t }}</h4>
+  <div class="overdue-table-wrap">
+    <table class="table table-sm table-bordered table-striped table-light">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">{{ 'Tarehe ya malipo' | t }}</th>
+          <th scope="col">{{ 'Account no' | t }}</th>
+          <th scope="col">{{ 'pin' | t }}</th>
+          <th scope="col">{{ 'Simu' | t }}</th>
+          <th scope="col">{{ 'Jina' | t }}</th>
+          <th scope="col">{{ 'Mkopo' | t }}</th>
+          <th scope="col">{{ 'Mkopo + Faida' | t }}</th>
+          <th scope="col">{{ 'Awamu' | t }}</th>
+          <th scope="col">{{ 'Riba' | t }}</th>
+          <th scope="col">{{ 'Faida' | t }}</th>
+          <th scope="col">{{ 'Miezi iliyochelewa' | t }}</th>
+          <th scope="col">{{ 'Kiasi cha awamu' | t }}</th>
+          <th scope="col">{{ 'Kiasi kilicholipwa' | t }}</th>
+          <th scope="col">{{ 'Salio la awamu' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let form of overdue; let i = index">
+          <td>{{pageIndex * pageSize + i + 1}}</td>
+          <td>{{form.due_date | date}}</td>
+          <td>{{form.Account_no || 'Not provided'}}</td>
+          <td>{{form.pin || 'Not provided'}}</td>
+          <td>{{form.Simu || 'Not provided'}}</td>
+          <td>{{(form.jina || 'Not provided') | titlecase}}</td>
+          <td>{{form.RealMkopo | money: 'raw'}}</td>
+          <td>{{form.jumla | money: 'raw'}}</td>
+          <td>{{form.sequence}} / {{form.Miezi}}</td>
+          <td>{{form.Riba | money: 'raw'}}</td>
+          <td>{{form.Faida | money: 'raw'}}</td>
+          <td>{{form.overdueMonth}} ({{form.overdueMonths}})</td>
+          <td>{{form.scheduled_amount | money: 'raw'}}</td>
+          <td>{{form.paid_amount | money: 'raw'}}</td>
+          <td>{{form.balance | money: 'raw'}}</td>
+        </tr>
+        <tr *ngIf="!loading && overdue && overdue.length === 0">
+          <td colspan="15" style="text-align:center">{{ 'Hakuna wadaiwa waliopitisha mwezi' | t }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="overdue-pagination" *ngIf="totalOverdue > 0" aria-label="Overdue pages">
+    <button type="button" class="btn btn-outline-secondary"
+      [disabled]="loading || pageIndex === 0"
+      (click)="loadPage(pageIndex - 1)">
+      Previous
+    </button>
+    <span>Page {{pageIndex + 1}} of {{totalPages}} · Showing {{pageIndex * pageSize + 1}}–{{pageEnd}} of {{totalOverdue}}</span>
+    <button type="button" class="btn btn-outline-secondary"
+      [disabled]="loading || pageIndex + 1 >= totalPages"
+      (click)="loadPage(pageIndex + 1)">
+      Next
+    </button>
+  </div>
+</div>

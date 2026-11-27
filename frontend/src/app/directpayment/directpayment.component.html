@@ -1,19 +1,19 @@
 <div class="jumbotron" style="background:ghostwhite">
-  <h4 class="display-6" style="font-weight:200">Hello <span style="font-size:18px;">{{name}}, </span> </h4>
+  <h4 class="display-6" style="font-weight:200">{{ 'Hello' | t }} <span style="font-size:18px;">{{name}}, </span> </h4>
   @if (baki > 0) {
-    <div class="lead" style="text-align:center"> Debt is:  tsh <span style="color: red; font-weight: 100">{{baki}}</span></div>
+    <div class="lead" style="text-align:center"> {{ 'Debt is: tsh' | t }} <span style="color: red; font-weight: 100">{{baki}}</span></div>
   } @else {
   }
   <hr class="my-4">
-  <li>Name: <span style="color:#666; font-weight:100;"> {{name}} </span> </li>
-  <li>Building: <span style="color:#666; font-weight:100;">  {{nyumbaname}}</span></li>
+  <li>{{ 'Name:' | t }} <span style="color:#666; font-weight:100;"> {{name}} </span> </li>
+  <li>{{ 'Building:' | t }} <span style="color:#666; font-weight:100;">  {{nyumbaname}}</span></li>
   <!-- <li>Mara ya mwisho kulipa: <span style="color:#666; font-weight:100;">  February {{past}}</span></li> -->
   @if (baki > 0) {
-    <li>Deni lililopo:  <span style="color:red; font-weight:100;"> tsh  {{baki}}</span></li>
+    <li>{{ 'Deni lililopo:' | t }}  <span style="color:red; font-weight:100;"> {{ baki | money: 'raw' : 'tsh  ' }}</span></li>
   } @else {
     No Debt
   }
-  <div class="d-flex justify-content-center"> <a class="btn btn-primary btn-sm" style="width:20%" role="button" (click)="pay()">Pay</a> </div>
+  <div class="d-flex justify-content-center"> <a class="btn btn-primary btn-sm" style="width:20%" role="button" (click)="pay()">{{ 'Pay' | t }}</a> </div>
   <!-- <div style="height:500px; font-size:12px; padding:10px; overflow:auto; background:ghostwhite"><router-outlet></router-outlet></div> -->
 
 
@@ -23,17 +23,17 @@
   </mat-form-field> -->
 </div>
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Payment History</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Payment History' | t }}</h4>
 
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
     <thead>
       <tr>
-        <th scope="col">Date</th>
-        <th scope="col" title="Date">Name</th>
-        <th scope="col" title="Total Payment (L+I+6)">Paid</th>
+        <th scope="col">{{ 'Date' | t }}</th>
+        <th scope="col" title="Date">{{ 'Name' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Paid' | t }}</th>
         <!-- <th scope="col" title="Loan Repayment">Monthes</th> -->
         <!-- <th scope="col" title="Interest Paid">last date</th> -->
-        <th scope="col" title="(Mkopo + Riba) Balance">Remained</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Remained' | t }}</th>
         <!-- <th scope="col" title="Action">Action</th> -->
 
       </tr>
@@ -48,12 +48,12 @@
       <tr  id="customers" (click)="onselected(k)">
         <td nowrap> {{k.date}}</td>
         <td nowrap style="white-space: nowrap">{{k.name}}</td>
-        <td nowrap style="white-space: nowrap">{{k.kiasi | currency: 'tsh '}}</td>
+        <td nowrap style="white-space: nowrap">{{k.kiasi | money}}</td>
         <!-- <td nowrap style="white-space: nowrap">{{k.muda}}</td> -->
         <!-- <td nowrap style="white-space: nowrap; ">{{k.last_date | date}}</td> -->
         <!-- <td *ngIf="k.name === name  && k.rangi ==='blue' "   style ="color:blue">{{k.Balance}}</td> -->
         <!-- <td *ngIf="k.name === name  && k.rangi ==='red' "  style="color:red">{{k.Balance}}</td> -->
-        <td  nowrap style="color:red"> {{k.baki | currency: 'tsh '}}</td>
+        <td  nowrap style="color:red"> {{k.baki | money}}</td>
         <!-- <td *ngIf="k.name === name "  style="color:red"></td> -->
         <!-- <td *ngIf="k.name === name && k.info === 'delete';"   style="color:red"><button (click)='run()'>delete</button></td> -->
         <!-- <td *ngIf="k.name === name && k.info === '';"   style="color:red"></td> -->

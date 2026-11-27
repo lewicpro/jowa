@@ -1,0 +1,36 @@
+.month-list > div:last-child {
+  width: 100%;
+  max-width: 100%;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.month-list {
+  width: 100%;
+  max-width: 100%;
+}
+
+.month-list table {
+  width: 100%;
+  min-width: 1450px;
+  table-layout: auto;
+}
+
+.month-list th {
+  padding: 8px 10px;
+  white-space: normal;
+  min-width: 70px;
+}
+
+.month-list td {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .month-list > div:last-child {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}

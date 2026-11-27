@@ -1,13 +1,17 @@
 
-<h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Mauzo</h4>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Mauzo' | t }}</h3>
+<div class="f5-body">
+<h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Mauzo' | t }}</h4>
 <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
 <!-- <br><br> -->
 <!-- <pre class="card card-block card-header">{{message}}</pre> -->
 <ng-template #template>
   <div class="modal-body text-center">
-    <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    <p>{{ 'Do you want to confirm?' | t }}</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
   </div>
 </ng-template>
 <div style="overflow: scroll;">
@@ -15,69 +19,69 @@
     <thead>
       <tr>
         <th scope="col" nowrap>#</th>
-        <th scope="col" nowrap>Tarehe</th>
+        <th scope="col" nowrap>{{ 'Tarehe' | t }}</th>
         @if (mpesa_float =='True') {
-          <th scope="col" title="Date" nowrap>Balance Mpesa float</th>
+          <th scope="col" title="Date" nowrap>{{ 'Balance Mpesa float' | t }}</th>
         }
         @if (mpesa_working_acc =='True') {
-          <th scope="col" title="Date" nowrap>Balance Mpesa Working Account</th>
+          <th scope="col" title="Date" nowrap>{{ 'Balance Mpesa Working Account' | t }}</th>
         }
         @if (Tigopas =='True') {
-          <th scope="col" title="Total Payment (L+I+6)" nowrap>Balance Tigopesa</th>
+          <th scope="col" title="Total Payment (L+I+6)" nowrap>{{ 'Balance Tigopesa' | t }}</th>
         }
         @if (tpb =='True') {
-          <th scope="col" title="Loan Repayment" nowrap>Balance TPB</th>
+          <th scope="col" title="Loan Repayment" nowrap>{{ 'Balance TPB' | t }}</th>
         }
         @if (Nbc =='True') {
-          <th scope="col" title="Interest Paid" nowrap>Balance NBC</th>
+          <th scope="col" title="Interest Paid" nowrap>{{ 'Balance NBC' | t }}</th>
         }
         @if (Nmb =='True') {
-          <th scope="col" title="Interest Paid" nowrap>Balance NMB</th>
+          <th scope="col" title="Interest Paid" nowrap>{{ 'Balance NMB' | t }}</th>
         }
         @if (Selcom =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance SELCOM</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance SELCOM' | t }}</th>
         }
         @if (dtb =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance DTB</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance DTB' | t }}</th>
         }
         @if (crdb =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance CRDB</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance CRDB' | t }}</th>
         }
         @if (ttcl_money =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance TTCL</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance TTCL' | t }}</th>
         }
         @if (halopexa =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Halopesa' | t }}</th>
         }
         @if (halopesa_superagent =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Super Agent</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Halopesa Super Agent' | t }}</th>
         }
         @if (halopesa_subsuperagent =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Halopesa Sub Super Agent</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Halopesa Sub Super Agent' | t }}</th>
         }
         @if (vodacom_superAgent =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Super Agent</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Vodacom Super Agent' | t }}</th>
         }
         @if (vodacom_agent2 =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Vodacom Agent 2</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Vodacom Agent 2' | t }}</th>
         }
         @if (access_bank =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Access Bank</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Access Bank' | t }}</th>
         }
         @if (kcb =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance KCB Bank</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance KCB Bank' | t }}</th>
         }
         @if (equity =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Equity Bank</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Equity Bank' | t }}</th>
         }
         @if (airtel_money =='True') {
-          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Balance Airtel Money</th>
+          <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Balance Airtel Money' | t }}</th>
         }
-        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Kilichobaki Siku</th>
-        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Jumla</th>
-        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Loss/Profit</th>
-        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>Status</th>
-        <th scope="col" title="Action">Action</th>
+        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Kilichobaki Siku' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Jumla' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Loss/Profit' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance" nowrap>{{ 'Status' | t }}</th>
+        <th scope="col" title="Action">{{ 'Action' | t }}</th>
 
       </tr>
     </thead>
@@ -88,70 +92,70 @@
     </div> -->
     <tr style="cursor:pointer" id="customers">
       <td class="text-center" ></td>
-      <td class="text-center" ><input [(ngModel)]="Tarehe" (keyup)="calculate()"  style="border-radius:3px; width:100%"  type="text" placeholder="Muda wa sasa"> </td>
+      <td class="text-center" ><input [(ngModel)]="Tarehe" (keyup)="calculate()"  style="border-radius:3px; width:100%"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
       @if (mpesa_float == 'True') {
-        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="Mpesa_Float" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Float"></td>
+        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="Mpesa_Float" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Float' | t"></td>
       }
       @if (mpesa_working_acc =='True') {
-        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="MpesaWorking_Balance" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Working Balance"></td>
+        <td style="white-space: nowrap; min-width:7%"><input [(ngModel)]="MpesaWorking_Balance" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Working Balance' | t"></td>
       }
       @if (Tigopas =='True') {
-        <td><input [(ngModel)]="Tigopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Tigopesa"></td>
+        <td><input [(ngModel)]="Tigopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Tigopesa' | t"></td>
       }
       @if (tpb =='True') {
-        <td><input [(ngModel)]="TPB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;"  type="number" placeholder="*Tpb"></td>
+        <td><input [(ngModel)]="TPB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;"  type="number" [placeholder]="'*Tpb' | t"></td>
       }
       @if (Nbc =='True') {
-        <td><input [(ngModel)]="NBC" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;"  placeholder="*Nbc"></td>
+        <td><input [(ngModel)]="NBC" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;"  [placeholder]="'*Nbc' | t"></td>
       }
       @if (Nmb =='True') {
-        <td><input [(ngModel)]="NMB" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;" placeholder="*Nmb"></td>
+        <td><input [(ngModel)]="NMB" (keyup)="calculate()" type="number" style="border-radius:3px; min-width: 120px;" [placeholder]="'*Nmb' | t"></td>
       }
       @if (Selcom =='True') {
-        <td><input [(ngModel)]="SELCOM" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Selcom" ></td>
+        <td><input [(ngModel)]="SELCOM" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Selcom' | t" ></td>
       }
       @if (dtb =='True') {
-        <td><input [(ngModel)]="DTB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*DTB" ></td>
+        <td><input [(ngModel)]="DTB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*DTB' | t" ></td>
       }
       @if (crdb =='True') {
-        <td><input [(ngModel)]="CRDB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Crdb" ></td>
+        <td><input [(ngModel)]="CRDB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Crdb' | t" ></td>
       }
       @if (ttcl_money =='True') {
-        <td><input [(ngModel)]="TTCL_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*TTCL" ></td>
+        <td><input [(ngModel)]="TTCL_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*TTCL' | t" ></td>
       }
       @if (halopexa =='True') {
-        <td><input [(ngModel)]="Halopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa" ></td>
+        <td><input [(ngModel)]="Halopesa" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Halopesa' | t" ></td>
       }
       @if (halopesa_superagent =='True') {
-        <td><input [(ngModel)]="Halopesa_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Super Agent" ></td>
+        <td><input [(ngModel)]="Halopesa_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Halopesa Super Agent' | t" ></td>
       }
       @if (halopesa_subsuperagent =='True') {
-        <td><input [(ngModel)]="Halopesa_SubSuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Halopesa Sub Super Agent" ></td>
+        <td><input [(ngModel)]="Halopesa_SubSuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Halopesa Sub Super Agent' | t" ></td>
       }
       @if (vodacom_superAgent =='True') {
-        <td><input [(ngModel)]="Vodacom_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom super agent" ></td>
+        <td><input [(ngModel)]="Vodacom_SuperAgent" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Vodacom super agent' | t" ></td>
       }
       @if (vodacom_agent2 =='True') {
-        <td><input [(ngModel)]="Vodacom_Agent2" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Vodacom agent2" ></td>
+        <td><input [(ngModel)]="Vodacom_Agent2" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Vodacom agent2' | t" ></td>
       }
       @if (access_bank =='True') {
-        <td><input [(ngModel)]="Access_Bank" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Access Bank" ></td>
+        <td><input [(ngModel)]="Access_Bank" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Access Bank' | t" ></td>
       }
       @if (kcb =='True') {
-        <td><input [(ngModel)]="KCB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*KCB" ></td>
+        <td><input [(ngModel)]="KCB" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*KCB' | t" ></td>
       }
       @if (equity =='True') {
-        <td><input [(ngModel)]="Equity" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Equity" ></td>
+        <td><input [(ngModel)]="Equity" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Equity' | t" ></td>
       }
       @if (airtel_money =='True') {
-        <td><input [(ngModel)]="Airtel_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*airtel money" ></td>
+        <td><input [(ngModel)]="Airtel_Money" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*airtel money' | t" ></td>
       }
-      <td><input [(ngModel)]="Mkononi" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" placeholder="*Cash Mkononi"></td>
+      <td><input [(ngModel)]="Mkononi" (keyup)="calculate()" style="border-radius:3px; min-width: 120px;" type="number" [placeholder]="'*Cash Mkononi' | t"></td>
       @if (State_output == null) {
         <td >0</td>
       }
       @if (State_output !== null) {
-        <td >{{totol}}</td>
+        <td >{{ totol | money: 'raw' }}</td>
       }
       @if (State_output >= 0) {
         <td style="color: green;">{{State_output}}</td>
@@ -163,15 +167,15 @@
         <td style="color: red;"> 0</td>
       }
       @if (Mtaji > totol) {
-        <td>Loss -</td>
+        <td>{{ 'Loss -' | t }}</td>
       }
       @if (Mtaji < totol) {
-        <td>Profit +</td>
+        <td>{{ 'Profit +' | t }}</td>
       }
       @if (Mtaji == null) {
-        <td>Unchecked</td>
+        <td>{{ 'Unchecked' | t }}</td>
       }
-      <td class="moaa"><a (click)="openModal(template)"  class="moaa">Tunza</a></td>
+      <td class="moaa"><a (click)="openModal(template)"  class="moaa">{{ 'Tunza' | t }}</a></td>
       <!-- <td></td> -->
       <td></td>
     </tr>
@@ -180,67 +184,67 @@
         <td nowrap> {{i*1 + 1*1}}</td>
         <td nowrap> {{k.Tarehe}}</td>
         @if (mpesa_float == 'True') {
-          <td style="white-space: nowrap">{{k.Mpesa_Float}}</td>
+          <td style="white-space: nowrap">{{ k.Mpesa_Float | money: 'raw' }}</td>
         }
         @if (mpesa_working_acc == 'True') {
-          <td style="white-space: nowrap">{{k.MpesaWorking_Balance}}</td>
+          <td style="white-space: nowrap">{{ k.MpesaWorking_Balance | money: 'raw' }}</td>
         }
         @if (Tigopas =='True') {
-          <td style="white-space: nowrap">{{k.Tigopesa }}</td>
+          <td style="white-space: nowrap">{{ k.Tigopesa | money: 'raw' }}</td>
         }
         @if (tpb =='True') {
-          <td style="white-space: nowrap">{{k.TPB}}</td>
+          <td style="white-space: nowrap">{{ k.TPB | money: 'raw' }}</td>
         }
         @if (Nbc =='True') {
-          <td style="white-space: nowrap; ">{{k.NBC}}</td>
+          <td style="white-space: nowrap; ">{{ k.NBC | money: 'raw' }}</td>
         }
         @if (Nmb =='True') {
-          <td style="white-space: nowrap; ">{{k.NMB}}</td>
+          <td style="white-space: nowrap; ">{{ k.NMB | money: 'raw' }}</td>
         }
         @if (Selcom =='True') {
-          <td style="white-space: nowrap; ">{{k.SELCOM}}</td>
+          <td style="white-space: nowrap; ">{{ k.SELCOM | money: 'raw' }}</td>
         }
         @if (dtb =='True') {
-          <td style="white-space: nowrap; ">{{k.DTB}}</td>
+          <td style="white-space: nowrap; ">{{ k.DTB | money: 'raw' }}</td>
         }
         @if (crdb =='True') {
-          <td style="white-space: nowrap; ">{{k.CRDB}}</td>
+          <td style="white-space: nowrap; ">{{ k.CRDB | money: 'raw' }}</td>
         }
         @if (ttcl_money =='True') {
-          <td style="white-space: nowrap; ">{{k.TTCL_Money}}</td>
+          <td style="white-space: nowrap; ">{{ k.TTCL_Money | money: 'raw' }}</td>
         }
         @if (halopexa =='True') {
-          <td style="white-space: nowrap; ">{{k.Halopesa}}</td>
+          <td style="white-space: nowrap; ">{{ k.Halopesa | money: 'raw' }}</td>
         }
         @if (halopesa_superagent =='True') {
-          <td style="white-space: nowrap; ">{{k.Halopesa_SuperAgent}}</td>
+          <td style="white-space: nowrap; ">{{ k.Halopesa_SuperAgent | money: 'raw' }}</td>
         }
         @if (halopesa_subsuperagent =='True') {
-          <td style="white-space: nowrap; ">{{k.Halopesa_SubSuperAgent}}</td>
+          <td style="white-space: nowrap; ">{{ k.Halopesa_SubSuperAgent | money: 'raw' }}</td>
         }
         @if (vodacom_superAgent =='True') {
-          <td style="white-space: nowrap; ">{{k.Vodacom_SuperAgent}}</td>
+          <td style="white-space: nowrap; ">{{ k.Vodacom_SuperAgent | money: 'raw' }}</td>
         }
         @if (vodacom_agent2 =='True') {
-          <td style="white-space: nowrap; ">{{k.Vodacom_Agent2}}</td>
+          <td style="white-space: nowrap; ">{{ k.Vodacom_Agent2 | money: 'raw' }}</td>
         }
         @if (access_bank =='True') {
-          <td style="white-space: nowrap; ">{{k.Access_Bank}}</td>
+          <td style="white-space: nowrap; ">{{ k.Access_Bank | money: 'raw' }}</td>
         }
         @if (kcb =='True') {
-          <td style="white-space: nowrap; ">{{k.KCB}}</td>
+          <td style="white-space: nowrap; ">{{ k.KCB | money: 'raw' }}</td>
         }
         @if (equity =='True') {
-          <td style="white-space: nowrap; ">{{k.Equity}}</td>
+          <td style="white-space: nowrap; ">{{ k.Equity | money: 'raw' }}</td>
         }
         @if (airtel_money =='True') {
-          <td style="white-space: nowrap; ">{{k.Airtel_Money}}</td>
+          <td style="white-space: nowrap; ">{{ k.Airtel_Money | money: 'raw' }}</td>
         }
-        <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | currency: 'tsh '}}</a></td> -->
-        <td style="white-space: nowrap;">{{k.Mkononi | currency: 'tsh '}}</td>
-        <td style="color:red">{{k.Total}}</td>
+        <!-- <td style ="color:blue"><a (click)="takepdf(k)">{{k.Balance | money}}</a></td> -->
+        <td style="white-space: nowrap;">{{k.Mkononi | money}}</td>
+        <td style="color:red">{{ k.Total | money: 'raw' }}</td>
         @if (k.Output_Status >= 0) {
-          <td style="color: green;">{{k.Output_Status}}</td>
+          <td style="color: green;">{{ k.Output_Status | money: 'raw' }}</td>
         }
         @if (k.Output_Status < 0 ) {
           <td  style="color: red;">{{k.Output_Status}}</td>
@@ -284,7 +288,7 @@
         @if (prev1 === null) {
           <a class="page-link"  aria-label="Previous">
             <span  style="color: rgb(207, 206, 206);" aria-hidden="true" disabled>&laquo;</span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">{{ 'Previous' | t }}</span>
           </a>
         }
 
@@ -293,19 +297,19 @@
         @if (prev1) {
           <a class="page-link" (click)="prev()" aria-label="Previous">
             <span   aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">{{ 'Previous' | t }}</span>
           </a>
         }
 
       </li>
-      <li class="page-item disabled"><a class="page-link" href="#">Pages</a></li>
+      <li class="page-item disabled"><a class="page-link" href="#">{{ 'Pages' | t }}</a></li>
       <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
 
       <li class="page-item disabled">
         @if (next1 === null) {
           <a  class="page-link"  aria-label="Next">
             <span style="color: rgb(207, 206, 206);" aria-hidden="true" >&raquo;</span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">{{ 'Next' | t }}</span>
           </a>
         }
 
@@ -315,7 +319,7 @@
         @if (next1) {
           <a class="page-link" (click)="next()" aria-label="Next">
             <span  aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">{{ 'Next' | t }}</span>
           </a>
         }
 
@@ -326,3 +330,7 @@
 </div>
 
 </div>
+</div>
+</section>
+</div>
+

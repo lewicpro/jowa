@@ -6,18 +6,18 @@
 </mat-form-field> -->
 <!-- <button (click)="time()">click</button> -->
 </div>
-<div style="text-align: center;"><input class="wako" type="text" placeholder="Search for a name" style="width: 400px;"></div>
+<div style="text-align: center;"><input class="wako" type="text" [placeholder]="'Search for a name' | t" style="width: 400px;"></div>
 <div id="myprint">
   <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> List of added products</h4>
+    <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'List of added products' | t }}</h4>
     <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
     <!-- <br><br> -->
     <!-- <pre class="card card-block card-header">{{message}}</pre> -->
     <ng-template #template>
       <div class="modal-body text-center">
-        <p>Do you want to confirm?</p>
-        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+        <p>{{ 'Do you want to confirm?' | t }}</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
       </div>
     </ng-template>
 
@@ -27,21 +27,21 @@
           <th style="padding-left:10px;">#</th>
           <th style="padding-left:10px;">Date & Time</th>
           <!-- <th style="padding-left:10px;">pk</th> -->
-          <th>Name</th>
-          <th nowrapp> Products</th>
-          <th>Purchasing price</th>
-          <th>Price</th>
+          <th>{{ 'Name' | t }}</th>
+          <th nowrapp> {{ 'Products' | t }}</th>
+          <th>{{ 'Purchasing price' | t }}</th>
+          <th>{{ 'Price' | t }}</th>
           <!-- <th style="padding-left:10px;">Image</th> -->
-          <th>Type</th>
-          <th>Officer</th>
-          <th nowrap>Shelf No</th>
+          <th>{{ 'Type' | t }}</th>
+          <th>{{ 'Officer' | t }}</th>
+          <th nowrap>{{ 'Shelf No' | t }}</th>
 
           <!-- <th>Remained</th> -->
-          <th>Total product</th>
-          <th>Total bought</th>
-          <th>Sold</th>
-          <th>Description</th>
-          <th>Action</th>
+          <th>{{ 'Total product' | t }}</th>
+          <th>{{ 'Total bought' | t }}</th>
+          <th>{{ 'Sold' | t }}</th>
+          <th>{{ 'Description' | t }}</th>
+          <th>{{ 'Action' | t }}</th>
         </tr>
 
         @for (n of all; track n; let i = $index) {
@@ -51,18 +51,18 @@
             <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
             <td class="youo"  nowrap (click)="menufunct(n)">{{n.Name_of_the_product | titlecase}}</td>
             <td class="youo"  nowrap >{{n.Number_of_products}}</td>
-            <td class="youo"  nowrap>{{n.Price_bought| currency: 'tsh '}}</td>
-            <td class="youo"  nowrap>{{n.Selling_price| currency: 'tsh '}}</td>
+            <td class="youo"  nowrap>{{n.Price_bought| money}}</td>
+            <td class="youo"  nowrap>{{n.Selling_price| money}}</td>
             <!-- <td style="padding-left:10px;" class="youo" nowrap><img class="zoom" width="40" height="40" src="assets/images/danube.jpg" alt=""></td> -->
             <td class="youo"  nowrap>{{n.Type_of_product}}</td>
             <td class="youo"  nowrap>{{n.Officer_worker}}</td>
             <td class="youo"  nowrap>{{n.Shelf_No}}</td>
             <!-- <td class="youo" nowrap>{{n.Number_of_products}}</td> -->
-            <td class="youo" nowrap>{{n.Total_Available_product_wise | currency: 'tsh '}}</td>
-            <td class="youo" nowrap>{{n.Total_brought_product_wise | currency: 'tsh '}}</td>
-            <td class="youo" nowrap>{{n.Number_of_products_sold| currency: 'tsh '}}</td>
+            <td class="youo" nowrap>{{n.Total_Available_product_wise | money}}</td>
+            <td class="youo" nowrap>{{n.Total_brought_product_wise | money}}</td>
+            <td class="youo" nowrap>{{n.Number_of_products_sold| money}}</td>
             <td class="youo" nowrap>{{n.Description}}</td>
-            <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">Sell</td>
+            <td class="youo button" nowrap style="color:white; cursor: pointer;" (click)="selprodct(n, template)">{{ 'Sell' | t }}</td>
           </tr>
         }
         <div style="padding: 30px;"></div>
@@ -96,5 +96,5 @@
 </div>
 <div style="padding:10px"></div>
 <div style="text-align: center;">
-  <button class="btn btn-primary" style="width: 200px;" onclick="printDiv()">Print</button>
+  <button class="btn btn-primary" style="width: 200px;" onclick="printDiv()">{{ 'Print' | t }}</button>
 </div>

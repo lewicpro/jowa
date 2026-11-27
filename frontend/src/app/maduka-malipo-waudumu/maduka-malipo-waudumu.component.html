@@ -6,7 +6,7 @@
 </mat-form-field>
 </div> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> MALIPO</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'MALIPO' | t }}</h4>
   <div style="max-height:400px; overflow: auto">
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
@@ -25,19 +25,19 @@
       </tr> -->
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Tarehe</th>
-        <th scope="col">Simu</th>
-        <th scope="col">Account no</th>
-        <th scope="col">pin</th>
-        <th scope="col">Jina</th>
-        <th scope="col">kiasi</th>
-        <th scope="col" nowrap>amekopa awamu</th>
-        <th scope="col">Tangu</th>
-        <th scope="col" nowrap>kiasi kilichobaki</th>
-        <th scope="col" nowrap>Kiasi kilichokopwa</th>
-        <th scope="col">wilaya</th>
-        <th scope="col">mkoa</th>
-        <th scope="col">status</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
+        <th scope="col">{{ 'Simu' | t }}</th>
+        <th scope="col">{{ 'Account no' | t }}</th>
+        <th scope="col">{{ 'pin' | t }}</th>
+        <th scope="col">{{ 'Jina' | t }}</th>
+        <th scope="col">{{ 'kiasi' | t }}</th>
+        <th scope="col" nowrap>{{ 'amekopa awamu' | t }}</th>
+        <th scope="col">{{ 'Tangu' | t }}</th>
+        <th scope="col" nowrap>{{ 'kiasi kilichobaki' | t }}</th>
+        <th scope="col" nowrap>{{ 'Kiasi kilichokopwa' | t }}</th>
+        <th scope="col">{{ 'wilaya' | t }}</th>
+        <th scope="col">{{ 'mkoa' | t }}</th>
+        <th scope="col">{{ 'status' | t }}</th>
 
       </tr>
     </thead>
@@ -63,7 +63,7 @@
             <td nowrap>{{form.jina | titlecase}}</td>
           }
           @if (form.loan_repay > 0) {
-            <td nowrap style="color:blue">{{form.loan_repay | currency: 'tsh '}}</td>
+            <td nowrap style="color:blue">{{form.loan_repay | money}}</td>
           }
           @if (form.loan_repay > 0) {
             <td nowrap>{{form.awamu}}</td>
@@ -72,10 +72,10 @@
             <td nowrap>{{form.tangu}}</td>
           }
           @if (form.loan_repay > 0) {
-            <td nowrap  style="color:red">{{form.Balance | currency: 'tsh '}}</td>
+            <td nowrap  style="color:red">{{form.Balance | money}}</td>
           }
           @if (form.loan_repay > 0) {
-            <td nowrap>{{form.kilichokopwa | currency: 'tsh '}}</td>
+            <td nowrap>{{form.kilichokopwa | money}}</td>
           }
           @if (form.loan_repay > 0) {
             <td nowrap>{{form.wilaya}}</td>

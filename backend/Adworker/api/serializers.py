@@ -3,6 +3,8 @@ from ..models import *
 from django.contrib.auth import get_user_model
 from rest_framework.serializers import CharField, EmailField, ValidationError, SerializerMethodField
 from django.db.models import Q
+from django.utils import timezone
+from decimal import Decimal
 User = get_user_model()
 
 
@@ -1742,6 +1744,7 @@ class MkopoSerializer(serializers.ModelSerializer):
     class Meta:
         model = FormMkopo
         fields=[
+            'id',
             'user',
             'jina',
             'tarehe',
@@ -1784,6 +1787,54 @@ class MkopoSerializer(serializers.ModelSerializer):
             'day'
             
         ]
+
+
+class LoanInstallmentSerializer(serializers.ModelSerializer):
+    loan_pk = serializers.IntegerField(source='loan_id', read_only=True)
+    user = serializers.CharField(source='loan.user', read_only=True)
+    jina = serializers.CharField(source='loan.jina', read_only=True)
+    Account_no = serializers.CharField(source='loan.Account_no', read_only=True)
+    Simu = serializers.CharField(source='loan.Simu', read_only=True)
+    pin = serializers.CharField(source='loan.pin', read_only=True)
+    RealMkopo = serializers.CharField(source='loan.RealMkopo', read_only=True)
+    jumla = serializers.IntegerField(source='loan.jumla', read_only=True)
+    Miezi = serializers.CharField(source='loan.Miezi', read_only=True)
+    Riba = serializers.CharField(source='loan.Riba', read_only=True)
+    Faida = serializers.CharField(source='loan.Faida', read_only=True)
+    company = serializers.CharField(source='loan.company', read_only=True)
+    paid_amount = serializers.SerializerMethodField()
+    balance = serializers.SerializerMethodField()
+    promised_date = serializers.DateField(read_only=True, allow_null=True)
+    promise_note = serializers.CharField(read_only=True, allow_null=True, allow_blank=True)
+
+    class Meta:
+        model = LoanInstallment
+        fields = ['id', 'loan_pk', 'sequence', 'due_date', 'scheduled_amount',
+                  'paid_amount', 'balance', 'promised_date', 'promise_note', 'user', 'jina', 'Account_no', 'Simu',
+                  'pin', 'RealMkopo', 'jumla', 'Miezi', 'Riba', 'Faida', 'company']
+
+    def get_paid_amount(self, installment):
+        if hasattr(installment, 'active_paid_amount'):
+            return installment.active_paid_amount or Decimal('0.00')
+        return sum(installment.payment_allocations.exclude(payment__info__in=['delete', 'deleted']).values_list('amount', flat=True), Decimal('0.00'))
+
+    def get_balance(self, installment):
+        return max(Decimal('0.00'), installment.scheduled_amount - self.get_paid_amount(installment))
+
+
+class LoanInstallmentPromiseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LoanInstallment
+        fields = ['id', 'promised_date', 'promise_note']
+        extra_kwargs = {
+            'promised_date': {'required': False, 'allow_null': True},
+            'promise_note': {'required': False, 'allow_null': True, 'allow_blank': True},
+        }
+
+    def validate_promised_date(self, value):
+        if value and value < timezone.localdate():
+            raise serializers.ValidationError('The promised date cannot be in the past.')
+        return value
 
 
 class SikuSerializer(serializers.ModelSerializer):
@@ -2043,10 +2094,13 @@ class MessejiSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     # soda = WakalaMmilikiSerializer()
+    # the forms send and read "check"; it is saved in the check_no column
+    check = serializers.CharField(source='check_no', required=False, allow_blank=True, allow_null=True)
     class Meta:
         model = Register
         fields=[
             'pk',
+            'check',
             # 'soda',
             'Username',
             'jina',
@@ -2688,6 +2742,31 @@ class MkatabaSerializer(serializers.ModelSerializer):
             'phone',
             'mkataba',
         ]
+
+
+class LoanAgreementTemplateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LoanAgreementTemplate
+        fields = ['pk', 'company_username', 'title', 'pdf_file', 'uploaded_at']
+        read_only_fields = ['pk', 'uploaded_at']
+
+    def validate_title(self, value):
+        title = value.strip()
+        if not title:
+            raise serializers.ValidationError('Enter a name for this agreement form.')
+        return title
+
+    def validate_pdf_file(self, uploaded_file):
+        if not uploaded_file.name.lower().endswith('.pdf'):
+            raise serializers.ValidationError('Choose a PDF file.')
+        if uploaded_file.size > 20 * 1024 * 1024:
+            raise serializers.ValidationError('PDF files must be 20 MB or smaller.')
+
+        header = uploaded_file.read(1024)
+        uploaded_file.seek(0)
+        if b'%PDF-' not in header:
+            raise serializers.ValidationError('This file does not appear to be a valid PDF.')
+        return uploaded_file
 
 class HouseSerializer(serializers.ModelSerializer):
     class Meta: 

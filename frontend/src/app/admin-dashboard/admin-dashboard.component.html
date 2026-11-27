@@ -1,21 +1,70 @@
+<div class="dash aleco-dash">
+  <!-- Header: logo, modules (same click handlers / links as before), logout -->
+  <header class="dash-header">
+    <div class="dash-inner">
+      <div class="row-1">
+        <div class="brand-and-modules">
+          <img class="brand" src="assets/images/aleco-logo.png" alt="Aleco">
+          <nav class="modules" aria-label="Moduli">
+            <a class="pill pill-current" [routerLink]="['Ongeza-Account']" aria-current="page">{{ 'Mikopo' | t }}</a>
+            <a class="pill" [routerLink]="['Ongeza-Account']" (click)="changerouter()">{{ 'Nyumba' | t }}</a>
+            <button type="button" class="pill" (click)="changeclik()">{{ 'Duka' | t }}</button>
+            <button type="button" class="pill" (click)="ordercom()">{{ 'Distribution' | t }}</button>
+            <button type="button" class="pill" (click)="changeclikWakala()">{{ 'Wakala' | t }}</button>
+          </nav>
+        </div>
+        <div class="hdr-actions">
+          <app-settings-menu></app-settings-menu>
+          <button type="button" class="logout" (click)="execute()">{{ 'Logout' | t }}</button>
+        </div>
+      </div>
 
-<div style="padding:20px; background:rgba(248, 248, 255, 0)"></div>
-<div class="container" style="padding-top:10px;">
-  <div style="float:right"> <a (click)="execute()" style="text-decoration:none;  padding:20px; font-size: 15px; background:rgba(248, 248, 255, 0); width:50px; color:red; cursor: pointer;" >Logout</a> </div>
-  <div class="text-center" style=" font-size:12px;"><li  style="display:inline-block"><span style="font-weight:500; color:green"><a [routerLink]="['Ongeza-Account']" style="text-decoration: none; color:silver; cursor: not-allowed">Mikopo</a></span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none" [routerLink]="['Ongeza-Account']"   (click)="changerouter()">Nyumba</a> </span></li>  <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:#007bff; cursor: pointer;"><a style="text-decoration: none"  (click)="changeclik()">Duka</a> </span></li> <span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:#007bff; cursor: pointer;"><a style="text-decoration: none"  (click)="ordercom()">Distribution</a> </span></li><span style="font-size: 20px; font-weight: 100;">|</span> <li style="display:inline-block"><span style="font-weight:500; color:green"><a style="text-decoration: none; color:#007bff; cursor: pointer;;"  (click)="changeclikWakala()">Wakala</a> </span></li></div>
-  
-  <div style="padding:10px;"></div>
-  <div style="background:rgba(255, 255, 255, 0)">
-    <div  class="text-center" style=" font-size:12px; border-style:solid; border-width: 1px; border-color: rgb(203, 200, 200);" > <li style="display:inline-block"><span style="font-weight:500">Rejesho mwezi wa {{mwezi}}:</span> {{mez | currency: 'tsh '}}</li> <li style="display:inline-block">||  <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['General-Information']">Info </a> </li>   <li style="display:inline-block">|| <span style="font-weight:500">Jumla ya Mikopo:</span>  {{mkopo | currency: 'tsh '}} </li> <div style="display:inline-block; text-align:center" > ||  <span style="font-weight:600">Balance: </span>{{balance | currency: 'tsh '}}</div></div>
-    <div style="padding:5px; background:rgba(255, 255, 255, 0)"></div>
-    <div class="float-center " styl e=" font-weight:200; background:ghostwhite">
-
-      <div  style="display:inline-block; font-size:12px;padding:8px; color:white; background:#eeeeee83; border-radius: 15px; width:100%;"><li class="more" style="display:inline-block"><a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Ongeza-Kampuni']" style="text-decoration: none;  color:#666666; font-weight: lighter;">Ongeza Kampuni</a></li> <li class="more" style="display:inline-block"> | <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Ongeza-Account']" style="text-decoration: none;  color:#666666; font-weight: lighter;">Ongeza Account</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Wateja']" style="text-decoration: none;  color:#666666; font-weight: lighter;">Wateja wote</a> </li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['wadaiwa']" style="text-decoration: none;  color:#666666; font-weight: lighter;">Wanaodaiwa mwezi huu</a></li> <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Malipo']" style="text-decoration: none;  color:#666666; font-weight: lighter;">Malipo </a> </li>   <li style="display:inline-block">| <a class="monno" [routerLinkActive]="['active']"  [routerLink]="['Waliokopa']" style="text-decoration: none; color:#666666; font-weight: lighter;">waliokopa</a> </li> <li style="display:inline-block">| <a class="monno" style="text-decoration: none;  color:#666666; font-weight: lighter;" [routerLinkActive]="['active']"  [routerLink]="['Waliojulishwa/Mwezihuu']">Huduma ya meseji</a> </li></div>
-      
+      <div class="row-2">
+        <nav class="tabs" aria-label="Sehemu za Mikopo">
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Wateja']">{{ 'Wateja wote' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['wadaiwa']">{{ 'Wanaodaiwa mwezi huu' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Malipo']">{{ 'Malipo' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Waliokopa']">{{ 'Waliokopa' | t }}</a>
+          <a class="tab monno" [routerLinkActive]="['active']" [routerLink]="['Waliojulishwa/Mwezihuu']">{{ 'Huduma ya meseji' | t }}</a>
+        </nav>
+        <div class="actions">
+          <a class="btn-outline more monno" [routerLinkActive]="['active']" [routerLink]="['Ongeza-Kampuni']">{{ 'Ongeza Kampuni' | t }}</a>
+          <a class="btn-primary more monno" [routerLinkActive]="['active']" [routerLink]="['Ongeza-Account']">{{ '+ Ongeza Account' | t }}</a>
+        </div>
+      </div>
     </div>
-    <div style=" font-size:12px; padding:10px; background:rgba(248, 248, 255, 0)"><router-outlet></router-outlet></div>
+  </header>
+  <div class="stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 
-  
-  </div>
-  
+  <main class="dash-inner dash-main">
+    <!-- Summary: same values as the old one-line summary -->
+    <section class="kpis" aria-label="Muhtasari">
+      <div class="kpi">
+        <span class="kpi-label">{{ 'Jumla ya Mikopo' | t }}</span>
+        <span class="kpi-value">{{mkopo | money}}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{{ 'Balance' | t }}</span>
+        <span class="kpi-value" [class.negative]="balance < 0">{{balance | money}}</span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-head">
+          <span class="kpi-label">{{ 'Rejesho mwezi wa' | t }} {{mwezi}}</span>
+          <a class="info-btn monno" [routerLinkActive]="['active']" [routerLink]="['General-Information']">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+            {{ 'Info' | t }}
+          </a>
+        </div>
+        @if (mez != null) {
+          <span class="kpi-value positive">{{mez | money}}</span>
+        } @else {
+          <span class="kpi-value muted">—</span>
+        }
+      </div>
+    </section>
+
+    <div class="outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>

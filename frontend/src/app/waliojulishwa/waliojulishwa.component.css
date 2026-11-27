@@ -1,3 +1,23 @@
+ .sms-service-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.sms-service-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin: 4px 0 14px;
+}
+
+.sms-service-content {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
 /* Structure */
 .example-container {
     display: flex;

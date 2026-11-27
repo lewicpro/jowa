@@ -7,16 +7,16 @@
 <!-- <button (click)="time()">click</button> -->
 </div>
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(132, 106, 106, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5); overflow:scroll;">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> List of Products</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'List of Products' | t }}</h4>
   <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
   <!-- <br><br> -->
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <div style="max-height:400px; overflow:auto" >
     <ng-template #template>
       <div class="modal-body text-center">
-        <p>Do you want to confirm?</p>
-        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+        <p>{{ 'Do you want to confirm?' | t }}</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
       </div>
     </ng-template>
 
@@ -24,36 +24,36 @@
 
       <tbody style="overflow-x: scroll;">
         <tr>
-          <th style="padding-left:10px;">Time</th>
+          <th style="padding-left:10px;">{{ 'Time' | t }}</th>
           <!-- <th style="padding-left:10px;">pk</th> -->
-          <th>Name</th>
-          <th>Kiasi</th>
-          <th>Mtandao</th>
-          <th>Officer</th>
+          <th>{{ 'Name' | t }}</th>
+          <th>{{ 'Kiasi' | t }}</th>
+          <th>{{ 'Mtandao' | t }}</th>
+          <th>{{ 'Officer' | t }}</th>
 
-          <th>Remained</th>
-          <th>Sold</th>
+          <th>{{ 'Remained' | t }}</th>
+          <th>{{ 'Sold' | t }}</th>
         </tr>
         <tr style="background-color: rgb(203, 228, 183);">
-          <td style="padding-left:10px;" class="youo" nowrap>Tarehe</td>
-          <td class="youo" colspan="5" style="background-color: rgb(181, 224, 145);"  nowrap>Other Single</td>
+          <td style="padding-left:10px;" class="youo" nowrap>{{ 'Tarehe' | t }}</td>
+          <td class="youo" colspan="5" style="background-color: rgb(181, 224, 145);"  nowrap>{{ 'Other Single' | t }}</td>
           <!-- <td class="youo"  nowrap>{{n.Selling_price}}</td> -->
           <!-- <td class="youo"  nowrap>{{n.barcode}}</td> -->
           <!-- <td class="youo"  nowrap>{{n.Officer_worker}}</td> -->
 
           <!-- <td class="youo" nowrap>product</td> -->
-          <td class="youo" nowrap>purchased</td>
+          <td class="youo" nowrap>{{ 'purchased' | t }}</td>
         </tr>
         @for (n of all; track n) {
           <tr class="youo" style="overflow-x:scroll;" scrollX="true"  (click)="presentAlertConfirm(n)">
             <!-- <td style="padding-left:10px;" class="youo" nowrap>{{n.pk}}</td> -->
             <td style="padding-left:10px;" class="youo" nowrap>{{n.Tarehe}}</td>
             <td class="youo"  nowrap>{{n.Name_of_the_product}}</td>
-            <td class="youo"  nowrap>{{n.Selling_price}}</td>
+            <td class="youo"  nowrap>{{ n.Selling_price | money: 'raw' }}</td>
             <td class="youo"  nowrap>{{n.barcode}}</td>
             <td class="youo"  nowrap>{{n.Officer_worker}}</td>
             <td class="youo" nowrap>{{n.Number_of_products}}</td>
-            <td class="youo" nowrap>{{n.Total_Purchased}}</td>
+            <td class="youo" nowrap>{{ n.Total_Purchased | money: 'raw' }}</td>
           </tr>
         }
 

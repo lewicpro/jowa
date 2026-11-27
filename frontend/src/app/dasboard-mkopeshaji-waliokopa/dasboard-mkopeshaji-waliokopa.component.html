@@ -57,11 +57,11 @@
       <tr  id="customers" style="background-color: #dee2e6;">
 
         <td style="background-color: rgb(102, 87, 87);" > </td>
-        <td style="white-space: nowrap; font-size: 10px;"> Given:{{given | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap; font-size: 10px;"> Given:{{given | money}}</td>
         <td style="white-space: nowrap"></td>
         <td style="white-space: nowrap"></td>
         <td style="white-space: nowrap"></td>
-        <td style="white-space: nowrap; font-size: 10px;">Total : {{sum | currency: 'tsh '}}</td>
+        <td style="white-space: nowrap; font-size: 10px;">Total : {{sum | money}}</td>
         <td style="white-space: nowrap; "></td>
         <td style="white-space: nowrap; "></td>
         <td style="white-space: nowrap; "></td>
@@ -90,23 +90,23 @@
               <td nowrap> {{form.Account_no}}</td>
               <td nowrap>{{form.pin}}</td>
               <td nowrap>{{form.jina | titlecase}}</td>
-              <!-- <td nowrap>{{form.RealMkopo | currency: 'tsh '}}</td> -->
-              <td nowrap>{{form.jumla | currency: 'tsh '}}</td>
+              <!-- <td nowrap>{{form.RealMkopo | money}}</td> -->
+              <td nowrap>{{form.jumla | money}}</td>
               <td nowrap>{{form.Miezi}}</td>
               <td nowrap>10</td>
-              <!-- <td nowrap>{{form.Faida | currency: 'tsh '}}</td> -->
-              <td nowrap>{{form.mw1 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw2 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw3 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw4 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw5 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw6 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw7 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw8 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw9 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw10 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw11 | currency: 'tsh '}}</td>
-              <td nowrap>{{form.mw12 | currency: 'tsh '}}</td>
+              <!-- <td nowrap>{{form.Faida | money}}</td> -->
+              <td nowrap>{{form.mw1 | money}}</td>
+              <td nowrap>{{form.mw2 | money}}</td>
+              <td nowrap>{{form.mw3 | money}}</td>
+              <td nowrap>{{form.mw4 | money}}</td>
+              <td nowrap>{{form.mw5 | money}}</td>
+              <td nowrap>{{form.mw6 | money}}</td>
+              <td nowrap>{{form.mw7 | money}}</td>
+              <td nowrap>{{form.mw8 | money}}</td>
+              <td nowrap>{{form.mw9 | money}}</td>
+              <td nowrap>{{form.mw10 | money}}</td>
+              <td nowrap>{{form.mw11 | money}}</td>
+              <td nowrap>{{form.mw12 | money}}</td>
               @if (form.loan_repay) {
                 <td><i class="fas fa-arrow-down" style="cursor: alias;"></i></td>
               }

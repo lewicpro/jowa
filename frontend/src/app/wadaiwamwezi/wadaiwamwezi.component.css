@@ -7,6 +7,51 @@ th{
   font-weight:200;
 }
 
+.month-owing-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px 12px;
+}
+
+.month-owing-header h4 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+}
+
+.month-owing-actions {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.month-owing-print-btn {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid #b5b5b5;
+  border-radius: 8px;
+  background: #fff;
+  color: #212529;
+  font: 500 14px -apple-system, 'Segoe UI', sans-serif;
+  cursor: pointer;
+}
+
+.month-owing-print-btn:hover {
+  border-color: #fa782e;
+  box-shadow: 0 4px 12px rgba(33, 37, 41, .12);
+}
+
+.month-owing-table button {
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
 /* th:hover{
   color:rgb(255, 255, 255);
   font-weight:400;

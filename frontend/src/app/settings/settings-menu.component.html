@@ -1,0 +1,60 @@
+<button type="button" class="gear" (click)="toggle()" [attr.aria-expanded]="open" aria-haspopup="dialog" [attr.aria-label]="'Mipangilio' | t">
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+  <span class="gear-label">{{ 'Mipangilio' | t }}</span>
+</button>
+
+@if (open) {
+  <div class="panel" role="dialog" [attr.aria-label]="'Mipangilio' | t">
+    <div class="panel-head">
+      <strong>{{ 'Mipangilio' | t }}</strong>
+      <button type="button" class="x" (click)="close()" [attr.aria-label]="'Funga' | t">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+      </button>
+    </div>
+
+    <div class="group">
+      <span class="group-label" id="set-lang">{{ 'Lugha' | t }}</span>
+      <div class="seg" role="radiogroup" aria-labelledby="set-lang">
+        @for (l of langs; track l.id) {
+          <button type="button" role="radio" [attr.aria-checked]="settings.lang() === l.id" [class.on]="settings.lang() === l.id" (click)="settings.setLang(l.id)">{{ l.label }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="group-label" id="set-cur">{{ 'Sarafu' | t }}</span>
+      <div class="seg" role="radiogroup" aria-labelledby="set-cur">
+        @for (c of currencies; track c.id) {
+          <button type="button" role="radio" [attr.aria-checked]="settings.currency() === c.id" [class.on]="settings.currency() === c.id" (click)="settings.setCurrency(c.id)">{{ c.label }}</button>
+        }
+      </div>
+      @if (settings.currency() === 'USD') {
+        <div class="fx" aria-live="polite">
+          @if (settings.fx(); as fx) {
+            <span>1 USD = {{ fx.rate | number: '1.2-2' }} TSh</span>
+            <small>{{ 'Imesasishwa' | t }}: {{ fx.updated || (fx.fetchedAt | date: 'medium') }}</small>
+          } @else if (settings.fxLoading()) {
+            <span>{{ 'Inapakua kiwango cha leo…' | t }}</span>
+          }
+          @if (settings.fxError()) {
+            <small class="warn">{{ (settings.fx() ? 'Imeshindwa kusasisha; kiwango cha mwisho kinatumika' : 'Kiwango hakipatikani; kiasi kinaonyeshwa kwa TSh') | t }}</small>
+          }
+          <button type="button" class="fx-refresh" (click)="settings.refreshRate(true)" [disabled]="settings.fxLoading()">{{ 'Sasisha kiwango' | t }}</button>
+        </div>
+      }
+    </div>
+
+    <label class="toggle">
+      <span>{{ 'Onyesha senti (.00)' | t }}</span>
+      <input type="checkbox" [checked]="settings.decimals()" (change)="settings.setDecimals($any($event.target).checked)">
+      <span class="track" aria-hidden="true"><span class="knob"></span></span>
+    </label>
+
+    <div class="preview">
+      <span class="group-label">{{ 'Mfano' | t }}</span>
+      <strong>{{ sample | money }}</strong>
+    </div>
+
+    <button type="button" class="reset" (click)="settings.reset()">{{ 'Rudisha kawaida' | t }}</button>
+  </div>
+}

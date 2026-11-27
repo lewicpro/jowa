@@ -1,0 +1,61 @@
+td {
+  font-weight: 100;
+  font-size: 12px;
+}
+
+th {
+  color: green;
+  font-weight: 200;
+  white-space: nowrap;
+}
+
+.overdue-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.overdue-list {
+  width: 100%;
+  max-width: 100%;
+}
+
+.overdue-table-wrap table {
+  width: 100%;
+  min-width: 1450px;
+  table-layout: auto;
+}
+
+.overdue-table-wrap th {
+  padding: 8px 10px;
+  white-space: normal;
+  min-width: 70px;
+}
+
+.overdue-table-wrap td {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.overdue-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px;
+}
+
+.overdue-pagination span {
+  color: #666;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .overdue-table-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}

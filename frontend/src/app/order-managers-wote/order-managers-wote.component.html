@@ -10,22 +10,22 @@
 <!-- <button (click)="wow()">ddd</button> -->
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5)" id="componentID">
 
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> MANAGERS WOTE NA KUMBUKUMBU </h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'MANAGERS WOTE NA KUMBUKUMBU' | t }} </h4>
   <div style="max-height:400px; overflow:auto" >
     <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Jina</th>
-          <th scope="col">Simu</th>
-          <th scope="col">Balance</th>
+          <th scope="col">{{ 'Jina' | t }}</th>
+          <th scope="col">{{ 'Simu' | t }}</th>
+          <th scope="col">{{ 'Balance' | t }}</th>
           <!-- <th scope="col">pin</th> -->
-          <th scope="col">Registered on</th>
-          <th scope="col">ofisi</th>
-          <th scope="col">kata</th>
-          <th scope="col">wilaya</th>
-          <th scope="col">mkoa</th>
-          <th scope="col">Tin No</th>
+          <th scope="col">{{ 'Registered on' | t }}</th>
+          <th scope="col">{{ 'ofisi' | t }}</th>
+          <th scope="col">{{ 'kata' | t }}</th>
+          <th scope="col">{{ 'wilaya' | t }}</th>
+          <th scope="col">{{ 'mkoa' | t }}</th>
+          <th scope="col">{{ 'Tin No' | t }}</th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +34,7 @@
             <td  nowrap scope="row">{{i*1 - 1*1}}</td>
             <td  nowrap>{{form.jina_kamili | titlecase}}</td>
             <td  nowrap>{{form.Phone}}</td>
-            <td  nowrap> {{form.balance}}</td>
+            <td  nowrap> {{ form.balance | money: 'raw' }}</td>
             <!-- <td  nowrap>{{form.pin}}</td> -->
             <td  nowrap>{{form.expire}}</td>
             <td  nowrap>{{form.ofisi}}</td>

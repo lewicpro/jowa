@@ -1832,6 +1832,8 @@ export class OngezaMkopoComponent implements OnInit {
         }
 
       }
+      // put every month's amount in the right place before the loan is prepared for sending
+      this.fixSchedule();
       this.mambos = {
         user: this.user,
          jina: this.jina,
@@ -2019,6 +2021,150 @@ fourall(){
 }
 
 
+
+// ================= helpers for the new form layout (design 1) =================
+// They only read what updateTotal() already calculated; the loan maths is not changed.
+
+// Puts the schedule right before the loan is prepared for sending.
+// - No month typed: every month pays "kila mwezi" (as before).
+// - Some months typed: the other months share what is left, so the months add up to "Jumla".
+// - Every month gets its name: from this month (next month after the 21st), going on past December.
+// (The long code above mixed months up when only some were typed, e.g. if month 1 was empty it
+//  filled month 2, and it left no name for a 1-month loan after the 21st or for month 12.)
+fixSchedule() {
+  const months = this.monthNumbers();
+  if (months.length === 0) {
+    return;
+  }
+
+  // month names
+  const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const today = new Date();
+  let first = today.getMonth();
+  if (today.getDate() > 21) {
+    first = first + 1;
+  }
+  for (const i of months) {
+    this['mwezi' + i] = names[(first + i - 1) % 12];
+  }
+
+  // which months were typed, and how much they add up to
+  let typedTotal = 0;
+  const notTyped = [];
+  for (const i of months) {
+    const typed = this['m' + i];
+    if (typed !== null && typed !== undefined && String(typed).trim() !== '') {
+      this['mw' + i] = typed;
+      typedTotal = typedTotal + Number(typed);
+    } else {
+      notTyped.push(i);
+    }
+  }
+
+  // nothing typed: every month pays "kila mwezi"
+  if (notTyped.length === months.length) {
+    for (const i of months) {
+      this['mw' + i] = this.kilamwezi;
+    }
+    return;
+  }
+
+  // some typed: the other months share what is left (the last one takes the rounding)
+  const left = Number(this.jumla || 0) - typedTotal;
+  if (notTyped.length > 0) {
+    const share = Math.round(left / notTyped.length);
+    for (let k = 0; k < notTyped.length; k++) {
+      if (k === notTyped.length - 1) {
+        this['mw' + notTyped[k]] = left - share * (notTyped.length - 1);
+      } else {
+        this['mw' + notTyped[k]] = share;
+      }
+    }
+  }
+}
+
+// the months of the schedule: [1, 2, 3 ...] up to the number of months (max 12)
+monthNumbers() {
+  const list = [];
+  let n = Math.round(Number(this.miezi));
+  if (!(n > 0)) {
+    return list;
+  }
+  if (n > 12) {
+    n = 12;
+  }
+  for (let i = 1; i <= n; i++) {
+    list.push(i);
+  }
+  return list;
+}
+
+// name of month i in the schedule ("December" ...)
+monthName(i) {
+  return this['mwezi' + i];
+}
+
+// the year of month i: the schedule can go on into next year (December -> January)
+monthYear(i) {
+  const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let year = Number(this.mwaka) || new Date().getFullYear();
+  // a loan made in late December starts in January of next year
+  const today = new Date();
+  if (names.indexOf(this.mwezi1) < today.getMonth()) {
+    year = year + 1;
+  }
+  let last = names.indexOf(this.mwezi1);
+  for (let k = 2; k <= i; k++) {
+    const now = names.indexOf(this['mwezi' + k]);
+    if (now < last) {
+      year = year + 1;   // passed December
+    }
+    last = now;
+  }
+  return year;
+}
+
+// the amount that will be saved for month i (your own amount, or "kila mwezi")
+monthPay(i) {
+  return this['mw' + i];
+}
+
+// your own amount typed for month i (empty = use "kila mwezi")
+getM(i) {
+  return this['m' + i];
+}
+
+setM(i, value) {
+  this['m' + i] = value;
+  this.updateTotal();
+}
+
+// all the monthly amounts added together
+scheduleTotal() {
+  let total = 0;
+  for (const i of this.monthNumbers()) {
+    total = total + Number(this.monthPay(i) || 0);
+  }
+  return total;
+}
+
+// does the schedule add up to "Jumla"? (each month is rounded, so allow 1 shilling per month)
+scheduleOk() {
+  return Math.abs(this.scheduleTotal() - Number(this.jumla || 0)) <= this.monthNumbers().length;
+}
+
+// "Riba" shown: the one typed, or the normal one (10% for every month)
+ribaShown() {
+  if (this.ribaa) {
+    return this.ribaa;
+  }
+  return Math.round(Number(this.miezi) || 0) * 10;
+}
+
+// the form can be sent when there is an amount and months
+canSend() {
+  return Number(this.Kiasi) > 0 && Number(this.miezi) > 0;
+}
 
 openModal(template: TemplateRef<any>) {
   this.modalRef = this.modalService.show(template, {class: 'modal-sm'});

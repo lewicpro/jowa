@@ -1,0 +1,112 @@
+/* Info page (money in / money out): "M1" design, Aleco site palette. Styling only. */
+:host { display: flex; flex-direction: column; gap: 18px; }
+
+.panel {
+  background: #FFFFFF;
+  border: 1px solid #DEE2E6;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 10px 28px rgba(33, 37, 41, .08);
+  overflow: hidden;
+  animation: fadeUp .45s ease backwards;
+}
+.out-panel { animation-delay: .1s; }
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #DEE2E6;
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: 'Baloo Paaji 2', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #2A2727;
+}
+.panel-note { font-size: 13px; color: #666666; }
+
+.dot { width: 12px; height: 12px; border-radius: 4px; }
+.dot.in { background: #008000; }
+.dot.out { background: #C82930; }
+
+.table-wrap { overflow-x: auto; max-height: 420px; }
+
+.months {
+  width: 100%;
+  min-width: 1180px;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.months thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 11px 10px;
+  border: 0;
+  background: #F6F6F6;
+  color: #008000;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  text-align: right;
+  white-space: nowrap;
+}
+.months thead th:first-child { text-align: left; padding-left: 18px; }
+
+.months td {
+  padding: 12px 10px;
+  border: 0;
+  border-top: 1px solid #DEE2E6;
+  color: #212529;
+  text-align: right;
+  white-space: nowrap;
+}
+.months td.year {
+  text-align: left;
+  padding-left: 18px;
+  font-family: 'Baloo Paaji 2', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2A2727;
+}
+.months td.zero { color: #B5B5B5; }
+.months td.neg { color: #C82930; font-weight: 600; }
+
+#customers {
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease;
+  animation: rowIn .5s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+#customers:nth-child(2) { animation-delay: .08s; }
+#customers:nth-child(3) { animation-delay: .16s; }
+#customers:nth-child(n+4) { animation-delay: .24s; }
+#customers.in:hover {
+  background: linear-gradient(90deg, rgba(0, 128, 0, .12) 0%, rgba(0, 128, 0, .03) 60%, #FFFFFF 100%);
+  box-shadow: inset 4px 0 0 #008000, 0 6px 16px rgba(33, 37, 41, .08);
+}
+#customers.out:hover {
+  background: linear-gradient(90deg, rgba(200, 41, 48, .12) 0%, rgba(200, 41, 48, .03) 60%, #FFFFFF 100%);
+  box-shadow: inset 4px 0 0 #C82930, 0 6px 16px rgba(33, 37, 41, .08);
+}
+#customers td { transition: transform .2s ease; }
+#customers:hover td.year { transform: translateX(4px); }
+
+.panel { transition: transform .25s ease, box-shadow .25s ease; animation-duration: .65s; }
+.panel:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(33, 37, 41, .06), 0 18px 36px rgba(33, 37, 41, .13); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes rowIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

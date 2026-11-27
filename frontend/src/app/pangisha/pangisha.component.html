@@ -1,13 +1,23 @@
 
 <ng-progress></ng-progress>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Pangisha' | t }}</h3>
+<div class="f5-body">
 <div class="d-flex justify-content-center">
   <!-- <button (click)="fuo()">click</button> -->
   <mat-form-field style="width:40%;">
-    <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
+    <input   matInput [(ngModel)]="filtertext" [placeholder]="'Filter' | t">
   </mat-form-field>
 </div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Form ya kupangisha' | t }}</h3>
+<div class="f5-body">
 <div style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">Form ya kupangisha</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;">{{ 'Form ya kupangisha' | t }}</h4>
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden;   " >
     <thead>
       <!-- <tr>
@@ -29,15 +39,15 @@
   <tr style="cursor:pointer" id="customers">
     <!-- <td class="text-center">muda wa sasa</td> -->
 
-    <td nowrap><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.name" name="name" placeholder="Username" (keyup)="Mir()"></td>
-    <td nowrap><input  style="border-radius:3px; background:white" [(ngModel)]="Created.full_name" name="full_name" placeholder="Jina kamili" type="text"   nowrap></td>
+    <td nowrap><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.name" name="name" [placeholder]="'Username' | t" (keyup)="Mir()"></td>
+    <td nowrap><input  style="border-radius:3px; background:white" [(ngModel)]="Created.full_name" name="full_name" [placeholder]="'Jina kamili' | t" type="text"   nowrap></td>
     <td><select [(ngModel)]="mor" (change)="ajir()"  style="width:100%;">
-      <option selected>Choose...</option>
-      <option  value="ajira">ajira</option>
-      <option value="biashara">biashara</option>
-      <option value="mkulima">mkulima</option>
+      <option selected>{{ 'Choose...' | t }}</option>
+      <option  value="ajira">{{ 'ajira' | t }}</option>
+      <option value="biashara">{{ 'biashara' | t }}</option>
+      <option value="mkulima">{{ 'mkulima' | t }}</option>
     </select></td>
-    <td><input   style="border-radius:3px; background:white" type="text"  [(ngModel)]="Created.simu" name="simu" placeholder="Simu"></td>
+    <td><input   style="border-radius:3px; background:white" type="text"  [(ngModel)]="Created.simu" name="simu" [placeholder]="'Simu' | t"></td>
     <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
 
   </tr>
@@ -81,9 +91,9 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa" placeholder="mahala ulipoajiriwa"></td>
-      <td><input    style="border-radius:3px; background:white"  type="text"  placeholder="idara unapofanyia" [(ngModel)]="Created.idara" name="idara"></td>
-      <td><input   style="border-radius:3px; background:white" type="text"  placeholder="wilaya" ></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa" [placeholder]="'mahala ulipoajiriwa' | t"></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [placeholder]="'idara unapofanyia' | t" [(ngModel)]="Created.idara" name="idara"></td>
+      <td><input   style="border-radius:3px; background:white" type="text"  [placeholder]="'wilaya' | t" ></td>
       <td nowrap><input  style="border-radius:3px; background:ghostwhite" [(ngModel)]="Created.shughuri" name="shughuri" value="ajira" type="text"   nowrap disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
@@ -106,10 +116,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:white"  type="text" placeholder="mahala unapofanyia biashara" [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa"></td>
-      <td><input    style="border-radius:3px; background:white"  type="text"  placeholder="aina ya biashara" [(ngModel)]="Created.idara" name="idara" ></td>
-      <td><input   style="border-radius:3px; background:white" type="text"  placeholder="wilaya" [(ngModel)]="Created.wilaya_kikazi" name="wilaya_kikazi"></td>
-      <td nowrap><input  style="border-radius:3px; background:ghostwhite" value="biashara" [(ngModel)]="Created.shughuri" name="shughuri" placeholder="biashara" type="text"   nowrap  disabled></td>
+      <td><input    style="border-radius:3px; background:white"  type="text" [placeholder]="'mahala unapofanyia biashara' | t" [(ngModel)]="Created.ulipoajiriwa" name="ulipoajiriwa"></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [placeholder]="'aina ya biashara' | t" [(ngModel)]="Created.idara" name="idara" ></td>
+      <td><input   style="border-radius:3px; background:white" type="text"  [placeholder]="'wilaya' | t" [(ngModel)]="Created.wilaya_kikazi" name="wilaya_kikazi"></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite" value="biashara" [(ngModel)]="Created.shughuri" name="shughuri" [placeholder]="'biashara' | t" type="text"   nowrap  disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -130,10 +140,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name = "ulipoajiriwa" placeholder="mahala unapofanyia kilimo"></td>
-      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.idara" name = "idara" placeholder="aina ya kilimo" ></td>
-      <td><input   style="border-radius:3px; background:white" type="text"  [(ngModel)]="Created.wilaya_kikazi" name = "wilaya_kikazi" placeholder="wilaya" ></td>
-      <td nowrap><input  style="border-radius:3px; background:ghostwhite" [(ngModel)]="Created.shughuri" name="shughuri" value="kilimo" placeholder="kilimo" type="text"   nowrap  disabled></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.ulipoajiriwa" name = "ulipoajiriwa" [placeholder]="'mahala unapofanyia kilimo' | t"></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.idara" name = "idara" [placeholder]="'aina ya kilimo' | t" ></td>
+      <td><input   style="border-radius:3px; background:white" type="text"  [(ngModel)]="Created.wilaya_kikazi" name = "wilaya_kikazi" [placeholder]="'wilaya' | t" ></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite" [(ngModel)]="Created.shughuri" name="shughuri" value="kilimo" [placeholder]="'kilimo' | t" type="text"   nowrap  disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -160,28 +170,28 @@
 <tr style="cursor:pointer" id="customers">
   <!-- <td class="text-center">muda wa sasa</td> -->
 
-  <td><input     style="border-radius:3px; background:white" placeholder="Nyumba number" [(ngModel)]="Created.nyumba_number" name="nyumba_number"  type="text" ></td>
-  <td><input     style="border-radius:3px; background:white" placeholder="Anwani" [(ngModel)]="Created.anwani" name="anwani"  type="text" ></td>
+  <td><input     style="border-radius:3px; background:white" [placeholder]="'Nyumba number' | t" [(ngModel)]="Created.nyumba_number" name="nyumba_number"  type="text" ></td>
+  <td><input     style="border-radius:3px; background:white" [placeholder]="'Anwani' | t" [(ngModel)]="Created.anwani" name="anwani"  type="text" ></td>
   <td>
 
     <select [(ngModel)]="Created.aina_ya_chumba" (change)="mimi(this.value)"  style="width:90%;">
-      <option selected > Choose chumba...</option>
-      <option  value="vyumba2 na sebule na choo">vyumba2 na sebule na choo</option>
-      <option  value="vyumba2 na sebule bila choo">vyumba2 na sebule bila choo</option>
-      <option value="chumba kimoja na choo">chumba kimoja na choo</option>
-      <option value="chumba kimoja bila choo">chumba kimoja bila choo </option>
+      <option selected > {{ 'Choose chumba...' | t }}</option>
+      <option  value="vyumba2 na sebule na choo">{{ 'vyumba2 na sebule na choo' | t }}</option>
+      <option  value="vyumba2 na sebule bila choo">{{ 'vyumba2 na sebule bila choo' | t }}</option>
+      <option value="chumba kimoja na choo">{{ 'chumba kimoja na choo' | t }}</option>
+      <option value="chumba kimoja bila choo">{{ 'chumba kimoja bila choo' | t }} </option>
     </select>
   </td>
   <td>
     <select [(ngModel)]="value" (change)="mimi(this.value)" id="inputGroupSelect01" style="width:100%;">
-      <option selected>Choose wakati wa malipo. ..</option>
-      <option  value="1">kila baada ya mwezi 1</option>
-      <option value="2">kila baada ya miezi 2</option>
-      <option value="3">kila baada ya miezi 3 </option>
-      <option value="4">kila baada ya mwaka </option>
+      <option selected>{{ 'Choose wakati wa malipo. ..' | t }}</option>
+      <option  value="1">{{ 'kila baada ya mwezi 1' | t }}</option>
+      <option value="2">{{ 'kila baada ya miezi 2' | t }}</option>
+      <option value="3">{{ 'kila baada ya miezi 3' | t }} </option>
+      <option value="4">{{ 'kila baada ya mwaka' | t }} </option>
     </select>
   </td>
-  <td nowrap><input   style="border-radius:3px; background:white" placeholder="kiasi kinacholipwa" type="text" [(ngModel)]="Created.kiasi" name="kiasi"   nowrap></td>
+  <td nowrap><input   style="border-radius:3px; background:white" [placeholder]="'kiasi kinacholipwa' | t" type="text" [(ngModel)]="Created.kiasi" name="kiasi"   nowrap></td>
   <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
 
 </tr>
@@ -239,10 +249,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.mwezi1" name="mwezi1" placeholder="Kila baada ya mwezi mmoja" (keyup)="calc()"></td>
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya miezi miwili" disabled></td>
-      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-      <td nowrap><input  style="border-radius:3px; background:ghostwhite" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.mwezi1" name="mwezi1" [placeholder]="'Kila baada ya mwezi mmoja' | t" (keyup)="calc()"></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya miezi miwili' | t" disabled></td>
+      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  [placeholder]="'kila baada ya miezi mitatu' | t" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite" [placeholder]="'kila baada ya mwaka' | t" type="text"   nowrap disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -263,10 +273,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya mwezi mmoja" disabled></td>
-      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.miezi2" name="miezi2" placeholder="kila baada ya miezi miwili" (keyup)="calc()"></td>
-      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-      <td nowrap><input  style="border-radius:3px; background:ghostwhite" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya mwezi mmoja' | t" disabled></td>
+      <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.miezi2" name="miezi2" [placeholder]="'kila baada ya miezi miwili' | t" (keyup)="calc()"></td>
+      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  [placeholder]="'kila baada ya miezi mitatu' | t" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:ghostwhite" [placeholder]="'kila baada ya mwaka' | t" type="text"   nowrap disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -287,10 +297,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
-      <td><input   style="border-radius:3px; background:white" type="text"  placeholder="kila baada ya miezi mitatu" [(ngModel)]="Created.miezi3" name="miezi3" (keyup)="calc()"> </td>
-      <td nowrap> <input  style="border-radius:3px; background:ghostwhite" placeholder="kila baada ya mwaka" type="text"   nowrap disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya mwezi mmoja ' | t" disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya miezi miwili ' | t" disabled></td>
+      <td><input   style="border-radius:3px; background:white" type="text"  [placeholder]="'kila baada ya miezi mitatu' | t" [(ngModel)]="Created.miezi3" name="miezi3" (keyup)="calc()"> </td>
+      <td nowrap> <input  style="border-radius:3px; background:ghostwhite" [placeholder]="'kila baada ya mwaka' | t" type="text"   nowrap disabled></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -311,10 +321,10 @@
   <tbody >
     <tr style="cursor:pointer" id="customers" >
       <!-- <td class="text-center">muda wa sasa</td> -->
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya mwezi mmoja " disabled></td>
-      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  placeholder="kila baada ya miezi miwili " disabled></td>
-      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  placeholder="kila baada ya miezi mitatu" disabled></td>
-      <td nowrap><input  style="border-radius:3px; background:white" placeholder="kila baada ya mwaka" type="text" [(ngModel)]="Created.year" name="year" (keyup)="calc()"></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya mwezi mmoja ' | t" disabled></td>
+      <td><input    style="border-radius:3px; background:ghostwhite"  type="text"  [placeholder]="'kila baada ya miezi miwili ' | t" disabled></td>
+      <td><input   style="border-radius:3px; background:ghostwhite" type="text"  [placeholder]="'kila baada ya miezi mitatu' | t" disabled></td>
+      <td nowrap><input  style="border-radius:3px; background:white" [placeholder]="'kila baada ya mwaka' | t" type="text" [(ngModel)]="Created.year" name="year" (keyup)="calc()"></td>
       <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
     </tr>
   </tbody>
@@ -342,10 +352,10 @@
 <tr style="cursor:pointer" id="customers">
   <!-- <td class="text-center">muda wa sasa</td> -->
 
-  <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.kata" name="kata" placeholder="kata"></td>
-  <td><input    style="border-radius:3px; background:white"  type="text"  placeholder="wilaya" [(ngModel)]="Created.wilaya" name="wilaya"></td>
-  <td><input   style="border-radius:3px; background:white" type="text"  placeholder="mkoa" [(ngModel)]="Created.mkoa" name="mkoa"></td>
-  <td nowrap><input   style="border-radius:3px; background:white" placeholder="eneo" type="text" [(ngModel)]="Created.eneo" name="eneo"   nowrap></td>
+  <td><input    style="border-radius:3px; background:white"  type="text"  [(ngModel)]="Created.kata" name="kata" [placeholder]="'kata' | t"></td>
+  <td><input    style="border-radius:3px; background:white"  type="text"  [placeholder]="'wilaya' | t" [(ngModel)]="Created.wilaya" name="wilaya"></td>
+  <td><input   style="border-radius:3px; background:white" type="text"  [placeholder]="'mkoa' | t" [(ngModel)]="Created.mkoa" name="mkoa"></td>
+  <td nowrap><input   style="border-radius:3px; background:white" [placeholder]="'eneo' | t" type="text" [(ngModel)]="Created.eneo" name="eneo"   nowrap></td>
   <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
 
 </tr>
@@ -394,10 +404,10 @@
 <tr style="cursor:pointer" id="customers">
   <!-- <td class="text-center">muda wa sasa</td> -->
 
-  <td><input   style="border-radius:3px; background:white" placeholder="Jina la mdhamini" [(ngModel)]="Created.jina_mdhamini" name="jina_mdhamini"  type="text" ></td>
-  <td><input     style="border-radius:3px; background:white" placeholder="Kazi ya mhamini"  type="text" [(ngModel)]="Created.cheo" name="cheo" ></td>
-  <td><input  style="border-radius:3px; background:white" placeholder="Simu ya mdhamini" type="text" [(ngModel)]="Created.simu_dalali" name="simu_dalali" ></td>
-  <td nowrap><input   style="border-radius:3px; background:white" placeholder="mahusiano" type="text"   nowrap></td>
+  <td><input   style="border-radius:3px; background:white" [placeholder]="'Jina la mdhamini' | t" [(ngModel)]="Created.jina_mdhamini" name="jina_mdhamini"  type="text" ></td>
+  <td><input     style="border-radius:3px; background:white" [placeholder]="'Kazi ya mhamini' | t"  type="text" [(ngModel)]="Created.cheo" name="cheo" ></td>
+  <td><input  style="border-radius:3px; background:white" [placeholder]="'Simu ya mdhamini' | t" type="text" [(ngModel)]="Created.simu_dalali" name="simu_dalali" ></td>
+  <td nowrap><input   style="border-radius:3px; background:white" [placeholder]="'mahusiano' | t" type="text"   nowrap></td>
   <!-- <td><input [(ngModel)]="userData.Balance" type="text"></td> -->
 
 </tr>
@@ -434,10 +444,10 @@
     <tr>
 
 
-      <th scope="col" title="Loan (L+I+6)"> Jumla ya kiasi kinacholipwa</th>
-      <th scope="col" title="Idadi ya miezi">Faida</th>
-      <th scope="col" title="Interest Paid">Pesa ilinayolipwa kwa mwezi</th>
-      <th scope="col" title="(Mkopo + Riba) Balance">Note, maelezo mafupi</th>
+      <th scope="col" title="Loan (L+I+6)"> {{ 'Jumla ya kiasi kinacholipwa' | t }}</th>
+      <th scope="col" title="Idadi ya miezi">{{ 'Faida' | t }}</th>
+      <th scope="col" title="Interest Paid">{{ 'Pesa ilinayolipwa kwa mwezi' | t }}</th>
+      <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Note, maelezo mafupi' | t }}</th>
       <!-- <th scope="col" title="Action">Mwezi wa nne</th> -->
 
     </tr>
@@ -449,24 +459,24 @@
   </div> -->
 
   <tr style="cursor:pointer" id="customers"  >
-    <td  style="white-space: nowrap; color:#666; font-size:12px">Nyumba inauwezo wa kupangisha watu: </td>
+    <td  style="white-space: nowrap; color:#666; font-size:12px">{{ 'Nyumba inauwezo wa kupangisha watu:' | t }} </td>
     <!-- <td  style="white-space: nowrap"></td> -->
     <!-- <td  style="white-space: nowrap"><span >Tsh</span>  {{totalAmount}}</td> -->
     <!-- <td  style="white-space: nowrap"><span >Tsh</span> {{kilamwezi}}</td> -->
     <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
     <td  style="white-space: nowrap">{{k.Balance}}</td> -->
-    <td  style="white-space: nowrap"><input [(ngModel)]="Created.caution" placeholder="Caution money"   type="text" ></td>
+    <td  style="white-space: nowrap"><input [(ngModel)]="Created.caution" [placeholder]="'Caution money' | t"   type="text" ></td>
 
   </tr>
 
   <tr style="cursor:pointer" id="customers"  >
-    <td  style="white-space: nowrap; color:#666; font-size:12px">Idadi ya watu waliopangishwa ni:</td>
+    <td  style="white-space: nowrap; color:#666; font-size:12px">{{ 'Idadi ya watu waliopangishwa ni:' | t }}</td>
     <!-- <td  style="white-space: nowrap"></td> -->
     <!-- <td  style="white-space: nowrap"><span >Tsh</span>  {{totalAmount}}</td>
     <td  style="white-space: nowrap"><span >Tsh</span> {{kilamwezi}}</td> -->
     <!-- <td  style="white-space: nowrap">{{k.loan_repay}}</td>
     <td  style="white-space: nowrap">{{k.Balance}}</td> -->
-    <td  style="white-space: nowrap"><input [(ngModel)]="Created.file_no" placeholder="file no"   type="text" ></td>
+    <td  style="white-space: nowrap"><input [(ngModel)]="Created.file_no" [placeholder]="'file no' | t"   type="text" ></td>
 
   </tr>
   <!--<tr id="customers">-->
@@ -484,5 +494,9 @@
 </tbody>
 </table>
 <div style="padding:10px;"></div>
-<button style="width:100%" type="submit" (click)="UserCreate()">TUMA</button>
+<button style="width:100%" type="submit" (click)="UserCreate()">{{ 'TUMA' | t }}</button>
 </div>
+</div>
+</section>
+</div>
+

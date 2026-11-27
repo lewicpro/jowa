@@ -1,0 +1,1294 @@
+/*
+ * Aleco dashboards theme ("M1" design, Aleco site palette).
+ *
+ * One shared look for the five module dashboards (Mikopo /Admindash, Nyumba
+ * /Nyumba-dash, Duka /duka, Distribution /Orders, Wakala /wakala) and every
+ * page that opens inside them. Styling only: no behaviour changes.
+ * Every selector starts with `.aleco-dash`, a class only those five dashboard
+ * shells carry, so the front page, login and the rest of the site are not affected.
+ * `!important` is used only where pages set inline styles that would win otherwise.
+ *
+ * Part 1: the dashboard shell (header, module pills, tabs, summary cards).
+ * Part 2: the pages inside the shell (`.aleco-dash .outlet ...`).
+ */
+
+/* =====================================================================
+   Part 1: dashboard shell
+   ===================================================================== */
+.aleco-dash {
+  --ink: #212529;
+  --ink-2: #2A2727;
+  --muted: #666666;
+  --line: #DEE2E6;
+  --line-2: #B5B5B5;
+  --bg: #ECEFF1;
+  --bg-2: #F6F6F6;
+  --blue: #007BFF;
+  --blue-dark: #0056B3;
+  --green: #008000;
+  --orange: #FA782E;
+  --crimson: #C82930;
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 60%, #FFFFFF 100%);
+  color: var(--ink);
+  font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+.aleco-dash .dash-inner { max-width: 1440px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
+
+/* Header */
+.aleco-dash .dash-header {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-2) 100%);
+  box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(33, 37, 41, .06);
+  animation: dashSlideDown .55s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.aleco-dash .dash-header .dash-inner { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; }
+.aleco-dash .dash-header .row-1,
+.aleco-dash .dash-header .row-2 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+.aleco-dash .dash-header .row-2 { align-items: flex-end; gap: 10px; }
+.aleco-dash .dash-header .brand-and-modules { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.aleco-dash .dash-header .brand { display: block; width: auto; height: 46px; }
+
+/* Module pills */
+.aleco-dash .dash-header .modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.aleco-dash .dash-header .pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 16px 'Baloo Paaji 2', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.aleco-dash .dash-header .pill:hover {
+  background-color: rgba(250, 120, 46, .14);
+  color: #1E1D1D;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(250, 120, 46, .22);
+}
+.aleco-dash .dash-header .pill:active { transform: translateY(0) scale(.97); }
+.aleco-dash .dash-header .pill-current,
+.aleco-dash .dash-header .pill-current:hover {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange) 60%, var(--crimson) 160%);
+  color: #1E1D1D;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(250, 120, 46, .35);
+  transform: none;
+  cursor: default;
+}
+.aleco-dash .dash-header .pill-current { animation: dashPopIn .5s .15s cubic-bezier(.2, .8, .2, 1) backwards; }
+
+/* Logout and action buttons */
+.aleco-dash .dash-header .logout,
+.aleco-dash .dash-header .btn-outline,
+.aleco-dash .dash-header .btn-primary {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, border-color .16s ease;
+}
+.aleco-dash .dash-header .logout {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--crimson);
+  color: #FFFFFF;
+  font: 600 14px -apple-system, 'Segoe UI', sans-serif;
+  cursor: pointer;
+}
+.aleco-dash .dash-header .actions { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 8px; }
+.aleco-dash .dash-header .btn-outline,
+.aleco-dash .dash-header .btn-primary { min-height: 40px; padding: 0 14px; border-radius: 8px; font-size: 14px; }
+.aleco-dash .dash-header .btn-outline { border: 1px solid var(--line-2); background: #FFFFFF; color: var(--ink); font-weight: 500; }
+.aleco-dash .dash-header .btn-primary {
+  border: 0;
+  background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dark) 100%);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, .30);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+.aleco-dash .dash-header .btn-primary::after,
+.aleco-dash .dash-header .logout::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.aleco-dash .dash-header .btn-primary:hover::after,
+.aleco-dash .dash-header .logout:hover::after { left: 120%; }
+.aleco-dash .dash-header .btn-primary:hover { color: #FFFFFF; text-decoration: none; transform: translateY(-3px); box-shadow: 0 10px 22px rgba(0, 123, 255, .35); filter: brightness(1.05); }
+.aleco-dash .dash-header .btn-outline:hover { color: var(--ink); text-decoration: none; transform: translateY(-3px); border-color: var(--orange); box-shadow: 0 10px 22px rgba(33, 37, 41, .14); }
+.aleco-dash .dash-header .logout:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(200, 41, 48, .35); filter: brightness(1.05); }
+.aleco-dash .dash-header .btn-outline.active { border-color: var(--orange); }
+.aleco-dash .dash-header .btn-primary.active { box-shadow: 0 0 0 3px rgba(250, 120, 46, .35); }
+
+/* Section tabs */
+.aleco-dash .dash-header .tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.aleco-dash .dash-header .tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+.aleco-dash .dash-header .tab::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--crimson));
+  transform: scaleX(0);
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.aleco-dash .dash-header .tab:hover { color: var(--ink); text-decoration: none; transform: translateY(-1px); }
+.aleco-dash .dash-header .tab:hover::after { transform: scaleX(.6); }
+.aleco-dash .dash-header .tab.active { color: var(--ink); font-weight: 600; }
+.aleco-dash .dash-header .tab.active::after { transform: scaleX(1); }
+
+/* Brand stripe bar */
+.aleco-dash > .stripes { position: relative; display: flex; height: 6px; overflow: hidden; }
+.aleco-dash > .stripes span { flex: 1; }
+.aleco-dash > .stripes span:nth-child(1) { background: var(--orange); }
+.aleco-dash > .stripes span:nth-child(2) { background: #000000; }
+.aleco-dash > .stripes span:nth-child(3) { background: var(--crimson); }
+.aleco-dash > .stripes::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .85), transparent);
+  animation: dashShimmer 2.6s ease-in-out infinite;
+}
+
+/* Summary cards */
+.aleco-dash .dash-main { display: flex; flex-direction: column; gap: 18px; padding-top: 24px; padding-bottom: 32px; }
+.aleco-dash .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.aleco-dash .kpis .kpi {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-2) 100%);
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 4px 14px rgba(33, 37, 41, .06);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  animation: dashFadeUp .65s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.aleco-dash .kpis .kpi:nth-child(2) { animation-delay: .06s; }
+.aleco-dash .kpis .kpi:nth-child(3) { animation-delay: .12s; }
+.aleco-dash .kpis .kpi:nth-child(4) { animation-delay: .18s; }
+.aleco-dash .kpis .kpi::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--crimson));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.2, .8, .2, 1);
+}
+.aleco-dash .kpis .kpi:hover {
+  transform: translateY(-6px);
+  border-color: rgba(250, 120, 46, .55);
+  box-shadow: 0 4px 8px rgba(33, 37, 41, .06), 0 20px 40px rgba(33, 37, 41, .16);
+}
+.aleco-dash .kpis .kpi:hover::before { transform: scaleX(1); }
+.aleco-dash .kpis .kpi-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.aleco-dash .kpis .kpi-label { color: var(--muted); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.aleco-dash .kpis .kpi-value {
+  color: var(--ink);
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transform-origin: left center;
+  transition: transform .25s ease;
+}
+.aleco-dash .kpis .kpi:hover .kpi-value { transform: scale(1.04); }
+.aleco-dash .kpis .kpi-value.negative { color: var(--crimson); }
+.aleco-dash .kpis .kpi-value.positive { color: var(--green); }
+.aleco-dash .kpis .kpi-value.muted { color: var(--muted); }
+.aleco-dash .kpis .info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, color .16s ease;
+  animation: dashRing 1.6s .9s ease-out 2;
+}
+.aleco-dash .kpis .info-btn:hover { transform: translateY(-2px); background: var(--blue-dark); color: #FFFFFF; text-decoration: none; box-shadow: 0 8px 18px rgba(0, 86, 179, .3); }
+.aleco-dash .kpis .info-btn.active { background: var(--blue-dark); border-color: var(--blue-dark); color: #FFFFFF; }
+
+/* Pages inside keep their own base sizing, as before */
+.aleco-dash .outlet { font-size: 12px; }
+
+@media (max-width: 640px) {
+  .aleco-dash .dash-inner { padding: 0 16px; }
+  .aleco-dash .dash-header .dash-inner { padding-top: 12px; }
+}
+
+@keyframes dashSlideDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+@keyframes dashPopIn { 0% { opacity: 0; transform: scale(.85); } 70% { opacity: 1; transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes dashRing { 0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, .45); } 100% { box-shadow: 0 0 0 12px rgba(0, 123, 255, 0); } }
+@keyframes dashShimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .aleco-dash *,
+  .aleco-dash *::before,
+  .aleco-dash *::after { animation: none !important; transition: none !important; }
+}
+
+/* =====================================================================
+   Part 2: pages inside the dashboards
+   ===================================================================== */
+
+/* ---------- Page fade-in on every navigation ---------- */
+.aleco-dash .outlet router-outlet + * {
+  display: block;
+  animation: dashFadeUp .55s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+
+/* ---------- Cards: the shaded boxes pages wrap their content in ---------- */
+.aleco-dash .outlet div[style*="box-shadow"] {
+  background: #FFFFFF !important;
+  border: 1px solid #DEE2E6;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 10px 28px rgba(33, 37, 41, .08) !important;
+  padding-top: 0 !important;
+  margin-bottom: 18px;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.aleco-dash .outlet div[style*="box-shadow"]:hover {
+  box-shadow: 0 4px 8px rgba(33, 37, 41, .06), 0 18px 36px rgba(33, 37, 41, .12) !important;
+}
+
+/* ---------- Section titles ---------- */
+.aleco-dash .outlet h4,
+.aleco-dash .outlet h5 {
+  margin: 0 !important;
+  padding: 16px 18px !important;
+  border-bottom: 1px solid #DEE2E6;
+  font-family: 'Baloo Paaji 2', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
+  text-transform: lowercase;
+  color: #2A2727 !important;
+}
+.aleco-dash .outlet h4::first-letter,
+.aleco-dash .outlet h5::first-letter { text-transform: uppercase; }
+
+/* ---------- Tables ---------- */
+.aleco-dash .outlet table.table:not(.wateja):not(.months) {
+  margin: 0 !important;
+  border: 0 !important;
+  background: #FFFFFF !important;
+  font-variant-numeric: tabular-nums;
+}
+.aleco-dash .outlet table.table:not(.wateja):not(.months) thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px !important;
+  border: 0 !important;
+  background: #F6F6F6 !important;
+  color: #008000 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.aleco-dash .outlet .overdue-list table.table thead th,
+.aleco-dash .outlet .month-list table.table thead th {
+  white-space: normal !important;
+  min-width: 70px;
+  vertical-align: bottom;
+}
+.aleco-dash .outlet table.table:not(.wateja):not(.months) td,
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody th {
+  padding: 12px !important;
+  border: 0 !important;
+  border-top: 1px solid #DEE2E6 !important;
+  background: transparent !important;
+  color: #212529;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  vertical-align: middle;
+}
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr {
+  background: transparent !important;
+  transition: background-color .2s ease, box-shadow .2s ease;
+  animation: dashRowIn .5s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(2) { animation-delay: .05s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(3) { animation-delay: .10s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(4) { animation-delay: .15s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(5) { animation-delay: .20s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(6) { animation-delay: .25s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:nth-child(n+7) { animation-delay: .30s; }
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:hover {
+  background: linear-gradient(90deg, rgba(250, 120, 46, .16) 0%, rgba(250, 120, 46, .05) 60%, #FFFFFF 100%) !important;
+  box-shadow: inset 4px 0 0 #FA782E, 0 6px 16px rgba(33, 37, 41, .08);
+}
+/* Rows that render no cells (e.g. filtered by @if) would show as empty lines */
+.aleco-dash .outlet table.table:not(.wateja):not(.months) tbody tr:not(:has(td, th)) { display: none; }
+
+/* ---------- Filter / search fields (Angular Material) ---------- */
+.aleco-dash .outlet .d-flex.justify-content-center:has(> mat-form-field) {
+  justify-content: flex-end !important;
+  margin-bottom: 12px;
+}
+.aleco-dash .outlet mat-form-field.mat-mdc-form-field {
+  width: min(420px, 100%) !important;
+}
+.aleco-dash .outlet .mat-mdc-text-field-wrapper {
+  padding: 0 14px !important;
+  border: 1px solid #B5B5B5;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.aleco-dash .outlet .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  border-color: #FA782E;
+  box-shadow: 0 0 0 3px rgba(250, 120, 46, .18);
+}
+.aleco-dash .outlet .mat-mdc-form-field .mdc-line-ripple,
+.aleco-dash .outlet .mat-mdc-form-field-focus-overlay { display: none !important; }
+.aleco-dash .outlet .mat-mdc-form-field-subscript-wrapper { display: none; }
+.aleco-dash .outlet .mat-mdc-form-field-infix { min-height: 44px; padding: 10px 0 !important; }
+
+/* ---------- Form inputs ---------- */
+.aleco-dash .outlet .form-control:not(button),
+.aleco-dash .outlet select,
+.aleco-dash .outlet textarea {
+  min-height: 42px;
+  border: 1px solid #B5B5B5 !important;
+  border-radius: 8px !important;
+  background-color: #FFFFFF;
+  color: #212529;
+  box-shadow: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.aleco-dash .outlet .form-control:not(button):focus,
+.aleco-dash .outlet select:focus,
+.aleco-dash .outlet textarea:focus {
+  border-color: #FA782E !important;
+  box-shadow: 0 0 0 3px rgba(250, 120, 46, .18) !important;
+  outline: none;
+}
+
+/* ---------- Buttons ---------- */
+.aleco-dash .outlet button:not(.print-btn),
+.aleco-dash .outlet input[type="submit"],
+.aleco-dash .outlet .btn {
+  position: relative;
+  overflow: hidden;
+  min-height: 40px;
+  padding: 0 16px !important;
+  border: 1px solid #B5B5B5;
+  border-radius: 10px !important;
+  background: #FFFFFF;
+  color: #212529;
+  font-size: 14px !important;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, border-color .16s ease;
+}
+.aleco-dash .outlet .btn-success,
+.aleco-dash .outlet .btn-primary,
+.aleco-dash .outlet button[type="submit"],
+.aleco-dash .outlet input[type="submit"] {
+  border: 0 !important;
+  background: linear-gradient(180deg, #007BFF 0%, #0056B3 100%) !important;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, .30);
+  color: #FFFFFF !important;
+}
+.aleco-dash .outlet button:not(.print-btn):hover,
+.aleco-dash .outlet .btn:hover {
+  transform: translateY(-3px);
+  border-color: #FA782E;
+  box-shadow: 0 10px 22px rgba(33, 37, 41, .16);
+}
+.aleco-dash .outlet .btn-success:hover,
+.aleco-dash .outlet .btn-primary:hover,
+.aleco-dash .outlet button[type="submit"]:hover {
+  box-shadow: 0 10px 22px rgba(0, 123, 255, .35);
+  filter: brightness(1.05);
+}
+.aleco-dash .outlet button:not(.print-btn):active,
+.aleco-dash .outlet .btn:active { transform: translateY(0) scale(.98); }
+.aleco-dash .outlet button:not(.print-btn)::after,
+.aleco-dash .outlet .btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.aleco-dash .outlet button:not(.print-btn):hover::after,
+.aleco-dash .outlet .btn:hover::after { left: 120%; }
+
+/* ---------- Link bars: same pill style as the dashboard's own tabs ---------- */
+/* Bars are lists of a.monno links separated by "|" text; hide the separators */
+.aleco-dash .outlet div:has(> li > a.monno) {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  width: 100% !important;
+  margin: 4px 0 14px;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.aleco-dash .outlet li:has(> a.monno) {
+  list-style: none;
+  font-size: 0 !important;
+  color: transparent !important;
+}
+.aleco-dash .outlet a.monno {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 40px;
+  margin: 0 !important;
+  padding: 0 16px !important;
+  border: 1px solid #B5B5B5;
+  border-radius: 999px !important;
+  background: #FFFFFF !important;
+  color: #666666 !important;
+  font: 600 14px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.aleco-dash .outlet a.monno:hover {
+  transform: translateY(-2px);
+  border-color: #FA782E;
+  background: rgba(250, 120, 46, .10) !important;
+  color: #1E1D1D !important;
+  box-shadow: 0 6px 14px rgba(250, 120, 46, .22) !important;
+}
+.aleco-dash .outlet a.monno.active {
+  border-color: transparent;
+  background: linear-gradient(135deg, #FA782E 0%, #FA782E 60%, #C82930 160%) !important;
+  color: #1E1D1D !important;
+  box-shadow: 0 4px 12px rgba(250, 120, 46, .35) !important;
+}
+
+/* ---------- All other links: one text-link style ---------- */
+.aleco-dash .outlet a:not(.monno):not(.btn) {
+  color: #0056B3 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  background-image: linear-gradient(90deg, #FA782E, #C82930);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  cursor: pointer;
+  transition: background-size .3s ease, color .2s ease;
+}
+.aleco-dash .outlet a:not(.monno):not(.btn):hover {
+  color: #C82930 !important;
+  background-size: 100% 2px;
+}
+
+/* ---------- Summary strips (e.g. customer details "Monthly returns || Loan ...") ---------- */
+.aleco-dash .outlet div.text-center[style*="border-style"] {
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border: 1px solid #DEE2E6 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6F6F6 100%) !important;
+  box-shadow: 0 1px 2px rgba(33, 37, 41, .06), 0 4px 14px rgba(33, 37, 41, .06);
+  font-family: inherit !important;
+  font-size: 14px !important;
+  color: #212529;
+}
+
+@keyframes dashFadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes dashRowIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .aleco-dash .outlet *,
+  .aleco-dash .outlet *::after { animation: none !important; transition: none !important; }
+}
+
+/* =====================================================================
+   Part 3: F5 forms (accordion sections + icon-pill fields)
+   Forms wrap their existing fields in <details class="f5-sec"> sections.
+   Each field keeps its original Bootstrap markup; these rules turn the
+   .input-group into an icon pill. No behaviour lives here.
+   ===================================================================== */
+.aleco-dash .f5 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 16px auto;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .85);
+  border-radius: 28px;
+  background: rgba(246, 246, 246, .72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 24px 60px rgba(33, 37, 41, .10);
+  box-sizing: border-box;
+  font-size: 14px;
+  animation: dashFadeUp .6s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.aleco-dash .f5 * { box-sizing: border-box; }
+
+/* Section (accordion item) */
+.aleco-dash .f5-sec { border-radius: 22px; transition: background-color .25s ease, box-shadow .25s ease; }
+.aleco-dash .f5-sec[open] { background: rgba(255, 255, 255, .78); box-shadow: 0 10px 26px rgba(33, 37, 41, .08); }
+.aleco-dash .f5-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 22px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s ease;
+}
+.aleco-dash .f5-head::-webkit-details-marker { display: none; }
+.aleco-dash .f5-head::marker { content: ""; }
+.aleco-dash .f5-head:hover { background: rgba(255, 255, 255, .8); }
+.aleco-dash .f5-head:focus-visible { outline: 3px solid rgba(250, 120, 46, .45); outline-offset: 2px; }
+.aleco-dash .f5-num {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #FA782E, #C82930);
+  color: #FFFFFF;
+  font: 700 14px -apple-system, 'Segoe UI', sans-serif;
+  transition: background .3s ease;
+}
+.aleco-dash .f5-sec:not(:has(.ng-invalid)) .f5-num { background: #008000; }
+.aleco-dash .f5-title { display: flex; flex-direction: column; min-width: 0; }
+.aleco-dash .f5-title b { font: 700 19px 'Baloo Paaji 2', sans-serif; color: #2A2727; line-height: 1.2; }
+.aleco-dash .f5-title small { font-size: 12px; color: #666666; }
+.aleco-dash .f5-badge { margin-left: auto; display: inline-flex; }
+.aleco-dash .f5-ok,
+.aleco-dash .f5-todo { display: none; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.aleco-dash .f5-todo { display: inline-flex; background: #ECEFF1; color: #666666; }
+.aleco-dash .f5-ok { background: rgba(0, 128, 0, .10); color: #008000; }
+.aleco-dash .f5-sec:not(:has(.ng-invalid)) .f5-ok { display: inline-flex; }
+.aleco-dash .f5-sec:not(:has(.ng-invalid)) .f5-todo { display: none; }
+.aleco-dash .f5-chev {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: #666666;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.aleco-dash .f5-sec[open] .f5-chev { transform: rotate(180deg); }
+.aleco-dash .f5-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 14px 18px;
+  padding: 4px 20px 22px;
+  animation: dashFadeUp .35s ease backwards;
+}
+.aleco-dash .f5-wide { grid-column: 1 / -1; min-width: 0; overflow-x: auto; }
+
+/* Field → icon pill (overrides the field's inline Bootstrap sizing) */
+.aleco-dash .f5-field { min-width: 0; }
+.aleco-dash .f5-field > div { width: 100%; }
+.aleco-dash .f5 .f5-field .input-group,
+.aleco-dash .f5 .f5-field .input-group.d-flex {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 0;
+  width: 100% !important;
+  min-height: 62px;
+  margin: 0 !important;
+  padding: 9px 20px 9px 10px;
+  border: 1px solid #D3D7DB;
+  border-radius: 31px;
+  background: rgba(255, 255, 255, .55);
+  cursor: text;
+  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.aleco-dash .f5 .f5-field .input-group::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--g, linear-gradient(135deg, #FA782E, #C82930));
+  box-shadow: 0 6px 14px var(--gs, rgba(250, 120, 46, .38));
+  transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), box-shadow .35s ease;
+}
+.aleco-dash .f5 .f5-field .input-group::after {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  justify-self: center;
+  width: 20px;
+  height: 20px;
+  background: #FFFFFF;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+  pointer-events: none;
+  transition: transform .35s cubic-bezier(.3, 1.6, .5, 1);
+}
+.aleco-dash .f5 .f5-field .input-group:hover { border-color: #B5B5B5; background: rgba(255, 255, 255, .9); }
+.aleco-dash .f5 .f5-field .input-group:hover::before { transform: translateY(-1px) scale(1.04); }
+.aleco-dash .f5 .f5-field .input-group:focus-within {
+  border-color: rgba(250, 120, 46, .55);
+  background: #FFFFFF;
+  box-shadow: 0 12px 28px rgba(33, 37, 41, .13), 0 0 0 3px rgba(250, 120, 46, .14);
+  transform: translateY(-2px);
+}
+.aleco-dash .f5 .f5-field .input-group:focus-within::before { transform: rotate(-9deg) scale(1.1); box-shadow: 0 12px 24px var(--gs), 0 0 0 6px var(--gh, rgba(250, 120, 46, .12)); }
+.aleco-dash .f5 .f5-field .input-group:focus-within::after { transform: rotate(-9deg) scale(1.1); }
+.aleco-dash .f5 .f5-field .input-group:has(.is-valid) { border-color: rgba(0, 128, 0, .55); }
+.aleco-dash .f5 .f5-field .input-group:has(.is-invalid) { border-color: rgba(200, 41, 48, .65); background: #FFFFFF; }
+
+.aleco-dash .f5 .f5-field .input-group-prepend {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  width: auto !important;
+  margin: 0 !important;
+}
+.aleco-dash .f5 .f5-field .input-group-text {
+  display: block;
+  height: auto;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: normal;
+}
+.aleco-dash .f5 .f5-field .input-group .form-control,
+.aleco-dash .f5 .f5-field .input-group > input,
+.aleco-dash .f5 .f5-field .input-group > select,
+.aleco-dash .f5 .f5-field .input-group > textarea {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto;
+  min-height: 24px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: #212529;
+  font: 500 16px -apple-system, 'Segoe UI', sans-serif;
+}
+.aleco-dash .f5 .f5-field .input-group .form-control::placeholder { color: #666666; opacity: .7; font-weight: 400; }
+.aleco-dash .f5 .f5-field .input-group > :not(.input-group-prepend):not(.form-control):not(input):not(select):not(textarea) {
+  grid-column: 1 / -1;
+  margin: 4px 0 0 54px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.aleco-dash .f5 .f5-field .input-group > br { display: none; }
+
+/* Icon tile colours (Aleco palette) */
+.aleco-dash .f5-field.g-orange { --g: linear-gradient(135deg, #FA782E 0%, #C82930 120%); --gs: rgba(250, 120, 46, .38); --gh: rgba(250, 120, 46, .12); }
+.aleco-dash .f5-field.g-blue { --g: linear-gradient(135deg, #007BFF 0%, #0056B3 100%); --gs: rgba(0, 123, 255, .35); --gh: rgba(0, 123, 255, .12); }
+.aleco-dash .f5-field.g-green { --g: linear-gradient(135deg, rgba(0, 128, 0, .72) 0%, #008000 100%); --gs: rgba(0, 128, 0, .32); --gh: rgba(0, 128, 0, .12); }
+.aleco-dash .f5-field.g-crimson { --g: linear-gradient(135deg, rgba(200, 41, 48, .78) 0%, #C82930 100%); --gs: rgba(200, 41, 48, .35); --gh: rgba(200, 41, 48, .12); }
+.aleco-dash .f5-field.g-ink { --g: linear-gradient(135deg, #666666 0%, #2A2727 100%); --gs: rgba(42, 39, 39, .30); --gh: rgba(42, 39, 39, .10); }
+
+/* Field icons */
+.aleco-dash .f5-field { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4z'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-at { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0zm0 0v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-user { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-users { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21a5 5 0 0 0-10 0M11 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-phone { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-mail { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18v12H3zM3 7l9 6 9-6'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-calendar { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h16v15H4zM4 10h16M8 3v4M16 3v4'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-image { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6M15.5 9.5h.01'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-building { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M2 21h20M8 7h4M8 11h4M8 15h4'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-hash { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9h16M4 15h16M10 3 8 21M16 3l-2 18'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-check { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-folder { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-card { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zM2 10h20M6 15h4'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-lock { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 11h12v10H6zM8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-shield { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-money { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 6h20v12H2zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6M6 12h.01M18 12h.01'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-pin { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-map { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4 3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-globe { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-home { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-box { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8'/%3E%3C/svg%3E"); }
+.aleco-dash .f5-i-table { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 4h18v16H3zM3 10h18M3 15h18M9 4v16'/%3E%3C/svg%3E"); }
+
+@media (max-width: 640px) {
+  .aleco-dash .f5 { padding: 6px; border-radius: 22px; }
+  .aleco-dash .f5-head { padding: 14px 12px; gap: 10px; }
+  .aleco-dash .f5-grid { padding: 4px 10px 16px; }
+  .aleco-dash .f5-title small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aleco-dash .f5 *, .aleco-dash .f5 *::before, .aleco-dash .f5 *::after { animation: none !important; transition: none !important; }
+}
+
+/* F5 fixes: section titles can be hidden by page styles; labels left-aligned; visible typing line */
+.aleco-dash .f5 .f5-title b { display: block !important; }
+.aleco-dash .f5 .f5-field .input-group-text { text-align: left !important; justify-content: flex-start !important; }
+.aleco-dash .f5 .f5-field .input-group .form-control,
+.aleco-dash .f5 .f5-field .input-group > input,
+.aleco-dash .f5 .f5-field .input-group > select {
+  min-height: 28px !important;
+  border-bottom: 1px solid #DEE2E6 !important;
+  transition: border-color .2s ease;
+}
+.aleco-dash .f5 .f5-field .input-group .form-control:focus { border-bottom-color: #FA782E !important; }
+.aleco-dash .f5 .f5-field .input-group:has(.is-valid) .form-control { border-bottom-color: rgba(0, 128, 0, .45) !important; }
+.aleco-dash .f5 .f5-field .input-group:has(.is-invalid) .form-control { border-bottom-color: rgba(200, 41, 48, .55) !important; }
+
+/* No line inside the pill: the pill outline alone shows focus / valid / invalid */
+.aleco-dash .f5 .f5-field .input-group .form-control,
+.aleco-dash .f5 .f5-field .input-group > input,
+.aleco-dash .f5 .f5-field .input-group > select,
+.aleco-dash .f5 .f5-field .input-group > textarea { border-bottom: 0 !important; }
+
+/* F5 sections that wrap existing blocks (small forms, tables, calculators) */
+.aleco-dash .f5-body { padding: 4px 20px 22px; overflow-x: auto; animation: dashFadeUp .35s ease backwards; }
+.aleco-dash .outlet .f5-body div[style*="box-shadow"] { margin-bottom: 0; box-shadow: none !important; border: 1px solid #DEE2E6; }
+.aleco-dash .outlet .f5-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not(.mat-mdc-input-element):not(.loan-table-search-input),
+.aleco-dash .outlet .f5-body select {
+  min-height: 44px;
+  padding: 0 16px !important;
+  border: 1px solid #D3D7DB !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .75) !important;
+  box-shadow: none;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease, background-color .25s ease;
+}
+.aleco-dash .outlet .f5-body textarea {
+  padding: 12px 16px !important;
+  border: 1px solid #D3D7DB !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, .75) !important;
+}
+.aleco-dash .outlet .f5-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not(.mat-mdc-input-element):not(.loan-table-search-input):hover,
+.aleco-dash .outlet .f5-body select:hover { border-color: #B5B5B5 !important; background: #FFFFFF !important; }
+.aleco-dash .outlet .f5-body input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not(.mat-mdc-input-element):not(.loan-table-search-input):focus,
+.aleco-dash .outlet .f5-body select:focus,
+.aleco-dash .outlet .f5-body textarea:focus {
+  outline: none;
+  border-color: rgba(250, 120, 46, .55) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 12px 28px rgba(33, 37, 41, .13), 0 0 0 3px rgba(250, 120, 46, .14) !important;
+  transform: translateY(-1px);
+}
+.aleco-dash .outlet .f5-body .mat-mdc-text-field-wrapper { border-radius: 999px !important; }
+
+/* Plain pills: icon + input with its placeholder. The label stays for screen readers,
+   and stays visible for fields without a placeholder (dates, files, dropdowns, links). */
+.aleco-dash .f5 .f5-field .input-group:has(> input[placeholder]) > .input-group-prepend:not(:has(a)) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.aleco-dash .f5 .f5-field .input-group:has(> input[placeholder]) > input[placeholder] {
+  grid-row: 1 / span 2 !important;
+  align-self: center;
+  min-height: 40px !important;
+  font-weight: 400 !important;
+}
+.aleco-dash .f5 .f5-field .input-group:has(> input[placeholder]) { min-height: 58px; }
+.aleco-dash .f5 .f5-field .input-group .form-control::placeholder { color: #666666; opacity: .9; font-weight: 400; }
+
+/* Dropdowns (mat-select) inside an F5 pill: the pill is the box, the dropdown fills it */
+.aleco-dash .f5 .f5-field .input-group > mat-form-field {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2;
+  width: 100% !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+.aleco-dash .f5 .f5-field .input-group > mat-form-field .mat-mdc-text-field-wrapper {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.aleco-dash .f5 .f5-field .input-group > mat-form-field .mat-mdc-form-field-infix { min-height: 40px; padding: 8px 0 !important; }
+.aleco-dash .f5 .f5-field .input-group > mat-form-field .mat-mdc-select-placeholder { color: #666666; }
+.aleco-dash .f5 .f5-uploads { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+
+/* While a registration / edit form (F5 sections) is open, show only the form:
+   hide the account summary cards. List and report pages (.f5-wrap or no form) keep them. */
+.aleco-dash:has(.outlet .f5:not(.f5-wrap)) .kpis { display: none; }
+
+/* Let the site's background illustration (assets/images/alecowall.png, set in app.component)
+   show through the dashboards; the header becomes frosted glass over it. */
+.aleco-dash { background: transparent; }
+.aleco-dash .dash-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .82) 0%, rgba(246, 246, 246, .72) 100%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+/* Keep the illustration in view (fixed to the screen) and let it show through the header glass */
+.aleco-dash {
+  background: url(/assets/images/alecowall.png) center top / cover no-repeat fixed;
+}
+.aleco-dash .dash-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .55) 0%, rgba(246, 246, 246, .45) 100%);
+  -webkit-backdrop-filter: blur(6px) saturate(1.1);
+  backdrop-filter: blur(6px) saturate(1.1);
+}
+
+/* Settings + Logout group in the dashboard header */
+.aleco-dash .dash-header .hdr-actions { display: flex; align-items: center; gap: 10px; }
+
+/* Header (and the Settings panel inside it) sits above the page content */
+.aleco-dash .dash-header { position: relative; z-index: 30; }
+
+/* =====================================================================
+   Part 4: F10 forms (dialog over the dimmed dashboard)
+   Sections are always open with a small uppercase heading. Registration
+   pages (<form class="f10">) open as a dialog; their routed component host
+   becomes the scrim. The x / Ghairi buttons only navigate back (alecoBack).
+   ===================================================================== */
+.aleco-dash .f5-sec,
+.aleco-dash .f5-sec[open] { display: flex; flex-direction: column; gap: 10px; padding: 6px 4px; border-radius: 0; background: none; box-shadow: none; }
+.aleco-dash .f10-h { margin: 0; padding-left: 6px; font: 700 12px -apple-system, 'Segoe UI', Roboto, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #666666; }
+.aleco-dash .f5-grid { padding: 0; gap: 12px 16px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); animation: none; }
+.aleco-dash .f5 { gap: 14px; padding: 22px 26px; }
+
+html:has(.aleco-dash .outlet > * > form.f10) { overflow: hidden; }
+.aleco-dash .outlet > :has(> form.f10) {
+  position: fixed;
+  inset: 0;
+  z-index: 1040; /* above the site's fixed-top navbar (1030) */
+  display: flex;
+  padding: 70px 16px 40px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(42, 39, 39, .42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: f10Fade .3s ease backwards;
+}
+.aleco-dash .outlet > * > form.f10 {
+  position: relative;
+  width: min(900px, 100%);
+  height: max-content;
+  margin: 0 auto;
+  padding: 22px 30px;
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 28px;
+  background: rgba(246, 246, 246, .94);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, .28);
+  animation: f10Pop .45s cubic-bezier(.2, .9, .3, 1.2) backwards;
+}
+.aleco-dash .outlet > * > form.f10 > div:empty { display: none; }
+.aleco-dash .outlet > * > form.f10 > .row { margin: 0; }
+
+/* Header: the form's own title becomes the dialog title */
+.aleco-dash .outlet > * > form.f10 > .d-flex:has(h4) { justify-content: flex-start !important; padding-right: 56px; margin-bottom: 8px; }
+.aleco-dash .outlet > * > form.f10 > .d-flex:has(h4) > div { padding: 0 !important; }
+.aleco-dash .outlet > * > form.f10 h4 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  text-align: left !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #2A2727 !important;
+  font: 800 24px/1.15 'Baloo Paaji 2', sans-serif !important;
+}
+.aleco-dash .outlet > * > form.f10 h4::before {
+  content: "";
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M19 8v6M16 11h6'/%3E%3C/svg%3E") center / 22px no-repeat,
+    linear-gradient(135deg, #FA782E 0%, #C82930 120%);
+  box-shadow: 0 6px 14px rgba(250, 120, 46, .38);
+}
+.aleco-dash .outlet > * > form.f10 > .f10-x {
+  position: absolute !important;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .85);
+  color: #212529;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(33, 37, 41, .10);
+  transition: transform .25s ease, background-color .2s ease;
+}
+.aleco-dash .outlet > * > form.f10 > .f10-x { padding: 0 !important; border-radius: 50% !important; min-width: 0; }
+.aleco-dash .outlet > * > form.f10 > .f10-x svg { flex: none; width: 18px; height: 18px; }
+.aleco-dash .outlet > * > form.f10 > .f10-x:hover { transform: rotate(90deg); background: #FFFFFF; }
+.aleco-dash .f10-x:focus-visible { outline: 3px solid rgba(250, 120, 46, .45); outline-offset: 2px; }
+
+/* Sections inside the dialog sit straight on the panel */
+.aleco-dash .outlet > * > form.f10 .f5 { margin: 0; padding: 0; max-width: none; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; animation: none; }
+
+/* Footer: Ghairi + Tuma on the right, above a divider */
+.aleco-dash form.f10 .d-flex:has(.f10-cancel) { justify-content: flex-end !important; }
+.aleco-dash form.f10 .input-group:has(> .f10-cancel) {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-end !important;
+  gap: 10px;
+  width: 100% !important;
+  margin: 14px 0 0 !important;
+  padding-top: 16px;
+  border-top: 1px solid #DEE2E6;
+}
+.aleco-dash form.f10 .f10-cancel,
+.aleco-dash form.f10 .input-group:has(> .f10-cancel) > .btn {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+  width: auto !important;
+  max-width: none !important;
+  min-height: 44px;
+  padding: 0 30px;
+  border-radius: 999px !important;
+  font: 600 15px -apple-system, 'Segoe UI', sans-serif;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, filter .16s ease;
+}
+.aleco-dash form.f10 .f10-cancel { padding: 0 22px; border: 1px solid #B5B5B5; background: #FFFFFF; color: #212529; }
+.aleco-dash form.f10 .f10-cancel:hover { transform: translateY(-3px); border-color: #FA782E; box-shadow: 0 10px 22px rgba(33, 37, 41, .14); }
+.aleco-dash form.f10 .input-group:has(> .f10-cancel) > .btn {
+  border: 0;
+  background: linear-gradient(180deg, #007BFF 0%, #0056B3 100%);
+  box-shadow: 0 2px 6px rgba(0, 123, 255, .30);
+  color: #FFFFFF;
+}
+.aleco-dash form.f10 .input-group:has(> .f10-cancel) > .btn:hover:not([disabled]) { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(0, 123, 255, .35); filter: brightness(1.05); }
+.aleco-dash form.f10 .input-group:has(> .f10-cancel) > .btn[disabled] { background: #B5B5B5 !important; box-shadow: none !important; cursor: not-allowed; transform: none; filter: none; opacity: 1; }
+
+@keyframes f10Fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes f10Pop { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes f10Sheet { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
+/* Phones: the dialog becomes a bottom sheet */
+@media (max-width: 640px) {
+  .aleco-dash .outlet > :has(> form.f10) { padding: 24px 0 0; }
+  .aleco-dash .outlet > * > form.f10 { width: 100%; margin: auto 0 0; padding: 18px 14px 22px; border-radius: 24px 24px 0 0; animation-name: f10Sheet; animation-duration: .4s; }
+  .aleco-dash .outlet > * > form.f10 h4 { font-size: 20px !important; }
+  .aleco-dash .outlet > * > form.f10 h4::before { width: 40px; height: 40px; border-radius: 13px; }
+  .aleco-dash .outlet > * > form.f10 > .f10-x { top: 16px; right: 14px; }
+  .aleco-dash .f5 { padding: 16px 12px; }
+  .aleco-dash form.f10 .f10-cancel,
+  .aleco-dash form.f10 .input-group:has(> .f10-cancel) > .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aleco-dash .outlet > :has(> form.f10), .aleco-dash .outlet > * > form.f10 { animation: none !important; }
+}
+/* Material dropdowns (owner/manager selects) must open above the F10 dialog */
+body:has(.aleco-dash .outlet > * > form.f10) .cdk-overlay-container { z-index: 1060; }
+
+/* =====================================================================
+   Part 5: glass fade on scrollable content
+   Instead of a hard cut, content scrolling under an edge fades from a
+   faint glass (6%) to fully solid over 56px. Each edge fades only while
+   there is more content beyond it: driven by the box's own scroll
+   position (scroll-driven animations), so no JavaScript. Browsers
+   without support keep the old hard edge.
+   ===================================================================== */
+@property --fy-top { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --fy-bot { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --fx-start { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --fx-end { syntax: '<length>'; inherits: false; initial-value: 0px; }
+
+@supports (animation-timeline: scroll()) {
+  .aleco-dash .outlet [style*="overflow:auto"],
+  .aleco-dash .outlet [style*="overflow: auto"],
+  .aleco-dash .outlet [style*="overflow:scroll"],
+  .aleco-dash .outlet [style*="overflow: scroll"],
+  .aleco-dash .outlet [style*="overflow-y"],
+  .aleco-dash .outlet [style*="overflow-x"],
+  .aleco-dash .outlet .table-wrap,
+  .aleco-dash .outlet .table-responsive,
+  .aleco-dash .outlet .f5-body,
+  .aleco-dash .outlet .f5-wide {
+    --glass: rgba(0, 0, 0, .06);
+    -webkit-mask-image:
+      linear-gradient(to bottom, var(--glass) 0, #000 var(--fy-top), #000 calc(100% - var(--fy-bot)), var(--glass) 100%),
+      linear-gradient(to right, var(--glass) 0, #000 var(--fx-start), #000 calc(100% - var(--fx-end)), var(--glass) 100%);
+    mask-image:
+      linear-gradient(to bottom, var(--glass) 0, #000 var(--fy-top), #000 calc(100% - var(--fy-bot)), var(--glass) 100%),
+      linear-gradient(to right, var(--glass) 0, #000 var(--fx-start), #000 calc(100% - var(--fx-end)), var(--glass) 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    animation: alecoFadeY linear both, alecoFadeX linear both;
+    animation-timeline: scroll(self block), scroll(self inline);
+  }
+}
+/* An edge with nothing left to scroll gets no fade; 0px collapses the gradient to solid. */
+@keyframes alecoFadeY {
+  0% { --fy-top: 0px; --fy-bot: 56px; }
+  8% { --fy-top: 56px; }
+  92% { --fy-bot: 56px; }
+  100% { --fy-top: 56px; --fy-bot: 0px; }
+}
+@keyframes alecoFadeX {
+  0% { --fx-start: 0px; --fx-end: 56px; }
+  8% { --fx-start: 56px; }
+  92% { --fx-end: 56px; }
+  100% { --fx-start: 56px; --fx-end: 0px; }
+}
+
+/* Glass panels inside pages: left/right edges dissolve into the page instead
+   of ending in a hard line. The fade stays within the panel's side padding,
+   so the fields and tables inside are fully solid. (Dialogs are excluded.) */
+.aleco-dash .outlet .f5:not(form.f10 .f5) {
+  --side: 26px;
+  padding-left: var(--side);
+  padding-right: var(--side);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--side), #000 calc(100% - var(--side)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--side), #000 calc(100% - var(--side)), transparent 100%);
+}
+@media (max-width: 640px) {
+  .aleco-dash .outlet .f5:not(form.f10 .f5) { --side: 12px; }
+}
+
+/* =====================================================================
+   Part 6: F7 forms (live validation, in place)
+   A registration/edit form opened inside a tab (e.g. Edit Account in the
+   customer page) is not a dialog: it shows in place as a glass card with
+   section status badges, a check/cross in each pill, red messages and an
+   error banner. Every state comes from Angular's own ng-valid / ng-invalid
+   / ng-touched / ng-dirty classes; no form logic is involved.
+   ===================================================================== */
+.aleco-dash .f7-badge { display: none; }
+.aleco-dash .f7-alert { display: none; }
+.aleco-dash .f7-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+.aleco-dash .outlet * * > form.f10 {
+  --side: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 1040px;
+  margin: 12px auto 24px;
+  padding: 28px var(--side) 26px;
+  border: 1px solid rgba(255, 255, 255, .85);
+  border-radius: 28px;
+  background: rgba(246, 246, 246, .72) !important; /* some forms carry an inline transparent background */
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 24px 60px rgba(33, 37, 41, .12);
+  animation: dashFadeUp .6s cubic-bezier(.2, .8, .2, 1) backwards;
+  /* sides melt into the page, like the other glass panels */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 calc(var(--side) - 6px), #000 calc(100% - var(--side) + 6px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 calc(var(--side) - 6px), #000 calc(100% - var(--side) + 6px), transparent 100%);
+}
+.aleco-dash .outlet * * > form.f10 > .f10-x { display: none; }
+.aleco-dash .outlet * * > form.f10 > div:empty { display: none; }
+.aleco-dash .outlet * * > form.f10 > .row { margin: 0; }
+.aleco-dash .outlet * * > form.f10 > .d-flex:has(h4) { justify-content: flex-start !important; }
+.aleco-dash .outlet * * > form.f10 > .d-flex:has(h4) > div { padding: 0 !important; }
+.aleco-dash .outlet * * > form.f10 h4 {
+  margin: 0;
+  text-align: left !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #2A2727 !important;
+  font: 800 30px/1.1 'Baloo Paaji 2', sans-serif !important;
+}
+.aleco-dash .outlet * * > form.f10 .f5 { margin: 0; padding: 0; max-width: none; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; animation: none; gap: 18px; }
+
+/* Error banner: shown while any touched field is invalid */
+.aleco-dash .outlet * * > form.f10:has(.ng-invalid.ng-touched) > .f7-alert {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid rgba(200, 41, 48, .35);
+  border-radius: 18px;
+  background: rgba(200, 41, 48, .06);
+  color: #C82930;
+  font-size: 14px;
+  font-weight: 700;
+  animation: dashFadeUp .4s ease backwards;
+}
+.aleco-dash .f7-alert-i {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v6M12 16.5h.01'/%3E%3C/svg%3E") center / 20px no-repeat,
+    linear-gradient(135deg, rgba(200, 41, 48, .78) 0%, #C82930 100%);
+  box-shadow: 0 6px 14px rgba(200, 41, 48, .35);
+}
+
+/* Section status badge: done / not yet / has an error */
+.aleco-dash .outlet * * > form.f10 .f7-badge { display: inline-flex; }
+.aleco-dash .f7-badge > span { display: none; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.aleco-dash .f7-badge .f7-todo { display: inline-flex; background: #ECEFF1; color: #666666; }
+.aleco-dash .f7-badge .f7-ok { background: rgba(0, 128, 0, .10); color: #008000; }
+.aleco-dash .f7-badge .f7-bad { background: rgba(200, 41, 48, .10); color: #C82930; }
+/* "Imekamilika" only when nothing is invalid AND every field has a value:
+   an empty input still shows its placeholder; an empty Material select has -empty. */
+.aleco-dash .f5-sec:not(:has(.ng-invalid, input:placeholder-shown, textarea:placeholder-shown, .mat-mdc-select-empty)) .f7-badge .f7-ok { display: inline-flex; }
+.aleco-dash .f5-sec:not(:has(.ng-invalid, input:placeholder-shown, textarea:placeholder-shown, .mat-mdc-select-empty)) .f7-badge .f7-todo { display: none; }
+.aleco-dash .f5-sec:has(.ng-invalid.ng-touched) .f7-badge .f7-bad { display: inline-flex; }
+.aleco-dash .f5-sec:has(.ng-invalid.ng-touched) .f7-badge .f7-todo { display: none; }
+
+/* Pill check / cross: valid after editing, invalid once touched */
+.aleco-dash .outlet * * > form.f10 .f5-field .input-group:has(> .ng-valid.ng-dirty) {
+  border-color: rgba(0, 128, 0, .55);
+  padding-right: 44px;
+  background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23008000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") no-repeat right 16px center;
+}
+.aleco-dash .outlet * * > form.f10 .f5-field .input-group:has(> .ng-invalid.ng-touched) {
+  border-color: rgba(200, 41, 48, .65);
+  padding-right: 44px;
+  background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23C82930' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") no-repeat right 16px center;
+  animation: f7Shake .45s ease 1;
+}
+.aleco-dash .outlet * * > form.f10 .f5-field .invalid-feedback,
+.aleco-dash .outlet * * > form.f10 .f5-field .input-group > div[style*="color:red"],
+.aleco-dash .outlet * * > form.f10 .f5-field .input-group > div[style*="color: red"] { color: #C82930 !important; font-size: 12px !important; font-weight: 600; }
+@keyframes f7Shake { 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+
+/* F7 footer sits under a divider like the dialog footer (shared rules above) */
+@media (max-width: 640px) {
+  .aleco-dash .outlet * * > form.f10 { --side: 16px; padding-top: 20px; border-radius: 22px; }
+  .aleco-dash .outlet * * > form.f10 h4 { font-size: 24px !important; }
+  .aleco-dash .f7-head { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aleco-dash .outlet * * > form.f10 .f5-field .input-group { animation: none !important; }
+}
+
+/* =====================================================================
+   Part 7: detail pages use the full width (same edges as the header and
+   the summary cards). Their tab content used to sit inside four stacked
+   side paddings (48 + 10 + 26 + 20px), which cut wide tables off.
+   ===================================================================== */
+.aleco-dash .outlet .dojo { padding-left: 0 !important; padding-right: 0 !important; }
+.aleco-dash .outlet .dojo [style*="overflow"] { padding-left: 0 !important; padding-right: 0 !important; }
+.aleco-dash .outlet .dojo .f5.f5-wrap:not(form.f10 .f5) {
+  --side: 14px;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: var(--side) !important;
+  padding-right: var(--side) !important;
+}
+.aleco-dash .outlet .dojo .f5-wrap .f5-body { padding-left: 0; padding-right: 0; }
+.aleco-dash .outlet .dojo .f5-wrap .f5-sec { padding-left: 0; padding-right: 0; }
+/* Bootstrap rows use -15px side margins; inside the full-width detail pages they would poke past the edge */
+.aleco-dash .outlet .dojo [style*="overflow"] .row { margin-left: 0; margin-right: 0; }
+
+/* F7 forms inside a customer page (e.g. Edit Account) use the full width,
+   the same edges as the header, the summary cards and the tab buttons */
+.aleco-dash .outlet .dojo * * > form.f10 {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* ...and they are see-through, so the page background (illustration) shows behind the fields */
+.aleco-dash .outlet .dojo * * > form.f10 {
+  border-color: transparent;
+  background: transparent !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+/* The other customer tabs (Loan, Loan Agreement forms, Loan application, Documents,
+   Withdraw, Deposit...) are see-through too: no grey glass panel behind their content.
+   Tables and fields inside keep their own white cards so they stay easy to read. */
+.aleco-dash .outlet .dojo .f5.f5-wrap:not(form.f10 .f5),
+.aleco-dash .outlet .dojo .la-upload {
+  border-color: transparent !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}

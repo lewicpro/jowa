@@ -1,33 +1,43 @@
 
 <ng-progress></ng-progress>
+<div class="f5 f5-wrap">
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Madeni' | t }}</h3>
+<div class="f5-body">
 <div class="d-flex justify-content-center">
   <!-- <mat-form-field style="width:40%">
   <input   matInput [(ngModel)]="filtertext" placeholder="Filter">
   </mat-form-field> -->
   <!-- <button (click)="time()">click</button> -->
 </div>
+</div>
+</section>
+
+<section class="f5-sec">
+<h3 class="f10-h">{{ 'Madeni' | t }}</h3>
+<div class="f5-body">
 <div class="animated fadeIn"  style=" padding-top:15px; border-top-left-radius:10px; background:rgba(138, 35, 35, 0.04); border-top-right-radius:10px; box-shadow:0 5px 5px 0 rgba(104, 103, 103, 0.5);">
-  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> Madeni</h4>
+  <h4 style="text-align: center; letter-spacing:8px; color:#666; font-weight:100;"> {{ 'Madeni' | t }}</h4>
   <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
   <!-- <br><br> -->
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Do you want to confirm?</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      <p>{{ 'Do you want to confirm?' | t }}</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >{{ 'Yes' | t }}</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >{{ 'No' | t }}</button>
     </div>
   </ng-template>
   
   <table class="table table-sm table-bordered table-striped table-light" style=" overflow:hidden; " >
     <thead>
       <tr>
-        <th scope="col">Tarehe</th>
-        <th scope="col" title="Date">Jina</th>
-        <th scope="col" title="Total Payment (L+I+6)">Jumla ya malipo</th>
-        <th scope="col" title="Loan Repayment">Transaction_id</th>
-        <th scope="col" title="Interest Paid">Riba</th>
-        <th scope="col" title="(Mkopo + Riba) Balance">Description</th>
+        <th scope="col">{{ 'Tarehe' | t }}</th>
+        <th scope="col" title="Date">{{ 'Jina' | t }}</th>
+        <th scope="col" title="Total Payment (L+I+6)">{{ 'Jumla ya malipo' | t }}</th>
+        <th scope="col" title="Loan Repayment">{{ 'Transaction_id' | t }}</th>
+        <th scope="col" title="Interest Paid">{{ 'Riba' | t }}</th>
+        <th scope="col" title="(Mkopo + Riba) Balance">{{ 'Description' | t }}</th>
         <th nowrap scope="col" title="Action"></th>
         
       </tr>
@@ -38,25 +48,25 @@
         
       </div> -->
         <tr style="cursor:pointer" id="customers">
-            <td class="text-center" ><input [(ngModel)]="UserData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
-            <td><input [(ngModel)]="UserData.Jina" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="text" placeholder="*Important"></td>
-            <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+            <td class="text-center" ><input [(ngModel)]="UserData.Tarehe" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
+            <td><input [(ngModel)]="UserData.Jina" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="text" [placeholder]="'*Important' | t"></td>
+            <td><input [(ngModel)]="UserData.Amount" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" [placeholder]="'*Important' | t"></td>
             <td><input [(ngModel)]="UserData.Transaction_id" (keyup)="calculate()" style="border-radius:3px;" [value]="bwoy" type="text"></td>
             <td><input type="number" style="border-radius:3px;"></td>
             <td><input [(ngModel)]="UserData.Description" (keyup)="calculate()" style="border-radius:3px;" [value]="momba" type="text"></td>
-            <td><a (click)="openModal(template)"  >Tunza</a></td>
+            <td><a (click)="openModal(template)"  >{{ 'Tunza' | t }}</a></td>
           </tr>
       <tr  id="customers" *ngFor="let k of all" >
           
         <td > {{k.Tarehe}}</td>
         <td style="white-space: nowrap">{{k.Jina}}</td>
-        <td  style="white-space: nowrap">{{k.Amount | currency: 'tsh '}}</td>
+        <td  style="white-space: nowrap">{{k.Amount | money}}</td>
         <td style="white-space: nowrap">{{k.Transaction_id}}</td>
         <td style="white-space: nowrap; ">{{k.Transaction_id}}</td>
         <td style ="color:blue"><a (click)="takepdf(k)">{{k.Description }}</a></td>
         <!-- <td *ngIf="k.user === username  && k.rangi ==='red' "  style="color:red">{{k.Transaction_id}}</td>  -->
-        <td *ngIf="k.status =='paid'"style="color:green">paid</td>
-        <td *ngIf="k.status =='notpaid'"style="color:red" (click)="pay()">Not paid</td>
+        <td *ngIf="k.status =='paid'"style="color:green">{{ 'paid' | t }}</td>
+        <td *ngIf="k.status =='notpaid'"style="color:red" (click)="pay()">{{ 'Not paid' | t }}</td>
 
         <!-- <td *ngIf="k.user === username && k.info === 'delete';"   style="color:red" ><button class="mben" (click)='run()'>delete</button></td> -->
         <!-- <td *ngIf="k.user === username && k.info === '';"   style="color:red"></td> -->
@@ -79,5 +89,9 @@
     </tbody>
   </table>
   </div>
+</div>
+</section>
+</div>
+
 
 <!-- <app-details-view [form] = "selectedData"></app-details-view> -->
