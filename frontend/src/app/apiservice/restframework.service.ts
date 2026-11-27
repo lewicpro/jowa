@@ -2206,6 +2206,17 @@ getWapangajiNyumbaList(mpangajiid) {
       });
     });
   }
+  // all the installments of one customer (every loan), oldest due date first
+  getInstallmentsForUser(user) {
+    return new Promise(resolve => {
+      this.http.get(this.link + '/api/Adworker/Installments/?user=' + encodeURIComponent(String(user))).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        resolve([]);
+      });
+    });
+  }
   getInstallmentsForLoan(loanId: number) {
     return new Promise(resolve => {
       this.http.get(this.link + '/api/Adworker/Installments/?loan_pk=' + encodeURIComponent(String(loanId))).subscribe(data => {

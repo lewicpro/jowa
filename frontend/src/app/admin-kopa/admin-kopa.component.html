@@ -22,6 +22,26 @@
     </div>
   </ng-template>
 
+  <!-- what the customer should pay next (a short-paid month shows its remainder first) -->
+  @if (nextDue(); as n) {
+    <div class="next-due" [class.late]="isLate(n)">
+      <span class="next-due-dot" aria-hidden="true"></span>
+      <span class="next-due-label">{{ (isLate(n) ? 'Imechelewa' : 'Inayofuata') | t }}</span>
+      <strong>{{ n.left | money }}</strong>
+      <span class="next-due-when">{{ 'kabla ya' | t }} {{ n.due_date | date:'d MMM y' }}</span>
+      @if (n.paid > 0) {
+        <span class="next-due-part">{{ 'sehemu imelipwa' | t }}: {{ n.paid | money }} / {{ n.scheduled | money }}</span>
+      }
+      @if (afterNextDue(); as a2) {
+        <span class="next-due-after">{{ 'Baada yake' | t }}: {{ a2.left | money }} · {{ a2.due_date | date:'d MMM y' }}</span>
+      }
+    </div>
+  } @else if (customerInstallments.length > 0) {
+    <div class="next-due done">
+      <span class="next-due-dot" aria-hidden="true"></span>
+      <span class="next-due-label">{{ 'Mkopo umelipwa wote' | t }}</span>
+    </div>
+  }
   <div class="loan-payment-table-wrap">
   <table class="table table-sm loan-payment-table">
     <thead>

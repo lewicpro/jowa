@@ -170,6 +170,7 @@ export class AdminKopaComponent implements OnInit {
           this.morem.color = latestLoanRow.rangi;
           this.awamu = latestLoanRow.awamu;
         }
+        this.loadCustomerInstallments();
       });
 
       this.restframework.getPayments2().then(datat2 => {
@@ -180,6 +181,102 @@ export class AdminKopaComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  // ================= installments of this customer (carry over) =================
+  // A short payment (e.g. 100,000 of 130,000) leaves that month owing 30,000;
+  // the next payment pays that first, then the next month.
+
+  customerInstallments = [];
+
+  loadCustomerInstallments() {
+    if (!this.username) {
+      return;
+    }
+    this.restframework.getInstallmentsForUser(this.username).then((data: any) => {
+      const list = [];
+      for (const i of (data || [])) {
+        list.push({
+          due_date: i.due_date,
+          scheduled: Number(i.scheduled_amount) || 0,
+          paid: Number(i.paid_amount) || 0,
+          left: Number(i.balance) || 0
+        });
+      }
+      // oldest first, like the backend pays them
+      list.sort((a, b) => String(a.due_date).localeCompare(String(b.due_date)));
+      this.customerInstallments = list;
+    });
+  }
+
+  // the first installment still owing (what the customer should pay next)
+  nextDue() {
+    for (const i of this.customerInstallments) {
+      if (i.left > 0) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  // the one after it (shown so the next full amount is clear)
+  afterNextDue() {
+    let found = false;
+    for (const i of this.customerInstallments) {
+      if (i.left > 0) {
+        if (found) {
+          return i;
+        }
+        found = true;
+      }
+    }
+    return null;
+  }
+
+  // is this installment's date already passed?
+  isLate(installment) {
+    const today = new Date();
+    const todayText = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+    return String(installment.due_date) < todayText;
+  }
+
+  // how many installments would still be owing after paying "amount" (oldest first)
+  installmentsLeftAfter(amount) {
+    let money = Number(amount) || 0;
+    let left = 0;
+    for (const i of this.customerInstallments) {
+      let owing = i.left;
+      if (money > 0 && owing > 0) {
+        const pay = Math.min(money, owing);
+        owing = owing - pay;
+        money = money - pay;
+      }
+      if (owing > 0) {
+        left = left + 1;
+      }
+    }
+    return left;
+  }
+
+  // after a payment: get the new balance, installments left and schedule
+  refreshAfterPayment() {
+    this.restframework.getPayments().then((data: any) => {
+      let latest = null;
+      for (const m of (data || [])) {
+        if (m.user === this.username && (m.route === 'toa' || m.route === 'weka') &&
+            m.info !== 'delete' && m.info !== 'deleted' &&
+            m.Balance !== null && m.Balance !== undefined && m.Balance !== '' && isFinite(Number(m.Balance))) {
+          if (latest == null || Number(m.pk) > Number(latest.pk)) {
+            latest = m;
+          }
+        }
+      }
+      if (latest != null) {
+        this.Balance = Number(latest.Balance);
+        this.awamu = latest.awamu;
+      }
+      this.loadCustomerInstallments();
+    });
   }
 
   get filteredPayments(): any[] {
@@ -274,6 +371,7 @@ time(){
       this.openSnackbar();
       
       this.thisfunct();
+      this.refreshAfterPayment();
       this.mona()
       this.ngProgress.ref().complete();
       
@@ -331,9 +429,14 @@ time(){
       if (this.men !== null && this.men !== undefined && String(this.men).trim() !== '') {
         this.bwoy = Number(this.men);
       } else {
-        this.bwoy = Number.isFinite(scheduledInstallments)
-          ? Math.max(0, scheduledInstallments - 1)
-          : 0;
+        // count from the schedule: a short payment keeps its month open
+        if (this.customerInstallments.length > 0) {
+          this.bwoy = this.installmentsLeftAfter(paymentAmount);
+        } else {
+          this.bwoy = Number.isFinite(scheduledInstallments)
+            ? Math.max(0, scheduledInstallments - 1)
+            : 0;
+        }
       }
 
       if (!Number.isFinite(currentBalance) || currentBalance < 0 ||
