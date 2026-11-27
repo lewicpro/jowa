@@ -15393,7 +15393,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				mwaka = serializer.validated_data['mwaka']
 				day = serializer.validated_data['day']
 				reg = Register.objects.get(Username=user)
-				company = reg.company_username
+				company = customer_company(reg)
 
 				mor = Jumla.objects.get(pk=1)
 				mor.Total_balance = float(mor.Total_balance) + float(loan_repay)
@@ -15459,7 +15459,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				
 
 				elif pertoa.mwezi == 'May':
-					pertoa.April = float(pertoa.April) + float(loan_repay)
+					pertoa.May = float(pertoa.May) + float(loan_repay)
 				
 
 				elif pertoa.mwezi == 'June':
@@ -15476,7 +15476,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 	
 
 				elif pertoa.mwezi == 'September':
-					pertoa.September = float(mwe.September) + float(loan_repay)
+					pertoa.September = float(pertoa.September) + float(loan_repay)
 					
 
 
@@ -15524,7 +15524,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					
 
 					elif micromiezey.mwezi == 'May':
-						micromiezey.April = float(micromiezey.April) + float(loan_repay)
+						micromiezey.May = float(micromiezey.May) + float(loan_repay)
 					
 
 					elif micromiezey.mwezi == 'June':
@@ -15541,7 +15541,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 		
 
 					elif micromiezey.mwezi == 'September':
-						micromiezey.September = float(mwe.September) + float(loan_repay)
+						micromiezey.September = float(micromiezey.September) + float(loan_repay)
 						
 
 
@@ -16390,7 +16390,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				if company:	
 					if mwe.mwezi == 'January':
 						
-						mwe.January = float(mwe.January) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16458,7 +16458,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					
 					
 					elif mwe.mwezi == 'February':
-						mwe.February = float(mwe.February) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16525,7 +16525,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'March':
-						mwe.March = float(mwe.March) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16592,7 +16592,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'April':
-						mwe.April = float(mwe.April) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16659,7 +16659,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'May':
-						mwe.June = float(mwe.June) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16726,7 +16726,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'June':
-						mwe.June = float(mwe.June) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16793,7 +16793,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'July':
-						mwe.July = float(mwe.July) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16860,7 +16860,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'August':
-						mwe.August = float(mwe.August) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16927,7 +16927,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'September':
-						mwe.September = float(mwe.September) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -16994,7 +16994,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'October':
-						mwe.October = float(mwe.October) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -17061,7 +17061,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 						Sikus.save()
 
 					elif mwe.mwezi == 'November':
-						mwe.November = float(mwe.November) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -17129,7 +17129,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 
 					elif mwe.mwezi == 'December':
 						
-						mwe.December = float(mwe.December) + float(loan_repay)
+						pass  # already counted above (was added twice)
 						if day == '1':
 							Sikus.tr1 = float(Sikus.tr1) + float(loan_repay)
 						
@@ -17229,13 +17229,13 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				loan_repaya = serializer.validated_data['kilichokopwa']
 				day = serializer.validated_data['day']
 				reg = Register.objects.get(Username=user)
-				thecompany = reg.company_username
+				thecompany = customer_company(reg)
 				# loan_repay = serializer.validated_data['loan_repay']
 				mor = Jumla.objects.get(pk=1)
 				# mor.Total_balance = mor.Total_balance - float(loan_repay)
 				# mor.Mkopo = mor.Mkopo + float(Balance)
 				reg = Register.objects.get(Username=user)
-				company = reg.company_username
+				company = customer_company(reg)
 				maji = UserInfo.objects.get(user__iexact=user)
 				print( 'userinfo countes')
 				print('maji.Balance : ' , maji.Balance)
@@ -17290,7 +17290,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				
 
 				elif pertoa.mwezi == 'May':
-					pertoa.April = float(pertoa.April) + float(loan_repaya)
+					pertoa.May = float(pertoa.May) + float(loan_repaya)
 				
 
 				elif pertoa.mwezi == 'June':
@@ -17307,7 +17307,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 	
 
 				elif pertoa.mwezi == 'September':
-					pertoa.September = float(mwe.September) + float(loan_repaya)
+					pertoa.September = float(pertoa.September) + float(loan_repaya)
 					
 
 
@@ -17357,7 +17357,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					
 
 					elif creditToaMiezey.mwezi == 'May':
-						creditToaMiezey.April = float(creditToaMiezey.April) + float(loan_repaya)
+						creditToaMiezey.May = float(creditToaMiezey.May) + float(loan_repaya)
 					
 
 					elif creditToaMiezey.mwezi == 'June':
@@ -17374,7 +17374,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 		
 
 					elif creditToaMiezey.mwezi == 'September':
-						creditToaMiezey.September = float(mwe.September) + float(loan_repaya)
+						creditToaMiezey.September = float(creditToaMiezey.September) + float(loan_repaya)
 						
 
 
@@ -17399,7 +17399,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				
 				if mwe.mwezi == 'January':
 					
-					mwe.January = float(mwe.January) + float(loan_repaya)
+					mweto.January = float(mweto.January) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17466,7 +17466,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'February':
-					mwe.February = float(mwe.February) + float(loan_repaya)
+					mweto.February = float(mweto.February) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17533,7 +17533,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'March':
-					mwe.March = float(mwe.March) + float(loan_repaya)
+					mweto.March = float(mweto.March) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17600,7 +17600,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'April':
-					mwe.April = float(mwe.April) + float(loan_repaya)
+					mweto.April = float(mweto.April) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17667,7 +17667,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'May':
-					mwe.April = float(mwe.April) + float(loan_repaya)
+					mweto.May = float(mweto.May) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17734,7 +17734,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'June':
-					mwe.June = float(mwe.June) + float(loan_repaya)
+					mweto.June = float(mweto.June) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17801,7 +17801,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'July':
-					mwe.July = float(mwe.July) + float(loan_repaya)
+					mweto.July = float(mweto.July) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17868,7 +17868,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'August':
-					mwe.August = float(mwe.August) + float(loan_repaya)
+					mweto.August = float(mweto.August) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -17935,7 +17935,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'September':
-					mwe.September = float(mwe.September) + float(loan_repaya)
+					mweto.September = float(mweto.September) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -18002,7 +18002,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'October':
-					mwe.October = float(mwe.October) + float(loan_repaya)
+					mweto.October = float(mweto.October) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -18069,7 +18069,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					days.save()
 
 				elif mwe.mwezi == 'November':
-					mwe.November = float(mwe.November) + float(loan_repaya)
+					mweto.November = float(mweto.November) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -18138,7 +18138,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				elif mwe.mwezi == 'December':
 					# print('hereeeeee 1')
 					
-					mwe.December = float(mwe.December) + float(loan_repaya)
+					mweto.December = float(mweto.December) + float(loan_repaya)  # a loan given is money OUT
 					if day == '1':
 						days.tr1 = float(days.tr1) + float(loan_repaya)
 					
@@ -18238,7 +18238,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 
 				if mwe.mwezi == 'January':
 					
-					mwe.January = float(mwe.January) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18305,7 +18305,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'February':
-					mwe.February = float(mwe.February) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18372,7 +18372,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'March':
-					mwe.March = float(mwe.March) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18439,7 +18439,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'April':
-					mwe.April = float(mwe.April) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18506,7 +18506,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'May':
-					mwe.April = float(mwe.April) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18573,7 +18573,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'June':
-					mwe.June = float(mwe.June) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18640,7 +18640,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'July':
-					mwe.July = float(mwe.July) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18707,7 +18707,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'August':
-					mwe.August = float(mwe.August) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18774,7 +18774,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'September':
-					mwe.September = float(mwe.September) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18841,7 +18841,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'October':
-					mwe.October = float(mwe.October) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18908,7 +18908,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 				elif mwe.mwezi == 'November':
-					mwe.November = float(mwe.November) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -18977,7 +18977,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				elif mwe.mwezi == 'December':
 					# print('hereeeeee 1')
 					
-					mwe.December = float(mwe.December) + float(loan_repaya)
+					pass  # the loan was counted as a repayment here (removed)
 					if day == '1':
 						Sikus.tr1 = float(Sikus.tr1) + float(loan_repaya)
 					
@@ -19047,6 +19047,7 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 					Sikus.save()
 
 		
+				mweto.save()
 				mwe.save()
 
 				# maji.mkopo = float(maji.mkopo) + float(loan_repay)
@@ -19176,7 +19177,7 @@ class RegisterPostView( generics.CreateAPIView, generics.ListAPIView):
 	
 
 	# 			elif pertoa.mwezi == 'September':
-	# 				pertoa.September = float(mwe.September) + float(loan_repay)
+	# 				pertoa.September = float(pertoa.September) + float(loan_repay)
 					
 
 
@@ -19241,7 +19242,7 @@ class RegisterPostView( generics.CreateAPIView, generics.ListAPIView):
 		
 
 	# 				elif micromiezey.mwezi == 'September':
-	# 					micromiezey.September = float(mwe.September) + float(loan_repay)
+	# 					micromiezey.September = float(micromiezey.September) + float(loan_repay)
 						
 
 
@@ -20991,7 +20992,7 @@ class RegisterPostView( generics.CreateAPIView, generics.ListAPIView):
 	
 
 	# 			elif pertoa.mwezi == 'September':
-	# 				pertoa.September = float(mwe.September) + float(loan_repaya)
+	# 				pertoa.September = float(pertoa.September) + float(loan_repaya)
 					
 
 
@@ -21057,7 +21058,7 @@ class RegisterPostView( generics.CreateAPIView, generics.ListAPIView):
 		
 
 	# 				elif creditToaMiezey.mwezi == 'September':
-	# 					creditToaMiezey.September = float(mwe.September) + float(loan_repaya)
+	# 					creditToaMiezey.September = float(creditToaMiezey.September) + float(loan_repaya)
 						
 
 
@@ -22786,7 +22787,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 			# day = Malipo.objects.get(user=user, info='day')
 			mom = Malipo.objects.get(user=user, info='delete')
 			regs = Register.objects.get(Username=user)
-			company = regs.company_username
+			company = customer_company(regs)
 
 
 			
@@ -22859,7 +22860,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 			
 
 			elif pertoa.mwezi == 'May':
-				pertoa.April = float(pertoa.April) - float(mom.loan_repay)
+				pertoa.May = float(pertoa.May) - float(mom.loan_repay)
 			
 
 			elif pertoa.mwezi == 'June':
@@ -22876,7 +22877,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 
 
 			elif pertoa.mwezi == 'September':
-				pertoa.September = float(mwe.September) - float(mom.loan_repay)
+				pertoa.September = float(pertoa.September) - float(mom.loan_repay)
 				
 
 
@@ -22934,7 +22935,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 
 
 			# elif micromiezey.mwezi == 'September':
-			# 	micromiezey.September = float(mwe.September) - float(mom.loan_repay)
+			# 	micromiezey.September = float(micromiezey.September) - float(mom.loan_repay)
 				
 
 
@@ -23228,7 +23229,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 				days.save()
 
 			elif mwe.mwezi == 'May':
-				mwe.April = float(mwe.April) - float(mom.loan_repay)
+				mwe.May = float(mwe.May) - float(mom.loan_repay)
 				if day == '1':
 					days.tr1 = float(days.tr1) - float(mom.loan_repay)
 				
@@ -24042,7 +24043,7 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 					daysmicro.save()
 
 				elif micromiezey.mwezi == 'May':
-					micromiezey.April = float(micromiezey.April) - float(mom.loan_repay)
+					micromiezey.May = float(micromiezey.May) - float(mom.loan_repay)
 					if day == '1':
 						daysmicro.tr1 = float(daysmicro.tr1) - float(mom.loan_repay)
 					
@@ -24633,7 +24634,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 			# day = Malipo.objects.get(user=user, info='day')
 			mom = Malipo.objects.get(user=user, info='delete')
 			regs = Register.objects.get(Username=user)
-			company = regs.company_username
+			company = customer_company(regs)
 
 
 			
@@ -24709,7 +24710,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 			
 
 			elif pertoa.mwezi == 'May':
-				pertoa.April = float(pertoa.April) - float(mom.loan_repay)
+				pertoa.May = float(pertoa.May) - float(mom.loan_repay)
 			
 
 			elif pertoa.mwezi == 'June':
@@ -24726,7 +24727,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 
 
 			elif pertoa.mwezi == 'September':
-				pertoa.September = float(mwe.September) - float(mom.loan_repay)
+				pertoa.September = float(pertoa.September) - float(mom.loan_repay)
 				
 
 
@@ -24784,7 +24785,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 
 
 			# elif micromiezey.mwezi == 'September':
-			# 	micromiezey.September = float(mwe.September) - float(mom.loan_repay)
+			# 	micromiezey.September = float(micromiezey.September) - float(mom.loan_repay)
 				
 
 
@@ -25078,7 +25079,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 				days.save()
 
 			elif mwe.mwezi == 'May':
-				mwe.April = float(mwe.April) - float(mom.loan_repay)
+				mwe.May = float(mwe.May) - float(mom.loan_repay)
 				if day == '1':
 					days.tr1 = float(days.tr1) - float(mom.loan_repay)
 				
@@ -25891,7 +25892,7 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 					daysmicro.save()
 
 				elif micromiezey.mwezi == 'May':
-					micromiezey.April = float(micromiezey.April) - float(mom.loan_repay)
+					micromiezey.May = float(micromiezey.May) - float(mom.loan_repay)
 					if day == '1':
 						daysmicro.tr1 = float(daysmicro.tr1) - float(mom.loan_repay)
 					
@@ -26807,6 +26808,9 @@ class MkopoView( generics.CreateAPIView, generics.ListAPIView):
 		serializer = MkopoSerializer(data=data)
 		if serializer.is_valid(raise_exception=True):
 			mog = serializer.save()
+			# a customer saved without a company now belongs to the company giving the loan
+			if serializer.validated_data.get('company'):
+				Register.objects.filter(Username=serializer.validated_data['user']).filter(Q(company_username__isnull=True) | Q(company_username='')).update(company_username=serializer.validated_data['company'])
 			
 			
 			

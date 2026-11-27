@@ -1934,6 +1934,23 @@ def allocate_payment_to_installments(instance):
             break
 
 
+def customer_company(register):
+    """The company a customer belongs to.
+
+    Customers registered on "Ongeza Account" were saved without a company, while their loans
+    carry the lender's company. Use the customer's own company, otherwise the company of
+    their latest loan, so loans and repayments are counted under the same company.
+    """
+    if register is None:
+        return None
+    if register.company_username:
+        return register.company_username
+    loan = FormMkopo.objects.filter(user=register.Username).exclude(company__isnull=True).exclude(company='').order_by('-pk').first()
+    if loan is not None:
+        return loan.company
+    return None
+
+
 def installments_left(user, account_no=None, company=None):
     """How many installments of this customer still have money owing.
 
