@@ -1934,6 +1934,28 @@ def allocate_payment_to_installments(instance):
             break
 
 
+def installments_left(user, account_no=None, company=None):
+    """How many installments of this customer still have money owing.
+
+    A short payment (e.g. 100,000 of 130,000) leaves that month owing, so it still counts;
+    the shortfall is paid first by the next payment (carry over).
+    """
+    loans = FormMkopo.objects.filter(user=user)
+    if account_no:
+        loans = loans.filter(Account_no=account_no)
+    if company:
+        loans = loans.filter(company=company)
+    left = 0
+    for installment in LoanInstallment.objects.filter(loan__in=loans):
+        paid = sum(
+            installment.payment_allocations.exclude(payment__info__in=['delete', 'deleted']).values_list('amount', flat=True),
+            Decimal('0.00'),
+        )
+        if installment.scheduled_amount - paid > 0:
+            left += 1
+    return left
+
+
 @receiver(post_save, sender=Malipo)
 def allocate_loan_payment(sender, instance, created, **kwargs):
     if not created:

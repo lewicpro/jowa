@@ -15305,6 +15305,10 @@ class LoanInstallmentListView(generics.ListAPIView):
 		loan_pk = self.request.query_params.get('loan_pk')
 		if loan_pk:
 			installments = installments.filter(loan_id=loan_pk)
+		# one customer's installments (the Loan tab shows their schedule)
+		user = self.request.query_params.get('user')
+		if user:
+			installments = installments.filter(loan__user=user)
 		if self.request.query_params.get('promised_only') == '1':
 			installments = installments.filter(promised_date__isnull=False)
 		return installments.order_by('due_date', 'sequence', 'pk')
@@ -17205,6 +17209,9 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				mobm.save()
 				allocate_payment_to_installments(mobm)
 				set_payment_loan_start_date(mobm)
+				# installments left = the ones still owing after this payment
+				# (a short payment keeps its month open; it is not counted as a whole installment)
+				mok.awamu = installments_left(user, mobm.Account_no, mobm.company)
 				mok.save()
 	
 				mor.save()
