@@ -151,7 +151,11 @@ export class OngezaMkopoComponent implements OnInit {
           this.datar = localStorage.getItem('id');
           this.users = data;
           for (const m of this.users) {
-          
+            // only the customer whose page is open (before, every customer was taken in turn,
+            // so the loan went to whoever was last in the list)
+            if (String(m.pk) !== String(this.datar)) {
+              continue;
+            }
             this.user = m.Username;
             this.jina = m.jina;
             this.account = m.Account_no;
@@ -311,7 +315,7 @@ export class OngezaMkopoComponent implements OnInit {
           }
           if (this.m1) {
             this.mw1 = this.m1;
-            this.m2 = this.jumla - this.m1
+            // (month 2 used to be overwritten here with the rest; fixSchedule() now gives it the rest without touching what was typed)
             this.mw2 = this.jumla - this.m1
             // console.log(this.mw2)
             
@@ -2031,11 +2035,54 @@ fourall(){
 // - Every month gets its name: from this month (next month after the 21st), going on past December.
 // (The long code above mixed months up when only some were typed, e.g. if month 1 was empty it
 //  filled month 2, and it left no name for a 1-month loan after the 21st or for month 12.)
-fixSchedule() {
+// One calculation for every loan (1 to 12 whole months).
+// It gives the same numbers as the long code above, which stops at 11 months:
+//   interest = amount x rate / 100, rate = the typed "Riba" for the whole loan, or 10% for every month
+//   total    = amount + interest
+// When the months or the rate are not right, everything is emptied so the loan cannot be sent.
+calcLoan() {
   const months = this.monthNumbers();
-  if (months.length === 0) {
+  const amount = Number(this.Kiasi);
+  const rate = this.rate();
+  if (months.length === 0 || !(amount > 0) || rate == null) {
+    this.totalAmount = null;
+    this.jumla = null;
+    this.kilamwezi = null;
+    for (let i = 1; i <= 12; i++) {
+      this['mw' + i] = null;
+    }
+    return false;
+  }
+  this.ribaa = rate;
+  this.totalAmount = Math.round(amount * rate / 100);
+  this.jumla = this.totalAmount + amount;
+  this.kilamwezi = Math.round(this.jumla / months.length);
+  // months after the last one are not part of this loan
+  for (let i = months.length + 1; i <= 12; i++) {
+    this['mw' + i] = null;
+  }
+  return true;
+}
+
+// the rate for the whole loan in %: the one typed, or 10% for every month.
+// null when the typed rate is not a number or is below zero.
+rate() {
+  const typed = this.riba;
+  if (typed !== null && typed !== undefined && String(typed).trim() !== '') {
+    const value = Number(String(typed).replace(',', '.'));
+    if (isNaN(value) || value < 0) {
+      return null;
+    }
+    return value;
+  }
+  return this.monthNumbers().length * 10;
+}
+
+fixSchedule() {
+  if (!this.calcLoan()) {
     return;
   }
+  const months = this.monthNumbers();
 
   // month names
   const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -2061,11 +2108,14 @@ fixSchedule() {
     }
   }
 
-  // nothing typed: every month pays "kila mwezi"
+  // nothing typed: every month pays "kila mwezi", the last month takes the rounding
+  // (100,000 for 3 months: 43,333 + 43,333 + 43,334 = 130,000)
   if (notTyped.length === months.length) {
     for (const i of months) {
       this['mw' + i] = this.kilamwezi;
     }
+    const last = months[months.length - 1];
+    this['mw' + last] = this.jumla - this.kilamwezi * (months.length - 1);
     return;
   }
 
@@ -2083,20 +2133,28 @@ fixSchedule() {
   }
 }
 
-// the months of the schedule: [1, 2, 3 ...] up to the number of months (max 12)
+// the months of the schedule: [1, 2, 3 ...] up to the number of months.
+// Only whole months from 1 to 12; anything else gives an empty list (the loan cannot be sent).
 monthNumbers() {
   const list = [];
-  let n = Math.round(Number(this.miezi));
-  if (!(n > 0)) {
+  if (!this.monthsOk()) {
     return list;
   }
-  if (n > 12) {
-    n = 12;
-  }
+  const n = Number(this.miezi);
   for (let i = 1; i <= n; i++) {
     list.push(i);
   }
   return list;
+}
+
+// months must be a whole number from 1 to 12
+monthsOk() {
+  const text = String(this.miezi == null ? '' : this.miezi).trim();
+  if (!/^[0-9]+$/.test(text)) {
+    return false;
+  }
+  const n = Number(text);
+  return n >= 1 && n <= 12;
 }
 
 // name of month i in the schedule ("December" ...)
@@ -2148,22 +2206,60 @@ scheduleTotal() {
   return total;
 }
 
-// does the schedule add up to "Jumla"? (each month is rounded, so allow 1 shilling per month)
+// does the schedule add up to "Jumla" exactly?
 scheduleOk() {
-  return Math.abs(this.scheduleTotal() - Number(this.jumla || 0)) <= this.monthNumbers().length;
-}
-
-// "Riba" shown: the one typed, or the normal one (10% for every month)
-ribaShown() {
-  if (this.ribaa) {
-    return this.ribaa;
+  if (this.monthNumbers().length === 0 || !(Number(this.jumla) > 0)) {
+    return false;
   }
-  return Math.round(Number(this.miezi) || 0) * 10;
+  return this.scheduleTotal() === Number(this.jumla);
 }
 
-// the form can be sent when there is an amount and months
+// is every month above zero?
+monthsPositive() {
+  for (const i of this.monthNumbers()) {
+    if (!(Number(this.monthPay(i)) > 0)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// "Riba" shown: the rate for the whole loan
+ribaShown() {
+  const rate = this.rate();
+  if (rate == null) {
+    return 0;
+  }
+  return rate;
+}
+
+// why the loan cannot be sent yet ('' = it can be sent)
+problem() {
+  // the customer whose page is open must be found, or the loan would have no owner
+  if (!this.user) {
+    return 'Mteja hajapatikana. Fungua ukurasa wa mteja tena.';
+  }
+  if (!(Number(this.Kiasi) > 0)) {
+    return 'Weka kiasi cha mkopo';
+  }
+  if (!this.monthsOk()) {
+    return 'Miezi iwe namba kamili kati ya 1 na 12';
+  }
+  if (this.rate() == null) {
+    return 'Riba iwe namba ya 0 au zaidi';
+  }
+  if (!this.monthsPositive()) {
+    return 'Kila mwezi uwe na kiasi zaidi ya sifuri';
+  }
+  if (!this.scheduleOk()) {
+    return 'Jumla ya miezi hailingani na Jumla ya mkopo';
+  }
+  return '';
+}
+
+// the form can be sent only when the loan and its schedule are right
 canSend() {
-  return Number(this.Kiasi) > 0 && Number(this.miezi) > 0;
+  return this.problem() === '';
 }
 
 openModal(template: TemplateRef<any>) {
@@ -2186,84 +2282,84 @@ decline(): void {
 kokotoa(){
   console.log('passed here')
   if(this.miezi_Pesa === '1'){
-    this.Kiasi = this.Kiasi_Pesa / 1.1;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.1);  // whole shillings: the server stores the total as a whole number
     this.miezi = 1
     this.ribaa = 10
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '2'){
-    this.Kiasi = this.Kiasi_Pesa / 1.2;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.2);  // whole shillings: the server stores the total as a whole number
     this.miezi = 2
     this.ribaa = 20
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '3'){
-    this.Kiasi = this.Kiasi_Pesa / 1.3;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.3);  // whole shillings: the server stores the total as a whole number
     this.miezi = 3
     this.ribaa = 30
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '4'){
-    this.Kiasi = this.Kiasi_Pesa / 1.4;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.4);  // whole shillings: the server stores the total as a whole number
     this.miezi = 4
     this.ribaa = 40
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '5'){
-    this.Kiasi = this.Kiasi_Pesa / 1.5;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.5);  // whole shillings: the server stores the total as a whole number
     this.miezi = 5
     this.ribaa = 50
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '6'){
-    this.Kiasi = this.Kiasi_Pesa / 1.6;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.6);  // whole shillings: the server stores the total as a whole number
     this.miezi = 6
     this.ribaa = 60
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '7'){
-    this.Kiasi = this.Kiasi_Pesa / 1.7;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.7);  // whole shillings: the server stores the total as a whole number
     this.miezi = 7
     this.ribaa = 70
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '8'){
-    this.Kiasi = this.Kiasi_Pesa / 1.8;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.8);  // whole shillings: the server stores the total as a whole number
     this.miezi = 8
     this.ribaa = 80
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '9'){
-    this.Kiasi = this.Kiasi_Pesa / 1.9;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 1.9);  // whole shillings: the server stores the total as a whole number
     this.miezi = 9
     this.ribaa = 90
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '10'){
-    this.Kiasi = this.Kiasi_Pesa / 2;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 2);  // whole shillings: the server stores the total as a whole number
     this.miezi = 10
     this.ribaa = 100
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '11'){
-    this.Kiasi = this.Kiasi_Pesa / 2.1;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 2.1);  // whole shillings: the server stores the total as a whole number
     this.miezi = 11
     this.ribaa = 110
     this.updateTotal();
 
   }
   else if(this.miezi_Pesa === '12'){
-    this.Kiasi = this.Kiasi_Pesa / 2.2;
+    this.Kiasi = Math.round(this.Kiasi_Pesa / 2.2);  // whole shillings: the server stores the total as a whole number
     this.miezi = 12
     this.ribaa = 120
     this.updateTotal();

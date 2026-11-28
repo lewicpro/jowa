@@ -149,6 +149,10 @@ export class DasboardMkopeshajiComponent implements OnInit {
             this.mez = m.April;
   
           }
+          else if(this.mwei === 'May'){
+            // May was missing, so in May this card showed nothing
+            this.mez = m.May;
+          }
           else if(this.mwei === 'June'){
             this.mez = m.June;
   

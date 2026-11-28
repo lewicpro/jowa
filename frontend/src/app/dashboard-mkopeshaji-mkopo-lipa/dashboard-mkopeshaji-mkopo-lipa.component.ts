@@ -322,7 +322,8 @@ time(){
       this.Interest = null;
       this.userData = null;
 
-      this.loan1 = this.v1;
+      // the amount box gives text ("10000"); keep sending a number as before
+      this.loan1 = Number(this.v1);
       this.Interest = this.v2;
       if (this.men) {
         this.bwoy = this.men

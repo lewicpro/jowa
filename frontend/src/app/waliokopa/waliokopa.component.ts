@@ -123,6 +123,16 @@ export class WaliokopaComponent implements OnInit {
   }
 
 
+// what is still to be paid on the loan shown in the schedule window:
+// the "Amount remaining" of every month added up
+loanRemaining(installments) {
+  let left = 0;
+  for (const i of (installments || [])) {
+    left = left + (Number(i.balance) || 0);
+  }
+  return left;
+}
+
 ngOnInit() {}
 
 

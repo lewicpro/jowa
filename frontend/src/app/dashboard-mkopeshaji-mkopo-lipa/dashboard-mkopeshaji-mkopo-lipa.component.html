@@ -42,7 +42,7 @@
       <td class="text-center" >id </td>
       <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" placeholder="Muda wa sasa"> </td>
       <td style="white-space: nowrap">{{jinalote}}</td>
-      <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" placeholder="*Important"></td>
+      <td><input [ngModel]="v1" (ngModelChange)="v1 = $event; calculate()" style="border-radius:3px;" type="text" inputmode="numeric" alecoAmount placeholder="*Important"></td>
       <td><input [(ngModel)]="men" style="border-radius:3px;" [value]="bwoy" type="text"></td>
       <td><input type="number" style="border-radius:3px;"></td>
       <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number"></td>

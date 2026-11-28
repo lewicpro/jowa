@@ -206,6 +206,14 @@ export const EN: Record<string, string> = {
   'Hali ya majaribio: hakuna ujumbe utakaomfikia mteja.': 'Test mode: no message will reach the customer.',
   'Hajasajiliwa': 'Not registered', 'Hakuna namba iliyosajiliwa': 'No registered phone number',
   'hawana namba iliyosajiliwa, hawatatumiwa ujumbe': 'have no registered phone number and will not get a message',
+  // loan form checks
+  'Weka kiasi cha mkopo': 'Enter the loan amount',
+  'Miezi iwe namba kamili kati ya 1 na 12': 'Months must be a whole number from 1 to 12',
+  'Riba iwe namba ya 0 au zaidi': 'Interest must be a number, 0 or more',
+  'Kila mwezi uwe na kiasi zaidi ya sifuri': 'Every month must have an amount above zero',
+  'Jumla ya miezi hailingani na Jumla ya mkopo': 'The months do not add up to the loan total',
+  'Mteja hajapatikana. Fungua ukurasa wa mteja tena.': 'Customer not found. Open the customer page again.',
+  'Salio la mkopo': 'Loan balance',
 };
 
 // English text written in the pages -> Kiswahili (used when Kiswahili is chosen)

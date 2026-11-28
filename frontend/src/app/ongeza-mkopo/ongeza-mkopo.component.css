@@ -128,3 +128,6 @@
 }
 /* the confirm pop-up is narrow: smaller buttons so they sit side by side */
 .lm-confirm .lm-btn { flex: 1 1 0; min-height: 40px; padding: 0 12px; font-size: 14px; }
+
+/* why the loan cannot be sent yet */
+.lm-problem { margin: 0 0 8px; color: #b42318; font-size: 12.5px; }

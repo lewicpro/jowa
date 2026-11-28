@@ -128,7 +128,10 @@
         <div>
           <p class="installment-modal-eyebrow">{{ 'Ratiba ya mkopo' | t }}</p>
           <h2 id="installment-modal-title">{{scheduleLoan.jina | titlecase}}</h2>
-          <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.jumla | money}}</p>
+          <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.jumla | money}}
+            @if (installmentsByLoan[getLoanId(scheduleLoan)]?.length) {
+              · <span class="installment-modal-left">{{ 'Salio la mkopo' | t }} <strong>{{ loanRemaining(installmentsByLoan[getLoanId(scheduleLoan)]) | money }}</strong></span>
+            }</p>
         </div>
         <button type="button" class="installment-modal-close" [attr.aria-label]="'Funga ratiba ya awamu' | t"
           (click)="closeInstallments()">&times;</button>

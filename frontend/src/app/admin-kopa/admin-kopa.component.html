@@ -64,7 +64,7 @@
     <tr style="cursor:pointer" id="customers">
       <td class="text-center" ><input [(ngModel)]="mopai" (keyup)="calculate()"  style="border-radius:3px;" [value]="mdaa"  type="text" [placeholder]="'Muda wa sasa' | t"> </td>
       <td style="white-space: nowrap">{{jinalote}}</td>
-      <td><input [(ngModel)]="v1" (keyup)="calculate()" style="border-radius:3px;" [value]="jum"  type="number" [placeholder]="'*Important' | t"></td>
+      <td><input [ngModel]="v1" (ngModelChange)="v1 = $event; calculate()" style="border-radius:3px;" type="text" inputmode="numeric" alecoAmount [placeholder]="'*Important' | t"></td>
       <td><input [(ngModel)]="men" (keyup)="calculate()" style="border-radius:3px;" [value]="bwoy" type="text"></td>
       <td><input type="number" style="border-radius:3px;"></td>
       <td><input [(ngModel)]="v3" style="border-radius:3px;" [value]="momba" type="number" readonly [attr.aria-label]="'Remaining balance after payment' | t"></td>
@@ -117,7 +117,10 @@
                 <div>
                   <p class="installment-modal-eyebrow">{{ 'Ratiba ya mkopo' | t }}</p>
                   <h2 id="installment-modal-title">{{scheduleLoan.jina | titlecase}}</h2>
-                  <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.loan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.loan.jumla | money}}</p>
+                  <p class="installment-modal-subtitle">{{ 'Idadi ya awamu:' | t }} {{scheduleLoan.loan.Miezi}} · {{ 'Jumla' | t }} {{scheduleLoan.loan.jumla | money}}
+            @if (installmentsByLoan[scheduleLoan.loanId]?.length) {
+              · <span class="installment-modal-left">{{ 'Salio la mkopo' | t }} <strong>{{ loanRemaining(installmentsByLoan[scheduleLoan.loanId]) | money }}</strong></span>
+            }</p>
                   <p class="installment-promise-help">{{ 'Ahadi hubadilisha tarehe inayotarajiwa tu. Tarehe ya awali ya malipo na salio hubaki hadi malipo halisi yawekwe.' | t }}</p>
                 </div>
                 <button type="button" class="installment-dropdown-close" [attr.aria-label]="'Funga ratiba ya awamu' | t"

@@ -15406,7 +15406,8 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 
 
 				maji = UserInfo.objects.get(user__iexact=user)
-				maji.Balance = float(maji.Balance) - float(loan_repay)
+				# worked out from the loans and payments, so it can never drift
+				set_customer_figures(maji, user)  # LOAN, PROFIT and DEBT from the records
 				mobm.Balance = maji.Balance
 
 				moke = Malipo.objects.filter(user=user).order_by('-pk')[1]
@@ -17237,6 +17238,12 @@ class MalipoView( generics.CreateAPIView, generics.ListAPIView):
 				reg = Register.objects.get(Username=user)
 				company = customer_company(reg)
 				maji = UserInfo.objects.get(user__iexact=user)
+				# The loan was already added to the customer's total (MkopoView runs first).
+				# The page sends only the new loan's amount as Balance; when the customer still owes
+				# on an older loan, that row showed too little and payments above it were refused.
+				# Keep the customer's real total on the row instead.
+				mobm.Balance = maji.Balance
+				mobm.save(update_fields=['Balance'])
 				print( 'userinfo countes')
 				print('maji.Balance : ' , maji.Balance)
 				print('loan_repay : ' , Balance)
@@ -22816,6 +22823,8 @@ class MalipoDeleteView( generics.CreateAPIView, generics.ListAPIView):
 			morg.Balance = float(morg.Balance) + float(morg.loan_repay)
 			morg.save()
 			filt = Malipo.objects.filter(user=user, info='delete').update(info='deleted', awamu= float(mom.awamu) + 1)
+			# the payment is now marked deleted: work the debt out again without it
+			set_customer_figures(maji, user)  # LOAN, PROFIT and DEBT from the records
 
 
 			mwc = MieziToa.objects.get_or_create(user = mwaka)
@@ -24666,6 +24675,8 @@ class MalipoDeleteDashsView( generics.CreateAPIView, generics.ListAPIView):
 			morg.Balance = float(morg.Balance) + float(morg.loan_repay)
 			morg.save()
 			filt = Malipo.objects.filter(user=user, info='delete').update(info='deleted', awamu= float(mom.awamu) + 1)
+			# the payment is now marked deleted: work the debt out again without it
+			set_customer_figures(maji, user)  # LOAN, PROFIT and DEBT from the records
 
 
 			mwc = MieziToa.objects.get_or_create(user = mwaka)
@@ -26658,9 +26669,9 @@ class Form2View( generics.CreateAPIView, generics.ListAPIView):
 			print('mimi  : ', mimi)
 			print('mimi  : ', Faida)
 			print('mimi  : ', mimi)
-			moja.mkopo = moja.mkopo + float(mimi)
-			moja.Faida = moja.Faida + float(Faida)
-			moja.Balance = moja.Balance + float(mimi)
+			set_customer_figures(moja, usere)  # LOAN, PROFIT and DEBT from the records
+			pass  # PROFIT is set on the line above, from the records
+			pass  # DEBT is set above, from the records
 			
 			moja.save()
 			mor.save()
@@ -26730,9 +26741,9 @@ class Form2paginationView( generics.CreateAPIView, generics.ListAPIView):
 			print('mimi  : ', mimi)
 			print('mimi  : ', Faida)
 			print('mimi  : ', mimi)
-			moja.mkopo = moja.mkopo + float(mimi)
-			moja.Faida = moja.Faida + float(Faida)
-			moja.Balance = moja.Balance + float(mimi)
+			set_customer_figures(moja, usere)  # LOAN, PROFIT and DEBT from the records
+			pass  # PROFIT is set on the line above, from the records
+			pass  # DEBT is set above, from the records
 			
 			moja.save()
 			mor.save()
@@ -26836,9 +26847,9 @@ class MkopoView( generics.CreateAPIView, generics.ListAPIView):
 			print('user given', usere)
 			mojr = UserInfo.objects.get_or_create(user=usere)
 			moja = UserInfo.objects.get(user__iexact=usere)
-			moja.mkopo = moja.mkopo + float(mimi)
-			moja.Faida = moja.Faida + float(Faida)
-			moja.Balance = moja.Balance + float(mimi)
+			set_customer_figures(moja, usere)  # LOAN, PROFIT and DEBT from the records
+			pass  # PROFIT is set on the line above, from the records
+			pass  # DEBT is set above, from the records
 
 			mojrc = JumlaMicrofinance.objects.get_or_create(company=company)
 			mojac = JumlaMicrofinance.objects.get(company=company)

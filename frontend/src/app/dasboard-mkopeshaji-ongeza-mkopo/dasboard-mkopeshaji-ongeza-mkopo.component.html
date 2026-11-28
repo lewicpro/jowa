@@ -39,7 +39,7 @@
       <label class="lm-pill">
         <span class="lm-ic lm-i-money lm-t-green" aria-hidden="true"></span>
         <span class="lm-b"><small>{{ 'Kiasi kinachokopwa' | t }}</small>
-          <input type="text" inputmode="numeric" [ngModel]="Kiasi" (ngModelChange)="Kiasi = $event; updateTotal()" [placeholder]="'Mfano: 200000' | t">
+          <input type="text" inputmode="numeric" alecoAmount [ngModel]="Kiasi" (ngModelChange)="Kiasi = $event; updateTotal()" [placeholder]="'Mfano: 200000' | t">
         </span>
         <span class="lm-unit">tsh</span>
       </label>
@@ -74,7 +74,7 @@
         <label class="lm-pill">
           <span class="lm-ic lm-i-back lm-t-blue" aria-hidden="true"></span>
           <span class="lm-b"><small>{{ 'Kiwango kilichowekwa (jumla)' | t }}</small>
-            <input type="text" inputmode="numeric" [ngModel]="Kiasi_Pesa" (ngModelChange)="Kiasi_Pesa = $event; kokotoa()" [placeholder]="'Jumla atakayolipa' | t">
+            <input type="text" inputmode="numeric" alecoAmount [ngModel]="Kiasi_Pesa" (ngModelChange)="Kiasi_Pesa = $event; kokotoa()" [placeholder]="'Jumla atakayolipa' | t">
           </span>
         </label>
         <label class="lm-pill">
@@ -95,7 +95,7 @@
         @for (i of monthNumbers(); track i) {
           <div class="lm-row">
             <span class="lm-m">{{ 'Mwezi' | t }} {{ i }}<small>{{ monthName(i) | t }} {{ monthYear(i) }}</small></span>
-            <input type="text" inputmode="numeric" [ngModel]="getM(i)" (ngModelChange)="setM(i, $event)" [placeholder]="monthPay(i)">
+            <input type="text" inputmode="numeric" alecoAmount [ngModel]="getM(i)" (ngModelChange)="setM(i, $event)" [placeholder]="monthPay(i) | number: '1.0-2'">
           </div>
         }
       </div>
@@ -119,6 +119,7 @@
     <div class="lm-kv"><span>{{ 'Faida' | t }}</span><strong>{{ totalAmount ? (totalAmount | money) : '—' }}</strong></div>
     <div class="lm-kv"><span>{{ 'Jumla ya kulipwa' | t }}</span><strong>{{ jumla ? (jumla | money) : '—' }}</strong></div>
     <div class="lm-kv"><span>{{ 'Inaanza' | t }}</span><strong>{{ mwezi1 ? ((mwezi1 | t) + ' ' + monthYear(1)) : '—' }}</strong></div>
+    @if (problem() !== '' && (Kiasi || miezi || !user)) { <p class="lm-problem" role="status">{{ problem() | t }}</p> }
     <button type="button" class="lm-btn lm-btn-primary lm-send" [disabled]="!canSend()" (click)="openModal(templates)">{{ 'Tuma mkopo' | t }}</button>
   </aside>
 </div>

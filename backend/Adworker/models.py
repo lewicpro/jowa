@@ -1878,6 +1878,7 @@ def create_loan_installments(sender, instance, created, **kwargs):
         except (TypeError, ValueError):
             day = 1
 
+    today = timezone.localdate()
     previous_month = None
     for sequence in range(1, 13):
         month_name = str(getattr(instance, 'mwezi%s' % sequence, '') or '').strip()
@@ -1886,6 +1887,9 @@ def create_loan_installments(sender, instance, created, **kwargs):
         amount = _installment_amount(getattr(instance, 'mw%s' % sequence, None))
         if month is None or amount <= 0:
             continue
+        if previous_month is None and year == today.year and month < today.month:
+            # a loan made late in December starts in January of NEXT year
+            year += 1
         if previous_month is not None and month < previous_month:
             year += 1
         previous_month = month
@@ -1932,6 +1936,45 @@ def allocate_payment_to_installments(instance):
         amount -= allocation
         if amount <= 0:
             break
+
+
+def _money_number(value):
+    try:
+        return float(str(value).replace(',', '').strip())
+    except (TypeError, ValueError):
+        return 0.0
+
+
+# What a customer still owes, worked out from the records (never from a running total):
+#   everything their loans must repay (FormMkopo.jumla)
+#   - every repayment that was not deleted (Malipo route "weka", info not "deleted")
+# The panel DEBT (UserInfo.Balance) is set from this after every loan, payment and delete,
+# so a past mistake can never stay in it.
+def customer_debt(user):
+    to_repay = 0.0
+    for loan in FormMkopo.objects.filter(user__iexact=user):
+        to_repay += _money_number(loan.jumla)
+    repaid = 0.0
+    for pay in Malipo.objects.filter(user__iexact=user, route='weka').exclude(info='deleted'):
+        repaid += _money_number(pay.loan_repay)
+    return int(round(to_repay - repaid))
+
+
+# The three numbers on the customer panel, all worked out from the records:
+#   LOAN   (UserInfo.mkopo)   = everything the customer's loans must repay (loans + interest)
+#   PROFIT (UserInfo.Faida)   = all interest charged on their loans
+#   DEBT   (UserInfo.Balance) = what is still owed (see customer_debt)
+# The caller saves "info" (the views save it a little later, as before).
+def set_customer_figures(info, user):
+    to_repay = 0.0
+    interest = 0.0
+    for loan in FormMkopo.objects.filter(user__iexact=user):
+        to_repay += _money_number(loan.jumla)
+        interest += _money_number(loan.Faida)
+    info.mkopo = int(round(to_repay))
+    info.Faida = int(round(interest))
+    info.Balance = customer_debt(user)
+    return info
 
 
 def customer_company(register):

@@ -72,6 +72,7 @@ import { MyfilterPipe } from './myfilter.pipe';
 import { MoneyPipe, TranslatePipe } from './settings/settings.pipes';
 import { SettingsMenuComponent } from './settings/settings-menu.component';
 import { CloseFormDirective } from './settings/close-form.directive';
+import { AmountInputDirective } from './settings/amount-input.directive';
 import { DetailsViewComponent } from './details-view/details-view.component';
 import { AdminKopaComponent } from './admin-kopa/admin-kopa.component';
 import { AdminHistoryComponent } from './admin-history/admin-history.component';
@@ -338,6 +339,7 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
         TranslatePipe,
         SettingsMenuComponent,
         CloseFormDirective,
+        AmountInputDirective,
         DetailsViewComponent,
         AdminKopaComponent,
         AdminHistoryComponent,

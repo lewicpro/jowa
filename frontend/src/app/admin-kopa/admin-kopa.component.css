@@ -374,3 +374,7 @@
 /* partly paid: some money in, but the month is not finished */
 .status-partial { background: rgba(250, 120, 46, .14); color: #C25A1C; }
 .status-partial-overdue { background: rgba(200, 41, 48, .10); color: #C82930; box-shadow: inset 0 0 0 1px rgba(250, 120, 46, .45); }
+
+/* "Loan balance" in the schedule window header */
+.installment-modal-left { color: #C25A1C; font-weight: 600; }
+.installment-modal-left strong { font-size: 1.05em; }

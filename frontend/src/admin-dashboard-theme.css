@@ -228,6 +228,11 @@
 }
 .aleco-dash .kpis .kpi:hover::before { transform: scaleX(1); }
 .aleco-dash .kpis .kpi-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+/* Line the three numbers up: the Info button (32px tall) must not make its label row
+   taller than the others, and the number always sits at the bottom of the card,
+   so it stays on the same line even when a label wraps on a narrow screen. */
+.aleco-dash .kpis .kpi-head .info-btn { margin-top: -7px; margin-bottom: -7px; }
+.aleco-dash .kpis .kpi > .kpi-value { margin-top: auto; }
 .aleco-dash .kpis .kpi-label { color: var(--muted); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
 .aleco-dash .kpis .kpi-value {
   color: var(--ink);
