@@ -16,12 +16,20 @@ Including another URLconf
 from django.urls import re_path
 from .jwt_compat import obtain_jwt_token
 from .views import *
+from .sms_views import SmsStatusView, SmsSendView, SmsThreadsView, SmsChatView, TwilioWebhookView, InfobipWebhookView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 app_name = 'Adworker'
 urlpatterns = [
+    # SMS: send one or many, chats, and replies from the providers
+    re_path(r'^sms/status/$', SmsStatusView.as_view()),
+    re_path(r'^sms/send/$', SmsSendView.as_view()),
+    re_path(r'^sms/threads/$', SmsThreadsView.as_view()),
+    re_path(r'^sms/chat/$', SmsChatView.as_view()),
+    re_path(r'^sms/webhook/twilio/$', TwilioWebhookView.as_view()),
+    re_path(r'^sms/webhook/infobip/$', InfobipWebhookView.as_view()),
     re_path('toke_pro/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     re_path(r'token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
     re_path(r'^$', numberGetview.as_view(), name='numberCreate'),

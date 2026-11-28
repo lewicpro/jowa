@@ -123,6 +123,72 @@ export class RestframeworkService {
           });
     }
 
+  // ---------- SMS (send one or many, chats) ----------
+  // These need the login token: sending SMS costs money.
+  // On error the promise is rejected with the HTTP status (401 = logged out, 0 = no server).
+  smsHeaders() {
+    return new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  }
+
+  // the login token lasts 30 minutes: ask for a new one with the refresh token (1 day)
+  renewToken() {
+    return new Promise((resolve, reject) => {
+      const refresh = localStorage.getItem('refresh');
+      if (refresh == null || refresh === '' || refresh === 'undefined') {
+        reject(401);
+        return;
+      }
+      this.http.post(this.link + '/api/Adworker/token/refresh/', { refresh: refresh }).subscribe(
+        data => {
+          localStorage.setItem('token', data['access']);
+          resolve(true);
+        },
+        err => reject(401));
+    });
+  }
+
+  // runs a request; when the token has run out, renews it once and tries again
+  smsRequest(makeRequest) {
+    return new Promise((resolve, reject) => {
+      makeRequest().subscribe(
+        data => resolve(data),
+        err => {
+          if (err.status !== 401) {
+            reject(err.status);
+            return;
+          }
+          this.renewToken().then(() => {
+            makeRequest().subscribe(data => resolve(data), err2 => reject(err2.status));
+          }).catch(code => reject(code));
+        });
+    });
+  }
+
+  smsGet(path) {
+    return this.smsRequest(() => this.http.get(this.link + '/api/Adworker/sms/' + path, { headers: this.smsHeaders() }));
+  }
+
+  // which SMS provider is set up: { provider, live, sender, missing, replies }
+  getSmsStatus() {
+    return this.smsGet('status/');
+  }
+
+  // one row per phone number, newest first
+  getSmsThreads() {
+    return this.smsGet('threads/');
+  }
+
+  // every message with one phone number
+  getSmsChat(phone) {
+    return this.smsGet('chat/?phone=' + encodeURIComponent(phone));
+  }
+
+  // messages: [{ ref, phone, body, customer, name }] (one message = a single SMS, many = bulk)
+  sendSms(messages) {
+    return this.smsRequest(() => this.http.post(this.link + '/api/Adworker/sms/send/', { messages: messages }, { headers: this.smsHeaders() }));
+  }
+
+
   getListsTotal(id) {
     return new Promise(resolve => {
 

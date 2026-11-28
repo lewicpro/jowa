@@ -1,0 +1,99 @@
+<div class="sc">
+
+  <!-- which provider sends the messages -->
+  <div class="sc-banner sc-warn" *ngIf="errorCode === 401">{{ 'Muda wa kuingia umekwisha. Toka kisha ingia tena ili kutuma SMS.' | t }}</div>
+  <div class="sc-banner sc-warn" *ngIf="errorCode === 0">{{ 'Seva haipatikani. Hakikisha mfumo unaendelea kufanya kazi.' | t }}</div>
+  <ng-container *ngIf="errorCode == null && status != null">
+    <div class="sc-banner sc-test" *ngIf="!status.live">
+      <strong>{{ 'Hali ya majaribio' | t }}:</strong>
+      {{ 'ujumbe unahifadhiwa lakini hautumwi kwa mteja. Weka Twilio au Infobip kwenye seva ili kutuma kweli.' | t }}
+      <span *ngIf="status.missing.length > 0">({{ 'Inakosa' | t }}: {{ status.missing.join(', ') }})</span>
+    </div>
+    <div class="sc-banner sc-live" *ngIf="status.live">
+      {{ 'Inatuma kupitia' | t }} <strong>{{ providerName() }}</strong>
+      <span *ngIf="status.sender"> · {{ 'kutoka' | t }} {{ status.sender }}</span>
+      <span *ngIf="!status.replies"> · {{ 'majibu ya wateja hayataonekana hadi SMS_PUBLIC_URL iwekwe' | t }}</span>
+    </div>
+  </ng-container>
+
+  <div class="sc-body" [class.has-open]="open != null">
+
+    <!-- left: people -->
+    <aside class="sc-people">
+      <input type="search" [(ngModel)]="search" [placeholder]="'Tafuta jina, simu, account…' | t" [attr.aria-label]="'Tafuta mteja' | t">
+
+      <ul class="sc-list">
+        <li *ngFor="let t of shownThreads()" [class.on]="isOpen(t.phone)" (click)="chooseThread(t)">
+          <span class="sc-avatar">{{ initials(t.name) }}</span>
+          <span class="sc-who">
+            <strong>{{ (t.name || t.phone) | titlecase }}</strong>
+            <small>{{ t.direction === 'in' ? '' : ('Wewe' | t) + ': ' }}{{ t.body }}</small>
+          </span>
+          <span class="sc-meta">
+            <small>{{ when(t.created) }}</small>
+            <span class="sc-reply" *ngIf="t.direction === 'in'">{{ 'Jibu' | t }}</span>
+          </span>
+        </li>
+      </ul>
+
+      <ng-container *ngIf="shownCustomers().length > 0">
+        <p class="sc-sub">{{ 'Wateja wengine' | t }}</p>
+        <ul class="sc-list">
+          <li *ngFor="let c of shownCustomers()" (click)="chooseCustomer(c)">
+            <span class="sc-avatar sc-new">{{ initials(c.jina) }}</span>
+            <span class="sc-who">
+              <strong>{{ c.jina | titlecase }}</strong>
+              <small>{{ c.Simu }} · {{ c.Account_no || ('Not provided' | t) }}</small>
+            </span>
+          </li>
+        </ul>
+      </ng-container>
+
+      <p class="sc-empty" *ngIf="shownThreads().length === 0 && shownCustomers().length === 0">
+        <ng-container *ngIf="search.trim() === ''">{{ 'Bado hakuna mazungumzo. Tafuta mteja ili kuanza.' | t }}</ng-container>
+        <ng-container *ngIf="search.trim() !== ''">{{ 'Hakuna aliyepatikana' | t }}</ng-container>
+      </p>
+    </aside>
+
+    <!-- right: the chat -->
+    <section class="sc-chat">
+      <div class="sc-none" *ngIf="open == null">{{ 'Chagua mteja ili kuona mazungumzo' | t }}</div>
+
+      <ng-container *ngIf="open != null">
+        <header class="sc-head">
+          <button type="button" class="btn sc-back" (click)="closeChat()" [attr.aria-label]="'Rudi' | t">‹</button>
+          <span class="sc-avatar">{{ initials(open.name) }}</span>
+          <span class="sc-who">
+            <strong>{{ (open.name || open.phone) | titlecase }}</strong>
+            <small>{{ open.phone }}</small>
+          </span>
+        </header>
+
+        <div class="sc-thread" #thread>
+          <p class="sc-empty" *ngIf="loadingChat">{{ 'Inapakia...' | t }}</p>
+          <p class="sc-empty" *ngIf="!loadingChat && messages.length === 0">{{ 'Hakuna ujumbe bado. Andika wa kwanza hapa chini.' | t }}</p>
+          <div *ngFor="let m of messages" class="sc-msg" [class.out]="m.direction === 'out'" [class.in]="m.direction === 'in'" [class.failed]="m.status === 'failed'">
+            <p>{{ m.body }}</p>
+            <small>
+              {{ when(m.created) }}
+              <ng-container *ngIf="statusLabel(m) !== ''"> · {{ statusLabel(m) | t }}</ng-container>
+            </small>
+            <small class="sc-err" *ngIf="m.status === 'failed' && m.error">{{ m.error }}</small>
+          </div>
+        </div>
+
+        <footer class="sc-compose">
+          <textarea rows="2" [(ngModel)]="text" (keydown)="onKey($event)" [disabled]="errorCode != null"
+            [placeholder]="'Andika ujumbe…' | t" [attr.aria-label]="'Andika ujumbe…' | t"></textarea>
+          <div class="sc-send">
+            <small [class.sc-long]="text.length > 960">{{ text.length }} · {{ parts() }} SMS</small>
+            <button type="button" class="btn sc-btn" (click)="send()" [disabled]="sending || text.trim() === '' || text.length > 960 || errorCode != null">
+              {{ (sending ? 'Inatuma...' : 'Tuma') | t }}
+            </button>
+          </div>
+          <small class="sc-err" *ngIf="sendError">{{ errorText(sendError) | t }}</small>
+        </footer>
+      </ng-container>
+    </section>
+  </div>
+</div>

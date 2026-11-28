@@ -119,6 +119,7 @@ import { PersonalWekaComponent } from './personal-weka/personal-weka.component';
 import { PersonalToaComponent } from './personal-toa/personal-toa.component';
 import { GuardGuard } from './guard.guard';
 import { TumaMesgComponent } from './tuma-mesg/tuma-mesg.component';
+import { SmsChatComponent } from './sms-chat/sms-chat.component';
 import { OngezaHouseOwnerComponent } from './ongeza-house-owner/ongeza-house-owner.component';
 import { WamilikiComponent } from './wamiliki/wamiliki.component';
 import { MmilikiDetailsComponent } from './mmiliki-details/mmiliki-details.component';
@@ -281,6 +282,7 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
 
 
 @NgModule({ declarations: [
+        SmsChatComponent,
         AppComponent,
         DirecpayDetailsComponent,
         DasboardMkopeshajiWadaiwaMweziHuuComponent,
@@ -939,7 +941,8 @@ import { DukaGraphsComponent } from './duka-graphs/duka-graphs.component';
                     { path: 'Waliojulishwa', component: WaliojulishwaComponent, children: [
                             { path: 'Mwezihuu', component: MwezihuumesejiComponent },
                             { path: 'Overdue', component: OverdueThisMonthComponent },
-                            { path: 'TumaMsj', component: TumaMesgComponent }
+                            { path: 'TumaMsj', component: TumaMesgComponent },
+                            { path: 'Chat', component: SmsChatComponent }
                         ] },
                     { path: 'Details', component: DetailsViewComponent, children: [
                             { path: 'Mkopoadmin', component: AdminKopaComponent },

@@ -13,7 +13,14 @@
       <code>{{ '{' }}kiasi{{ '}' }}</code> {{ 'Kiasi kinachobaki' | t }} ·
       <code>{{ '{' }}tarehe{{ '}' }}</code> {{ 'Tarehe ya malipo' | t }}
     </p>
-    <p class="tm-note">{{ 'Mfumo bado haujaunganishwa na huduma ya SMS: nakili ujumbe au uufungue kwenye simu.' | t }}</p>
+    <p class="tm-note" *ngIf="smsError === 401">{{ 'Muda wa kuingia umekwisha. Toka kisha ingia tena ili kutuma SMS.' | t }}</p>
+    <p class="tm-note" *ngIf="smsError === 0">{{ 'Seva haipatikani. Hakikisha mfumo unaendelea kufanya kazi.' | t }}</p>
+    <p class="tm-note" *ngIf="smsError == null && smsStatus != null && !smsStatus.live">
+      <strong>{{ 'Hali ya majaribio' | t }}:</strong> {{ 'ujumbe unahifadhiwa lakini hautumwi kwa mteja. Weka Twilio au Infobip kwenye seva ili kutuma kweli.' | t }}
+    </p>
+    <p class="tm-note tm-live" *ngIf="smsError == null && smsStatus != null && smsStatus.live">
+      {{ 'Inatuma kupitia' | t }} <strong>{{ smsStatus.provider | titlecase }}</strong><span *ngIf="smsStatus.sender"> · {{ 'kutoka' | t }} {{ smsStatus.sender }}</span>
+    </p>
   </section>
 
   <div class="tm-tabs" role="tablist">
@@ -28,6 +35,21 @@
   <div class="tm-summary" *ngIf="!loading">
     <span><strong>{{ wateja().length }}</strong> {{ (kundi === 'chelewa' ? 'awamu zimechelewa' : 'wateja wanadaiwa mwezi huu') | t }}</span>
     <span>{{ 'Jumla inayobaki' | t }}: <strong>{{ totalOwed() | money }}</strong></span>
+    <button type="button" class="btn tm-all" (click)="sendAll()" [disabled]="bulkBusy || withPhone() === 0 || smsError != null">
+      <ng-container *ngIf="!bulkBusy">{{ 'Tuma kwa wote' | t }} ({{ withPhone() }})</ng-container>
+      <ng-container *ngIf="bulkBusy">{{ 'Inatuma...' | t }} {{ bulkDone }} / {{ bulkTotal }}</ng-container>
+    </button>
+  </div>
+
+  <p class="tm-skip" *ngIf="!loading && wateja().length > withPhone()">
+    {{ wateja().length - withPhone() }} {{ 'hawana namba iliyosajiliwa, hawatatumiwa ujumbe' | t }}
+  </p>
+
+  <div class="tm-result" *ngIf="bulkSummary != null && !bulkBusy">
+    <span *ngIf="bulkSummary.sent > 0">{{ 'Imetumwa' | t }}: <strong>{{ bulkSummary.sent }}</strong></span>
+    <span *ngIf="bulkSummary.test > 0">{{ 'Majaribio · haijatumwa' | t }}: <strong>{{ bulkSummary.test }}</strong></span>
+    <span *ngIf="bulkSummary.failed > 0" class="tm-bad">{{ 'Imeshindwa' | t }}: <strong>{{ bulkSummary.failed }}</strong></span>
+    <a [routerLink]="['../Chat']" class="btn tm-to-chat">{{ 'Fungua mazungumzo' | t }}</a>
   </div>
 
   <p class="tm-empty" *ngIf="loading">{{ 'Inapakia...' | t }}</p>
@@ -36,8 +58,10 @@
   <ul class="tm-list" *ngIf="!loading && wateja().length > 0">
     <li *ngFor="let inst of wateja()">
       <div class="tm-who">
-        <strong>{{ (inst.jina || ('Mteja' | t)) | titlecase }}</strong>
-        <span>{{ inst.Simu || ('Not provided' | t) }}</span>
+        <strong>{{ (nameOf(inst) || ('Mteja' | t)) | titlecase }}</strong>
+        <span *ngIf="hasPhone(inst)">{{ phoneOf(inst) }}</span>
+        <span class="tm-nophone" *ngIf="customerOf(inst) == null">{{ 'Hajasajiliwa' | t }}</span>
+        <span class="tm-nophone" *ngIf="customerOf(inst) != null && !hasPhone(inst)">{{ 'Hakuna namba iliyosajiliwa' | t }}</span>
         <span class="tm-due">{{ inst.due_date | date }} · {{ inst.balance | money }}</span>
         <span class="tm-late" *ngIf="kundi === 'chelewa'">{{ 'Imechelewa' | t }}</span>
       </div>
@@ -48,7 +72,14 @@
           <span *ngIf="copiedId !== inst.id">{{ 'Nakili' | t }}</span>
           <span *ngIf="copiedId === inst.id">{{ 'Imenakiliwa' | t }}</span>
         </button>
-        <a class="btn tm-btn tm-primary" *ngIf="hasPhone(inst)" [href]="smsLink(inst)">{{ 'Fungua SMS' | t }}</a>
+        <button type="button" class="btn tm-btn" *ngIf="hasPhone(inst)" (click)="openChat(inst)">{{ 'Ongea' | t }}</button>
+        <button type="button" class="btn tm-btn tm-primary" *ngIf="hasPhone(inst)" (click)="sendOne(inst)"
+          [disabled]="sendingId != null || bulkBusy || smsError != null">
+          {{ (sendingId === inst.id ? 'Inatuma...' : 'Tuma') | t }}
+        </button>
+      </div>
+      <div class="tm-sent" *ngIf="resultFor(inst) as r" [class.tm-bad]="r.status === 'failed'" [class.tm-test]="r.status === 'test'">
+        {{ resultLabel(r) | t }}<span *ngIf="r.status === 'failed' && r.error && r.error !== 'bad_phone' && r.error !== 'too_long'">: {{ r.error }}</span>
       </div>
     </li>
   </ul>

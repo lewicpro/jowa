@@ -386,6 +386,8 @@ login(){
     localStorage.removeItem('user')
     localStorage.setItem('user', this.userData.username);
     localStorage.setItem('token', this.responseData.access);
+    // kept so the SMS pages can get a new token when this one (30 minutes) runs out
+    localStorage.setItem('refresh', this.responseData.refresh);
 
     this.restframeworkservice.getListsMicrocredita().then(data=>{
       console.log('passed here 1')

@@ -2,11 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RestframeworkService } from '../apiservice/restframework.service';
 import { SettingsService } from '../settings/settings.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // "Tuma meseji": writes a payment reminder for every customer who still owes money,
 // either on this month's installment or on an installment whose due date has passed.
-// The system has no SMS provider yet, so each message can be copied,
-// or opened in the phone's SMS app with the number and text already filled in.
+// Messages go out through the SMS provider set on the server (Twilio or Infobip),
+// one at a time or all at once. With no provider the server runs in test mode:
+// messages are saved and shown in the chat, but not sent to the customer.
 //
 // In the message these words are replaced for each customer:
 //   {jina}   -> the customer's name
@@ -37,7 +39,43 @@ export class TumaMesgComponent implements OnInit {
 
   datePipe = new DatePipe('en-US');
 
-  constructor(public restframework: RestframeworkService, public settings: SettingsService) {
+  // which SMS provider the server uses: { provider, live, sender, missing, replies }
+  smsStatus = null;
+  // 401 = logged out, 0 = server not running
+  smsError = null;
+
+  // registered customers by their username: the phone always comes from here
+  registered = {};
+
+  // what happened to each message sent from this page, by installment id
+  results = {};
+  // the card being sent now
+  sendingId = null;
+
+  // "send all": how far it got, and the totals at the end
+  bulkBusy = false;
+  bulkDone = 0;
+  bulkTotal = 0;
+  bulkSummary = null;
+
+  constructor(public restframework: RestframeworkService, public settings: SettingsService, public router: Router, public route: ActivatedRoute) {
+    this.restframework.getSmsStatus().then(data => {
+      this.smsStatus = data;
+    }).catch(code => {
+      this.smsError = code;
+    });
+    this.restframework.getLists().then(data => {
+      const map = {};
+      if (Array.isArray(data)) {
+        for (const c of data) {
+          if (c.Username) {
+            map[c.Username] = c;
+          }
+        }
+      }
+      this.registered = map;
+    });
+
     this.restframework.getInstallments().then(data => {
       this.loading = false;
       let installments = [];
@@ -125,7 +163,7 @@ export class TumaMesgComponent implements OnInit {
 
   // the message for one customer
   messageFor(inst) {
-    let name = String(inst.jina || '').trim();
+    let name = this.nameOf(inst).trim();
     if (name === '') {
       name = this.settings.t('Mteja');
     } else {
@@ -154,14 +192,153 @@ export class TumaMesgComponent implements OnInit {
     return Math.ceil(length / 153);
   }
 
-  hasPhone(inst) {
-    return String(inst.Simu || '').trim() !== '';
+  // the customer as registered (null when the loan belongs to nobody registered)
+  customerOf(inst) {
+    const c = this.registered[inst.user];
+    if (c == null) {
+      return null;
+    }
+    return c;
   }
 
-  // opens the phone's SMS app with the number and the message
-  smsLink(inst) {
-    const phone = String(inst.Simu || '').replace(/[^0-9+]/g, '');
-    return 'sms:' + phone + '?body=' + encodeURIComponent(this.messageFor(inst));
+  // the phone saved at registration; the phone on the loan is never used
+  phoneOf(inst) {
+    const c = this.customerOf(inst);
+    if (c == null) {
+      return '';
+    }
+    return String(c.Simu || '').trim();
+  }
+
+  // the name on the loan; the registered name only when the loan has none
+  nameOf(inst) {
+    if (String(inst.jina || '').trim() !== '') {
+      return String(inst.jina);
+    }
+    const c = this.customerOf(inst);
+    if (c != null && c.jina) {
+      return String(c.jina);
+    }
+    return '';
+  }
+
+  hasPhone(inst) {
+    return this.phoneOf(inst) !== '';
+  }
+
+  // how many in the list shown have a registered phone
+  withPhone() {
+    let count = 0;
+    for (const inst of this.wateja()) {
+      if (this.hasPhone(inst)) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
+  // ---------- sending through the system ----------
+
+  // one card -> one message for the server
+  outgoing(inst) {
+    // the server looks the phone up from the registration (customer = Register pk)
+    const c = this.customerOf(inst);
+    return { ref: inst.id, customer: c.pk, name: this.nameOf(inst), body: this.messageFor(inst) };
+  }
+
+  resultFor(inst) {
+    return this.results[inst.id];
+  }
+
+  sendOne(inst) {
+    if (this.sendingId != null || this.bulkBusy) {
+      return;
+    }
+    this.sendingId = inst.id;
+    this.restframework.sendSms([this.outgoing(inst)]).then(data => {
+      this.sendingId = null;
+      this.results[inst.id] = data['results'][0];
+    }).catch(code => {
+      this.sendingId = null;
+      this.smsError = code;
+    });
+  }
+
+  // sends to everyone in the list shown, 100 at a time so the page can show progress
+  sendAll() {
+    const list = [];
+    for (const inst of this.wateja()) {
+      if (this.hasPhone(inst)) {
+        list.push(inst);
+      }
+    }
+    if (list.length === 0 || this.bulkBusy) {
+      return;
+    }
+    let question = this.settings.t('Tuma ujumbe kwa wateja') + ' ' + list.length + '?';
+    if (this.smsStatus != null && !this.smsStatus.live) {
+      question += '\n' + this.settings.t('Hali ya majaribio: hakuna ujumbe utakaomfikia mteja.');
+    }
+    if (!window.confirm(question)) {
+      return;
+    }
+    this.bulkBusy = true;
+    this.bulkDone = 0;
+    this.bulkTotal = list.length;
+    this.bulkSummary = { sent: 0, test: 0, failed: 0 };
+    this.sendChunk(list, 0);
+  }
+
+  sendChunk(list, start) {
+    if (start >= list.length) {
+      this.bulkBusy = false;
+      return;
+    }
+    const part = [];
+    for (let i = start; i < list.length && i < start + 100; i++) {
+      part.push(this.outgoing(list[i]));
+    }
+    this.restframework.sendSms(part).then(data => {
+      for (const r of data['results']) {
+        this.results[r.ref] = r;
+        if (this.bulkSummary[r.status] != null) {
+          this.bulkSummary[r.status] += 1;
+        }
+      }
+      this.bulkDone = start + part.length;
+      this.sendChunk(list, start + 100);
+    }).catch(code => {
+      // stop here; what was sent stays sent
+      this.bulkBusy = false;
+      this.smsError = code;
+    });
+  }
+
+  // the chat with this customer
+  openChat(inst) {
+    this.router.navigate(['../Chat'], { relativeTo: this.route, queryParams: { phone: this.phoneOf(inst), name: this.nameOf(inst), customer: this.customerOf(inst).pk } });
+  }
+
+  resultLabel(r) {
+    if (r.status === 'test') {
+      return 'Majaribio · haijatumwa';
+    }
+    if (r.status === 'sent') {
+      return 'Imetumwa';
+    }
+    if (r.status === 'delivered') {
+      return 'Imefika';
+    }
+    if (r.error === 'bad_phone') {
+      return 'Namba ya simu si sahihi';
+    }
+    if (r.error === 'too_long') {
+      return 'Ujumbe ni mrefu mno';
+    }
+    if (r.error === 'no_phone' || r.error === 'no_customer') {
+      return 'Hakuna namba iliyosajiliwa';
+    }
+    return 'Imeshindwa';
   }
 
   copy(inst) {

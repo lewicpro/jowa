@@ -2944,3 +2944,30 @@ class loginModel(models.Model):
     email =models.EmailField(null=True)
     password =models.CharField(max_length=2000, blank=True, null=True)
     token =models.CharField(max_length=2000, blank=True, null=True)
+
+
+# ---------- SMS ----------
+# Every SMS the system sends, and every reply a customer sends back.
+# The chat page and the bulk reminders read from here.
+class SmsMessage(models.Model):
+    DIRECTIONS = (('out', 'Sent by us'), ('in', 'Reply from the customer'))
+
+    company = models.CharField(max_length=120, blank=True, null=True)
+    customer = models.IntegerField(blank=True, null=True)      # Register pk, when we know the customer
+    name = models.CharField(max_length=120, blank=True, null=True)
+    phone = models.CharField(max_length=30, db_index=True)    # always +255..., so one person = one chat
+    body = models.TextField()
+    direction = models.CharField(max_length=3, choices=DIRECTIONS, default='out')
+    # queued, sent, delivered, failed, test (not really sent), received
+    status = models.CharField(max_length=20, default='queued')
+    provider = models.CharField(max_length=20, blank=True, default='')
+    provider_id = models.CharField(max_length=120, blank=True, default='', db_index=True)
+    error = models.CharField(max_length=500, blank=True, default='')
+    sent_by = models.CharField(max_length=120, blank=True, default='')
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created', 'id']
+
+    def __str__(self):
+        return self.direction + ' ' + self.phone + ': ' + self.body[:30]
