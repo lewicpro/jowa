@@ -1,36 +1,55 @@
-<div class="container">
-    <div class="row">
-      <div class="col">
+<div class="tm">
 
-
-
-          <mat-card appearance="outlined">{{ 'Simple card' | t }}</mat-card>
-
-      </div>
-      <div class="col">
-
-          <mat-card appearance="outlined">{{ 'Simple card' | t }}</mat-card>
-
-      </div>
-      <div class="w-100"></div>
-     
+  <section class="tm-compose">
+    <div class="tm-head">
+      <h4>{{ 'Ujumbe wa kukumbusha' | t }}</h4>
+      <button type="button" class="tm-link" (click)="resetTemplate()" [disabled]="ujumbe == null">{{ 'Rudisha ujumbe wa awali' | t }}</button>
     </div>
-    <div style="padding:6px;"></div>
+    <textarea rows="3" [ngModel]="template()" (ngModelChange)="setTemplate($event)"
+      [attr.aria-label]="'Ujumbe wa kukumbusha' | t"></textarea>
+    <p class="tm-hint">
+      {{ 'Maneno haya yanabadilishwa kwa kila mteja' | t }}:
+      <code>{{ '{' }}jina{{ '}' }}</code> {{ 'Jina' | t }} ·
+      <code>{{ '{' }}kiasi{{ '}' }}</code> {{ 'Kiasi kinachobaki' | t }} ·
+      <code>{{ '{' }}tarehe{{ '}' }}</code> {{ 'Tarehe ya malipo' | t }}
+    </p>
+    <p class="tm-note">{{ 'Mfumo bado haujaunganishwa na huduma ya SMS: nakili ujumbe au uufungue kwenye simu.' | t }}</p>
+  </section>
 
-    <div class="row">
-      <div class="col">
-
-
-
-          <mat-card appearance="outlined">{{ 'Simple card' | t }}</mat-card>
-
-      </div>
-      <div class="col">
-
-          <mat-card appearance="outlined">{{ 'Simple card' | t }}</mat-card>
-
-      </div>
-      <div class="w-100"></div>
-     
-    </div>
+  <div class="tm-tabs" role="tablist">
+    <button type="button" role="tab" [class.on]="kundi === 'mwezi'" [attr.aria-selected]="kundi === 'mwezi'" (click)="chagua('mwezi')">
+      {{ 'Mwezi huu' | t }} <span class="tm-badge">{{ mweziHuu.length }}</span>
+    </button>
+    <button type="button" role="tab" [class.on]="kundi === 'chelewa'" [attr.aria-selected]="kundi === 'chelewa'" (click)="chagua('chelewa')">
+      {{ 'Waliochelewa' | t }} <span class="tm-badge">{{ waliochelewa.length }}</span>
+    </button>
   </div>
+
+  <div class="tm-summary" *ngIf="!loading">
+    <span><strong>{{ wateja().length }}</strong> {{ (kundi === 'chelewa' ? 'awamu zimechelewa' : 'wateja wanadaiwa mwezi huu') | t }}</span>
+    <span>{{ 'Jumla inayobaki' | t }}: <strong>{{ totalOwed() | money }}</strong></span>
+  </div>
+
+  <p class="tm-empty" *ngIf="loading">{{ 'Inapakia...' | t }}</p>
+  <p class="tm-empty" *ngIf="!loading && wateja().length === 0">{{ (kundi === 'chelewa' ? 'Hakuna awamu iliyochelewa' : 'Hakuna mteja anayedaiwa mwezi huu') | t }}</p>
+
+  <ul class="tm-list" *ngIf="!loading && wateja().length > 0">
+    <li *ngFor="let inst of wateja()">
+      <div class="tm-who">
+        <strong>{{ (inst.jina || ('Mteja' | t)) | titlecase }}</strong>
+        <span>{{ inst.Simu || ('Not provided' | t) }}</span>
+        <span class="tm-due">{{ inst.due_date | date }} · {{ inst.balance | money }}</span>
+        <span class="tm-late" *ngIf="kundi === 'chelewa'">{{ 'Imechelewa' | t }}</span>
+      </div>
+      <p class="tm-msg">{{ messageFor(inst) }}</p>
+      <div class="tm-actions">
+        <span class="tm-count">{{ messageFor(inst).length }} / 160 · {{ smsCount(inst) }} SMS</span>
+        <button type="button" class="tm-btn" (click)="copy(inst)">
+          <span *ngIf="copiedId !== inst.id">{{ 'Nakili' | t }}</span>
+          <span *ngIf="copiedId === inst.id">{{ 'Imenakiliwa' | t }}</span>
+        </button>
+        <a class="btn tm-btn tm-primary" *ngIf="hasPhone(inst)" [href]="smsLink(inst)">{{ 'Fungua SMS' | t }}</a>
+      </div>
+    </li>
+  </ul>
+</div>

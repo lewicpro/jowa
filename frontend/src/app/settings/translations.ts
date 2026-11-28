@@ -158,7 +158,18 @@ export const EN: Record<string, string> = {
     'Promise to pay saved. The installment remains unpaid until a payment is recorded',
   'Haikuwezekana kuhifadhi tarehe ya ahadi. Tafadhali jaribu tena': 'Could not save the promise date. Please try again',
   'Malipo haya hayajaunganishwa na ratiba moja ya mkopo': 'This payment is not linked to a unique loan schedule',
-  'Kitendo': 'Action'
+  'Kitendo': 'Action',
+  // Tuma meseji (payment reminders)
+  'Ujumbe wa kukumbusha': 'Reminder message', 'Rudisha ujumbe wa awali': 'Restore the default message',
+  'Maneno haya yanabadilishwa kwa kila mteja': 'These words are replaced for each customer',
+  'Kiasi kinachobaki': 'Amount left',
+  'Mfumo bado haujaunganishwa na huduma ya SMS: nakili ujumbe au uufungue kwenye simu.': 'The system is not connected to an SMS service yet: copy the message or open it on a phone.',
+  'wateja wanadaiwa mwezi huu': 'customers owe money this month', 'Jumla inayobaki': 'Total left',
+  'Inapakia...': 'Loading...', 'Hakuna mteja anayedaiwa mwezi huu': 'No customer owes money this month',
+  'Waliochelewa': 'Overdue', 'awamu zimechelewa': 'installments are overdue', 'Hakuna awamu iliyochelewa': 'No overdue installment',
+  'Habari {jina}, rejesho lako la mkopo la {kiasi} lililotakiwa tarehe {tarehe} bado halijalipwa. Tafadhali lipa mapema. Asante.': 'Hello {jina}, your loan installment of {kiasi} that was due on {tarehe} has not been paid yet. Please pay soon. Thank you.',
+  'Nakili': 'Copy', 'Imenakiliwa': 'Copied', 'Fungua SMS': 'Open SMS',
+  'Habari {jina}, unakumbushwa kulipa rejesho la mkopo la {kiasi} kabla ya {tarehe}. Asante.': 'Hello {jina}, this is a reminder to pay your loan installment of {kiasi} by {tarehe}. Thank you.',
 };
 
 // English text written in the pages -> Kiswahili (used when Kiswahili is chosen)
