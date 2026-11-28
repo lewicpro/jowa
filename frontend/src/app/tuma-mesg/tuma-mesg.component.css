@@ -139,6 +139,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  /* buttons stay at the bottom, so cards side by side line up */
+  margin-top: auto;
 }
 
 .tm-count {
@@ -147,7 +149,7 @@
   color: #999;
 }
 
-.tm-btn {
+.tm-actions .tm-btn {
   border: 1px solid #d9d9de;
   background: #fff;
   border-radius: 8px;
@@ -156,9 +158,17 @@
   color: #333;
   cursor: pointer;
   text-decoration: none;
+  /* the link and the button look the same: text in the middle, same height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.tm-btn:hover {
+.tm-actions .tm-btn:hover {
   border-color: #f26a21;
   color: #f26a21;
   text-decoration: none;
